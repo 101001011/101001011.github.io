@@ -576,6 +576,24 @@
 <p>$$<br>\begin{aligned}<br>    \hat{F}(x) &amp;&#x3D; \prod _ i F_i(x)\<br>    &amp;&#x3D; \prod _ i \left( \sum _ j (a_i - j) \frac{x ^ j}{j!} \right)\<br>    &amp;&#x3D; \prod _ i \left( a_i \sum _ j \frac{x ^ j}{j!} - \sum _ {j} \frac{x ^ {j + 1}}{j!} \right)\<br>    &amp;&#x3D; \prod _ i (a_i - x)e ^ x\<br>    &amp;&#x3D; e ^ {nx} \prod _ i (a_i - x)<br>\end{aligned}<br>$$</p>
 <p>$\prod _ i (a_i - x)$ 直接分治乘可以做到 $\Theta(n \log ^ 2 n)$，$e ^ {nx}$ 的系数可以直接求，由于 $\prod _ i (a_i - x)$ 的最高次数为 $n$，所以直接枚举计算即可。</p>
 <p>总时间复杂度 $\Theta(n \log ^2 n).$</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">1e5</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    
+    cin <span class="token operator">>></span> n <span class="token operator">>></span> m<span class="token punctuation">;</span>
+    
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> cin <span class="token operator">>></span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">void</span> <span class="token function">dfs</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
