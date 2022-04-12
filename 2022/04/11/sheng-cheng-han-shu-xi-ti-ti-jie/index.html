@@ -1,591 +1,193 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="CCA&#39;s Blog">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <title>CCA&#39;s Blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-
-    <script src="/libs/jquery/jquery.min.js"></script>
-
+  <meta charset="utf-8">
+  
+  
+  <title>CCA&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="$\rm [集训队作业2013]城市规划$
+考虑 $\rm EGF$ 的组合意义，可以发现若设任意图方案数的 $\rm EGF$ 为 $F(x)$，连通图的 $\rm EGF$ 为 $G(x)$，显然任意图计数可以被看做先将 $n$ 个点分进若干个非空子集，然后做连通图计数的方案数，那么根据之前的结">
+  
+  
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-
-
-
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">CCA&#39;s Blog</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s Blog</a>
+  </h1>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">平生之志, 不在温饱. </a>
+    </h2>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">CCA&#39;s Blog</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
 </div>
 
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
+      <div id="content" class="outer">
+        <section id="main"><article id="post-生成函数习题题解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2022-04-11T12:15:05.905Z" itemprop="datePublished">2022-04-11</time>
 </a>
-        
-    </nav>
-
-</header>
-
     
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
+  </div>
+  <div class="article-inner">
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-11
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
-                </div>
-                
-
-                
-
-                
-            </div>
-        </div>
-        <hr class="clearfix">
-
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
-
-        
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h3 id="rm-集训队作业2013-城市规划"><a href="#rm-集训队作业2013-城市规划" class="headerlink" title="$\rm [集训队作业2013]城市规划$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4841">$\rm [集训队作业2013]城市规划$</a></h3><p>考虑 $\rm EGF$ 的组合意义，可以发现若设任意图方案数的 $\rm EGF$ 为 $F(x)$，连通图的 $\rm EGF$ 为 $G(x)$，显然任意图计数可以被看做先将 $n$ 个点分进若干个非空子集，然后做连通图计数的方案数，那么根据之前的结论，有 ：</p>
-<p>$$<br>F(x) &#x3D; \exp G(x) \iff G(x) &#x3D; \ln F(x)<br>$$</p>
-<p>显然有 $F(x) &#x3D; \sum _ n 2 ^ {\binom{n}{2}} x ^ n$，于是只需直接对其求 $\ln$ 即可。</p>
-<p>时间复杂度 $\Theta(n \log n).$</p>
-<h4 id="rm-Code-Link"><a href="#rm-Code-Link" class="headerlink" title="$\rm Code~Link$"></a><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/xmQf5fsg9w/">$\rm Code~Link$</a></h4><h3 id="rm-CF438E-TheChildandBinaryTree"><a href="#rm-CF438E-TheChildandBinaryTree" class="headerlink" title="$\rm [CF438E]TheChildandBinaryTree$"></a><a target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/438/E">$\rm [CF438E]The<del>Child</del>and<del>Binary</del>Tree$</a></h3><p>首先可以考虑一个 $\rm DP$，设 $f_S$ 表示点权之和为 $S$ 的二叉树数量，迭代时可以考虑枚举左子树的权值和 $S_l$，右子树的权值和 $S_r$ 和根节点的权值 $w$，那么有 $f_{S_l + S_r + w} &#x3D; \sum _{S_l} \sum <em>{S_r} \sum <em>{w \in C} f</em>{S_l} f</em>{S_r}.$</p>
-<p>容易发现，这个式子可以用三个多项式的卷积来拟合，设 $F(x) &#x3D; \sum _ n f_n x ^ n, G(x) &#x3D; \sum _ n [n \in C] x ^ n$，于是有 ：</p>
-<p>$$<br>F &#x3D; F ^ 2 G + 1<br>$$</p>
-<p>最后的 $+1$ 是为了补齐常数项，因为 $f_0$ 为 $1.$</p>
-<p>解方程可以得到 ：</p>
-<p>$$<br>F &#x3D; \frac{1 \pm \sqrt{1 - 4G}}{2G}<br>$$</p>
-<p>由于有两个解，显然不可能都成立，于是考虑 $x \to 0$ 时的特殊情况。</p>
-<p>当 $x \to 0$ 时，$F(x) \to 1,G(x) \to 0.$</p>
-<p>$$<br>\lim _ {x \to 0} \frac{1 + \sqrt{1 - 4G}}{2G} &#x3D; +\infty \not&#x3D; \lim _ {x \to 0} F<br>$$</p>
-<p>$$<br>\lim _ {x \to 0} \frac{1 - \sqrt{1 - 4G}}{2G} &#x3D; 1 &#x3D; \lim _ {x \to 0} F<br>$$</p>
-<p>于是选取 $F&#x3D; \frac{1 - \sqrt{1 - 4G}}{2G}$ 作为方程的解。</p>
-<p>到这一步，我们发现一个问题，因为 $G(x)$ 的常数项为 $0$，所以 $G(x)$ 不可以求逆。</p>
-<p>考虑对解做变换，这里选取分子有理化 ：</p>
-<p>$$<br>F &#x3D; \frac{\left(1 - \sqrt{1 - 4G}\right)\left(1 + \sqrt{1 - 4G}\right)}{2G\left(1 + \sqrt{1 - 4G}\right)} &#x3D; \frac{2}{1 + \sqrt{1 - 4G}}<br>$$</p>
-<p>可以发现分母的常数项必定不为 $0$，于是做多项式开方和多项式求逆即可。</p>
-<p>时间复杂度 $\Theta(n \log n).$</p>
-<h4 id="rm-Code-Link-1"><a href="#rm-Code-Link-1" class="headerlink" title="$\rm Code~Link$"></a><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/YxyyhWmFh9/">$\rm Code~Link$</a></h4><h3 id="rm-国家集训队-整数的lqp拆分"><a href="#rm-国家集训队-整数的lqp拆分" class="headerlink" title="$\rm [国家集训队]整数的lqp拆分$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4451">$\rm [国家集训队]整数的<del>lqp</del>拆分$</a></h3><p>设 ${f_n},{g_n}$ 分别为斐波那契数列和答案序列，$F(x)$ 和 $G(x)$ 分别为它们的生成函数。</p>
-<p>显然有斐波那契数列的生成函数 ：</p>
-<p>$$<br>F(x) &#x3D; \frac{x}{1 - x - x ^ 2}<br>$$</p>
-<p>而对于 $G(x)$，可以发现如果 $g_i$ 已经被求出来了，那么给所有的拆分加上一个数 $n - i$ 即可得到 $g_n$ 的所有拆分，$g_i$ 对 $g_n$ 的贡献为 $g_i \times f_{n - i}.$ 于是有 $g_n$ 的递推式 ：</p>
-<p>$$<br>g_n &#x3D; \sum _ {i &#x3D; 0} ^ {n- 1} g_i \times f_{n - i}<br>$$</p>
-<p>将 ${g_n}$ 带入 $G(x)$ 可得 ：</p>
-<p>$$<br>G(x) &#x3D; \sum _ n x ^ n \sum _ {i &#x3D; 0} ^ {n - 1} g_i f_{n - i}<br>$$</p>
-<p>可以发现等式右边实际上是卷积的形式，于是有 ：</p>
-<p>$$<br>G &#x3D; GF<br>$$</p>
-<p>但是我们发现这样的话 $G(x) &#x3D; 0$，原因是 $g_0 &#x3D; 0$，于是我们强制 $g_0 &#x3D; 1$，得到 ：</p>
-<p>$$<br>G &#x3D; GF + 1<br>$$</p>
-<p>$$<br>G(x) &#x3D; \frac{1}{1 - F(x)} &#x3D; 1 + \frac{x}{1 - 2x - x ^ 2}<br>$$</p>
-<p>可以发现现在求出的 $G(x)$ 比实际值多了 $1$，因为我们将 $g_0 &#x3D; 0$ 强制变成了 $g_0 &#x3D; 1$，修正后有 ：</p>
-<p>$$<br>G(x) &#x3D; \frac{x}{1 - 2x - x ^ 2} &#x3D; \frac{\frac{\sqrt{2}}{4}}{1 - (1 + \sqrt{2})x} + \frac{-\frac{\sqrt{2}}{4}}{1 - (1 - \sqrt{2})x}<br>$$</p>
-<p>$$<br>[x ^ n]G(x) &#x3D; \frac{\sqrt{2}}{4}(1 + \sqrt{2}) ^ n - \frac{\sqrt{2}}{4}(1 - \sqrt{2}) ^ n<br>$$</p>
-<p>最后求出 $\sqrt{2}$ 在模 $10 ^ 9 + 7$ 意义下的二次剩余，并且用拓展欧拉定理即可计算出答案。</p>
-<p>时间复杂度 $\Theta(\log n).$</p>
-<h4 id="rm-Code-Link-2"><a href="#rm-Code-Link-2" class="headerlink" title="$\rm Code~Link$"></a><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/4DCfYMF5tH/">$\rm Code~Link$</a></h4><h3 id="rm-HAOI2018-染色"><a href="#rm-HAOI2018-染色" class="headerlink" title="$\rm [HAOI2018]染色$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4491">$\rm [HAOI2018]染色$</a></h3><p>首先考虑二项式反演 ：</p>
-<p>设 $f_i$ 表示恰好有 $i$ 个数的数量为 $S$ 的方案数，$g_i$ 表示钦点 $i$ 个数的数量为 $S$ 的方案数，显然有 ：</p>
-<p>$$<br>g_k &#x3D; \dbinom{m}{k} \times \frac{n ^ {\underline{kS}}}{(S!) ^ k} \times (m - k) ^ {n - kS}<br>$$</p>
-<p>$$<br>g_k &#x3D; \sum_{i &#x3D; k} ^ m \dbinom{i}{k} f_i \iff f_k &#x3D; \sum _ {i &#x3D; k} ^ m (-1) ^ {i - k} \dbinom{i}{k} g_i<br>$$</p>
-<p>$$<br>Ans &#x3D; \sum _ {i &#x3D; 0} ^ m w_if_i<br>$$</p>
-<p>于是我们考虑如何对于每个 $i \in [0, m]$ 求出 $f_i$，这里有个技巧 ：</p>
-<p>$$<br>\begin{aligned}<br>    f_k &amp;&#x3D; \sum _ {i &#x3D; k} ^ m (-1) ^ {i - k} \frac{i!}{k!(i - k)!} g_i\<br>    &amp;&#x3D; k! \sum _ {i &#x3D; k} ^ m i! g_i \times \frac{(-1) ^ {i - k}}{(i - k)!}<br>\end{aligned}<br>$$</p>
-<p>容易发现上式可以用差值卷积计算，时间复杂度 $\Theta(n \log n).$</p>
-<h3 id="rm-付公主的背包"><a href="#rm-付公主的背包" class="headerlink" title="$\rm 付公主的背包$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4389">$\rm 付公主的背包$</a></h3><p>容易发现若设每种大小的物品的数量为 $f_i$，那么答案的生成函数为 ：</p>
-<p>$$<br>\prod _ i \left (\sum _ j x ^ {ji}\right) ^ {f _ i} &#x3D; \prod _ i \left(\frac{1}{1 - x ^ i}\right) ^ {f _ i}<br>$$</p>
-<p>可以直接使用欧拉变换的求解方式。</p>
-<p>时间复杂度 $\Theta(n \log n).$</p>
-<h3 id="无标号无根树计数"><a href="#无标号无根树计数" class="headerlink" title="$无标号无根树计数$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5900">$无标号无根树计数$</a></h3><p>考虑设 $f_n$ 表示大小为 $n$ 的无标号有根树的方案数，$F(x)$ 为数列 $f$ 的生成函数。</p>
-<p>可以发现，如果将一颗大小为 $n$ 的无标号有根树的根去除，那么剩下的子树是一个个相同的子问题，只要子树大小的和为 $n - 1$，再加上根结点就可以唯一确定地拼出一颗无标号有根树。于是有生成函数方程 ：</p>
-<p>$$<br>F(x) &#x3D; x \cdot \varepsilon \circ F(x)<br>$$</p>
-<p>求解这个生成函数方程有两种方法，第一种是直接化简，分治多项式乘法求解 ：</p>
-<p>$$<br>F(x) &#x3D; x \prod _ i (1 - x ^ i) ^ {-f_i}<br>$$</p>
-<p>考虑对两边取 $\ln$，将连乘转连加 ：</p>
-<p>$$<br>\ln F(x) &#x3D; \ln x - \sum _ i f_i \ln (1 - x ^ i)<br>$$</p>
-<p>对数不好处理，考虑求导 ：</p>
-<p>$$<br>\frac{F’(x)}{F(x)} &#x3D; \frac{1}{x} + \sum _ i if_i \times \frac{x ^ {i - 1}}{1 - x ^ i}<br>$$</p>
-<p>将两边同时乘以 $xF(x)$ ：</p>
-<p>$$<br>xF’(x) &#x3D; F(x) + F(x) \sum _ i if_i \frac{x ^ i}{1 - x ^ i}<br>$$</p>
-<p>考虑将右半部分还原成 $F(x)$ 表示 ：</p>
-<p>$$<br>xF’(x) &#x3D; F(x) + F(x)\left(\sum _ {i \geqslant 1} x ^ i F’(x ^ i)\right)<br>$$</p>
-<p>设 $G(x) &#x3D; \sum _ k x ^ k F’(x ^ k)$，简单推一推 ：</p>
-<p>$$<br>G(x) &#x3D; \sum _ k x ^ k \sum _ {i\geqslant 1} if _ i \left(x ^ {k}\right) ^ {i - 1} &#x3D; \sum _ k \sum _ i i f _ i x ^ {ik} &#x3D; \sum _ n x ^ n \sum _ {d | n} d f _ d<br>$$</p>
-<p>故 $g_n &#x3D; \sum _ {d | n} df_d,g_1 &#x3D; f_1 &#x3D; 1.$</p>
-<p>因此 ：</p>
-<p>$$<br>f_n &#x3D; \frac{1}{n - 1} \sum _ {k &#x3D; 1} ^ {n - 1} f _ k g _ {n - k}<br>$$</p>
-<p>$f$ 使用分治多项式乘法求解，$g$ 暴力求解即可做到 $\Theta(n \log ^ 2 n).$</p>
-<p>另一种方法是使用牛顿迭代 ：</p>
-<p>显然我们要求解方程 $G \circ F(x) &#x3D; F(x) - x \cdot \varepsilon \circ F(x) &#x3D; 0$.</p>
-<p>假设当前已经求出了方程在模 $x ^ n$ 意义下的解 $F_0(x)$，设方程在模 $x ^ {2n}$ 意义下的解为 $F(x)$，众所周知有 ：</p>
-<p>$$<br>F(x) &#x3D; F_0(x) - \frac{G \circ F_0(x)}{G’ \circ F_0(x)}<br>$$</p>
-<p>我们知道，$\varepsilon \circ F(x)$ 可以在 $\Theta(n \log n)$ 的时间复杂度内求出，$F’(x)$ 可以 $\Theta(n)$ 求，所以可以在 $\Theta(n \log n)$ 的时间复杂度内求下式 ：</p>
-<p>$$<br>F(x) &#x3D; F_0(x) - \frac{F_0(x)  - x \cdot \varepsilon \circ F_0(x)}{[F_0(x)  - x \cdot \varepsilon \circ F_0(x)]’}<br>$$</p>
-<p>用上式迭代即可算出 $F(x)$，时间复杂度 $\Theta(n \log n).$</p>
-<p>现在我们已经求出了无标号有根树的方案数，考虑将无标号无根树的方案数容斥出来。</p>
-<p>考虑钦点无标号无根树的根是它的重心，于是只需要去掉根不是重心的无标号有根树的方案数可以了，分类讨论 ：</p>
-<p>如果重心唯一，那么一定存在一颗子树的大小大于 $\left\lfloor\frac{n}{2}\right\rfloor$，考虑枚举它的大小 $i$，容易发现这颗子树的方案数和将它切除后树的方案数都是无标号有根树计数问题，其答案我们已经算出，于是总方案数需要减去 $\sum _ {i &#x3D; \left\lfloor\frac{n}{2}\right\rfloor + 1} ^{n - 1} f_i \times f_{n - i}.$</p>
-<p>如果重心不唯一，那么一棵树还会在两个重心上分别被计算，这种方案只会在 $n$ 为偶数的情况下出现。考虑到这两个重心一定相连，于是将它们之间的连边断开后形成的两个子树的方案数是独立的。但是我们发现，当两颗子树完全相同时，分别以它的两个重心为根时形成的有根树是同构的，所以我们还是只会将它计算一次，故算重的方案中不包括两颗子树相同的情况，于是总方案数还需要减去 $\binom{f_{\frac{n}{2}}}{2}.$</p>
-<p>综上，问题得到解决，时间复杂度为 $\Theta(n \log ^ 2 n)$ 或 $\Theta(n \log n).$</p>
-<h3 id="rm-CEOI2004-Sweets"><a href="#rm-CEOI2004-Sweets" class="headerlink" title="$\rm [CEOI2004]Sweets$"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6078">$\rm [CEOI2004]Sweets$</a></h3><p>考虑构造 $F_i(x) &#x3D; \sum _ {j &#x3D; 0} ^ {m _ i} x ^ j$，容易发现题目要求的就是 $\prod _ {i &#x3D; 1} ^ n F_i(x)$ 的系数前缀和。</p>
-<p>于是再构造 $F_0(x) &#x3D; \sum _ i x ^ i$，将它和原本的 $n$ 个幂级数卷在一起，现在考虑求 $F(x) &#x3D; \prod _ {i &#x3D; 0} ^ n F_i(x)$ 的第 $L$ 项系数。</p>
-<p>容易发现有 ：</p>
-<p>$$<br>F(x) &#x3D; \frac{(1 - x ^ {m_1 + 1})(1 - x ^ {m_2 + 1})\cdots(1 - x ^ {m_n + 1})}{(1 - x) ^ {n + 1}}<br>$$</p>
-<p>观察到 $n$ 很小，考虑暴力将分子拆开，于是分式变成了 $2 ^ n$ 个形如 $\frac{x ^ k}{(1 - x) ^ {n + 1}}$ 的部分之和。</p>
-<p>容易发现 ： </p>
-<p>$$<br>[x ^ L]\frac{x ^ k}{(1 - x) ^ {n + 1}} &#x3D; \dbinom{n + L - k}{n}<br>$$</p>
-<p>于是只需要求 $2 ^ {n + 1}$ 次形如 $\binom{t}{n}$ 的组合数即可。</p>
-<p>到这里我们又发现模数 $p$ 不是质数，于是考虑将式子变形 ：</p>
-<p>$$<br>\dbinom{t}{n}<del>\bmod</del>p &#x3D; \frac{t^{\underline{n}}}{n!}<del>\bmod</del>p &#x3D; \frac{t ^ {\underline{n}}<del>\bmod</del>n!\cdot p}{n!}<del>\bmod</del>p<br>$$</p>
-<p>于是这样就可以 $\Theta(n)$ 求解组合数了，总时间复杂度 $\Theta(2^n n).$</p>
-<h3 id="rm-51nod1728-不动点"><a href="#rm-51nod1728-不动点" class="headerlink" title="$\rm [51nod1728]不动点$"></a><a target="_blank" rel="noopener" href="https://www.51nod.com/Challenge/Problem.html#problemId=1728">$\rm [51nod1728]不动点$</a></h3><p>简化题意 ：求有多少个从 ${1,2,\cdots,n}$ 到 ${1,2,\cdots,n}$ 的映射 $f$，满足 ：</p>
-<p>$$<br>\underbrace{f \circ f \circ \cdots \circ f}<em>{k}&#x3D;\underbrace{f \circ f \circ \cdots \circ f}</em>{k-1}<br>$$</p>
-<p>保证 $nk \leqslant 2 \times 10 ^ 6,1\leqslant k \leqslant 3.$</p>
-<p>可以发现这题本质上就是在求深度不超过 $k$，环大小为 $1$ 的基环内向树森林的数量，进一步发现其等价于树高不超过 $k$ 的有标号有根树森林的数量。</p>
-<p>考虑设树高不超过 $k$ 的有标号有根树数量的 $\rm EGF$ 为 $\hat{F}_k(x).$ 计算考虑递推，深度不超过 $k$ 的树可以看作若干棵深度不超过 $k - 1$ 的树全部接在一个点上，于是有 ：</p>
-<p>$$<br>\hat{F}<em>k(x) &#x3D; x\cdot \exp \hat{F}</em>{k - 1}(x)<br>$$</p>
-<p>考虑到需要求的是森林的数量，于是答案的指数型生成函数为 $\exp \hat{F}_k(x).$</p>
-<p>时间复杂度 $\Theta(kn\log n).$</p>
-<h3 id="rm-CF891E-Lust"><a href="#rm-CF891E-Lust" class="headerlink" title="$\rm [CF891E]Lust$"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/891/problem/E">$\rm [CF891E]Lust$</a></h3><p>考虑一次对 $x$ 的操作造成的影响，他会使 $a_x$ 减少 $1$，答案增加 $\prod _ {i \not&#x3D; x} a_i$，$\prod _ i a_i$ 减少 $\prod _ {i \not&#x3D; x} a_i.$</p>
-<p>于是我们可以发现，一次操作对答案的贡献等于 $\prod _ i a_i$ 的变化量。进一步的，最终答案等于 $k$ 次操作进行完后 $\prod _ i a_i$ 的变化量。假设第 $a_i$ 被操作了 $b_i$ 次，那么答案为 $\prod _ i a_i - \prod _ i (a_i - b_i).$</p>
-<p>考虑计算所有情况下 $\prod _ i (a_i - b_i)$ 的和，最后再将答案除以 $n ^ k.$</p>
-<p>假设有两个集合 $S,T,S \cap T &#x3D; \varnothing$，$f_i$ 表示 $\sum b_k &#x3D; i,k\in S$ 对答案的贡献，$g_i$ 表示 $\sum b_k &#x3D; i,k\in T$ 对答案的贡献，$h_i$ 表示 $\sum b_k &#x3D; i,k\in S \cup T$ 对答案的贡献，那么显然有 ：</p>
-<p>$$<br>g_n &#x3D; \sum _ {i &#x3D; 0} ^ n \dbinom{n}{i} f_i \times g_{n - i}<br>$$</p>
-<p>因为 $f_i$ 和 $g_{n - i}$ 联合起来的贡献是它们的乘积，并且由于操作有序，所以将 $n$ 次操作分配到它们还导致要乘上 $\binom{n}{i}$ 的方案数。</p>
-<p>很明显，这个式子可以用 $\rm EGF$ 来拟合，设 $\hat{F}_i(x) &#x3D; \sum _ j (a_i - j) \frac{x ^ j}{j!}$，那么答案的生成函数为 ：</p>
-<p>$$<br>\begin{aligned}<br>    \hat{F}(x) &amp;&#x3D; \prod _ i F_i(x)\<br>    &amp;&#x3D; \prod _ i \left( \sum _ j (a_i - j) \frac{x ^ j}{j!} \right)\<br>    &amp;&#x3D; \prod _ i \left( a_i \sum _ j \frac{x ^ j}{j!} - \sum _ {j} \frac{x ^ {j + 1}}{j!} \right)\<br>    &amp;&#x3D; \prod _ i (a_i - x)e ^ x\<br>    &amp;&#x3D; e ^ {nx} \prod _ i (a_i - x)<br>\end{aligned}<br>$$</p>
-<p>$\prod _ i (a_i - x)$ 直接分治乘可以做到 $\Theta(n \log ^ 2 n)$，$e ^ {nx}$ 的系数可以直接求，由于 $\prod _ i (a_i - x)$ 的最高次数为 $n$，所以直接枚举计算即可。</p>
-<p>总时间复杂度 $\Theta(n \log ^2 n).$</p>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="[$\rm-[集训队作业2013]城市规划$](https://wwwluogu.com.cn/problem/p4841)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4841"><span class="markdown-them-math-inline">$\rm [集训队作业2013]城市规划$</span></a></h3>
+<p>考虑 <span class="markdown-them-math-inline">$\rm EGF$</span> 的组合意义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现若设任意图方案数的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>连通图的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然任意图计数可以被看做先将 <span class="markdown-them-math-inline">$n$</span> 个点分进若干个非空子集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后做连通图计数的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么根据之前的结论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \exp G(x) \iff G(x) = \ln F(x)
+$$</div><p>显然有 <span class="markdown-them-math-inline">$F(x) = \sum _ n 2 ^ {\binom{n}{2}} x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需直接对其求 <span class="markdown-them-math-inline">$\ln$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h4 id="[$\rm-code~link$](https://pasteubuntu.com/p/xmqf5fsg9w/)"><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/xmQf5fsg9w/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h4>
+<h3 id="[$\rm-[cf438e]the~child~and~binary~tree$](http://codeforcescom/problemset/problem/438/e)"><a target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/438/E"><span class="markdown-them-math-inline">$\rm [CF438E]The~Child~and~Binary~Tree$</span></a></h3>
+<p>首先可以考虑一个 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_S$</span> 表示点权之和为 <span class="markdown-them-math-inline">$S$</span> 的二叉树数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>迭代时可以考虑枚举左子树的权值和 <span class="markdown-them-math-inline">$S_l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右子树的权值和 <span class="markdown-them-math-inline">$S_r$</span> 和根节点的权值 <span class="markdown-them-math-inline">$w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="markdown-them-math-inline">$f_{S_l + S_r + w} = \sum _{S_l} \sum _{S_r} \sum _{w \in C} f_{S_l} f_{S_r}.$</span></p>
+<p>容易发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用三个多项式的卷积来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F(x) = \sum _ n f_n x ^ n, G(x) = \sum _ n [n \in C] x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = F ^ 2 G + 1
+$$</div><p>最后的 <span class="markdown-them-math-inline">$+1$</span> 是为了补齐常数项<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$f_0$</span> 为 <span class="markdown-them-math-inline">$1.$</span></p>
+<p>解方程可以得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = \frac{1 \pm \sqrt{1 - 4G}}{2G}
+$$</div><p>由于有两个解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然不可能都成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑 <span class="markdown-them-math-inline">$x \to 0$</span> 时的特殊情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>当 <span class="markdown-them-math-inline">$x \to 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x) \to 1,G(x) \to 0.$</span></p>
+<div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 + \sqrt{1 - 4G}}{2G} = +\infty \not= \lim _ {x \to 0} F
+$$</div><div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 - \sqrt{1 - 4G}}{2G} = 1 = \lim _ {x \to 0} F
+$$</div><p>于是选取 <span class="markdown-them-math-inline">$F= \frac{1 - \sqrt{1 - 4G}}{2G}$</span> 作为方程的解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>到这一步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$G(x)$</span> 的常数项为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$G(x)$</span> 不可以求逆<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑对解做变换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里选取分子有理化 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = \frac{\left(1 - \sqrt{1 - 4G}\right)\left(1 + \sqrt{1 - 4G}\right)}{2G\left(1 + \sqrt{1 - 4G}\right)} = \frac{2}{1 + \sqrt{1 - 4G}}
+$$</div><p>可以发现分母的常数项必定不为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是做多项式开方和多项式求逆即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h4 id="[$\rm-code~link$](https://pasteubuntu.com/p/yxyyhwmfh9/)"><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/YxyyhWmFh9/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h4>
+<h3 id="[$\rm-[国家集训队]整数的~lqp~拆分$](https://wwwluogu.com.cn/problem/p4451)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4451"><span class="markdown-them-math-inline">$\rm [国家集训队]整数的~lqp~拆分$</span></a></h3>
+<p>设 <span class="markdown-them-math-inline">$\{f_n\},\{g_n\}$</span> 分别为斐波那契数列和答案序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 和 <span class="markdown-them-math-inline">$G(x)$</span> 分别为它们的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>显然有斐波那契数列的生成函数 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \frac{x}{1 - x - x ^ 2}
+$$</div><p>而对于 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现如果 <span class="markdown-them-math-inline">$g_i$</span> 已经被求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么给所有的拆分加上一个数 <span class="markdown-them-math-inline">$n - i$</span> 即可得到 <span class="markdown-them-math-inline">$g_n$</span> 的所有拆分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 对 <span class="markdown-them-math-inline">$g_n$</span> 的贡献为 <span class="markdown-them-math-inline">$g_i \times f_{n - i}.$</span> 于是有 <span class="markdown-them-math-inline">$g_n$</span> 的递推式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ {n- 1} g_i \times f_{n - i}
+$$</div><p>将 <span class="markdown-them-math-inline">$\{g_n\}$</span> 带入 <span class="markdown-them-math-inline">$G(x)$</span> 可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \sum _ n x ^ n \sum _ {i = 0} ^ {n - 1} g_i f_{n - i}
+$$</div><p>可以发现等式右边实际上是卷积的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G = GF
+$$</div><p>但是我们发现这样的话 <span class="markdown-them-math-inline">$G(x) = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原因是 <span class="markdown-them-math-inline">$g_0 = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们强制 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G = GF + 1
+$$</div><div class="markdown-them-math-block">$$G(x) = \frac{1}{1 - F(x)} = 1 + \frac{x}{1 - 2x - x ^ 2}
+$$</div><p>可以发现现在求出的 <span class="markdown-them-math-inline">$G(x)$</span> 比实际值多了 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为我们将 <span class="markdown-them-math-inline">$g_0 = 0$</span> 强制变成了 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>修正后有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \frac{x}{1 - 2x - x ^ 2} = \frac{\frac{\sqrt{2}}{4}}{1 - (1 + \sqrt{2})x} + \frac{-\frac{\sqrt{2}}{4}}{1 - (1 - \sqrt{2})x}
+$$</div><div class="markdown-them-math-block">$$[x ^ n]G(x) = \frac{\sqrt{2}}{4}(1 + \sqrt{2}) ^ n - \frac{\sqrt{2}}{4}(1 - \sqrt{2}) ^ n
+$$</div><p>最后求出 <span class="markdown-them-math-inline">$\sqrt{2}$</span> 在模 <span class="markdown-them-math-inline">$10 ^ 9 + 7$</span> 意义下的二次剩余<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且用拓展欧拉定理即可计算出答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\log n).$</span></p>
+<h4 id="[$\rm-code~link$](https://pasteubuntu.com/p/4dcfymf5th/)"><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/4DCfYMF5tH/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h4>
+<h3 id="[$\rm-[haoi2018]染色$](https://wwwluogu.com.cn/problem/p4491)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4491"><span class="markdown-them-math-inline">$\rm [HAOI2018]染色$</span></a></h3>
+<p>首先考虑二项式反演 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$f_i$</span> 表示恰好有 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示钦点 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_k = \dbinom{m}{k} \times \frac{n ^ {\underline{kS}}}{(S!) ^ k} \times (m - k) ^ {n - kS}
+$$</div><div class="markdown-them-math-block">$$g_k = \sum_{i = k} ^ m \dbinom{i}{k} f_i \iff f_k = \sum _ {i = k} ^ m (-1) ^ {i - k} \dbinom{i}{k} g_i
+$$</div><div class="markdown-them-math-block">$$Ans = \sum _ {i = 0} ^ m w_if_i
+$$</div><p>于是我们考虑如何对于每个 <span class="markdown-them-math-inline">$i \in [0, m]$</span> 求出 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里有个技巧 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+    f_k &amp;= \sum _ {i = k} ^ m (-1) ^ {i - k} \frac{i!}{k!(i - k)!} g_i\\
+    &amp;= k! \sum _ {i = k} ^ m i! g_i \times \frac{(-1) ^ {i - k}}{(i - k)!}
+\end{aligned}
+$$</div><p>容易发现上式可以用差值卷积计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h3 id="[$\rm-付公主的背包$](https://wwwluogu.com.cn/problem/p4389)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4389"><span class="markdown-them-math-inline">$\rm 付公主的背包$</span></a></h3>
+<p>容易发现若设每种大小的物品的数量为 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\prod _ i \left (\sum _ j x ^ {ji}\right) ^ {f _ i} = \prod _ i \left(\frac{1}{1 - x ^ i}\right) ^ {f _ i}
+$$</div><p>可以直接使用欧拉变换的求解方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h3 id="[$无标号无根树计数$](https://wwwluogu.com.cn/problem/p5900)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5900"><span class="markdown-them-math-inline">$无标号无根树计数$</span></a></h3>
+<p>考虑设 <span class="markdown-them-math-inline">$f_n$</span> 表示大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 为数列 <span class="markdown-them-math-inline">$f$</span> 的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果将一颗大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的根去除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么剩下的子树是一个个相同的子问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只要子树大小的和为 <span class="markdown-them-math-inline">$n - 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再加上根结点就可以唯一确定地拼出一颗无标号有根树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>于是有生成函数方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = x \cdot \varepsilon \circ F(x)
+$$</div><p>求解这个生成函数方程有两种方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>第一种是直接化简<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分治多项式乘法求解 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = x \prod _ i (1 - x ^ i) ^ {-f_i}
+$$</div><p>考虑对两边取 <span class="markdown-them-math-inline">$\ln$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将连乘转连加 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\ln F(x) = \ln x - \sum _ i f_i \ln (1 - x ^ i)
+$$</div><p>对数不好处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑求导 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\frac{F'(x)}{F(x)} = \frac{1}{x} + \sum _ i if_i \times \frac{x ^ {i - 1}}{1 - x ^ i}
+$$</div><p>将两边同时乘以 <span class="markdown-them-math-inline">$xF(x)$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x) \sum _ i if_i \frac{x ^ i}{1 - x ^ i}
+$$</div><p>考虑将右半部分还原成 <span class="markdown-them-math-inline">$F(x)$</span> 表示 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x)\left(\sum _ {i \geqslant 1} x ^ i F'(x ^ i)\right)
+$$</div><p>设 <span class="markdown-them-math-inline">$G(x) = \sum _ k x ^ k F'(x ^ k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>简单推一推 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \sum _ k x ^ k \sum _ {i\geqslant 1} if _ i \left(x ^ {k}\right) ^ {i - 1} = \sum _ k \sum _ i i f _ i x ^ {ik} = \sum _ n x ^ n \sum _ {d | n} d f _ d
+$$</div><p>故 <span class="markdown-them-math-inline">$g_n = \sum _ {d | n} df_d,g_1 = f_1 = 1.$</span></p>
+<p>因此 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_n = \frac{1}{n - 1} \sum _ {k = 1} ^ {n - 1} f _ k g _ {n - k}
+$$</div><p><span class="markdown-them-math-inline">$f$</span> 使用分治多项式乘法求解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 暴力求解即可做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n).$</span></p>
+<p>另一种方法是使用牛顿迭代 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>显然我们要求解方程 <span class="markdown-them-math-inline">$G \circ F(x) = F(x) - x \cdot \varepsilon \circ F(x) = 0$</span>.</p>
+<p>假设当前已经求出了方程在模 <span class="markdown-them-math-inline">$x ^ n$</span> 意义下的解 <span class="markdown-them-math-inline">$F_0(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设方程在模 <span class="markdown-them-math-inline">$x ^ {2n}$</span> 意义下的解为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>众所周知有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{G \circ F_0(x)}{G' \circ F_0(x)}
+$$</div><p>我们知道<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\varepsilon \circ F(x)$</span> 可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F'(x)$</span> 可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求下式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{F_0(x)  - x \cdot \varepsilon \circ F_0(x)}{[F_0(x)  - x \cdot \varepsilon \circ F_0(x)]'}
+$$</div><p>用上式迭代即可算出 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<p>现在我们已经求出了无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑将无标号无根树的方案数容斥出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑钦点无标号无根树的根是它的重心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需要去掉根不是重心的无标号有根树的方案数可以了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>如果重心唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定存在一颗子树的大小大于 <span class="markdown-them-math-inline">$\left\lfloor\frac{n}{2}\right\rfloor$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑枚举它的大小 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现这颗子树的方案数和将它切除后树的方案数都是无标号有根树计数问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其答案我们已经算出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数需要减去 <span class="markdown-them-math-inline">$\sum _ {i = \left\lfloor\frac{n}{2}\right\rfloor + 1} ^{n - 1} f_i \times f_{n - i}.$</span></p>
+<p>如果重心不唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一棵树还会在两个重心上分别被计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种方案只会在 <span class="markdown-them-math-inline">$n$</span> 为偶数的情况下出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>考虑到这两个重心一定相连<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将它们之间的连边断开后形成的两个子树的方案数是独立的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当两颗子树完全相同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分别以它的两个重心为根时形成的有根树是同构的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以我们还是只会将它计算一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故算重的方案中不包括两颗子树相同的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数还需要减去 <span class="markdown-them-math-inline">$\binom{f_{\frac{n}{2}}}{2}.$</span></p>
+<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题得到解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span> 或 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h3 id="[$\rm-[ceoi2004]sweets$](https://wwwluogu.com.cn/problem/p6078)"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6078"><span class="markdown-them-math-inline">$\rm [CEOI2004]Sweets$</span></a></h3>
+<p>考虑构造 <span class="markdown-them-math-inline">$F_i(x) = \sum _ {j = 0} ^ {m _ i} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现题目要求的就是 <span class="markdown-them-math-inline">$\prod _ {i = 1} ^ n F_i(x)$</span> 的系数前缀和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是再构造 <span class="markdown-them-math-inline">$F_0(x) = \sum _ i x ^ i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将它和原本的 <span class="markdown-them-math-inline">$n$</span> 个幂级数卷在一起<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在考虑求 <span class="markdown-them-math-inline">$F(x) = \prod _ {i = 0} ^ n F_i(x)$</span> 的第 <span class="markdown-them-math-inline">$L$</span> 项系数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>容易发现有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \frac{(1 - x ^ {m_1 + 1})(1 - x ^ {m_2 + 1})\cdots(1 - x ^ {m_n + 1})}{(1 - x) ^ {n + 1}}
+$$</div><p>观察到 <span class="markdown-them-math-inline">$n$</span> 很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑暴力将分子拆开<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是分式变成了 <span class="markdown-them-math-inline">$2 ^ n$</span> 个形如 <span class="markdown-them-math-inline">$\frac{x ^ k}{(1 - x) ^ {n + 1}}$</span> 的部分之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>容易发现 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$[x ^ L]\frac{x ^ k}{(1 - x) ^ {n + 1}} = \dbinom{n + L - k}{n}
+$$</div><p>于是只需要求 <span class="markdown-them-math-inline">$2 ^ {n + 1}$</span> 次形如 <span class="markdown-them-math-inline">$\binom{t}{n}$</span> 的组合数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>到这里我们又发现模数 <span class="markdown-them-math-inline">$p$</span> 不是质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑将式子变形 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\dbinom{t}{n}~\bmod~p = \frac{t^{\underline{n}}}{n!}~\bmod~p = \frac{t ^ {\underline{n}}~\bmod~n!\cdot p}{n!}~\bmod~p
+$$</div><p>于是这样就可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求解组合数了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(2^n n).$</span></p>
+<h3 id="[$\rm-[51nod1728]不动点$](https://www51nod.com/challenge/problem.html#problemid=1728)"><a target="_blank" rel="noopener" href="https://www.51nod.com/Challenge/Problem.html#problemId=1728"><span class="markdown-them-math-inline">$\rm [51nod1728]不动点$</span></a></h3>
+<p>简化题意 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>求有多少个从 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 到 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 的映射 <span class="markdown-them-math-inline">$f$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>满足 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\underbrace{f \circ f \circ \cdots \circ f}_{k}=\underbrace{f \circ f \circ \cdots \circ f}_{k-1}
+$$</div><p>保证 <span class="markdown-them-math-inline">$nk \leqslant 2 \times 10 ^ 6,1\leqslant k \leqslant 3.$</span></p>
+<p>可以发现这题本质上就是在求深度不超过 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>环大小为 <span class="markdown-them-math-inline">$1$</span> 的基环内向树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进一步发现其等价于树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑设树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树数量的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$\hat{F}_k(x).$</span> 计算考虑递推<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>深度不超过 <span class="markdown-them-math-inline">$k$</span> 的树可以看作若干棵深度不超过 <span class="markdown-them-math-inline">$k - 1$</span> 的树全部接在一个点上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\hat{F}_k(x) = x\cdot \exp \hat{F}_{k - 1}(x)
+$$</div><p>考虑到需要求的是森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是答案的指数型生成函数为 <span class="markdown-them-math-inline">$\exp \hat{F}_k(x).$</span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(kn\log n).$</span></p>
+<h3 id="[$\rm-[cf891e]lust$](https://codeforcescom/contest/891/problem/e)"><a target="_blank" rel="noopener" href="https://codeforces.com/contest/891/problem/E"><span class="markdown-them-math-inline">$\rm [CF891E]Lust$</span></a></h3>
+<p>考虑一次对 <span class="markdown-them-math-inline">$x$</span> 的操作造成的影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>他会使 <span class="markdown-them-math-inline">$a_x$</span> 减少 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>答案增加 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\prod _ i a_i$</span> 减少 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i.$</span></p>
+<p>于是我们可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一次操作对答案的贡献等于 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>进一步的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终答案等于 <span class="markdown-them-math-inline">$k$</span> 次操作进行完后 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>假设第 <span class="markdown-them-math-inline">$a_i$</span> 被操作了 <span class="markdown-them-math-inline">$b_i$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案为 <span class="markdown-them-math-inline">$\prod _ i a_i - \prod _ i (a_i - b_i).$</span></p>
+<p>考虑计算所有情况下 <span class="markdown-them-math-inline">$\prod _ i (a_i - b_i)$</span> 的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后再将答案除以 <span class="markdown-them-math-inline">$n ^ k.$</span></p>
+<p>假设有两个集合 <span class="markdown-them-math-inline">$S,T,S \cap T = \varnothing$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$h_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S \cup T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ n \dbinom{n}{i} f_i \times g_{n - i}
+$$</div><p>因为 <span class="markdown-them-math-inline">$f_i$</span> 和 <span class="markdown-them-math-inline">$g_{n - i}$</span> 联合起来的贡献是它们的乘积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且由于操作有序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以将 <span class="markdown-them-math-inline">$n$</span> 次操作分配到它们还导致要乘上 <span class="markdown-them-math-inline">$\binom{n}{i}$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>很明显<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用 <span class="markdown-them-math-inline">$\rm EGF$</span> 来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$\hat{F}_i(x) = \sum _ j (a_i - j) \frac{x ^ j}{j!}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+    \hat{F}(x) &amp;= \prod _ i F_i(x)\\
+    &amp;= \prod _ i \left( \sum _ j (a_i - j) \frac{x ^ j}{j!} \right)\\
+    &amp;= \prod _ i \left( a_i \sum _ j \frac{x ^ j}{j!} - \sum _ {j} \frac{x ^ {j + 1}}{j!} \right)\\
+    &amp;= \prod _ i (a_i - x)e ^ x\\
+    &amp;= e ^ {nx} \prod _ i (a_i - x)
+\end{aligned}
+$$</div><p><span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 直接分治乘可以做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$e ^ {nx}$</span> 的系数可以直接求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于 <span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 的最高次数为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以直接枚举计算即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log ^2 n).$</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
@@ -604,548 +206,100 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">CCA</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://101001011.github.io/2022/04/11/sheng-cheng-han-shu-xi-ti-ti-jie/">http://101001011.github.io/2022/04/11/sheng-cheng-han-shu-xi-ti-ti-jie/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">CCA</a>
-                    !
-                </span>
-            </div>
-        
+      
     </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
+<nav id="article-nav">
+  
+  
+    <a href="../hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2022/04/11/sheng-cheng-han-shu-xi-ti-ti-jie/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            CCA
-                            
-                        </span>
-                    </div>
-                </div>
+          Hello World
+        
+      </div>
+    </a>
+  
+</nav>
 
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/04/11/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            CCA
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
+  
 </article>
 
-</div>
 
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
+</section>
         
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2022</span>
-            
-            <span id="year">2022</span>
-            <a href="/about" target="_blank">CCA</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 CCA<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
     </div>
+  </div>
 </footer>
 
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
     </div>
-</div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
 
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script src="../../../../js/script.js"></script>
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
+
+
+
 
 <script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
 </script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
 
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
-
-	
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
-
+  </div>
 </body>
-
 </html>
