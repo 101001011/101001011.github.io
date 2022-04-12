@@ -87,54 +87,55 @@
 <p>于是双指针维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记录当前删去了多少个 <span class="markdown-them-math-inline">$a_i$</span> 和一张牌的 <span class="markdown-them-math-inline">$a_i$</span> 和 <span class="markdown-them-math-inline">$b_i$</span> 是否同时被删掉即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为要排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <h2 id="$\rm-code$"><span class="markdown-them-math-inline">$\rm Code$</span></h2>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
-<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">2e6</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">2e6</span> + <span class="hljs-number">10</span>;
 
-<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> num<span class="token punctuation">,</span> ans <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span>
-pair <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">bool</span> tag<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">int</span> n, m, num, ans = INT_MAX;
+pair &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; a[N];
+<span class="hljs-keyword">bool</span> tag[N];
 
-<span class="token keyword">int</span> <span class="token function">idx</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> a<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">-</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">&lt;=</span> n <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">idx</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> a[pos].second - (a[pos].second &lt;= n ? <span class="hljs-number">0</span> : n);
+&#125;
 
-<span class="token keyword">bool</span> <span class="token function">check</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> num <span class="token operator">>=</span> m<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>tag<span class="token punctuation">[</span><span class="token function">idx</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (a[pos].second &lt;= n &amp;&amp; num &gt;= m) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (tag[<span class="hljs-built_in">idx</span>(pos)]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+&#125;
 
-<span class="token keyword">void</span> <span class="token function">del</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> num<span class="token operator">++</span><span class="token punctuation">;</span>
-    tag<span class="token punctuation">[</span><span class="token function">idx</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">del</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (a[pos].second &lt;= n) num++;
+    tag[<span class="hljs-built_in">idx</span>(pos)] = <span class="hljs-literal">true</span>;
+&#125;
 
-<span class="token keyword">void</span> <span class="token function">rev</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> num<span class="token operator">--</span><span class="token punctuation">;</span>
-    tag<span class="token punctuation">[</span><span class="token function">idx</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rev</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (a[pos].second &lt;= n) num--;
+    tag[<span class="hljs-built_in">idx</span>(pos)] = <span class="hljs-literal">false</span>;
+&#125;
 
-<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
 
-    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">=</span> i<span class="token punctuation">;</span>
-    <span class="token function">sort</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> a <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n &lt;&lt; <span class="hljs-number">1</span>; i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i].first), a[i].second = i;
+    <span class="hljs-built_in">sort</span>(a + <span class="hljs-number">1</span>, a + <span class="hljs-number">2</span> * n + <span class="hljs-number">1</span>);
 
-    <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> n<span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">check</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">del</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token operator">--</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;=</span> n <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        ans <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">.</span>first <span class="token operator">-</span> a<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">.</span>second <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>num <span class="token operator">>=</span> m <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;=</span> <span class="token number">2</span> <span class="token operator">*</span> n<span class="token punctuation">)</span> <span class="token function">rev</span><span class="token punctuation">(</span>r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>tag<span class="token punctuation">[</span><span class="token function">idx</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;=</span> <span class="token number">2</span> <span class="token operator">*</span> n<span class="token punctuation">)</span> <span class="token function">rev</span><span class="token punctuation">(</span>r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token function">del</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> l<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = <span class="hljs-number">2</span> * n;
+    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">check</span>(r)) <span class="hljs-built_in">del</span>(r), r--;
+    <span class="hljs-keyword">while</span> (r &lt;= n &lt;&lt; <span class="hljs-number">1</span>) &#123;
+        ans = <span class="hljs-built_in">min</span>(ans, a[r].first - a[l].first);
+        <span class="hljs-keyword">if</span> (a[l].second &lt;= n) <span class="hljs-keyword">while</span> (num &gt;= m &amp;&amp; r &lt;= <span class="hljs-number">2</span> * n) <span class="hljs-built_in">rev</span>(r + <span class="hljs-number">1</span>), r++;
+        <span class="hljs-keyword">while</span> (tag[<span class="hljs-built_in">idx</span>(l)] &amp;&amp; r &lt;= <span class="hljs-number">2</span> * n) <span class="hljs-built_in">rev</span>(r + <span class="hljs-number">1</span>), r++;
+        <span class="hljs-built_in">del</span>(l), l++;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans);
 
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
 
       
     </div>
