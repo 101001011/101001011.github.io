@@ -93,41 +93,6 @@ body:after {
 .article-entry dt {
   font-weight: bold;
 }
-.article-with-titlenum {
-  counter-reset: h2;
-}
-.article-with-titlenum h2 {
-  counter-reset: h3;
-}
-.article-with-titlenum h2:before {
-  padding-right: 1em;
-  counter-increment: h2;
-  content: counter(h2);
-}
-.article-with-titlenum h3 {
-  counter-reset: h4;
-}
-.article-with-titlenum h3:before {
-  padding-right: 1em;
-  counter-increment: h3;
-  content: counter(h2) "." counter(h3);
-}
-.article-with-titlenum h4 {
-  counter-reset: h5;
-}
-.article-with-titlenum h4:before {
-  padding-right: 1em;
-  counter-increment: h4;
-  content: counter(h2) "." counter(h3) "." counter(h4);
-}
-.article-with-titlenum h5 {
-  counter-reset: h6;
-}
-.article-with-titlenum h5:before {
-  padding-right: 1em;
-  counter-increment: h5;
-  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
-}
 @media screen {
   #content,
   .outer {
