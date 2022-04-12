@@ -104,7 +104,7 @@
 <li>在加边的过程中有贡献的点对数量不减<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
 </ul>
 <p>于是考虑计算每条边加入后有贡献的点对的增量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><img src="https://s1.ax1x.com/2022/03/06/brP9Ds.png" alt="brP9Ds.png"></p>
+<p><img src="https://s1.ax1x.com/2022/03/06/brP9Ds.png" alt=""></p>
 <p>如上图所示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设当前加入的边为 <span class="markdown-them-math-inline">$x \to y$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$u_1, u_2, u_3, \cdots $</span> 和 <span class="markdown-them-math-inline">$v_1, v_2, v_3, \cdots$</span> 分别为能到达 <span class="markdown-them-math-inline">$x$</span> 的点和 <span class="markdown-them-math-inline">$y$</span> 能到的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p>考虑用 <span class="markdown-them-math-inline">$\rm bitset$</span> 记录某个点能直接到达的所有点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>能到达的所有点和能到达这个点的所有点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不妨分别设它们为 <span class="markdown-them-math-inline">$E_u, S_u$</span> 和 <span class="markdown-them-math-inline">$T_u.$</span></p>
 <p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若点对 <span class="markdown-them-math-inline">$(u, v)$</span> 因 <span class="markdown-them-math-inline">$x \to y$</span> 而增加<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要满足 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
