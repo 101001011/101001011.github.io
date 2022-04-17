@@ -7,9 +7,10 @@
   <title>「字符串」AC 自动机 | CCA&#39;s   Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <meta name="description" content="失配指针
+  <meta name="description" content="
+失配指针
 定义 fail 为广义的 $\pi$ 函数，即对于 $n$ 个字符串，$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$。
-上面那个是一种定义，但事实上，在 $\rm AC$ 自动机中，fail 是具有指向性的，它指向的是所有模">
+上面那个是一种定义，但事实上，在 $\rm AC$ 自动机中，fail 是具有指向性的，它指向的是所有">
   
   
   
@@ -76,7 +77,8 @@
 
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="失配指针">失配指针</h3>
+        <span id="more"></span>
+<h3 id="失配指针">失配指针</h3>
 <p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <h3 id="构建-ac 自动机">构建 AC 自动机</h3>
