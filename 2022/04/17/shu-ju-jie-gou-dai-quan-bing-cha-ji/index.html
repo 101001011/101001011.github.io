@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>「数据结构」(带权)并查集 学习笔记 | CCA&#39;s   Blog</title>
+  <title>「数据结构」(带权)并查集 | CCA&#39;s   Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="description" content="(带权)并查集 学习笔记及代码实现。">
@@ -60,7 +60,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      「数据结构」(带权)并查集 学习笔记
+      「数据结构」(带权)并查集
     </h1>
   
 
@@ -77,17 +77,17 @@
         <p>(带权)并查集 学习笔记及代码实现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <span id="more"></span>
 <h2 id="用途">用途</h2>
-<p><span class="markdown-them-math-inline">$\quad$</span>并查集可以用来维护一类具有传递性的关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护形如将 <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$y$</span> 所在集合合并和询问 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 是否在同一个集合的操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>并查集可以用来维护一类具有传递性的关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护形如将 <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$y$</span> 所在集合合并和询问 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 是否在同一个集合的操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <h2 id="实现">实现</h2>
 <h3 id="查询祖先节点">查询祖先节点</h3>
-<p><span class="markdown-them-math-inline">$\quad$</span>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩和按秩合并等优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>路径压缩一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩和按秩合并等优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>路径压缩一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
     <span class="hljs-keyword">return</span> fa[x];
 &#125;
 </code></pre></div>
-<p><span class="markdown-them-math-inline">$\quad$</span>按秩合并则取点数小的连向点数大的即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$\quad$</span>而对于带边权的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们需要在路径压缩的时候考虑加上其父亲的权值以维护其到根的差值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩优化的带权并查集一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>按秩合并则取点数小的连向点数大的即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>而对于带边权的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们需要在路径压缩的时候考虑加上其父亲的权值以维护其到根的差值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩优化的带权并查集一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
         <span class="hljs-keyword">int</span> mark = fa[x];
@@ -96,11 +96,11 @@
     <span class="hljs-keyword">return</span> fa[x];
 &#125;
 </code></pre></div>
-<p><span class="markdown-them-math-inline">$\quad$</span>由于路径压缩后 <span class="markdown-them-math-inline">$x$</span> 的父亲就是根节点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以需要记录其父亲到根的总权值并加到它的边权上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$\quad$</span>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要查询某个点 <span class="markdown-them-math-inline">$x$</span> 到根的权值和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于一次路径压缩以后 <span class="markdown-them-math-inline">$x$</span> 的父亲会变成根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而此时的 <span class="markdown-them-math-inline">$val_x$</span> 就是路径和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以先调用一次 <code>Find(x)</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$val_x$</span> 即为答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>由于路径压缩后 <span class="markdown-them-math-inline">$x$</span> 的父亲就是根节点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以需要记录其父亲到根的总权值并加到它的边权上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要查询某个点 <span class="markdown-them-math-inline">$x$</span> 到根的权值和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于一次路径压缩以后 <span class="markdown-them-math-inline">$x$</span> 的父亲会变成根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而此时的 <span class="markdown-them-math-inline">$val_x$</span> 就是路径和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以先调用一次 <code>Find(x)</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$val_x$</span> 即为答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <h3 id="合并两个结点所在集合">合并两个结点所在集合</h3>
-<p><span class="markdown-them-math-inline">$\quad$</span>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个集合合并直接将其中一个根节点接到另一个根节点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$\quad$</span>而对于带权并查集而言<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们必须求出需要连接的两个根节点之间连边的权值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个权值是可以直接确定的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设现在要给 <span class="markdown-them-math-inline">$x\to y$</span> 连一条长度为 <span class="markdown-them-math-inline">$w$</span> 的边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x$</span> 的祖先为 <span class="markdown-them-math-inline">$Rx$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$val_{Rx}=val_y+w-val_x.$</span> 另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 已经在同一个集合中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$val_{Rx}+val_x-val_y\not = w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则这条连边不合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个集合合并直接将其中一个根节点接到另一个根节点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>而对于带权并查集而言<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们必须求出需要连接的两个根节点之间连边的权值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个权值是可以直接确定的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设现在要给 <span class="markdown-them-math-inline">$x\to y$</span> 连一条长度为 <span class="markdown-them-math-inline">$w$</span> 的边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x$</span> 的祖先为 <span class="markdown-them-math-inline">$Rx$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$val_{Rx}=val_y+w-val_x.$</span> 另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 已经在同一个集合中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$val_{Rx}+val_x-val_y\not = w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则这条连边不合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> w)</span> </span>&#123;
     <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
     <span class="hljs-keyword">if</span> (Rx != Ry) fa[Rx] = Ry, val[Rx] = val[y] + w - val[x];
@@ -108,7 +108,7 @@
 &#125;
 </code></pre></div>
 <h2 id="code">Code</h2>
-<p><span class="markdown-them-math-inline">$\quad$</span>带路径压缩和按秩合并优化的普通并查集 :</p>
+<p>带路径压缩和按秩合并优化的普通并查集 :</p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
     <span class="hljs-keyword">return</span> fa[x];
@@ -124,7 +124,7 @@
     <span class="hljs-keyword">return</span> Rx != Ry;
 &#125;
 </code></pre></div>
-<p><span class="markdown-them-math-inline">$\quad$</span>带路径压缩和按秩合并优化的带权并查集 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>带路径压缩和按秩合并优化的带权并查集 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
         <span class="hljs-keyword">int</span> mark = fa[x];
@@ -141,9 +141,9 @@
     <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 &#125;
 </code></pre></div>
-<p><span class="markdown-them-math-inline">$\quad$</span>不带任何优化的并查集复杂度是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$\quad$</span>带路径压缩的并查集时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>期望复杂度 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$\quad$</span>再加上按秩合并可以做到严格 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>不带任何优化的并查集复杂度是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>带路径压缩的并查集时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>期望复杂度 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>再加上按秩合并可以做到严格 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 
       
     </div>
@@ -156,6 +156,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="../shu-ju-jie-gou-shu-lie-fen-kuai/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「数据结构」数列分块
+        
+      </div>
+    </a>
   
   
     <a href="../../14/dong-tai-gui-hua-jue-ce-dan-diao-xing/" id="article-nav-older" class="article-nav-link-wrap">
