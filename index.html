@@ -69,32 +69,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-<h3 id="失配指针">失配指针</h3>
-<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
-<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
-$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="文本串匹配">文本串匹配</h3>
-<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
-<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
-$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<blockquote>
-<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-
+        <p>AC 自动机学习笔记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+        
+          <p class="article-more-link">
+            <a href="2022/04/17/zi-fu-chuan-ac-zi-dong-ji/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -175,29 +155,12 @@ $$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>于是我们记 <span class="markdown-them-math-inline">$d_i$</span> 表示以 <span class="markdown-them-math-inline">$i$</span> 为中心的最大回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而 <span class="markdown-them-math-inline">$\rm Manacher$</span> 算法的用处就是在线性复杂度下求出这个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体过程跟 <span class="markdown-them-math-inline">$Z$</span> 算法类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$L,R$</span> 表示在之前的回文子串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右端点最靠右的子串的左右端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移分三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i&gt;R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=i-1,R=i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}&lt;R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i=d_{L+R-i}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}\geqslant R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=2i-R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>由于 <span class="markdown-them-math-inline">$R$</span> 只会往右移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且每次暴力更新必定右移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面这种方法只处理了回文子串长度为奇数的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而偶数的情况只需要分开考虑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性稍微改变一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但还有一种更加巧妙的方式可以规避分奇偶讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑给所有字符之间加入一个不可能出现的相同字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如字符串 <span class="markdown-them-math-inline">$abaca$</span> 变成 <span class="markdown-them-math-inline">$\#a\#b\#a\#c\#a\#$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样在奇数位上统计的就是字串长度为偶数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在偶数位上统计的就是字串长度为奇数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样统计出来的半径 <span class="markdown-them-math-inline">$d$</span> 就是以当前点为中心的最长回文子串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-
+        <p>Manacher 算法学习笔记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+        
+          <p class="article-more-link">
+            <a href="2022/04/17/zi-fu-chuan-manacher-suan-fa/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
