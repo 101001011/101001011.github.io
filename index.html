@@ -175,7 +175,8 @@ $$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+        <span id="more"></span>
+<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <blockquote>
 <p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
