@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>2022 年高考全国 I 卷数学科目第七题的一种非常规解法</title>
+      <link href="/2022/06/11/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/"/>
+      <url>/2022/06/11/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
+      
+        <content type="html"><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>考虑到以下公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$e ^ {qx} = \sum _ {n} q ^ n \frac{x ^ n}{n!} \tag{7.1}$$</div><div class="markdown-them-math-block">$$\ln(1 + x) = \sum _ n (-1) ^ n \frac{x ^ {n + 1}}{n + 1} \tag{7. 2}$$</div><p>将 <span class="markdown-them-math-inline">$a$</span> 带入式 <span class="markdown-them-math-inline">$(7. 1)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$a &amp;= 0.1(1 + 0.1 + \frac{0.01}{2} + \frac{0.001}{6} + \cdots) \\  &amp;= 0.1 + 0.01 + \frac{0.001}{2} + \frac{0.0001}{6} + \cdots  \tag{7.3}$$</div><p>将 <span class="markdown-them-math-inline">$c$</span> 带入式 <span class="markdown-them-math-inline">$(7.2)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$c &amp;= \ln (1 + \frac{1}{9}) \\  &amp;= \frac{1}{9} - \frac{\frac{1}{9 ^ 2}}{2} + \frac{\frac{1}{9 ^ 3}}{3} - \cdots  \tag{7. 4}$$</div><p>分解 <span class="markdown-them-math-inline">$b$</span> 是简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$b = 0.111\cdots = 0.1 + 0.01 + 0.001 + \cdots$$</div><p>此时 <span class="markdown-them-math-inline">$b &gt; a, c$</span> 应当是一目了然的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑对比 <span class="markdown-them-math-inline">$a, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>取 <span class="markdown-them-math-inline">$c' = \frac{1}{9} - \frac{1}{2 \times 81} + \frac{1}{3 \times 729} &gt; c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不够好算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再取 <span class="markdown-them-math-inline">$c'' = \frac{1}{9} - \frac{1}{400} + \frac{1}{2000} = \frac{1}{9} - 0.002 &gt; c'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>取 <span class="markdown-them-math-inline">$a' = 0.1 + 0.01 &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$c'' &lt; a'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$c &lt; c' &lt; c'' &lt; a' &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$c &lt; a &lt; b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于“唐山打人”事件该如何定性的一些思考</title>
       <link href="/2022/06/11/guan-yu-tang-shan-da-ren-shi-jian-ding-xing-de-yi-xie-si-kao/"/>
       <url>/2022/06/11/guan-yu-tang-shan-da-ren-shi-jian-ding-xing-de-yi-xie-si-kao/</url>
