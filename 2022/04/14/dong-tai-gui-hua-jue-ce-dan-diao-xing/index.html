@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「动态规划」决策单调性 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="记录了一些有趣的满足决策单调性情况下的 $\rm DP$ 转移技巧。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-[动态规划]决策单调性" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T11:04:59.961Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「动态规划」决策单调性
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">四边形不等式优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">区间形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">转移技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%8D%95%E5%B3%B0%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">有单峰性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%85%E6%9C%89%E7%9B%B8%E9%82%BB%E5%B1%82%E4%B9%8B%E9%97%B4%E8%BD%AC%E7%A7%BB"><span class="toc-number">2.2.</span> <span class="toc-text">仅有相邻层之间转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A1%E7%8C%AE%E9%9A%BE%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">贡献难算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">常用算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">斜率优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E9%98%9F%E5%88%97"><span class="toc-number">3.2.</span> <span class="toc-text">二分队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%A0%88"><span class="toc-number">3.3.</span> <span class="toc-text">二分栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%A0%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bnoi1995%5D-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6"><span class="toc-number">4.1.</span> <span class="toc-text">[NOI1995] 石子合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bsdoi2016%5D%E5%BE%81%E9%80%94"><span class="toc-number">4.2.</span> <span class="toc-text">[SDOI2016]征途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bp5574%5D%E4%BB%BB%E5%8A%A1%E5%88%86%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-number">4.3.</span> <span class="toc-text">[P5574]任务分配问题</span></a></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>记录了一些有趣的满足决策单调性情况下的 <span class="markdown-them-math-inline">$\rm DP$</span> 转移技巧<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="四边形不等式优化">四边形不等式优化</h2>
+<h3 id="定义">定义</h3>
+<p>假设有 <span class="markdown-them-math-inline">$p_1\leqslant p_2\leqslant p_3\leqslant p_4.$</span></p>
+<p>则 <span class="markdown-them-math-inline">$c_{p_1,p_3}+c_{p_2,p_4}\leqslant c_{p_1,p_4}+c_{p_2,p_3}$</span> 被称为四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>假设一个问题满足四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么它的决策点有单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>Proof:</strong></p>
+<p>假设有如下问题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>现在有一个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们要将其分割开来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分割一段 <span class="markdown-them-math-inline">$[l,r]$</span> 的代价是 <span class="markdown-them-math-inline">$c_{l,r}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$F_i$</span> 表示将前 <span class="markdown-them-math-inline">$i$</span> 个位置分割完毕的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有暴力转移 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F_i=\min\limits_{j&lt;i}\{F_j+c_{j,i}\}
+$$</div><p>设 <span class="markdown-them-math-inline">$F_i$</span> 的决策点为 <span class="markdown-them-math-inline">$p_i.$</span> 假设存在 <span class="markdown-them-math-inline">$x&gt;y,p_x&lt;p_y.$</span></p>
+<p>根据最优决策的定义写出这个位置的转移式 :</p>
+<div class="markdown-them-math-block">$$F_x=F_{p_x}+c_{p_x,x}\leqslant F_{p_y}+c_{p_y, x}
+$$</div><p>有 <span class="markdown-them-math-inline">$p_x&lt;p_y&lt;y&lt;x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>根据四边形不等式得到 :</p>
+<div class="markdown-them-math-block">$$c_{p_x,y}+c_{p_y,x}\leqslant c_{p_y,y}+c_{p_x,x}
+$$</div><p>两不等式相加<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 :</p>
+<div class="markdown-them-math-block">$$F_{p_x}+c_{p_x,y}\leqslant F_{p_y}+c_{p_y,y}
+$$</div><p>与前文矛盾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故不存在 <span class="markdown-them-math-inline">$x&gt;y,p_x&lt;p_y$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即满足决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只有最小化问题才能通过四边形不等式判定决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="区间形式">区间形式</h3>
+<p>在实际做题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们经常遇到这样的 <span class="markdown-them-math-inline">$\rm DP$</span> 方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_{i,j}=\min\limits_{i\leqslant k&lt;j}\{dp_{i,k}+dp_{k+1,j}+w_{i,j}\}
+$$</div><p>我们考虑将四边形不等式推广到二维形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>定理 <span class="markdown-them-math-inline">$1$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$w$</span> 满足四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对于任意 <span class="markdown-them-math-inline">$a\leqslant b\leqslant b\leqslant c\leqslant d$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$w_{a,d}\geqslant w_{b,c}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$f$</span> 也满足四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>定理 <span class="markdown-them-math-inline">$2$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$p_{i,j}$</span> 表示 <span class="markdown-them-math-inline">$f_{i,j}$</span> 的决策点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$f$</span> 满足四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则对于任意 <span class="markdown-them-math-inline">$i&lt;j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$p_{i,j-1}\leqslant p_{i,j}\leqslant p_{i+1,j}.$</span></p>
+<p>例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1880"><span class="markdown-them-math-inline">$\rm [NOI1995] 石子合并$</span></a></p>
+<hr>
+<h2 id="转移技巧">转移技巧</h2>
+<h3 id="有单峰性">有单峰性</h3>
+<p>这个性质结合决策单调性有均摊转移复杂度 <span class="markdown-them-math-inline">$\Theta(1)$</span> 的做法 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>记录一个指针表示当前的决策点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于决策单调性所以它不会往回跳<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>进入每一层之后如果后面的决策点更优就跳到后面的决策点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>根据单峰性这样一定不会漏掉解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>跳的次数是状态级别的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故转移均摊 <span class="markdown-them-math-inline">$\Theta(1).$</span></p>
+<h3 id="仅有相邻层之间转移">仅有相邻层之间转移</h3>
+<p>这是一类特殊的二维 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>仅有相邻层之间的转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>没有同层之间的转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时满足决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>一般这种 <span class="markdown-them-math-inline">$\rm DP$</span> 的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(n^3)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次转移需要枚举前一层的所有点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现一个性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在同一层中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>先枚举哪一个是无关紧要的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为同一层之间不会发生转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是可以考虑分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>先转移 <span class="markdown-them-math-inline">$mid$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到其最优决策为 <span class="markdown-them-math-inline">$p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后就可以将区间划分开<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$[l,mid)$</span> 和 <span class="markdown-them-math-inline">$(mid,r]$</span> 分别对应 <span class="markdown-them-math-inline">$[tl,p]$</span> 和 <span class="markdown-them-math-inline">$[p,tr].$</span></p>
+<p>这样分治时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\log n).$</span></p>
+<p>例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4072"><span class="markdown-them-math-inline">$\rm [SDOI2016]征途$</span></a></p>
+<h3 id="贡献难算">贡献难算</h3>
+<p>首先有例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>存在一个长度为 <span class="markdown-them-math-inline">$n$</span> 的序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要将它划分成 <span class="markdown-them-math-inline">$k$</span> 段<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每段的价值被定义为不同的元素个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要求最大化贡价值和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>数据范围<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$n\leqslant 3.5\times 10^4,k\leqslant 50.$</span></p>
+<p>首先有一个 <span class="markdown-them-math-inline">$\Theta(n^3k)$</span> 的暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_{i,j}$</span> 表示当分到 <span class="markdown-them-math-inline">$i$</span> 时已经分了 <span class="markdown-them-math-inline">$j$</span> 段的最大价值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有转移式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_{i,j}=\max\limits_{k&lt;i}\{dp_{k,j-1}+cnt_{k+1,i}\}
+$$</div><p>其中 <span class="markdown-them-math-inline">$cnt_{l,r}$</span> 表示从 <span class="markdown-them-math-inline">$[l,r]$</span> 中不同颜色的个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次计算需要 <span class="markdown-them-math-inline">$\Theta(n).$</span></p>
+<p>我们发现只在相邻层之间发生转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且满足决策单调性<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>直观理解就是分得越多越容易亏<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以使用之前提到的分治法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这样看起来是优化到 <span class="markdown-them-math-inline">$\Theta(n^2k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但我们考虑计算贡献的具体过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>我们每次只会计算 <span class="markdown-them-math-inline">$dp_{mid}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次询问一个区间 <span class="markdown-them-math-inline">$[i,mid]$</span> 的不同元素个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以考虑固定右端点移动左端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现移动次数是当前的分治区间长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总移动次数不会超过 <span class="markdown-them-math-inline">$n\log n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故时间复杂度实际上为 <span class="markdown-them-math-inline">$\Theta(nk\log n).$</span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5574"><span class="markdown-them-math-inline">$\rm [P5574]任务分配问题$</span></a></p>
+<hr>
+<h2 id="常用算法">常用算法</h2>
+<h3 id="斜率优化">斜率优化</h3>
+<p>假设 <span class="markdown-them-math-inline">$\rm DP$</span> 方程长成这种形式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_i=\max\limits_{j&lt;i}\{dp_j+(i)'+(i)(j)+(j)'+C\}
+$$</div><p>即贡献为一个仅与 <span class="markdown-them-math-inline">$i$</span> 有关的式子加上一个仅与 <span class="markdown-them-math-inline">$j$</span> 有关的式子加上一个与两者都有关的乘积形式再加上一个常数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以使用斜率优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现 <span class="markdown-them-math-inline">$dp_i,(i)',C$</span> 都与决策点的选择无关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以把它们看作常数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将仅与 <span class="markdown-them-math-inline">$j$</span> 有关的式子放在一边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以得到方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_j+(j)'=-(i)(j)+dp_i-(i)'-C
+$$</div><p>我们发现这是一次函数的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑构造平面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>平面上有一些点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>形如 <span class="markdown-them-math-inline">$((j),dp_j+(j)').$</span> 我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果用一条斜率为 <span class="markdown-them-math-inline">$-(i)$</span> 的直线经过某个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么截距为 <span class="markdown-them-math-inline">$dp_i-(i)'-C.$</span> 由于我们要最大化 <span class="markdown-them-math-inline">$dp_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>等价于最大化这个截距<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以用这根斜率为 <span class="markdown-them-math-inline">$-(i)$</span> 的直线从上到下平移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>第一个碰到的点就是决策点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是现在问题就变成了维护一个凸包<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现有三种情况 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>当加入点按照横坐标单调递增的顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且询问点单调递增时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以直接维护单调队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>加入点对比队尾斜率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取答案从队首即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>当加入点按照横坐标单调的顺序时可以维护一个单调队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次加入时对比斜率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取答案二分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>当加入点无序时直接用平衡树 <code>(std :: set)</code> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用 <code>lower_bound</code> 查找插入点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后向左右两边依次弹出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取答案也使用 <code>lower_bound</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4072"><span class="markdown-them-math-inline">$\rm [SDOI2016]征途$</span></a></p>
+<h3 id="二分队列">二分队列</h3>
+<p>若 <span class="markdown-them-math-inline">$\rm DP$</span> 方程形如 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_i=\min\limits_{j&lt;i}\{dp_j+w_{j+1,i}\}
+$$</div><p>根据决策单调性的推论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>任何两个点 <span class="markdown-them-math-inline">$i,j(i&lt;j)$</span> 之间都存在一个点 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$k$</span> 之前一段转移点为 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$k$</span> 之后某一段转移点为 <span class="markdown-them-math-inline">$j.$</span></p>
+<p>我们发现如果能快速计算 <span class="markdown-them-math-inline">$w_{i,j}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么就能 <span class="markdown-them-math-inline">$\Theta(\log n)$</span> 计算两个点 <span class="markdown-them-math-inline">$i,j$</span> 之间的决策分界点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现所有相邻决策点的分界点可以用单调队列维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>具体来说 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>求当前的最优决策时判断一下队首和队次首谁更优<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若队首最优则决策点为队首<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则决策点为队次首<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且将当前队首弹出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>加入一个点时判断它是否能比队尾更快地替换掉队次尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若能<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹出队尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>重复操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>这样就可以快速地维护相邻点的决策分界点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\log n).$</span></p>
+<p>例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1912"><span class="markdown-them-math-inline">$\rm [NOI2009]诗人小G$</span></a></p>
+<h3 id="二分栈">二分栈</h3>
+<p>有些题可能会有这样的奇怪性质 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>每个决策点只会被自己前面的点反超<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现某个决策点会经历这样的过程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>一开始就比前面的优<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>否则就相当于一开始就被别人反超了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后在最优决策的地方呆一会儿<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后被某个点反超<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>严格来说这根本不算决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是仍然可以用二分栈来维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为两点的优劣仍旧可以 <span class="markdown-them-math-inline">$\Theta(\log n)$</span> 对比<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>加入一个点时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若其比堆顶劣<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则直接扔掉<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若其比堆顶优<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则留下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>每一轮判断一下堆次顶是否比堆顶优<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>优则将堆顶弹出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>这样堆顶就一直是当前转移的决策点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>[<span class="markdown-them-math-inline">$\rm [POI2011]Lightning Conductor$</span></p>
+<hr>
+<h2 id="习题">习题</h2>
+<h3 id="[noi1995]-石子合并">[NOI1995] 石子合并</h3>
+<p>首先有暴力转移 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$dp_{l,r}=\min\limits_{i\leqslant k&lt;j}\{dp_{i,k}+dp_{k+1,j}+w_{i,j}\}
+$$</div><p>记录前缀和 <span class="markdown-them-math-inline">$sum$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里 <span class="markdown-them-math-inline">$w_{i,j}=sum_j-sum_{i-1}.$</span></p>
+<p><span class="markdown-them-math-inline">$w$</span> 显然满足四边形不等式和包含单调<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑四边形不等式优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后就直接设 <span class="markdown-them-math-inline">$p_{i,j}$</span> 表示 <span class="markdown-them-math-inline">$dp_{i,j}$</span> 的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>成功转移的时候更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举 <span class="markdown-them-math-inline">$dp_{i,j}$</span> 断点的时候只需要枚举 <span class="markdown-them-math-inline">$[p_{i,j-1},p_{i+1,j}]$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2).$</span></p>
+<h3 id="[sdoi2016]征途">[SDOI2016]征途</h3>
+<p>首先易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设每一天走的长度为 <span class="markdown-them-math-inline">$d$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则答案为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$m\sum_{i=1}^m(d_i-ave)^2=m\sum_{i=1}^md_i^2-\left(\sum_{i=1}^md_i\right)^2
+$$</div><p>容易观察到此题本质上是在求 <span class="markdown-them-math-inline">$\left(\sum_{i=1}^md_i\right)^2_{\min}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是设 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示当前已经考虑到第 <span class="markdown-them-math-inline">$i$</span> 段<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当前已经分成了 <span class="markdown-them-math-inline">$j$</span> 段的最小 <span class="markdown-them-math-inline">$\sum_{p=1}^jd_p.$</span> 枚举转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易得到转移方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,j}=\min\limits_{k&lt;i}\{f_{k,j-1}+(s_i-s_k)^2\}
+$$</div><p>易证 <span class="markdown-them-math-inline">$w_{i,j}=(s_j-s_i)^2$</span> 满足四边形不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以该转移方程满足决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>我们还发现转移方程只在相邻层之间转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以使用分治转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2\log n).$</span></p>
+<p>还有斜率优化的做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>注意到转移方程是可以变形的 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,j}=f_{k,j-1}+(s_i-s_k)^2
+$$</div><div class="markdown-them-math-block">$$\iff f_{i,j}=f_{k,j-1}+s_i^2-2s_is_k+s_k^2
+$$</div><div class="markdown-them-math-block">$$\iff f_{k,j-1}+s_k^2=2s_i\cdot s_k+f_{i,j}-s_i^2
+$$</div><p>易知插入点横坐标有序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>询问斜率也有序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以直接使用单调队列维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每一层分开转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2).$</span></p>
+<h3 id="[p5574]任务分配问题">[P5574]任务分配问题</h3>
+<p>非常套路的分治 <span class="markdown-them-math-inline">$+$</span> 决策单调性优化 <span class="markdown-them-math-inline">$\rm DP.$</span></p>
+<p>首先定义 <span class="markdown-them-math-inline">$w_{i,j}$</span> 表示 <span class="markdown-them-math-inline">$i\sim j$</span> 的顺序对个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示当前已经考虑到第 <span class="markdown-them-math-inline">$i$</span> 个任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将他们分成 <span class="markdown-them-math-inline">$j$</span> 段的最小顺序对数量之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易得转移方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,j}=\min\limits_{k&lt;i}\{f_{k,j-1}+w_{k+1,i}\}
+$$</div><p>对于任意 <span class="markdown-them-math-inline">$a\leqslant b\leqslant c\leqslant d$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>使用容斥易证 <span class="markdown-them-math-inline">$w_{a,c}+w_{b,d}-w_{b,c}\leqslant w_{a,d}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故 <span class="markdown-them-math-inline">$w$</span> 满足四边形不不等式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>进一步的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f$</span> 的转移满足决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>有了决策单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们就可以分治转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时令人惊喜的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移时需要遍历一段连续的区间并计算每一个位置的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是用莫队和 <span class="markdown-them-math-inline">$\rm BIT$</span> 维护一下就好了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nk\log^2n).$</span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../17/shu-ju-jie-gou-dai-quan-bing-cha-ji/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「数据结构」(带权)并查集
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../13/codechef-children-trips/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「Codechef」Children Trips
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>

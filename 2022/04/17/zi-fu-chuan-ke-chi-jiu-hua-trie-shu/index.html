@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「字符串」(可持久化) Trie 树 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="(可持久化) Trie 树学习笔记及经典例题。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-[字符串](可持久化) Trie 树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2022-04-17T11:52:34.651Z" itemprop="datePublished">2022-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「字符串」(可持久化) Trie 树
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">字典树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0/1-trie"><span class="toc-number">2.</span> <span class="toc-text">0&#x2F;1 Trie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E6%8A%A4%E5%BC%82%E6%88%96%E6%9E%81%E5%80%BC"><span class="toc-number">2.1.</span> <span class="toc-text">维护异或极值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E6%8A%A4%E5%BC%82%E6%88%96%E5%92%8C"><span class="toc-number">2.2.</span> <span class="toc-text">维护异或和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#$0/1$-trie%20%E5%90%88%E5%B9%B6"><span class="toc-number">2.3.</span> <span class="toc-text">$0&#x2F;1$ Trie 合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96-trie%20%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text">可持久化 Trie 树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">经典例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg4735%5D-%E6%9C%80%E5%A4%A7%E5%BC%82%E6%88%96%E5%92%8C"><span class="toc-number">4.1.</span> <span class="toc-text">[LG4735] 最大异或和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf455b%5D-a%20lot%20of%20games"><span class="toc-number">4.2.</span> <span class="toc-text">[CF455B] A Lot of Games</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf888g%5D-xor-mst"><span class="toc-number">4.3.</span> <span class="toc-text">[CF888G] Xor-MST</span></a></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>(可持久化) Trie 树学习笔记及经典例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="字典树">字典树</h2>
+<p>顾名思义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字典树就是支持像字典一样加入和查询字符串的树形数据结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>实现如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-keyword">namespace</span> Trie &#123;
+    <span class="hljs-keyword">int</span> Next[N][K], cnt, tag[N];
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Insert</span> <span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> n = <span class="hljs-built_in">strlen</span>(s + <span class="hljs-number">1</span>), now = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+            <span class="hljs-keyword">int</span> c = s[i] - <span class="hljs-string">&#x27;a&#x27;</span>;
+            <span class="hljs-keyword">if</span> (!Next[now][c]) Next[now][c] = ++cnt;
+            now = Next[now][c];
+        &#125;
+        tag[now]++;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> n = <span class="hljs-built_in">strlen</span>(s + <span class="hljs-number">1</span>), now = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+            <span class="hljs-keyword">int</span> c = s[i] - <span class="hljs-string">&#x27;a&#x27;</span>;
+            <span class="hljs-keyword">if</span> (!Next[now][c]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            now = Next[now][c];
+        &#125;
+        <span class="hljs-keyword">return</span> tag[now];
+    &#125;
+&#125;
+</code></pre></div>
+<h2 id="0/1-trie">0/1 Trie</h2>
+<p>在很多问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符串仅由 <span class="markdown-them-math-inline">$0$</span> 和 <span class="markdown-them-math-inline">$1$</span> 构成<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这些问题存在一定的共性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="维护异或极值">维护异或极值</h3>
+<p>考虑如下问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给定一颗带边权的树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$\max\limits_{i,j\in[1,n]} \oplus Path(i,j)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>由异或的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\oplus Path(i,j)=\oplus Path(root,i)\oplus Path(root,j)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>所以可以把所有从根开始的路径的异或和表示成一个数字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样就将问题转化成了求任意两个数字的异或的最大值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以用 <span class="markdown-them-math-inline">$\rm 0/1~Trie$</span> 解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="维护异或和">维护异或和</h3>
+<p>考虑如下问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给一些数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护它们的异或和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>支持插入<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>删除和全局 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于异或和的维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>发现 <span class="markdown-them-math-inline">$sum=\sum_{i=0}^k2^i\times [num_i\equiv 1\pmod 2]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>其中 <span class="markdown-them-math-inline">$sum$</span> 表示异或和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$num_i$</span> 表示所有数中二进制的第 <span class="markdown-them-math-inline">$i$</span> 位为 <span class="markdown-them-math-inline">$1$</span> 的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>这个式子体现在 <span class="markdown-them-math-inline">$\rm 0/1~Trie$</span> 上就是对于所有以父亲边为 <span class="markdown-them-math-inline">$1$</span> 的结点为根的子树中有多少个 <span class="markdown-them-math-inline">$\rm Tag$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$\rm Tag$</span> 的数量为 <span class="markdown-them-math-inline">$num$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这些结点的深度为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它们对答案的贡献即为 <span class="markdown-them-math-inline">$num\%2\times 2^k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于实现全局 <span class="markdown-them-math-inline">$+1$</span> 操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从低位到高维建 <span class="markdown-them-math-inline">$\rm 0/1~Trie$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑将一个二进制数 <span class="markdown-them-math-inline">$+1$</span> 的一般操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即找到从低位到高位的第一个 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将它变成 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数位比它低的 <span class="markdown-them-math-inline">$1$</span> 全部变成 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 而这个做法体现在 <span class="markdown-them-math-inline">$\rm 0/1~Trie$</span> 上可以将一个结点的两条指向儿子的出边交换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再递归向交换后的 <span class="markdown-them-math-inline">$0$</span> 边迭代操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="$0/1$-trie 合并"><span class="markdown-them-math-inline">$0/1$</span> Trie 合并</h3>
+<p>与线段树合并类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>实现如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;p, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (!p || !k) &#123; p = p + k; <span class="hljs-keyword">return</span>; &#125;
+    tag[p] += tag[k];
+    <span class="hljs-built_in">Merge</span>(l[p], l[k]), <span class="hljs-built_in">Merge</span>(r[p], r[k]);
+    <span class="hljs-built_in">Push_up</span>();
+&#125;
+</code></pre></div>
+<p>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Trie 树合并和线段树合并一样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只有当每次合并的集合没有交集的时候复杂度才是 <span class="markdown-them-math-inline">$\Theta(n\log n)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="可持久化-trie 树">可持久化 Trie 树</h2>
+<p>可持久化 Trie 的实现方式和可持久化线段树的方式是相似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即每次只修改被添加或值被修改的节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而保留没有被改动的节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在上一个版本的基础上连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>使最后每个版本的 Trie 树的根遍历所能分离出的 Trie 树都是完整且包含全部信息的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>实现如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-keyword">namespace</span> Trie &#123;
+    <span class="hljs-keyword">int</span> rt[N &lt;&lt; <span class="hljs-number">5</span>], Next[N &lt;&lt; <span class="hljs-number">5</span>][<span class="hljs-number">2</span>], cnt, tag[N &lt;&lt; <span class="hljs-number">5</span>];
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Build</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    	<span class="hljs-keyword">if</span> (pos &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+        x = ++cnt;
+        <span class="hljs-keyword">if</span> (!pos) tag[x]++;
+        tag[x] += tag[y];
+        <span class="hljs-keyword">int</span> d = (k &amp; (<span class="hljs-number">1</span> &lt;&lt; pos)) != <span class="hljs-number">0</span>;
+        Next[x][d ^ <span class="hljs-number">1</span>] = Next[y][d ^ <span class="hljs-number">1</span>];
+        <span class="hljs-built_in">Build</span>(Next[x][d], Next[y][d], k, pos - <span class="hljs-number">1</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Query</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> pos)</span> </span>&#123;
+    	<span class="hljs-keyword">if</span> (!x) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> d = (k &amp; (<span class="hljs-number">1</span> &lt;&lt; pos)) != <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> tag[x] - tag[y] + <span class="hljs-built_in">Query</span>(Next[x][d], Next[y][d], k, pos - <span class="hljs-number">1</span>);
+    &#125;
+&#125;
+</code></pre></div>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="[lg4735]-最大异或和">[LG4735] 最大异或和</h3>
+<p>可持久化 <span class="markdown-them-math-inline">$0/1$</span> Trie 模板题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑记所有的前缀和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>答案变为统计 <span class="markdown-them-math-inline">$x\oplus sum_n$</span> 在 <span class="markdown-them-math-inline">$[l-1,r-1]$</span> 这个区间的 <span class="markdown-them-math-inline">$0/1$</span> Trie 中的最大异或值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[cf455b]-a lot of games">[CF455B] A Lot of Games</h3>
+<p>显然直接建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次相当于向 Trie 树的子树内走一步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不能走者为负<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑设 <span class="markdown-them-math-inline">$f$</span> 表示是否存在必胜策略<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 表示是否存在必败策略<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对 <span class="markdown-them-math-inline">$f_{root}$</span> 和 <span class="markdown-them-math-inline">$g_{root}$</span> 分四种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每种情况下的答案易得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果先手既存在必胜策略又存在必败策略<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那他可以故意输以获得下一局的先手<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后在最后一局获得胜利<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[cf888g]-xor-mst">[CF888G] Xor-MST</h3>
+<p><span class="markdown-them-math-inline">$\rm Trie+Boruvka$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑将所有树插入一个 Trie 中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举到某个连通块时将其中所有点从 Tire 中删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再用连通块中每个结点从 Trie 中查找出最小边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>完成后再将连通块中的点权加回去<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>发现一个性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次合并的连通块都是 Trie 中某个节点的左右子树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再由 Trie 的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们甚至不需要把 Trie 建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只需要将 A 排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>二分 Trie 的左右儿子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再将其中一个儿子的所有结点建 Trie<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用另一个儿子中的所有结点在其中查找连通块之间的最小边权即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>由于每个结点最多被加进 Trie 树 <span class="markdown-them-math-inline">$\log n$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次复杂度为 <span class="markdown-them-math-inline">$\log W$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n\log n\log W)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../zi-fu-chuan-ac-zi-dong-ji/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「字符串」AC 自动机
+        
+      </div>
+    </a>
+  
+  
+    <a href="../zi-fu-chuan-manacher-suan-fa/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「字符串」Manacher 算法
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>

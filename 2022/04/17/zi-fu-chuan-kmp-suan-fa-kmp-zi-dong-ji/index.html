@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「字符串」KMP 算法 &amp; KMP 自动机 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="$\rm KMP$ 算法和 $\rm KMP$ 自动机学习笔记。
+其中 $\rm KMP$ 算法是算法竞赛中最基础的字符串算法之一，必须熟练掌握。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-[字符串]KMP 算法 &amp; KMP 自动机" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2022-04-17T11:09:55.853Z" itemprop="datePublished">2022-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「字符串」KMP 算法 &amp; KMP 自动机
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#border-&%20$%5Cpi$%20%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">Border &amp; $\pi$ 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">一些定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#$%5Cpi$-%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">$\pi$ 函数的性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#$%5Cpi$-%E5%87%BD%E6%95%B0%E7%9A%84%E7%BA%BF%E6%80%A7%E6%B1%82%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">$\pi$ 函数的线性求法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#$%5Cpi$-%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text">$\pi$ 函数的基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D"><span class="toc-number">1.4.1.</span> <span class="toc-text">字符串匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%AF%8F%E4%B8%AA%E5%89%8D%E7%BC%80%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">统计每个前缀的出现次数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%9C%AC%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%AD%90%E4%B8%B2%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">统计本质不同子串的数目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%91%A8%E6%9C%9F%E7%9B%B8%E5%85%B3%E6%80%A7%E8%B4%A8"><span class="toc-number">2.</span> <span class="toc-text">字符串周期相关性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp-%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">3.</span> <span class="toc-text">KMP 自动机</span></a></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><span class="markdown-them-math-inline">$\rm KMP$</span> 算法和 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机学习笔记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>其中 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法是算法竞赛中最基础的字符串算法之一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>必须熟练掌握<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="border-& $\pi$ 函数">Border &amp; <span class="markdown-them-math-inline">$\pi$</span> 函数</h2>
+<h3 id="一些定义">一些定义</h3>
+<ul>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的真前/后缀为非自身的前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的 border为 <span class="markdown-them-math-inline">$S$</span> 的公共真前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的最长 border 为 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于 <span class="markdown-them-math-inline">$S$</span> 的每个前缀 <span class="markdown-them-math-inline">$S_{1 \sim i}$</span> 令 <span class="markdown-them-math-inline">$\pi_i$</span> 为其最长 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\pi$</span> 函数就是所谓的前缀函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<h3 id="$\pi$-函数的性质"><span class="markdown-them-math-inline">$\pi$</span> 函数的性质</h3>
+<ul>
+<li><span class="markdown-them-math-inline">$\forall i,\pi_{i+1}\leqslant \pi_i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的所有 border 可以由 <span class="markdown-them-math-inline">$\pi_{|S|}$</span> 开始不断跳 <span class="markdown-them-math-inline">$\pi$</span> 由长度从大到小遍历<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>只需证明 <span class="markdown-them-math-inline">$S_{1 \sim \pi_{\pi_n}}$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的次长 border 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>由 <span class="markdown-them-math-inline">$\pi$</span> 的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>相邻前缀函数满足 <span class="markdown-them-math-inline">$\pi_{i + 1} = \max\limits_{T ~ is ~ the ~ border ~ of ~ S_{1 \sim i}, S_{i + 1} = S_{|T| + 1}} |T| + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>使用反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h3 id="$\pi$-函数的线性求法"><span class="markdown-them-math-inline">$\pi$</span> 函数的线性求法</h3>
+<p>有了上述几条性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以得到一个求解 <span class="markdown-them-math-inline">$\pi$</span> 函数的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code>pi[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = pi[i - <span class="hljs-number">1</span>]; j &gt;= <span class="hljs-number">0</span>; j = pi[j])
+        <span class="hljs-keyword">if</span> (s[j + <span class="hljs-number">1</span>] == s[i]) &#123; pi[i] = j + <span class="hljs-number">1</span>; <span class="hljs-keyword">break</span>; &#125;
+</code></pre></div>
+<p>直观感受上这个做法是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但实际上它是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度证明如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>不难发现复杂度来源在于跳 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面我们将证明跳 <span class="markdown-them-math-inline">$\pi$</span> 的总次数是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>注意 <span class="markdown-them-math-inline">$\pi_i$</span> 的位置变化情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现 <span class="markdown-them-math-inline">$\pi_i$</span> 只会每次 <span class="markdown-them-math-inline">$+1$</span> 或往前跳若干次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但往前跳的的总距离不能超过当前 <span class="markdown-them-math-inline">$+1$</span> 的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故总路程也是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h3 id="$\pi$-函数的基本应用"><span class="markdown-them-math-inline">$\pi$</span> 函数的基本应用</h3>
+<h4 id="字符串匹配">字符串匹配</h4>
+<p>求解模式串 <span class="markdown-them-math-inline">$T$</span> 在匹配串 <span class="markdown-them-math-inline">$S$</span> 中的出现位置的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>构造一个新的字符串 <span class="markdown-them-math-inline">$T\circ S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中 <span class="markdown-them-math-inline">$\circ\not\in S\cup T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它仅作为一个分隔符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对这个新的字符串求其 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现由于分隔符的出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\forall i, \pi_i \leqslant |T|$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是找到 <span class="markdown-them-math-inline">$\pi_i = |T|$</span> 的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$i - |T| + 1 \sim i$</span> 就是一个匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>以上即为 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h4 id="统计每个前缀的出现次数">统计每个前缀的出现次数</h4>
+<p>考虑到如果某个前缀在之后的位置里出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定是某个前缀的 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们考虑在每个数的最大 border 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其为更小 border 的重复次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且更小的 border 一定可以通过跳 <span class="markdown-them-math-inline">$\pi$</span> 遍历到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样只需要从后往前扫一遍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ans[i] = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) ans[pi[i]] += ans[i];
+</code></pre></div>
+<p>至于这个问题的加强版<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>统计 <span class="markdown-them-math-inline">$S$</span> 中的每个前缀在 <span class="markdown-them-math-inline">$T$</span> 中的出现次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以构造 <span class="markdown-them-math-inline">$S\#T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>赋初值的时候只需要将 <span class="markdown-them-math-inline">$T$</span> 中的位置初始化为 <span class="markdown-them-math-inline">$1$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h4 id="统计本质不同子串的数目">统计本质不同子串的数目</h4>
+<p>考虑迭代计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题转化成<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>在当前字符串的末尾加入一个新的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以这个字符结尾的后缀中有多少个是前面没有出现过的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>如果一个子串 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\forall j\geqslant i,S_{j\sim n}$</span> 都在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<blockquote>
+<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>于是就只需求出加入新字符后的串的反串中的 <span class="markdown-them-math-inline">$\max\pi$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个字符的贡献就是 <span class="markdown-them-math-inline">$|S|+1-\max\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="字符串周期相关性质">字符串周期相关性质</h2>
+<p>称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的一个周期且仅当 <span class="markdown-them-math-inline">$\forall i\leqslant |S|-k, S_i = S_{i + k}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特别地若 <span class="markdown-them-math-inline">$k \nmid S$</span> 则称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的弱周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>若字符串 <span class="markdown-them-math-inline">$S$</span> 存在一个 border <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当且仅当 <span class="markdown-them-math-inline">$S$</span> 存在一个长度为 <span class="markdown-them-math-inline">$|S| - |T|$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性递归论证即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的最短<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期长度为 <span class="markdown-them-math-inline">$n - \pi_n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>由 <span class="markdown-them-math-inline">$\pi$</span> 函数的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>若长度不小于 <span class="markdown-them-math-inline">$p + q$</span> 的字符串 <span class="markdown-them-math-inline">$S$</span> 存在长度分别为 <span class="markdown-them-math-inline">$p, q$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>下面首先证明 <span class="markdown-them-math-inline">$p - q(p &gt; q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ol>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i \leqslant q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i + p} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i \leqslant q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i &gt; q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i - q} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i &gt; q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ol>
+<p>证明 <span class="markdown-them-math-inline">$p - q$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>根据更相减损术的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终可以迭代至 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>所有强周期的长度均为最短强周期长度的倍数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>若存在一个强周期 <span class="markdown-them-math-inline">$x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$n-\pi_n\nmid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\gcd(n-\pi_n,x)&lt;n-\pi_n$</span> 也为一个强周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$n-\pi_n$</span> 是最小强周期矛盾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 存在周期当且仅当 <span class="markdown-them-math-inline">$n - \pi_n$</span> 为一个周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若存在强周期 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又因为 <span class="markdown-them-math-inline">$n-\pi_n\mid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$n-\pi_n\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性得证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h2 id="kmp-自动机">KMP 自动机</h2>
+<p>在求 <span class="markdown-them-math-inline">$\pi$</span> 函数的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现这个做法是支持在线插入一个字符在末尾并计算函数值的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>并且在做 <span class="markdown-them-math-inline">$\rm KMP$</span> 的过程中我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在匹配串每一位求 <span class="markdown-them-math-inline">$\pi$</span> 函数时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并不关心之前匹配串的字符是什么<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只关心之前的 <span class="markdown-them-math-inline">$\pi$</span> 函数值和当前位的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这意味着可以对一个模式串建立一个自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>结点 <span class="markdown-them-math-inline">$i$</span>  表示当前节点的 <span class="markdown-them-math-inline">$\pi$</span> 值为 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>新加入一个节点的出边 <span class="markdown-them-math-inline">$c$</span> 指向跳 <span class="markdown-them-math-inline">$\pi$</span> 时第一个能够匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>暴力建这个自动机的复杂度为 <span class="markdown-them-math-inline">$\Theta(n^2|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为出边需要遍历 <span class="markdown-them-math-inline">$\Sigma$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以不存在求 <span class="markdown-them-math-inline">$\pi$</span> 函数时指针单方向移动的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>但是实际上之前已经计算了从所有节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以任意一个字符为出边会到哪个节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故可以直接调用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体规则为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,c}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符 <span class="markdown-them-math-inline">$c$</span> 会到达的节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果当前到达了节点 <span class="markdown-them-math-inline">$i$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符为 <span class="markdown-them-math-inline">$c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则如果 <span class="markdown-them-math-inline">$c=s_{i+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么当前节点指向 <span class="markdown-them-math-inline">$i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则指向 <span class="markdown-them-math-inline">$f_{\pi_i,c}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>同 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法一样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机也可以用来实现若干文本串和模式串的匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串从节点 <span class="markdown-them-math-inline">$0$</span> 开始走<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次走到 <span class="markdown-them-math-inline">$|S|$</span> 都完成了一次匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若模式串长度为 <span class="markdown-them-math-inline">$m$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串长度为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数量为 <span class="markdown-them-math-inline">$t$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则时间复杂度为 <span class="markdown-them-math-inline">$\Theta(m+tn|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机在完成普通字符串匹配时表现并不优秀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但它可以求解一些特殊的字符串匹配问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>定义 <span class="markdown-them-math-inline">$g_1=&quot;a&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_2=&quot;aba&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_3=&quot;abacaba&quot;\cdots \forall i,g_i=g_{i-1}+(char)i+g_{i-1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 给定另一字符串 <span class="markdown-them-math-inline">$S$</span> 和整数 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$S$</span> 在 <span class="markdown-them-math-inline">$g_k$</span> 中的匹配次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>保证 <span class="markdown-them-math-inline">$|S|\times k\leqslant 10^6$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>显然题目是要求从 <span class="markdown-them-math-inline">$0$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_k$</span> 进行匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数是多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>首先对 <span class="markdown-them-math-inline">$S$</span> 建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_j$</span> 进行匹配后经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$k_{i,S}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>匹配完字符串 <span class="markdown-them-math-inline">$S=g_i+(char)i$</span> 后停下来的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,j}=f_{i,j-1}+[k_{i,g_{j-1}+(char)(j-1)}=|S|]+f_{k_{i,g_{j-1}+(char)(j-1)},j-1}
+$$</div><p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S|\times k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于单次添加结点的复杂度是严格 <span class="markdown-them-math-inline">$\Theta(|\Sigma|)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以对 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机进行可持久化处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/808/G">[CF808G] Anthem of Berland</a></p>
+<p>考虑对模式串建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示对字符串匹配到第 <span class="markdown-them-math-inline">$i$</span> 位时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>跳到自动机的 <span class="markdown-them-math-inline">$j$</span> 号点匹配的次数最大值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,to}=\begin{cases}\max\{f_{i-1,j}+[to=m]\}(s_i\not =~'?')\\\max\limits_{k=0}^{25}\{f_{i-1,j}+[to=m]\}(s_i=~'?')\end{cases}
+$$</div><p>由于 <span class="markdown-them-math-inline">$\rm DP$</span> 空间开不下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要使用滚动数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S||T||\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../zi-fu-chuan-z-suan-fa/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「字符串」Z 算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="../za-xiang-fu-za-du-fen-xi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「杂项」复杂度分析
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>
