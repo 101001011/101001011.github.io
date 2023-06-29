@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>AtCoder Beginner Contest 213 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="ABC213 EGH 题解，ABCDEG 代码。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-AtCoder Beginner Contest 213" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2023-06-24T03:00:56.692Z" itemprop="datePublished">2023-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      AtCoder Beginner Contest 213
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#e"><span class="toc-number">1.</span> <span class="toc-text">E</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#g"><span class="toc-number">2.</span> <span class="toc-text">G</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h"><span class="toc-number">3.</span> <span class="toc-text">H</span></a></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ABC213 EGH 题解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>ABCDEG 代码<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="e">E</h2>
+<p>考虑使用 <span class="markdown-them-math-inline">$\rm bfs$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>观察到每一步的代价都是 <span class="markdown-them-math-inline">$0$</span> 或 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是建立双端队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>每次迭代取队头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果走了代价为 <span class="markdown-them-math-inline">$0$</span> 的边就将出点加入队首<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则加入队尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑其正确性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为走代价为 <span class="markdown-them-math-inline">$0$</span> 的边不会增加当前点的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以维护住当前取出的点一定是答案最小点的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nm)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种模型还可拓展到代价为 <span class="markdown-them-math-inline">$0 \sim k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只需要对每种贡献维护一个队列即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现仍然满足单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nk)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="g">G</h2>
+<p>考虑使用状压 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$f_S$</span> 表示仅考虑 <span class="markdown-them-math-inline">$S$</span> 的导出子图<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令它与 <span class="markdown-them-math-inline">$1$</span> 连通的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$cnt_S$</span> 表示 <span class="markdown-them-math-inline">$S$</span> 导出子图中的边数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ans_k = \sum _ {1, k \in S} f_S \times 2 ^ {cnt_{U-S}}
+$$</div><p>考虑容斥求解 <span class="markdown-them-math-inline">$f_S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_S = 2 ^ {cnt_S} - \sum _ {1 \in T, T \subsetneq S} f_T \times 2 ^ {cnt_{S - T}}
+$$</div><p>求解两部分的时间复杂度分别为 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span> 和 <span class="markdown-them-math-inline">$\Theta(3 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>后半部分可以使用 <span class="markdown-them-math-inline">$\rm FWT$</span> 优化或卷积做到 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="h">H</h2>
+<p>考虑 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示到 <span class="markdown-them-math-inline">$i$</span> 为止经过长度为 <span class="markdown-them-math-inline">$j$</span> 的路径的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$E_{u, v, w}$</span> 表示从 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 长度为 <span class="markdown-them-math-inline">$w$</span> 的路径数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然有转移方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i, j} = \sum _ {k = 1} ^ n \sum _ {l = 1} ^ T f_{k, j - l} \times E_{k, i, l}
+$$</div><p>考虑用 <span class="markdown-them-math-inline">$\rm GF$</span> 拟合这个过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F_i(x) = \sum \limits_{j} f_{i, j} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$G_{i, j}(x) = \sum \limits_ {k \geqslant 1} E_{i, j, k} x ^ k.$</span> 有方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F_i(x) = \sum _ {j = 1} ^ n F_j(x) \times G_{j, i}(x)
+$$</div><p>使用分治多项式乘法即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n ^ 2 T \log ^ 2 T)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc213/submissions?f.Task=&amp;f.LanguageName=C%2B%2B&amp;f.Status=AC&amp;f.User=WA_on_test_233">Code Link</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../atcoder-beginner-contest-247/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AtCoder Beginner Contest 247
+        
+      </div>
+    </a>
+  
+  
+    <a href="../atcoder-beginner-contest-214/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          AtCoder Beginner Contest 214
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>

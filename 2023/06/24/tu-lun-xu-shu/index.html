@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「图论」虚树 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="虚树学习笔记及经典例题。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-[图论]虚树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2023-06-24T03:00:56.707Z" itemprop="datePublished">2023-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「图论」虚树
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">虚树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">经典例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bsdoi2011%5D-%E6%B6%88%E8%80%97%E6%88%98"><span class="toc-number">2.1.</span> <span class="toc-text">[SDOI2011] 消耗战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bheoi2014%5D-%E5%A4%A7%E5%B7%A5%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">[HEOI2014] 大工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bsdoi2015%5D-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F"><span class="toc-number">2.3.</span> <span class="toc-text">[SDOI2015] 寻宝游戏</span></a></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>虚树学习笔记及经典例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="虚树">虚树</h2>
+<p>在一些问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只关心关键点的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时我们需要维护他们之间的树形结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以想到将它们和它们之间的 <span class="markdown-them-math-inline">$\rm LCA$</span> 拉出来建一颗树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这棵树就被称作虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>有一个朴素的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是对它们两两求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对求出的 <span class="markdown-them-math-inline">$\rm LCA$</span> 再求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>中途判重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后按照祖先关系连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>经过观察可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只需要按照 <span class="markdown-them-math-inline">$\rm dfs$</span> 虚从小到大的顺序枚举每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将相邻两点求 <span class="markdown-them-math-inline">$\rm LCA$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以维护一个栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个栈中存的是当前点在虚树上的所有祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设当前栈顶为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于新加入的结点 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们对它进行分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)=v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接将 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 是栈中某个不为 <span class="markdown-them-math-inline">$v$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹栈直到 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后并把 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 不在栈中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么弹栈直到栈顶的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序小于 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并把最后一个弹出的结点向 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后把 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 和 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>不难发现这样一定是对的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且设关键点数量为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则虚树内点数不超过 <span class="markdown-them-math-inline">$2k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>在一棵有 <span class="markdown-them-math-inline">$n$</span> 个点的树上建立一颗有 <span class="markdown-them-math-inline">$k$</span> 个点的虚树的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="[sdoi2011]-消耗战">[SDOI2011] 消耗战</h3>
+<p>首先有一个暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_u$</span> 表示将 <span class="markdown-them-math-inline">$u$</span> 的子树内所有关键点与 <span class="markdown-them-math-inline">$u$</span> 的联系断开所需要的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>转移时枚举 <span class="markdown-them-math-inline">$u$</span> 的所有子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>若 <span class="markdown-them-math-inline">$v$</span> 为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么必须切断这条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$dp_u=dp_u+w_{u,v}$</span></li>
+<li>若 <span class="markdown-them-math-inline">$v$</span> 不为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以切断这条边也可以从 <span class="markdown-them-math-inline">$dp_v$</span> 转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$dp_u=dp_u+min\{dp_v,w_{u,v}\}$</span></li>
+</ul>
+<p>最终答案就是 <span class="markdown-them-math-inline">$dp_1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个暴力的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(qn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>观察到 <span class="markdown-them-math-inline">$\sum k\leqslant 5e5$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以考虑对每次询问建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>建虚树之前需要记 <span class="markdown-them-math-inline">$M_u$</span> 表示从 <span class="markdown-them-math-inline">$1$</span> 到 <span class="markdown-them-math-inline">$u$</span> 的路径上最短的边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为只需要切掉最短的边权就可以让点 <span class="markdown-them-math-inline">$u$</span> 与 <span class="markdown-them-math-inline">$1$</span> 不连通<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而切上面的边是更优的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以用 <span class="markdown-them-math-inline">$M_u$</span> 直接替换转移方程中的 <span class="markdown-them-math-inline">$w_{u,v}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[heoi2014]-大工程">[HEOI2014] 大工程</h3>
+<p>首先建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>对于两两之间距离之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以计算每条边的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>对于最大<span class="markdown-them-math-inline">$/$</span>最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以树形 <span class="markdown-them-math-inline">$\rm DP$</span> 或点分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[sdoi2015]-寻宝游戏">[SDOI2015] 寻宝游戏</h3>
+<p>我们发现如果将虚树建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案就是虚树上所有边权之和的两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是我们考虑动态维护虚树的边权之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>先把所有点的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序求出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后我们发现边权之和等于 <span class="markdown-them-math-inline">$\rm dfs$</span> 序相邻两点的距离之和加上最左边和最右边两点的距离<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们可以使用 <span class="markdown-them-math-inline">$\rm set$</span> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树剖求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../zi-fu-chuan-ke-chi-jiu-hua-trie-shu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「字符串」(可持久化) Trie 树
+        
+      </div>
+    </a>
+  
+  
+    <a href="../tu-lun-chang-lian-pou-fen/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「图论」长链剖分
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>

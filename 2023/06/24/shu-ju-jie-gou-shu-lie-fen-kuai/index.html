@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「数据结构」数列分块 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="分块学习笔记及一些经典例题。">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-[数据结构]数列分块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2023-06-24T03:00:56.722Z" itemprop="datePublished">2023-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「数据结构」数列分块
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%88%97%E5%88%86%E5%9D%97%E5%85%A5%E9%97%A8-9%20%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">数列分块入门 9 题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#t1-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9,%20%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.</span> <span class="toc-text">T1 区间修改, 单点查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t2-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9,%20%E6%9F%A5%E5%8C%BA%E9%97%B4%E5%86%85%E5%B0%8F%E4%BA%8E%E6%9F%90%E4%B8%AA%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">T2 区间修改, 查区间内小于某个数的个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t3-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9,%20%E5%8C%BA%E9%97%B4%E6%9F%A5%E5%89%8D%E9%A9%B1"><span class="toc-number">2.3.</span> <span class="toc-text">T3 区间修改, 区间查前驱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t4-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9,%20%E5%8C%BA%E9%97%B4%E6%B1%82%E5%92%8C"><span class="toc-number">2.4.</span> <span class="toc-text">T4 区间修改, 区间求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t5-%E5%8C%BA%E9%97%B4%E5%BC%80%E6%96%B9,%20%E5%8C%BA%E9%97%B4%E6%B1%82%E5%92%8C"><span class="toc-number">2.5.</span> <span class="toc-text">T5 区间开方, 区间求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t6-%E5%8D%95%E7%82%B9%E6%8F%92%E5%85%A5,%20%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.6.</span> <span class="toc-text">T6 单点插入, 单点查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t7-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9(%E5%8C%85%E5%90%AB%E5%8A%A0%E5%92%8C%E4%B9%98),%20%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.7.</span> <span class="toc-text">T7 区间修改(包含加和乘), 单点查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t8-%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0%E5%B9%B6%E5%85%A8%E9%83%A8%E4%BF%AE%E6%94%B9%E6%88%90%E8%BF%99%E4%B8%AA%E6%95%B0"><span class="toc-number">2.8.</span> <span class="toc-text">T8 区间查询数的个数并全部修改成这个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#t9-%E8%AF%A2%E9%97%AE%E5%8C%BA%E9%97%B4%E6%9C%80%E5%B0%8F%E4%BC%97%E6%95%B0"><span class="toc-number">2.9.</span> <span class="toc-text">T9 询问区间最小众数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">经典例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Btjoi2009%5D-%E5%BC%80%E5%85%B3"><span class="toc-number">3.1.</span> <span class="toc-text">[TJOI2009] 开关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg3396%5D-%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81"><span class="toc-number">3.2.</span> <span class="toc-text">[LG3396] 哈希冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg2801%5D-%E6%95%99%E4%B8%BB%E7%9A%84%E9%AD%94%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">[LG2801] 教主的魔法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F"><span class="toc-number">3.4.</span> <span class="toc-text">[国家集训队] 排队</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg4168%5D-violet%20%E8%92%B2%E5%85%AC%E8%8B%B1"><span class="toc-number">3.5.</span> <span class="toc-text">[LG4168] Violet 蒲公英</span></a></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>分块学习笔记及一些经典例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<h2 id="基本思想">基本思想</h2>
+<p>考虑一些在序列上的区间操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如区间加和区间求和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>直接暴力做单次操作复杂度是 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(qn)$</span>.</p>
+<p>如果将序列分成 <span class="markdown-them-math-inline">$\sqrt{n}$</span> 块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每块长度为 <span class="markdown-them-math-inline">$\sqrt{n}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对每个块维护里面所有元素的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即可在 <span class="markdown-them-math-inline">$\Theta(\sqrt{n})$</span> 的复杂度内进行单次操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体实现如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>令块的数量为 <span class="markdown-them-math-inline">$num=\sqrt{n}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单个块的长度为 <span class="markdown-them-math-inline">$siz=\lceil\frac{n}{num}\rceil$</span>.</p>
+</li>
+<li>
+<p>记 <span class="markdown-them-math-inline">$bel_i$</span> 表示 <span class="markdown-them-math-inline">$i$</span> 号节点属于第几个块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>可以记录一些题目需要用到的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如 <span class="markdown-them-math-inline">$sum_i$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个块内所有元素的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<h2 id="数列分块入门-9 题">数列分块入门 9 题</h2>
+<h3 id="t1-区间修改, 单点查询">T1 区间修改, 单点查询</h3>
+<p>对每个块维护整块加的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>查询的时候加上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t2-区间修改, 查区间内小于某个数的个数">T2 区间修改, 查区间内小于某个数的个数</h3>
+<p>对每个块内的元素排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间修改时整块大小顺序不变<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>散块暴力排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>查询时二分即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n}\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>排序使用归并可以将复杂度优化到 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n\log n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t3-区间修改, 区间查前驱">T3 区间修改, 区间查前驱</h3>
+<p>同样是排序后在块内二分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只不过是把求比他小的数的数量改成求比它小的数中最大的那个<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n}\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>排序使用归并可以将复杂度优化到 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n\log n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t4-区间修改, 区间求和">T4 区间修改, 区间求和</h3>
+<p>维护每个块的和以及加的数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用类似 <span class="markdown-them-math-inline">$\rm T1$</span> 的方法维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t5-区间开方, 区间求和">T5 区间开方, 区间求和</h3>
+<p>我们发现开方操作是没办法全局维护的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑寻找开方操作的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>观察到每个数被开方很少的次数以后就会变成 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>或者它本身就是 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但这部分显然没有贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以直接删去<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是对每个块记录一下里面 <span class="markdown-them-math-inline">$1$</span> 的个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果全都是 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就不对它进行开方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否暴力开方即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>求区间和还是维护一下每个块的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t6-单点插入, 单点查询">T6 单点插入, 单点查询</h3>
+<p>我们发现暴力做的时候需要将所有数向后移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是考虑分块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给每个块预留 <span class="markdown-them-math-inline">$\sqrt{n}$</span> 的剩余空间用来后移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记一下当前块的长度即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>查询的时候每访问一个块就把查询编号减去当前块的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>不难发现这样做单次操作时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{n}).$</span></p>
+<p>但是我们发现一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果插入全在一个块内的话复杂度很快就会变成 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑每进行插入操作 <span class="markdown-them-math-inline">$\sqrt{n}$</span> 次就重构分块即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t7-区间修改(包含加和乘), 单点查询">T7 区间修改(包含加和乘), 单点查询</h3>
+<p>考虑对每个块记 <span class="markdown-them-math-inline">$\rm add$</span> 和 <span class="markdown-them-math-inline">$\rm mul$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>表示块内元素的真实值为 <span class="markdown-them-math-inline">$a\times \rm mul+add$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间加的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给 <span class="markdown-them-math-inline">$\rm add$</span> 加上 <span class="markdown-them-math-inline">$k$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间乘的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不仅需要给 <span class="markdown-them-math-inline">$\rm mul$</span> 乘上 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>还需要给 <span class="markdown-them-math-inline">$\rm add$</span> 乘上 <span class="markdown-them-math-inline">$k.$</span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t8-区间查询数的个数并全部修改成这个数">T8 区间查询数的个数并全部修改成这个数</h3>
+<p>我们发现如果询问区间小的话查询和修改都很容易<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果询问区间大的话会把很长一段都变成相同的数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果记录一个块是否都是同一个数的话就很容易维护了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>不难发现这样做复杂度是 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="t9-询问区间最小众数">T9 询问区间最小众数</h3>
+<p>记 <span class="markdown-them-math-inline">$s_{i,j}$</span> 表示前 <span class="markdown-them-math-inline">$i$</span> 个块中 <span class="markdown-them-math-inline">$j$</span> 出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$p_{i,j}$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个块到第 <span class="markdown-them-math-inline">$j$</span> 个块的众数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于一次询问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>答案一定是整块的众数或散块的众数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个只需要对比一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="[tjoi2009]-开关">[TJOI2009] 开关</h3>
+<p>记 <span class="markdown-them-math-inline">$c_i$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 盏灯是否开着<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$sum_i$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个块中有多少盏灯开着<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个块的状态是否整体改变<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于区间取反操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>零散操作直接修改 <span class="markdown-them-math-inline">$c_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并根据 <span class="markdown-them-math-inline">$c_i$</span> 和 <span class="markdown-them-math-inline">$d_i$</span> 决定 <span class="markdown-them-math-inline">$sum_i+1$</span> 或 <span class="markdown-them-math-inline">$-1$</span>. 整块操作不用改变 <span class="markdown-them-math-inline">$c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接令 <span class="markdown-them-math-inline">$sum_i=R_i-L_i+1-sum_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且将 <span class="markdown-them-math-inline">$d_i$</span> 取反<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于区间求和操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>零散点求和直接加上 <span class="markdown-them-math-inline">$c_i\oplus d_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>整块求和则加上 <span class="markdown-them-math-inline">$sum_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>单次操作复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(q\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[lg3396]-哈希冲突">[LG3396] 哈希冲突</h3>
+<p>转化题意<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设计一种数据结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>支持<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>单点修改</p>
+</li>
+<li>
+<p>求从某一点 <span class="markdown-them-math-inline">$pos(pos\leqslant d)$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以步长 <span class="markdown-them-math-inline">$d$</span> 遍历数列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求所经过的所有数之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>考虑根号分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于 <span class="markdown-them-math-inline">$d\geqslant \sqrt{n}$</span> 的询问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接暴力查询<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于 <span class="markdown-them-math-inline">$d \leqslant \sqrt{n}$</span> 的询问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$sum_{i,j}$</span> 表示从 <span class="markdown-them-math-inline">$i(i\leqslant \sqrt{n})$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>步长为 <span class="markdown-them-math-inline">$j(j\leqslant \sqrt{n})$</span> 的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>预处理的时候直接枚举计算即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于修改操作 <span class="markdown-them-math-inline">$a[pos]\leftarrow x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>先直接在原数列上进行修改<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再考虑其对 <span class="markdown-them-math-inline">$sum$</span> 数组造成了什么影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于步长为 <span class="markdown-them-math-inline">$d$</span> 的预处理数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只会对 <span class="markdown-them-math-inline">$sum_{pos\%d,d}$</span> 造成影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是对每个 <span class="markdown-them-math-inline">$d(d\leqslant \sqrt{n})$</span> 修改一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次修改时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta[(n+q)\sqrt{n}]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[lg2801]-教主的魔法">[LG2801] 教主的魔法</h3>
+<p>考虑分块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>记原数列为 <span class="markdown-them-math-inline">$A$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将 <span class="markdown-them-math-inline">$A$</span> 复制一份记为 <span class="markdown-them-math-inline">$B$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将 <span class="markdown-them-math-inline">$B$</span> 分块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>块内排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于修改操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>整块直接打标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>散点修改完后再块内排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样完成操作后仍能保持分块数列的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次操作复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{n}\log\sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于查询操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>二分查找第 <span class="markdown-them-math-inline">$i$</span> 个块内有多少个元素不小于 <span class="markdown-them-math-inline">$k-add_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次操作复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{n}\log \sqrt{n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta[(n+q\sqrt{n})\log n]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑再对复杂度做一些优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令块的大小为 <span class="markdown-them-math-inline">$s$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则修改操作若采用归并排序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单次操作复杂度为 <span class="markdown-them-math-inline">$\Theta(s+\frac{n}{s})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时单次查询复杂度为 <span class="markdown-them-math-inline">$\Theta(s+\frac{n}{s}\log s)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>当询问次数为 <span class="markdown-them-math-inline">$q$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总复杂度为 <span class="markdown-them-math-inline">$\Theta[q(s+\frac{n}{s}\log n)]\geqslant \Theta(q\sqrt{n\log n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取最小值当且仅当 <span class="markdown-them-math-inline">$s=\sqrt{n\log n}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[国家集训队]-排队">[国家集训队] 排队</h3>
+<p>分块 <span class="markdown-them-math-inline">$+$</span> 树状数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑交换两个数 <span class="markdown-them-math-inline">$a_u$</span> 和 <span class="markdown-them-math-inline">$a_v$</span> 的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>显然 <span class="markdown-them-math-inline">$u$</span> 左边的数和 <span class="markdown-them-math-inline">$v$</span> 右边的数没有贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>对于 <span class="markdown-them-math-inline">$a_u$</span> 来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>贡献为 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 之间比它大的数的数量减去比它小的数的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>对于 <span class="markdown-them-math-inline">$a_v$</span> 来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>贡献为 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 之间比它小的数的数量减去比它大的数的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>至于如何计算 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 之间比某个数大或小的值的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分块后散块直接暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>整块建两颗树状数组即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令块大小为 <span class="markdown-them-math-inline">$siz$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则时间复杂度为 <span class="markdown-them-math-inline">$\Theta[nlogn+q(siz+\frac{n}{siz}logn)]\geqslant nlogn+q\sqrt{nlogn}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取最小值当且仅当 <span class="markdown-them-math-inline">$siz=\sqrt{nlogn}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时块的数量 <span class="markdown-them-math-inline">$num=\sqrt{\frac{n}{logn}}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[lg4168]-violet 蒲公英">[LG4168] Violet 蒲公英</h3>
+<p>考虑分块<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$s_{i,j}$</span> 表示前 <span class="markdown-them-math-inline">$i$</span> 个块中颜色为 <span class="markdown-them-math-inline">$j$</span> 的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$p_{i,j}$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个块到第 <span class="markdown-them-math-inline">$j$</span> 个块的众数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于一次询问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>先求出整块中的众数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>众数的出现次数和所有在零散块中出现了的颜色的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果零散块中出现的颜色没有一个比众数出现的次数多<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么要求的众数就是整块的众数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则是出现次数最多的颜色<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n\sqrt{m})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>此时块大小 <span class="markdown-them-math-inline">$B=\frac{n}{\sqrt{m}}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../shu-ju-jie-gou-xian-duan-shu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「数据结构」线段树
+        
+      </div>
+    </a>
+  
+  
+    <a href="../shu-ju-jie-gou-dai-quan-bing-cha-ji/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「数据结构」(带权)并查集
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>
