@@ -69,7 +69,7 @@
     
 <div id="article-toc">
     <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-cf1929d$%5D(https://codeforcescom/contest/1929/problem/d)%20$%5Crm%20(%5E*1974)$"><span class="toc-number">1.</span> <span class="toc-text">$\rm CF1929D$ $\rm (^*1974)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-cf1929e$%5D(https://codeforcescom/contest/1929/problem/d)%20$%5Crm%20(%5E*2414)$"><span class="toc-number">2.</span> <span class="toc-text">$\rm CF1929E$ $\rm (^*2414)$</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-cf1929d$%5D(https://codeforcescom/contest/1929/problem/d)%20$%5Crm%20(%5E*1974)$"><span class="toc-number">1.</span> <span class="toc-text">$\rm CF1929D$ $\rm (^*1974)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-cf1929e$%5D(https://codeforcescom/contest/1929/problem/d)%20$%5Crm%20(%5E*2414)$"><span class="toc-number">2.</span> <span class="toc-text">$\rm CF1929E$ $\rm (^*2414)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-abc341g$%5D(https://atcoderjp/contests/abc341/tasks/abc341_g)%20$%5Crm%20(%5E*2208)$"><span class="toc-number">3.</span> <span class="toc-text">$\rm ABC341G$ $\rm (^*2208)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%5B$%5Crm-arc172e$%5D(https://atcoderjp/contests/arc172/tasks/arc172_e)%20$%5Crm%20(%5E*2358)$"><span class="toc-number">4.</span> <span class="toc-text">$\rm ARC172E$ $\rm (^*2358)$</span></a></li></ol>
 </div>
 
     <div class="e-content article-entry" itemprop="articleBody">
@@ -204,6 +204,110 @@ map &lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword
 
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) E[i].<span class="hljs-built_in">clear</span>();
         M.<span class="hljs-built_in">clear</span>();
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
+<h2 id="[$\rm-abc341g$](https://atcoderjp/contests/abc341/tasks/abc341_g) $\rm (^*2208)$"><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc341/tasks/abc341_g"><span class="markdown-them-math-inline">$\rm ABC341G$</span></a> <span class="markdown-them-math-inline">$\rm (^*2208)$</span></h2>
+<p>给定长度为 <span class="markdown-them-math-inline">$n$</span> 的序列 <span class="markdown-them-math-inline">$\{a_n\}$</span>, 对每个整数 <span class="markdown-them-math-inline">$k \in [1, n]$</span>, 求 <span class="markdown-them-math-inline">$\max_{r \geqslant k} \left\{\frac{1}{r - k + 1}\sum _{i = k}^r a_i\right\}$</span>.</p>
+<p><span class="markdown-them-math-inline">$n \leqslant 2 \times 10 ^ 5, \forall i, a_i \leqslant 10 ^ 6$</span>.</p>
+<hr>
+<p>考虑将平均数转化为直线的斜率, 构造平面上如下 <span class="markdown-them-math-inline">$n + 1$</span> 个点 :</p>
+<ul>
+<li>编号为 <span class="markdown-them-math-inline">$0$</span> 的点为 <span class="markdown-them-math-inline">$(0, 0)$</span>.</li>
+<li>编号为 <span class="markdown-them-math-inline">$i (i \in [1, n] \cup \mathbb{Z})$</span> 的点为 <span class="markdown-them-math-inline">$(i, a_1 + a_2 + \cdots + a_i)$</span>.</li>
+</ul>
+<p>注意到 <span class="markdown-them-math-inline">$l \to r$</span> 的平均数即为点 <span class="markdown-them-math-inline">$l - 1$</span> 和 <span class="markdown-them-math-inline">$r$</span> 之间的斜率, 于是从右往左用单调栈维护一个上凸壳转移即可.</p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span>.</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">2e5</span> + <span class="hljs-number">10</span>;
+
+<span class="hljs-keyword">int</span> n, sta[N], top;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> s[N];
+<span class="hljs-keyword">double</span> ans[N];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);
+    
+    cin &gt;&gt; n;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) cin &gt;&gt; s[i], s[i] += s[i - <span class="hljs-number">1</span>];
+
+    sta[++top] = n;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;
+        <span class="hljs-keyword">while</span> (top &gt; <span class="hljs-number">1</span> &amp;&amp; (s[sta[top - <span class="hljs-number">1</span>]] - s[i]) * (sta[top] - i) &gt;= (s[sta[top]] - s[i]) * (sta[top - <span class="hljs-number">1</span>] - i)) top--;
+        ans[i + <span class="hljs-number">1</span>] = <span class="hljs-number">1.0</span> * (s[sta[top]] - s[i]) / (sta[top] - i);
+        sta[++top] = i;
+    &#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
+        cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">10</span>) &lt;&lt; ans[i] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
+<h2 id="[$\rm-arc172e$](https://atcoderjp/contests/arc172/tasks/arc172_e) $\rm (^*2358)$"><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc172/tasks/arc172_e"><span class="markdown-them-math-inline">$\rm ARC172E$</span></a> <span class="markdown-them-math-inline">$\rm (^*2358)$</span></h2>
+<p>有 <span class="markdown-them-math-inline">$q$</span> 次询问, 每次询问给定正整数 <span class="markdown-them-math-inline">$x$</span>, 求最小的 <span class="markdown-them-math-inline">$n$</span> 满足 <span class="markdown-them-math-inline">$n ^ n \equiv x \pmod p$</span>.</p>
+<p><span class="markdown-them-math-inline">$q \leqslant 10 ^ 4, 1 \leqslant x &lt; p = 10 ^ 9, \color{red}{2, 5 \nmid x}$</span>.</p>
+<hr>
+<p><strong>引理</strong></p>
+<p>设集合 <span class="markdown-them-math-inline">$U_k$</span> 为 <span class="markdown-them-math-inline">$10 ^ k (k \in \mathbb{Z^{+}})$</span> 的简化剩余系, 命题 <span class="markdown-them-math-inline">$P_k : \{n^n~|~n \in U_k\} = U_k$</span> 成立.</p>
+<p><strong>证明</strong></p>
+<p>对于 <span class="markdown-them-math-inline">$P_{1}$</span>, <span class="markdown-them-math-inline">$U_1 = \{1, 3, 7, 9\}$</span>. 注意到 <span class="markdown-them-math-inline">$1 ^ 1 \equiv 1, 3 ^ 3 \equiv 7, 7 ^ 7 \equiv 3, 9 ^ 9 \equiv 9 \pmod {10}$</span>, 于是 <span class="markdown-them-math-inline">$P_1$</span> 成立.</p>
+<p>对于 <span class="markdown-them-math-inline">$P_2$</span>,  与 <span class="markdown-them-math-inline">$P_1$</span> 类似的, 同样注意到 <span class="markdown-them-math-inline">$n \in U_2$</span> 时, <span class="markdown-them-math-inline">$n$</span> 与 <span class="markdown-them-math-inline">$n ^ n$</span> 在模 <span class="markdown-them-math-inline">$10^2$</span> 意义下一一对应, 于是 <span class="markdown-them-math-inline">$P_2$</span> 成立.</p>
+<p>假设 <span class="markdown-them-math-inline">$P_k (k \geqslant 2)$</span> 成立, 即 <span class="markdown-them-math-inline">$\{n^n~|~n \in U_k\} = U_k$</span>.</p>
+<p>注意到二项式定理 : <span class="markdown-them-math-inline">$(a + b) ^ k = \sum _ {i = 0} ^ k \binom{k}{i} a ^ i b ^ {k - i}$</span>, 代入得</p>
+<div class="markdown-them-math-block">$$(n+t \cdot10 ^ k)^{n+t \cdot10 ^ k} = \sum _ {i = 0} ^ {n+t \cdot10 ^ k} \dbinom{n+t \cdot10 ^ k}{i} (t \cdot10 ^ k) ^ i n ^ {n+t \cdot10 ^ k - i}
+$$</div><p>注意到 <span class="markdown-them-math-inline">$(t \cdot10 ^ k) ^ 2 \equiv 0 \pmod {10 ^ {k + 1}}$</span>, 于是</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+&amp;\quad\sum _ {i = 0} ^ {n+t \cdot10 ^ k} \dbinom{n+t \cdot10 ^ k}{i} (t \cdot10 ^ k) ^ i n ^ {n+t \cdot10 ^ k - i}\\
+&amp;\equiv n ^ {n+t \cdot10 ^ k} + (n+t \cdot10 ^ k) \cdot n ^ {n+t \cdot10 ^ k - 1} \cdot t \cdot10 ^ k \pmod {10 ^ {k + 1}} \\
+&amp;\equiv n ^ {n+t \cdot10 ^ k} + n ^ {n+t \cdot10 ^ k} \cdot t \cdot10 ^ k \pmod {10 ^ {k + 1}} \\
+&amp;\equiv (n ^ n + n ^ n \cdot t \cdot10 ^ k) (n ^ {10 ^ k}) ^ t \pmod {10 ^ {k + 1}}
+\end{aligned}
+$$</div><p>注意到欧拉定理 : 若 <span class="markdown-them-math-inline">$a \perp m$</span>, 则 <span class="markdown-them-math-inline">$a ^ {\varphi(m)} \equiv 1 \pmod m$</span>, 其中 <span class="markdown-them-math-inline">$\varphi(x)$</span> 表示 <span class="markdown-them-math-inline">$[1, x]$</span> 中与 <span class="markdown-them-math-inline">$x$</span> 互质的整数数量.</p>
+<p>因为 <span class="markdown-them-math-inline">$\varphi(2 ^ {k + 1}) = 2 ^ k$</span>, 且 <span class="markdown-them-math-inline">$n \perp 2 ^ {k + 1}$</span>, 故 <span class="markdown-them-math-inline">$n ^ {2 ^ k} \equiv 1 \pmod {2 ^ {k + 1}}$</span>, 进而 <span class="markdown-them-math-inline">$n ^ {10 ^ k}\equiv (n ^ {2 ^ k}) ^ {5 ^ k} \equiv 1 \pmod {2 ^ {k + 1}}$</span>. 因为 <span class="markdown-them-math-inline">$\varphi (5 ^ {k + 1}) = 4 \times 5 ^ k$</span>, 且 <span class="markdown-them-math-inline">$n \perp 5 ^ {k + 1}$</span>, 故 <span class="markdown-them-math-inline">$n ^ {4 \times 5 ^ k} \equiv 1 \pmod {5 ^ {k + 1}}$</span>, 进而 <span class="markdown-them-math-inline">$n ^ {10 ^ k} \equiv (n ^ {4 \times 5 ^ k}) ^ {2 ^ {k - 2}} \equiv 1 \pmod {5 ^ {k + 1}}$</span>. 又因为 <span class="markdown-them-math-inline">$2 ^ {k + 1} \perp 5 ^ {k + 1}$</span>, 因此 <span class="markdown-them-math-inline">$n ^ {10 ^ k} \equiv 1 \pmod {10 ^ {k + 1}}$</span>. 代入得</p>
+<div class="markdown-them-math-block">$$(n ^ n + n ^ n \cdot t \cdot10 ^ k) (n ^ {10 ^ k}) ^ t \equiv n ^ n \cdot (t \cdot 10 ^ k + 1) \pmod {10 ^ {k + 1}}
+$$</div><p>于是 <span class="markdown-them-math-inline">$\{n^n~|~n \in U_{k + 1}\}$</span> 中的每个数 <span class="markdown-them-math-inline">$(n+t \cdot10 ^ k)^{n+t \cdot10 ^ k} \equiv n ^ n \cdot (t \cdot 10 ^ k + 1) \pmod {10 ^ {k + 1}}$</span>.</p>
+<p>假设存在 <span class="markdown-them-math-inline">$t_i \not= t_j$</span>, 满足 <span class="markdown-them-math-inline">$n ^ n (t_i \cdot 10 ^ k + 1) \equiv n ^ n (t_j \cdot 10 ^ k + 1) \pmod {10 ^ {k + 1}}$</span>, 因为 <span class="markdown-them-math-inline">$n ^ n \perp 10 ^ {k + 1}$</span>, 所以 <span class="markdown-them-math-inline">$n ^ n$</span> 存在逆元(可除), 故解得 <span class="markdown-them-math-inline">$t_i = t_j$</span>, 矛盾. 于是 <span class="markdown-them-math-inline">$\forall i \not= j, n ^ n (i \cdot 10 ^ k + 1) \not\equiv n ^ n (j \cdot 10 ^ k + 1) \pmod {10 ^ {k + 1}}$</span>.</p>
+<p>于是 <span class="markdown-them-math-inline">$\{n^n~|~n \in U_{k + 1}\}$</span> 是个不重集得证, 即 <span class="markdown-them-math-inline">$\textrm{card}\{n^n~|~n \in U_{k + 1}\} = U_{k + 1}$</span>.</p>
+<p>因为我们构造 <span class="markdown-them-math-inline">$n ^ n$</span> 构成的集合的方式为, 令其尾数为 <span class="markdown-them-math-inline">$\{1, 3, 7, 9\}$</span> 其中之一, 不断向首位前添加 <span class="markdown-them-math-inline">$\{0, 1, \cdots, 9\}$</span>, 于是 <span class="markdown-them-math-inline">$n ^ n$</span> 的尾数一定是 <span class="markdown-them-math-inline">$\{1, 3, 7, 9\}$</span> 其中之一. 又因为 <span class="markdown-them-math-inline">$U_{k + 1}$</span> 包含了所有小于 <span class="markdown-them-math-inline">$10 ^ {k + 1}$</span> 且尾数为 <span class="markdown-them-math-inline">$\{1, 3, 7, 9\}$</span> 其中之一的正整数, 所以 <span class="markdown-them-math-inline">$\{n^n~|~n \in U_{k + 1}\} \subseteq U_{k + 1}$</span>.</p>
+<p>综上, <span class="markdown-them-math-inline">$P_k : \{n^n~|~n \in U_{k + 1}\} = U_{k + 1}$</span> 也即 <span class="markdown-them-math-inline">$P_{k + 1}$</span> 得证.</p>
+<p>归纳可证原命题.</p>
+<p>回到原问题, 显然 <span class="markdown-them-math-inline">$n ^ n \to x$</span> 的映射是可以 <span class="markdown-them-math-inline">$\Theta(\log n)$</span> 确定的, 于是我们考虑一位位确定 <span class="markdown-them-math-inline">$x \to n$</span> 的映射.</p>
+<p>对于最后两位, 可以直接枚举 <span class="markdown-them-math-inline">$n$</span> 检验 <span class="markdown-them-math-inline">$n ^ n \equiv x \pmod {100}$</span> 是否成立.</p>
+<p>假设后 <span class="markdown-them-math-inline">$k$</span> 位已经确定, 我们有 <span class="markdown-them-math-inline">$n ^ n \equiv x \pmod {10 ^ {k}}$</span>, 且 <span class="markdown-them-math-inline">$(t \cdot 10 ^ k + n) ^ {t \cdot 10 ^ k + n} \equiv x \pmod {x ^ {k + 1}}$</span> 对且仅对一个 <span class="markdown-them-math-inline">$t \in \{0, 1, \cdots, 9\}$</span> 成立, 于是可以枚举 <span class="markdown-them-math-inline">$t$</span> 检验是否成立.</p>
+<p>综上我们找到了一个 <span class="markdown-them-math-inline">$\Theta(k ^ 2)$</span> 单次查询 <span class="markdown-them-math-inline">$x \to n$</span> 的映射满足 <span class="markdown-them-math-inline">$n ^ n \equiv x \pmod {x ^ k}$</span> 的算法.</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">int</span> q, x, n, fac[<span class="hljs-number">10</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Pow</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> mod)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (; k; k &gt;&gt;= <span class="hljs-number">1</span>, a = <span class="hljs-number">1ll</span> * a * a % mod)
+        <span class="hljs-keyword">if</span> (k &amp; <span class="hljs-number">1</span>) res = <span class="hljs-number">1ll</span> * res * a % mod;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
+    fac[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; i++) fac[i] = fac[i - <span class="hljs-number">1</span>] * <span class="hljs-number">10</span>;
+
+    cin &gt;&gt; q; <span class="hljs-keyword">while</span> (q--) &#123;
+        cin &gt;&gt; x;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">99</span>; i++)
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Pow</span>(i, i, <span class="hljs-number">100</span>) == x % <span class="hljs-number">100</span>) n = i;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">2</span>; k &lt;= <span class="hljs-number">8</span>; k++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>; t &lt;= <span class="hljs-number">9</span>; t++)
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Pow</span>(t * fac[k] + n, t * fac[k] + n, fac[k + <span class="hljs-number">1</span>]) == x % fac[k + <span class="hljs-number">1</span>]) &#123;
+                    n += t * fac[k]; <span class="hljs-keyword">break</span>;
+                &#125;
+        &#125;
+        cout &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
