@@ -46,9 +46,9 @@
       <div id="content" class="outer">
         <section id="main">
   
-    <article id="post-整除性检验的本质" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-[新的思考] 整除性检验的本质" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2024/04/09/zheng-chu-xing-jian-yan-de-ben-zhi/" class="article-date">
+    <a href="2024/04/09/xin-de-si-kao-zheng-chu-xing-jian-yan-de-ben-zhi/" class="article-date">
   <time class="dt-published" datetime="2024-04-09T08:43:16.644Z" itemprop="datePublished">2024-04-09</time>
 </a>
     
@@ -56,56 +56,25 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="2024/04/09/xin-de-si-kao-zheng-chu-xing-jian-yan-de-ben-zhi/">「新的思考」整除性校验的本质</a>
+    </h1>
+  
+
+      </header>
+    
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="整除性检验的本质">整除性检验的本质</h2>
-<p>从小学开始我们就知道, 一个数能被 <span class="markdown-them-math-inline">$3$</span> 整除当且仅当其各位数字之和能被 <span class="markdown-them-math-inline">$3$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$4$</span> 整除, 当且仅当其最后 <span class="markdown-them-math-inline">$2$</span> 位数能被 <span class="markdown-them-math-inline">$4$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$11$</span> 整除, 当且仅当其奇数位减去偶数位数字之和能被 <span class="markdown-them-math-inline">$11$</span> 整除(个位数记为第 <span class="markdown-them-math-inline">$1$</span> 位).</p>
-<p>长大一点后, 我们可以用数学语言来刻画这个规律 :</p>
-<div class="markdown-them-math-block">$$\begin{cases}
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 + a_2 + \cdots + a_t \pmod 3 \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_2a_2} \pmod 4 \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 - a_2 + a_3 - \cdots + (-1)^{t - 1} a_t \pmod {11} \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_3a_2a_1} - \overline{a_6a_5a_4} + \cdots + (-1)^{\frac{t}{3} - 1} \overline{a_ta_{t - 1}a_{t - 2}} \pmod 7
-\end{cases}
-$$</div><p>容易发现, 其分为 <span class="markdown-them-math-inline">$3$</span> 类 :</p>
-<ul>
-<li>第一类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 的末 <span class="markdown-them-math-inline">$k$</span> 位在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-<li>第二类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-<li>第三类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段正负交替求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-</ul>
-<p>现在我们来探寻 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下可以使用哪种同余化简方式(或不满足三类中任意一种).</p>
-<ol>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv 0 \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_2a_1} \pmod n$</span>, 可以使用第一类化简方式.</li>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv \overline{a_ta_{t - 1}\cdots a_{k + 1}} \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} + \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第二类化简方式.</li>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv -1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1} 00\cdots 0} \equiv (-1) ^ p\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1}}$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} - \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第三类化简方式.</li>
-</ol>
-<p>于是想找到 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下的化简方式, 只需要找到最小的 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0~\textrm{or}~1~\textrm{or}- 1$</span> 即对应第 <span class="markdown-them-math-inline">$1/2/3$</span> 类化简方式. 若直到 <span class="markdown-them-math-inline">$k$</span> 等于 <span class="markdown-them-math-inline">$b$</span> 的幂在模 <span class="markdown-them-math-inline">$n$</span> 意义下的循环节长度仍未找到满足条件的 <span class="markdown-them-math-inline">$k$</span>, 则 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下不能使用这 <span class="markdown-them-math-inline">$3$</span> 种方式化简.</p>
-<p>一种找最小 <span class="markdown-them-math-inline">$k$</span> 的代码实现如下 :</p>
-<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
-
-<span class="hljs-keyword">int</span> T, b, n;
-unordered_map &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">bool</span>&gt; vis;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T); <span class="hljs-keyword">while</span> (T--) &#123;
-        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;b, &amp;n), b %= n;
-        <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>, k = <span class="hljs-number">1</span>, tmp = b;
-        <span class="hljs-keyword">while</span> (b != <span class="hljs-number">0</span> &amp;&amp; b != <span class="hljs-number">1</span> &amp;&amp; b != n - <span class="hljs-number">1</span> &amp;&amp; !vis[b]) &#123;
-            vis[b] = <span class="hljs-literal">true</span>;
-            b = <span class="hljs-number">1ll</span> * b * tmp % n, k++;
-        &#125;
-        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) a = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">1</span>) a = <span class="hljs-number">2</span>;
-        <span class="hljs-keyword">if</span> (b == n - <span class="hljs-number">1</span>) a = <span class="hljs-number">3</span>;
-        a ? <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;kind = %d, k = %d\n&quot;</span>, a, k) : <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;0&quot;</span>);
-        vis.<span class="hljs-built_in">clear</span>();
-    &#125;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-</code></pre></div>
-
+        <p>本文从常见的模 <span class="markdown-them-math-inline">$3$</span> 余 <span class="markdown-them-math-inline">$0$</span>, 模 <span class="markdown-them-math-inline">$7$</span> 余 <span class="markdown-them-math-inline">$0$</span> 的条件中抽象出了其数论本质.</p>
+        
+          <p class="article-more-link">
+            <a href="2024/04/09/xin-de-si-kao-zheng-chu-xing-jian-yan-de-ben-zhi/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -130,23 +99,26 @@ unordered_map &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keywo
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="2024/04/09/xin-de-si-kao-yi-lei-bei-xie-si-ding-li-xiang-guan-ji-fen-de-bian-huan-ji-qiao/">「新的思考」一类贝叶斯定理相关积分的变换技巧</a>
+    </h1>
+  
+
+      </header>
+    
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>考虑非负实数域上某可用条件概率刻画的期望<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$E(x) = \int_{0}^{+\infty} xP(t = x|q) \mathrm{d}x
-$$</div><p>其中 <span class="markdown-them-math-inline">$q$</span> 为已知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且 <span class="markdown-them-math-inline">$P(q|t = x)$</span> 是可用初等函数刻画的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>考虑贝叶斯定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$E(x) = \int_{0}^{+\infty} x\frac{P(q|t = x)P(t = x)}{P(q)} \mathrm{d}x
-$$</div><p>观察发现对 <span class="markdown-them-math-inline">$x$</span> 微分本质上就是在枚举每个 <span class="markdown-them-math-inline">$t = x$</span> 的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$P(t = x)$</span> 已经被 <span class="markdown-them-math-inline">$\mathrm{d}x$</span> 包含<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以看作 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故</p>
-<div class="markdown-them-math-block">$$E(x) = \int_{0}^{+\infty} x\frac{P(q|t = x)}{P(q)} \mathrm{d}x
-$$</div><p>大多数情况下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>哪怕 <span class="markdown-them-math-inline">$P(q)$</span> 可以用初等函数刻画<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>整个式子也会难以化简<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑拆 <span class="markdown-them-math-inline">$P(q)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$E(x) = \int_{0}^{+\infty} x\frac{P(q|t = x)}{\int_{0}^{+\infty} P(q|t = y) \mathrm{d}y } \mathrm{d}x
-$$</div><p>整理可得</p>
-<div class="markdown-them-math-block">$$E(x) = \frac{\int_{0}^{+\infty} xP(q|t = x) \mathrm{d}x}{\int_{0}^{+\infty} P(q|t = x) \mathrm{d}x }
-$$</div><p>设 <span class="markdown-them-math-inline">$P(q|t = x) = f(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中 <span class="markdown-them-math-inline">$f(x)$</span> 是初等函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又设 <span class="markdown-them-math-inline">$\var$</span> 为积分算子<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>即 <span class="markdown-them-math-inline">$[\var f(x)]' = f(x)$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即得</p>
-<div class="markdown-them-math-block">$$E(x) = \frac{\int_{0}^{+\infty} xf(x) \mathrm{d}x}{\int_{0}^{+\infty} f(x) \mathrm{d}x } = \lim_{\varepsilon \to 0^+}^{m \to +\infty}\frac{\var mf(m) - \var \varepsilon f(\varepsilon)}{\var f(m) - \var f(\varepsilon)}
-$$</div>
+        <p>在一些情况下, 非负实数域上存在一些可用条件概率刻画的期望, 但概率密度函数是难以计算的.</p>
+<p>本文介绍了一种变换, 可以避免直接计算概率密度函数, 而是改为计算某种反过来的条件概率.</p>
+        
+          <p class="article-more-link">
+            <a href="2024/04/09/xin-de-si-kao-yi-lei-bei-xie-si-ding-li-xiang-guan-ji-fen-de-bian-huan-ji-qiao/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
