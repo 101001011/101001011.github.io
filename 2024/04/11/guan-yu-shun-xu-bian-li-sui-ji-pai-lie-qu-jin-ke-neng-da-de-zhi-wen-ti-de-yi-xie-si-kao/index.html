@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>关于「顺序遍历随机排列取尽可能大的值」问题的一些思考 | CCA&#39;s   Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="考虑一个随机排列, 只能从前往后按顺序得知每个位置的值, 每次得到一个新的值时必须立刻决定选或不选, 一旦选定不能更改. 需要找到一个策略尽可能最大化这个选出来的值.">
+  
+  
+  
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  
+    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="../../../../index.html">Home</a>
+    
+      <a class="main-nav-link" href="../../../../archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="../../../../index.html" id="logo">CCA&#39;s   Blog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="../../../../index.html" id="subtitle">智慧.   优雅.   理性.</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-关于「顺序遍历随机排列取尽可能大的值」问题的一些思考" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time class="dt-published" datetime="2024-04-11T09:23:40.221Z" itemprop="datePublished">2024-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      关于「顺序遍历随机排列取尽可能大的值」问题的一些思考
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一个广为流传的结论是: 从前往后遍历 <span class="markdown-them-math-inline">$37\%$</span> 的元素(事实上是 <span class="markdown-them-math-inline">$\frac{1}{e}$</span>), 称其中最大的为 <span class="markdown-them-math-inline">$\max$</span>, 继续往后遍历, 一旦一个元素大于 <span class="markdown-them-math-inline">$\max$</span> 就立刻选择, 找不到则选最后一个元素 .</p>
+<p>写了一个程序来验证这个结论:</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> draw
+
+n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()) <span class="hljs-comment"># n, t = 1000, 100000</span>
+p = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+aveval = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+maxval = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calcave</span> (<span class="hljs-params">pos</span>):</span>
+    Max = -<span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(pos): Max = <span class="hljs-built_in">max</span>(Max, p[i])
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(pos, n):
+        <span class="hljs-keyword">if</span> p[i] &gt; Max: <span class="hljs-keyword">return</span> p[i]
+    <span class="hljs-keyword">return</span> p[n - <span class="hljs-number">1</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calcmax</span> (<span class="hljs-params">pos</span>):</span>
+    Max = -<span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(pos): Max = <span class="hljs-built_in">max</span>(Max, p[i])
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(pos, n):
+        <span class="hljs-keyword">if</span> p[i] &gt; Max: <span class="hljs-keyword">return</span> (p[i] == n - <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">return</span> (p[n - <span class="hljs-number">1</span>] == n - <span class="hljs-number">1</span>)
+
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(t):
+    random.shuffle(p)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n): aveval[i] += calcave(i)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n): maxval[i] += calcmax(i)
+
+aveval = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x: x / t / n, aveval))
+maxval = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x: x / t, maxval))
+
+draw.plot([<span class="hljs-number">100</span> / n * i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)], aveval)
+draw.plot([<span class="hljs-number">100</span> / n * i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)], maxval)
+
+idx, val = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">if</span> aveval[i] &gt; val:
+        val, idx = aveval[i], <span class="hljs-number">100</span> / n * i
+draw.plot(idx, val, <span class="hljs-string">&#x27;or&#x27;</span>)
+draw.text(idx, val, <span class="hljs-string">&quot;(&#123;:.1f&#125;%, &#123;:.2f&#125;)&quot;</span>.<span class="hljs-built_in">format</span>(idx, val), color = <span class="hljs-string">&#x27;r&#x27;</span>)
+idx, val = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">if</span> maxval[i] &gt; val:
+        val, idx = maxval[i], <span class="hljs-number">100</span> / n * i
+draw.plot(idx, val, <span class="hljs-string">&#x27;or&#x27;</span>)
+draw.text(idx, val, <span class="hljs-string">&quot;(&#123;:.1f&#125;%, &#123;:.2f&#125;)&quot;</span>.<span class="hljs-built_in">format</span>(idx, val), color = <span class="hljs-string">&#x27;r&#x27;</span>)
+
+draw.show()
+</code></pre></div>
+<p>得到结果如下:</p>
+<p><img src="https://s21.ax1x.com/2024/04/11/pFXdXyd.png" alt="pFXdXyd.png"></p>
+<p>其中蓝线为这种策略取到的元素大小期望除以 <span class="markdown-them-math-inline">$n$</span> 的值, 也即取到的元素占最大值百分比的期望. 橙线表示取到最大值的概率. 横坐标为观察的元素数量占总元素数量的比例.</p>
+<p>可以发现, 虽然观察 <span class="markdown-them-math-inline">$37.1\%$</span> 的元素有最大的概率取到最大值, 但只观察 <span class="markdown-them-math-inline">$3.1\%$</span> 的元素就出手获得的元素期望是最大的, 这启发我们, 直接取某一个位置之后的第一个前缀最大值是否有些呆板了呢? 我们是否可以做一些更加动态的决策呢?</p>
+<p>接下来会尝试训练一个神经网络用以决策, 未完待续……</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../09/xin-de-si-kao-zheng-chu-xing-jian-yan-de-ben-zhi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          「新的思考」整除性校验的本质
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><a rel="license" href="https://101001011.github.io/">本网站</a>所有内容采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="../../../../js/clipboard.min.js"></script>
+<script src="../../../../js/jquery-1.4.3.min.js"></script>
+
+<script src="../../../../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="../../../../mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+
+
+  </div>
+</body>
+</html>
