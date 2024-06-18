@@ -283,41 +283,41 @@ std::set&lt;std::pair&lt;<span class="hljs-keyword">int</span>, <span class="hlj
 std::bitset&lt;2600&gt; f[N][N][N];
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%s&quot;</span>, &amp;n, &amp;k, s + <span class="hljs-number">1</span>);
-	
-	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][i][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
-	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
-		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= i; j++)
-			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= n - i + <span class="hljs-number">1</span>; k++) &#123;
-				<span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> j &gt;= <span class="hljs-number">1</span>)
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%s&quot;</span>, &amp;n, &amp;k, s + <span class="hljs-number">1</span>);
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][i][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= i; j++)
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= n - i + <span class="hljs-number">1</span>; k++) &#123;
+                <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> j &gt;= <span class="hljs-number">1</span>)
                     f[i][j][k] |= f[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>][k];
-				<span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>)
+                <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>)
                     f[i][j][k] |= (f[i - <span class="hljs-number">1</span>][j][k] &lt;&lt; (j * k));
-				<span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;C&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> k + <span class="hljs-number">1</span> &lt;= n)
+                <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;C&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> k + <span class="hljs-number">1</span> &lt;= n)
                     f[i][j][k] |= f[i - <span class="hljs-number">1</span>][j][k + <span class="hljs-number">1</span>];
-				<span class="hljs-keyword">if</span> ((s[i] != <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">and</span> s[i] != <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">and</span> s[i] != <span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>)
+                <span class="hljs-keyword">if</span> ((s[i] != <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">and</span> s[i] != <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">and</span> s[i] != <span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>)
                     f[i][j][k] |= f[i - <span class="hljs-number">1</span>][j][k];
-			&#125;
-	
-	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) &#123;
-		<span class="hljs-keyword">if</span> (f[n][i][<span class="hljs-number">0</span>][k]) &#123;
-			<span class="hljs-keyword">int</span> p = i, q = <span class="hljs-number">0</span>, r = k;
-			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) &#123;
-				<span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> p &gt;= <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p - <span class="hljs-number">1</span>][q][r])
-					ans[i] = <span class="hljs-string">&#x27;N&#x27;</span>, p--;
-				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> r - p * q &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p][q][r - p * q])
-				    ans[i] = <span class="hljs-string">&#x27;A&#x27;</span>, r -= p * q;
-				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;C&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> q + <span class="hljs-number">1</span> &lt;= n <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p][q + <span class="hljs-number">1</span>][r])
-			        ans[i] = <span class="hljs-string">&#x27;C&#x27;</span>, q++;
-				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) ans[i] = <span class="hljs-string">&#x27;B&#x27;</span>;
-				<span class="hljs-keyword">else</span> ans[i] = s[i];
-			&#125;
-			ans[n + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
-			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, ans + <span class="hljs-number">1</span>);
-			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-		&#125;
-	&#125;
-	<span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;-1&quot;</span>);
+            &#125;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-keyword">if</span> (f[n][i][<span class="hljs-number">0</span>][k]) &#123;
+            <span class="hljs-keyword">int</span> p = i, q = <span class="hljs-number">0</span>, r = k;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) &#123;
+                <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;N&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> p &gt;= <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p - <span class="hljs-number">1</span>][q][r])
+                    ans[i] = <span class="hljs-string">&#x27;N&#x27;</span>, p--;
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> r - p * q &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p][q][r - p * q])
+                    ans[i] = <span class="hljs-string">&#x27;A&#x27;</span>, r -= p * q;
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((s[i] == <span class="hljs-string">&#x27;C&#x27;</span> <span class="hljs-keyword">or</span> s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) <span class="hljs-keyword">and</span> q + <span class="hljs-number">1</span> &lt;= n <span class="hljs-keyword">and</span> f[i - <span class="hljs-number">1</span>][p][q + <span class="hljs-number">1</span>][r])
+                    ans[i] = <span class="hljs-string">&#x27;C&#x27;</span>, q++;
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">&#x27;?&#x27;</span>) ans[i] = <span class="hljs-string">&#x27;B&#x27;</span>;
+                <span class="hljs-keyword">else</span> ans[i] = s[i];
+            &#125;
+            ans[n + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, ans + <span class="hljs-number">1</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+    &#125;
+    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;-1&quot;</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 </code></pre></div>
