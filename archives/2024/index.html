@@ -323,6 +323,29 @@
 
 
 
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick, mail, link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'false' == true;
+    var verify = 'false' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "1Q3xPv5JaTwf1i8Osv9PE0kD-gzGzoHsz",
+        appKey: "uudKdohpIaxALz5jZjexXhcb",
+        placeholder: "",
+        pageSize:'10',
+        avatar:'mp',
+        lang:'zh-cn'
+    });
+</script>
+
 
 
 <script>
