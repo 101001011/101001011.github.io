@@ -159,7 +159,7 @@ body:after {
 @media screen {
   #content,
   .outer {
-    width: 44em;
+    width: 60em;
   }
 }
 @media screen and (max-width: 810px) {
@@ -528,8 +528,8 @@ body {
 .inner {
   display: inline;
   float: left;
-  width: 94.44444444444444%;
-  margin: 0 2.777777777777778%;
+  width: 95.83333333333334%;
+  margin: 0 2.083333333333333%;
 }
 .left,
 .alignleft {
@@ -574,6 +574,14 @@ body {
 }
 .mobile-nav-on #wrap {
   left: 50%;
+}
+@media screen and (min-width: 811px) {
+  #main {
+    display: inline;
+    float: left;
+    width: 70.83333333333334%;
+    margin: 0 2.083333333333333%;
+  }
 }
 #main-404 {
   font-size: 40px;
@@ -1671,16 +1679,14 @@ html {
   font-feature-settings: "liga", "locl" 0;
   -webkit-hyphens: auto;
 }
-.widget-wrap {
-  margin-bottom: 50px !important;
-}
 @media screen and (min-width: 811px) {
-  .widget-wrap {
-    display: inline;
-    float: left;
-    width: 94.44444444444444%;
-    margin: 0 2.777777777777778%;
+  #sidebar {
+    float: right;
+    width: 12em;
   }
+}
+.widget-wrap {
+  margin: 50px 0;
 }
 .widget {
   border: 1px solid #ddd;
