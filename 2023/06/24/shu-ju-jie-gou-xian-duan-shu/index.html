@@ -5,6 +5,10 @@
   
   
   <title>「数据结构」线段树 | CCA&#39;s Blog</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="description" content="线段树是算法竞赛中最常见的数据结构，有很多分支，非常重要。">
@@ -13,9 +17,10 @@
   
     <link rel="shortcut icon" href="../../../../favicon.ico">
   
-  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox-1.3.4.css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
   
 <meta name="generator" content="Hexo 6.1.0"></head>
 
@@ -67,11 +72,6 @@
       </header>
     
     
-<div id="article-toc">
-    <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">经典例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg5490%5D-%E6%89%AB%E6%8F%8F%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">[LG5490] 扫描线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bspoj%5D-gss-i"><span class="toc-number">1.2.</span> <span class="toc-text">[SPOJ] GSS-I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bspoj%5D-gss-iii"><span class="toc-number">1.3.</span> <span class="toc-text">[SPOJ] GSS-III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bspoj%5D-gss-iv"><span class="toc-number">1.4.</span> <span class="toc-text">[SPOJ] GSS-IV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bspoj%5D-gss-v"><span class="toc-number">1.5.</span> <span class="toc-text">[SPOJ] GSS-V</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg4198%5D-%E6%A5%BC%E6%88%BF%E9%87%8D%E5%BB%BA"><span class="toc-number">1.6.</span> <span class="toc-text">[LG4198] 楼房重建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Blg1502%5D-%E7%AA%97%E5%8F%A3%E7%9A%84%E6%98%9F%E6%98%9F"><span class="toc-number">1.7.</span> <span class="toc-text">[LG1502] 窗口的星星</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf240f%5D-torcoder"><span class="toc-number">1.8.</span> <span class="toc-text">[CF240F] TorCoder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf242e%5D-xor%20on%20segment"><span class="toc-number">1.9.</span> <span class="toc-text">[CF242E] XOR on Segment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf414c%5D-mashmokh%20and%20reverse%20operation"><span class="toc-number">1.10.</span> <span class="toc-text">[CF414C] Mashmokh and Reverse Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf446c%5D-dzy%20loves%20fibonacci%20numbers"><span class="toc-number">1.11.</span> <span class="toc-text">[CF446C] DZY Loves Fibonacci Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%5Bcf522d%5D-closest%20equals"><span class="toc-number">1.12.</span> <span class="toc-text">[CF522D] Closest Equals</span></a></li></ol></li></ol>
-</div>
-
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>线段树是算法竞赛中最常见的数据结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有很多分支<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>非常重要<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
@@ -173,46 +173,6 @@
 
 </section>
         
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="../../../../2024/08/09/ji-xun-namomo-camp-2024.7/">「集训」Namomo Camp 2024.7</a>
-          </li>
-        
-          <li>
-            <a href="../../../../2024/07/19/shu-xue-chi-san-shu-xue/">「数学」离散数学</a>
-          </li>
-        
-          <li>
-            <a href="../../../../2024/06/22/dong-tai-gui-hua-shu-shang-bei-bao/">「动态规划」树上背包</a>
-          </li>
-        
-          <li>
-            <a href="../../../../2024/06/22/dong-tai-gui-hua-mou-01-bei-bao-trick/">「动态规划」某 0/1 背包 Trick</a>
-          </li>
-        
-          <li>
-            <a href="../../../../2024/06/18/ucup-the-2024-icpc-st.petersburg/">「Ucup」The 2024 ICPC St. Petersburg</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-
-  
-    
-  
-</aside>
-        
       </div>
       <footer id="footer">
   
@@ -273,8 +233,6 @@
 <!-- <script type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
 </script> -->
-
-
 
   </div>
 </body>

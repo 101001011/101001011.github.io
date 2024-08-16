@@ -11,8 +11,7 @@ body:after {
 }
 .article-date,
 .article-category-link,
-.archive-year,
-.widget-title {
+.archive-year {
   text-decoration: none;
   color: #999;
   margin-bottom: 1em;
@@ -23,108 +22,116 @@ body:after {
   background: #fff;
   border-bottom: 1px solid #ddd;
 }
-.article-entry h1,
-.widget h1 {
+.article-entry h1 {
   font-size: 2em;
 }
-.article-entry h2,
-.widget h2 {
+.article-entry h2 {
   font-size: 1.5em;
 }
-.article-entry h3,
-.widget h3 {
+.article-entry h3 {
   font-size: 1.3em;
 }
-.article-entry h4,
-.widget h4 {
+.article-entry h4 {
   font-size: 1.2em;
 }
-.article-entry h5,
-.widget h5 {
+.article-entry h5 {
   font-size: 1em;
 }
-.article-entry h6,
-.widget h6 {
+.article-entry h6 {
   font-size: 1em;
   color: #999;
 }
-.article-entry hr,
-.widget hr {
+.article-entry hr {
   border: 0.5px solid #ddd;
 }
-.article-entry strong,
-.widget strong {
+.article-entry strong {
   font-weight: bold;
 }
 .article-entry em,
-.widget em,
-.article-entry cite,
-.widget cite {
+.article-entry cite {
   font-style: italic;
 }
 .article-entry sup,
-.widget sup,
-.article-entry sub,
-.widget sub {
+.article-entry sub {
   font-size: 0.75em;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
-.article-entry sup,
-.widget sup {
+.article-entry sup {
   top: -0.5em;
 }
-.article-entry sub,
-.widget sub {
+.article-entry sub {
   bottom: -0.2em;
 }
-.article-entry small,
-.widget small {
+.article-entry small {
   font-size: 0.85em;
 }
 .article-entry acronym,
-.widget acronym,
-.article-entry abbr,
-.widget abbr {
+.article-entry abbr {
   border-bottom: 1px dotted;
 }
 .article-entry ul,
-.widget ul,
 .article-entry ol,
-.widget ol,
-.article-entry dl,
-.widget dl {
+.article-entry dl {
   margin: 0 30px;
   line-height: 1.6em;
 }
 .article-entry ul ul,
-.widget ul ul,
 .article-entry ol ul,
-.widget ol ul,
 .article-entry ul ol,
-.widget ul ol,
-.article-entry ol ol,
-.widget ol ol {
+.article-entry ol ol {
   margin-top: 0;
   margin-bottom: 0;
 }
-.article-entry ul,
-.widget ul {
+.article-entry ul {
   list-style: disc;
 }
-.article-entry ol,
-.widget ol {
+.article-entry ol {
   list-style: decimal;
 }
-.article-entry dt,
-.widget dt {
+.article-entry dt {
   font-weight: bold;
+}
+.article-with-titlenum {
+  counter-reset: h2;
+}
+.article-with-titlenum h2 {
+  counter-reset: h3;
+}
+.article-with-titlenum h2:before {
+  padding-right: 1em;
+  counter-increment: h2;
+  content: counter(h2);
+}
+.article-with-titlenum h3 {
+  counter-reset: h4;
+}
+.article-with-titlenum h3:before {
+  padding-right: 1em;
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3);
+}
+.article-with-titlenum h4 {
+  counter-reset: h5;
+}
+.article-with-titlenum h4:before {
+  padding-right: 1em;
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4);
+}
+.article-with-titlenum h5 {
+  counter-reset: h6;
+}
+.article-with-titlenum h5:before {
+  padding-right: 1em;
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
 }
 @media screen {
   #content,
   .outer {
-    width: 60em;
+    width: 44em;
   }
 }
 @media screen and (max-width: 810px) {
@@ -440,32 +447,28 @@ button::-moz-focus-inner {
   src: url("fonts/lmroman10-bolditalic.ttf");
 }
 @font-face {
-  font-family: Chinese;
+  font-family: biaodian;
   font-style: normal;
   font-weight: normal;
-  src: url("fonts/HYShuSongErS.ttf");
-}
-@font-face {
-  font-family: Chinese;
-  font-style: normal;
-  font-weight: bold;
-  src: url("fonts/FZHTJW.ttf");
-}
-@font-face {
-  font-family: Chinese;
-  font-style: italic;
-  font-weight: normal;
-  src: url("fonts/FZKTJW.ttf");
-}
-@font-face {
-  font-family: ChineseMono;
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/HYFangSongJ.ttf");
+  src: url("fonts/biaodian-minus59.ttf");
 }
 @font-face {
   font-family: biaodian;
-  src: url("fonts/biaodian.ttf");
+  font-style: italic;
+  font-weight: normal;
+  src: url("fonts/biaodian-minus59.ttf");
+}
+@font-face {
+  font-family: biaodian;
+  font-style: normal;
+  font-weight: bold;
+  src: url("fonts/biaodian-minus59.ttf");
+}
+@font-face {
+  font-family: biaodian;
+  font-style: italic;
+  font-weight: bold;
+  src: url("fonts/biaodian-minus59.ttf");
 }
 html {
   scroll-padding-top: 80px;
@@ -497,8 +500,8 @@ body {
 .inner {
   display: inline;
   float: left;
-  width: 95.83333333333334%;
-  margin: 0 2.083333333333333%;
+  width: 94.44444444444444%;
+  margin: 0 2.777777777777778%;
 }
 .left,
 .alignleft {
@@ -543,14 +546,6 @@ body {
 }
 .mobile-nav-on #wrap {
   left: 50%;
-}
-@media screen and (min-width: 811px) {
-  #main {
-    display: inline;
-    float: left;
-    width: 70.83333333333334%;
-    margin: 0 2.083333333333333%;
-  }
 }
 #main-404 {
   font-size: 40px;
@@ -616,9 +611,7 @@ a {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  background: rgba(255,255,255,0.732);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
+  background: #fff;
   z-index: 2;
   border-bottom: 1px solid #ddd;
 }
@@ -630,6 +623,18 @@ a {
 }
 #nav-outer :last-child {
   padding-right: 0;
+}
+@supports (backdrop-filter: saturate(180%) blur(20px)) {
+  #nav-outer {
+    background: rgba(255,255,255,0.732);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+@supports (-webkit-backdrop-filter: saturate(180%) blur(20px)) {
+  #nav-outer {
+    background: rgba(255,255,255,0.732);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
 }
 #main-nav {
   display: -webkit-box;
@@ -818,17 +823,8 @@ a.article-title:hover {
   color: #999;
 }
 .article-entry {
+  text-align: justify;
   color: #222;
-}
-@media screen {
-  .article-entry {
-    text-align: justify;
-  }
-}
-@media screen and (max-width: 600px) {
-  .article-entry {
-    text-align: start;
-  }
 }
 .article-entry:before,
 .article-entry:after {
@@ -838,8 +834,9 @@ a.article-title:hover {
 .article-entry:after {
   clear: both;
 }
-.article-entry .markdown-them-math-inline {
-  margin: 0.25em;
+.article-entry .markdown-them-math-inline:before,
+.article-entry .markdown-them-math-inline:after {
+  content: " ";
 }
 .article-entry p,
 .article-entry table {
@@ -909,6 +906,9 @@ a.article-title:hover {
   border-left: 5px solid #ddd;
   background: #f7f7f7;
 }
+.article-entry blockquote strong {
+  font-style: normal;
+}
 .article-entry blockquote footer {
   font-size: 16px;
   font-family: font-sans;
@@ -958,7 +958,8 @@ a.article-title:hover {
 .article-entry ul li input {
   margin-right: 10px;
 }
-.article-entry mjx-container {
+.article-entry .markdown-them-math-block,
+.article-entry .markdown-them-math-inline {
   overflow: auto;
   overflow-y: hidden;
   outline: 0;
@@ -1641,82 +1642,4 @@ pre .hljs-javascript .hljs-function {
 html {
   font-feature-settings: "liga", "locl" 0;
   -webkit-hyphens: auto;
-}
-@media screen and (min-width: 811px) {
-  #sidebar {
-    float: right;
-    width: 12em;
-  }
-}
-.widget-wrap {
-  margin: 50px 0;
-}
-.widget {
-  border: 1px solid #ddd;
-  padding: 10px 15px;
-}
-.widget a {
-  color: #999;
-  text-decoration: none;
-}
-.widget a:hover {
-  text-decoration: underline;
-}
-.widget ul ul,
-.widget ol ul,
-.widget dl ul,
-.widget ul ol,
-.widget ol ol,
-.widget dl ol,
-.widget ul dl,
-.widget ol dl,
-.widget dl dl {
-  margin-left: 15px;
-  list-style: disc;
-}
-.widget {
-  line-height: 1.6em;
-  word-wrap: break-word;
-  font-size: 0.9em;
-}
-.widget ul,
-.widget ol {
-  list-style: none;
-  margin: 0;
-}
-.widget ul ul,
-.widget ol ul,
-.widget ul ol,
-.widget ol ol {
-  margin: 0 20px;
-  color: #999;
-}
-.widget ul ul,
-.widget ol ul {
-  list-style: disc;
-}
-.widget ul ol,
-.widget ol ol {
-  list-style: decimal;
-}
-.category-list-count,
-.tag-list-count,
-.archive-list-count {
-  padding-left: 5px;
-  color: #999;
-  font-size: 0.85em;
-}
-.category-list-count:before,
-.tag-list-count:before,
-.archive-list-count:before {
-  content: "(";
-}
-.category-list-count:after,
-.tag-list-count:after,
-.archive-list-count:after {
-  content: ")";
-}
-.tagcloud a {
-  margin-right: 5px;
-  display: inline-block;
 }
