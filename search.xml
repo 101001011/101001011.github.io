@@ -59,9 +59,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> OI </tag>
             
             <tag> C++ </tag>
             
@@ -105,6 +105,43 @@
             <tag> 离散数学 </tag>
             
             <tag> 本科课程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树上背包</title>
+      <link href="/2024/06/22/shu-shang-bei-bao/"/>
+      <url>/2024/06/22/shu-shang-bei-bao/</url>
+      
+        <content type="html"><![CDATA[<h2 id="选取-$m$ 个结点">选取 <span class="markdown-them-math-inline">$m$</span> 个结点</h2><p>这是最普遍的情况, 从树中选取 <span class="markdown-them-math-inline">$m$</span> 个结点, 最大化它们的价值之和.</p><p>符合直觉地, 设 <span class="markdown-them-math-inline">$f_{u, i}$</span> 表示从以 <span class="markdown-them-math-inline">$u$</span> 为根的子树中选取了 <span class="markdown-them-math-inline">$i$</span> 个结点的最大价值之和. 转移是显然的:</p><div class="markdown-them-math-block">$$f_{u, i + j} = \max\{f_{u, i} + f_{v, j}\}$$</div><p>其中 <span class="markdown-them-math-inline">$i$</span>, <span class="markdown-them-math-inline">$j$</span> 的范围应当分别为 <span class="markdown-them-math-inline">$u$</span> 此前枚举的子树大小和, 以 <span class="markdown-them-math-inline">$v$</span> 为根的子树大小.</p><p>其最优性和可行性都是显然的, 我们考虑这个算法的复杂度. 看起来似乎是 <span class="markdown-them-math-inline">$\Theta(n^3)$</span>, 但事实上对于任意点对 <span class="markdown-them-math-inline">$(i \in S_u, j \in S_v)$</span>, 它只会在 <span class="markdown-them-math-inline">$u$</span> 处被枚举一次. 于是时间复杂度实际上是 <span class="markdown-them-math-inline">$\Theta(n^2)$</span>.</p><h2 id="选取结点的代价之和至多为-$m$">选取结点的代价之和至多为 <span class="markdown-them-math-inline">$m$</span></h2><p>在这个问题中为每个结点引入了代价, 此时上述的复杂度分析不再适用.</p><p>我们不妨考虑换一种思路, 正常的 <span class="markdown-them-math-inline">$0/1$</span> 背包复杂度之所以为 <span class="markdown-them-math-inline">$\Theta(nm)$</span>, 是因为每次只需要对一个物品做是否选取的决策. 在这里, 我们同样考虑将物品独立起来, 只考虑当前物品选或不选. 为了保证无后效性, 接下来的结点编号都被重新设为其在后序遍历中的时间戳.</p><p>设 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示考虑了前 <span class="markdown-them-math-inline">$i$</span> 个物品, 背包大小为 <span class="markdown-them-math-inline">$j$</span>, 能取到的最大价值和.</p><ul><li>若选该物品, 则可以选择它子树中的物品, <span class="markdown-them-math-inline">$f_{i, j} \leftarrow f_{i - 1, j - w_i} + v_i$</span>.</li><li>若不选该物品, 则它子树内的物品都不可以选, 而子树中的编号恰好是连续的, 于是 <span class="markdown-them-math-inline">$f_{i, j} \leftarrow f_{i - siz_i, j}$</span>.</li></ul><p>这样转移时间复杂度即为 <span class="markdown-them-math-inline">$\Theta(nm)$</span>.</p><div class="highlight"><pre class="code"><code><span class="hljs-keyword">int</span> n, m, dfn;std::vector&lt;std::vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; E, f;std::vector&lt;<span class="hljs-keyword">int</span>&gt; w, v, siz;<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span> </span>&#123;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : E[u]) <span class="hljs-built_in">dfs</span>(v), siz[u] += siz[v];    dfn++;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= m; j++) &#123;        f[dfn][j] = f[dfn - siz[u]][j];        <span class="hljs-keyword">if</span> (j &gt;= w[u]) f[dfn][j] = std::<span class="hljs-built_in">max</span>(f[dfn][j], f[dfn - <span class="hljs-number">1</span>][j - w[u]] + v[u]);    &#125;&#125;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">knapsack_on_tree</span> <span class="hljs-params">()</span> </span>&#123;    siz = std::vector&lt;<span class="hljs-keyword">int</span>&gt;(n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);    f = std::vector&lt;std::vector&lt;<span class="hljs-keyword">int</span>&gt;&gt;(n + <span class="hljs-number">2</span>, std::vector&lt;<span class="hljs-keyword">int</span>&gt;(m + <span class="hljs-number">1</span>));    <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);    <span class="hljs-keyword">return</span> f[n + <span class="hljs-number">1</span>][m];&#125;</code></pre></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 动态规划 </category>
+          
+          <category> 树上背包 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> OI </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> 树上背包 </tag>
             
         </tags>
       
@@ -624,9 +661,9 @@
       
         <tags>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> OI </tag>
             
             <tag> 题解 </tag>
             
@@ -661,9 +698,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> OI </tag>
             
             <tag> 分块 </tag>
             
@@ -696,13 +733,52 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 并查集 </tag>
             
+            <tag> OI </tag>
+            
             <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>线性筛</title>
+      <link href="/2023/06/24/xian-xing-shai/"/>
+      <url>/2023/06/24/xian-xing-shai/</url>
+      
+        <content type="html"><![CDATA[<h2 id="筛素数">筛素数</h2><p>考虑如何筛出 <span class="markdown-them-math-inline">$n$</span> 以内的所有素数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个最简单的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即将所有已求出的质数的倍数标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>表示它们不为质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且从小到大遍历到数 <span class="markdown-them-math-inline">$i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若它没有被标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$i\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 在此算法中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个数都被自己所有本质不同的质因子筛了一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以总复杂度为 <span class="markdown-them-math-inline">$\Theta(n\ln \ln n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>对于上面的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>算力的浪费主要在于很多数被多个质数筛过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们考虑让每个数都只被自己的最小质因子筛<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>当遍历到 <span class="markdown-them-math-inline">$i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举已经筛出来的所有质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若当前枚举的质数为 <span class="markdown-them-math-inline">$p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 <span class="markdown-them-math-inline">$i\times p_j$</span> 不为质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$p_j|i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$i$</span> 中有一个质因子 <span class="markdown-them-math-inline">$p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么后面枚举到 <span class="markdown-them-math-inline">$p_{j+1}$</span> 的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$p_{j+1}$</span> 就一定不是 <span class="markdown-them-math-inline">$i\times p_{j+1}$</span> 的最小质因子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以此时要停止枚举质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>这样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个数都只被自己的最小质因子筛过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以总复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = i;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt;= n; j++) &#123;        vis[i * p[j]] = <span class="hljs-literal">true</span>;        <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;    &#125;&#125;</code></pre></div><h2 id="筛欧拉函数">筛欧拉函数</h2><p>考虑到 <span class="markdown-them-math-inline">$\varphi$</span> 函数有如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$\begin{cases}\varphi(p)=p-1~~~~~~~~~~~~~~~~~~p\in Prime\\\varphi(ap)=\varphi(a)\times p~~~~~~~~~~p\in Prime\\\varphi(ab)=\varphi(a)\times \varphi(b)~~~~\gcd(a,b)=1\end{cases}$$</div><ul><li><p>对于 <span class="markdown-them-math-inline">$\varphi(p),p\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接在筛出质数的同时求解即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li><li><p>对于 <span class="markdown-them-math-inline">$\varphi(ap),p\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$p_j|i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\varphi(i\times p_j)=\varphi(i)\times p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li><li><p>对于 <span class="markdown-them-math-inline">$\varphi(ab),\gcd(a,b)=1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接在筛去合数的时候 <span class="markdown-them-math-inline">$\varphi(i\times p_j)=\varphi(i)\times \varphi(p_j)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li></ul><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = i, phi[i] = i - <span class="hljs-number">1</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt;= n; j++) &#123;        vis[i * p[j]] = <span class="hljs-literal">true</span>;        <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) &#123;            phi[i * p[j]] = phi[i] * p[j];            <span class="hljs-keyword">break</span>;        &#125;        phi[i * p[j]] = phi[i] * phi[p[j]];    &#125;&#125;</code></pre></div><h2 id="筛不同质因子的个数">筛不同质因子的个数</h2><p>令 <span class="markdown-them-math-inline">$\alpha(x)$</span> 表示 <span class="markdown-them-math-inline">$x$</span> 不同质因子的个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\beta(x)$</span> 表示 <span class="markdown-them-math-inline">$x$</span> 的所有最小质因子的乘积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑到 <span class="markdown-them-math-inline">$\alpha$</span> 函数有如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$\begin{cases}\alpha(p^k)=1~~~~~~~~~~~~~~~~~~~~~~p\in Prime \\\alpha(ab)=\alpha(a)+\alpha(b)~~~\gcd(a,b)=1\\\alpha(ap)=\alpha(\frac{a}{\beta(a)})+1~~~~p为a的最小质因子\end{cases}$$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = g[i]= i, f[i] = <span class="hljs-number">1</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt; N; j++) &#123;    vis[i * p[j]] = <span class="hljs-literal">true</span>;    <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) &#123;        g[i * p[j]] = g[i] * p[j];        f[i * p[j]] = f[i / g[i]] + <span class="hljs-number">1</span>;        <span class="hljs-keyword">break</span>;    &#125;    g[i * p[j]] = p[j];    f[i * p[j]] = f[i] + <span class="hljs-number">1</span>;    &#125;&#125;</code></pre></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 数论 </category>
+          
+          <category> 线性筛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> OI </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> 数论 </tag>
+            
+            <tag> 欧拉函数 </tag>
+            
+            <tag> 线性筛 </tag>
             
         </tags>
       
@@ -744,45 +820,6 @@
             <tag> 裴蜀定理 </tag>
             
             <tag> 类欧几里得算法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>线性筛</title>
-      <link href="/2023/06/24/xian-xing-shai/"/>
-      <url>/2023/06/24/xian-xing-shai/</url>
-      
-        <content type="html"><![CDATA[<h2 id="筛素数">筛素数</h2><p>考虑如何筛出 <span class="markdown-them-math-inline">$n$</span> 以内的所有素数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个最简单的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即将所有已求出的质数的倍数标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>表示它们不为质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且从小到大遍历到数 <span class="markdown-them-math-inline">$i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若它没有被标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$i\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 在此算法中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个数都被自己所有本质不同的质因子筛了一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以总复杂度为 <span class="markdown-them-math-inline">$\Theta(n\ln \ln n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>对于上面的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>算力的浪费主要在于很多数被多个质数筛过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们考虑让每个数都只被自己的最小质因子筛<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>当遍历到 <span class="markdown-them-math-inline">$i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举已经筛出来的所有质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若当前枚举的质数为 <span class="markdown-them-math-inline">$p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 <span class="markdown-them-math-inline">$i\times p_j$</span> 不为质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$p_j|i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$i$</span> 中有一个质因子 <span class="markdown-them-math-inline">$p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么后面枚举到 <span class="markdown-them-math-inline">$p_{j+1}$</span> 的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$p_{j+1}$</span> 就一定不是 <span class="markdown-them-math-inline">$i\times p_{j+1}$</span> 的最小质因子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以此时要停止枚举质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>这样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个数都只被自己的最小质因子筛过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以总复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = i;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt;= n; j++) &#123;        vis[i * p[j]] = <span class="hljs-literal">true</span>;        <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;    &#125;&#125;</code></pre></div><h2 id="筛欧拉函数">筛欧拉函数</h2><p>考虑到 <span class="markdown-them-math-inline">$\varphi$</span> 函数有如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$\begin{cases}\varphi(p)=p-1~~~~~~~~~~~~~~~~~~p\in Prime\\\varphi(ap)=\varphi(a)\times p~~~~~~~~~~p\in Prime\\\varphi(ab)=\varphi(a)\times \varphi(b)~~~~\gcd(a,b)=1\end{cases}$$</div><ul><li><p>对于 <span class="markdown-them-math-inline">$\varphi(p),p\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接在筛出质数的同时求解即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li><li><p>对于 <span class="markdown-them-math-inline">$\varphi(ap),p\in Prime$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$p_j|i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\varphi(i\times p_j)=\varphi(i)\times p_j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li><li><p>对于 <span class="markdown-them-math-inline">$\varphi(ab),\gcd(a,b)=1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接在筛去合数的时候 <span class="markdown-them-math-inline">$\varphi(i\times p_j)=\varphi(i)\times \varphi(p_j)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p></li></ul><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = i, phi[i] = i - <span class="hljs-number">1</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt;= n; j++) &#123;        vis[i * p[j]] = <span class="hljs-literal">true</span>;        <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) &#123;            phi[i * p[j]] = phi[i] * p[j];            <span class="hljs-keyword">break</span>;        &#125;        phi[i * p[j]] = phi[i] * phi[p[j]];    &#125;&#125;</code></pre></div><h2 id="筛不同质因子的个数">筛不同质因子的个数</h2><p>令 <span class="markdown-them-math-inline">$\alpha(x)$</span> 表示 <span class="markdown-them-math-inline">$x$</span> 不同质因子的个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\beta(x)$</span> 表示 <span class="markdown-them-math-inline">$x$</span> 的所有最小质因子的乘积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑到 <span class="markdown-them-math-inline">$\alpha$</span> 函数有如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="markdown-them-math-block">$$\begin{cases}\alpha(p^k)=1~~~~~~~~~~~~~~~~~~~~~~p\in Prime \\\alpha(ab)=\alpha(a)+\alpha(b)~~~\gcd(a,b)=1\\\alpha(ap)=\alpha(\frac{a}{\beta(a)})+1~~~~p为a的最小质因子\end{cases}$$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;    <span class="hljs-keyword">if</span> (!vis[i]) p[++cnt] = g[i]= i, f[i] = <span class="hljs-number">1</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * p[j] &lt; N; j++) &#123;    vis[i * p[j]] = <span class="hljs-literal">true</span>;    <span class="hljs-keyword">if</span> (i % p[j] == <span class="hljs-number">0</span>) &#123;        g[i * p[j]] = g[i] * p[j];        f[i * p[j]] = f[i / g[i]] + <span class="hljs-number">1</span>;        <span class="hljs-keyword">break</span>;    &#125;    g[i * p[j]] = p[j];    f[i * p[j]] = f[i] + <span class="hljs-number">1</span>;    &#125;&#125;</code></pre></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-          <category> 数论 </category>
-          
-          <category> 线性筛 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> OI </tag>
-            
-            <tag> C++ </tag>
-            
-            <tag> 数论 </tag>
-            
-            <tag> 欧拉函数 </tag>
-            
-            <tag> 线性筛 </tag>
             
         </tags>
       
@@ -987,9 +1024,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 组合数学 </tag>
             
         </tags>
       
@@ -1055,9 +1092,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> Z 算法 </tag>
             
@@ -1090,9 +1127,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> Manacher </tag>
             
@@ -1125,9 +1162,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> KMP </tag>
             
@@ -1162,9 +1199,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> AC 自动机 </tag>
             
@@ -1197,48 +1234,13 @@
             
             <tag> 算法 </tag>
             
+            <tag> OI </tag>
+            
             <tag> 字符串 </tag>
             
             <tag> Trie </tag>
             
             <tag> 可持久化 Trie 树 </tag>
-            
-            <tag> OI </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>虚树</title>
-      <link href="/2023/06/24/xu-shu/"/>
-      <url>/2023/06/24/xu-shu/</url>
-      
-        <content type="html"><![CDATA[<h2 id="虚树">虚树</h2><p>在一些问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只关心关键点的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时我们需要维护他们之间的树形结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以想到将它们和它们之间的 <span class="markdown-them-math-inline">$\rm LCA$</span> 拉出来建一颗树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这棵树就被称作虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>有一个朴素的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是对它们两两求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对求出的 <span class="markdown-them-math-inline">$\rm LCA$</span> 再求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>中途判重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后按照祖先关系连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>经过观察可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只需要按照 <span class="markdown-them-math-inline">$\rm dfs$</span> 虚从小到大的顺序枚举每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将相邻两点求 <span class="markdown-them-math-inline">$\rm LCA$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以维护一个栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个栈中存的是当前点在虚树上的所有祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设当前栈顶为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于新加入的结点 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们对它进行分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)=v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接将 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 是栈中某个不为 <span class="markdown-them-math-inline">$v$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹栈直到 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后并把 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 不在栈中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么弹栈直到栈顶的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序小于 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并把最后一个弹出的结点向 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后把 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 和 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>不难发现这样一定是对的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且设关键点数量为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则虚树内点数不超过 <span class="markdown-them-math-inline">$2k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>在一棵有 <span class="markdown-them-math-inline">$n$</span> 个点的树上建立一颗有 <span class="markdown-them-math-inline">$k$</span> 个点的虚树的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h2 id="经典例题">经典例题</h2><h3 id="[sdoi2011]-消耗战">[SDOI2011] 消耗战</h3><p>首先有一个暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_u$</span> 表示将 <span class="markdown-them-math-inline">$u$</span> 的子树内所有关键点与 <span class="markdown-them-math-inline">$u$</span> 的联系断开所需要的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>转移时枚举 <span class="markdown-them-math-inline">$u$</span> 的所有子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$v$</span> 为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么必须切断这条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$dp_u=dp_u+w_{u,v}$</span></li><li>若 <span class="markdown-them-math-inline">$v$</span> 不为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以切断这条边也可以从 <span class="markdown-them-math-inline">$dp_v$</span> 转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$dp_u=dp_u+min\{dp_v,w_{u,v}\}$</span></li></ul><p>最终答案就是 <span class="markdown-them-math-inline">$dp_1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个暴力的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(qn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>观察到 <span class="markdown-them-math-inline">$\sum k\leqslant 5e5$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以考虑对每次询问建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>建虚树之前需要记 <span class="markdown-them-math-inline">$M_u$</span> 表示从 <span class="markdown-them-math-inline">$1$</span> 到 <span class="markdown-them-math-inline">$u$</span> 的路径上最短的边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为只需要切掉最短的边权就可以让点 <span class="markdown-them-math-inline">$u$</span> 与 <span class="markdown-them-math-inline">$1$</span> 不连通<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而切上面的边是更优的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以用 <span class="markdown-them-math-inline">$M_u$</span> 直接替换转移方程中的 <span class="markdown-them-math-inline">$w_{u,v}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[heoi2014]-大工程">[HEOI2014] 大工程</h3><p>首先建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><ul><li>对于两两之间距离之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以计算每条边的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>对于最大<span class="markdown-them-math-inline">$/$</span>最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以树形 <span class="markdown-them-math-inline">$\rm DP$</span> 或点分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[sdoi2015]-寻宝游戏">[SDOI2015] 寻宝游戏</h3><p>我们发现如果将虚树建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案就是虚树上所有边权之和的两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>于是我们考虑动态维护虚树的边权之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>先把所有点的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序求出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后我们发现边权之和等于 <span class="markdown-them-math-inline">$\rm dfs$</span> 序相邻两点的距离之和加上最左边和最右边两点的距离<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们可以使用 <span class="markdown-them-math-inline">$\rm set$</span> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树剖求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-          <category> 图论 </category>
-          
-          <category> 虚树 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> OI </tag>
-            
-            <tag> 图论 </tag>
-            
-            <tag> 虚树 </tag>
             
         </tags>
       
@@ -1276,6 +1278,41 @@
             <tag> 链剖分 </tag>
             
             <tag> 长链剖分 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>虚树</title>
+      <link href="/2023/06/24/xu-shu/"/>
+      <url>/2023/06/24/xu-shu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="虚树">虚树</h2><p>在一些问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只关心关键点的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时我们需要维护他们之间的树形结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以想到将它们和它们之间的 <span class="markdown-them-math-inline">$\rm LCA$</span> 拉出来建一颗树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这棵树就被称作虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>有一个朴素的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是对它们两两求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对求出的 <span class="markdown-them-math-inline">$\rm LCA$</span> 再求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>中途判重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后按照祖先关系连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>经过观察可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只需要按照 <span class="markdown-them-math-inline">$\rm dfs$</span> 虚从小到大的顺序枚举每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将相邻两点求 <span class="markdown-them-math-inline">$\rm LCA$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以维护一个栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个栈中存的是当前点在虚树上的所有祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设当前栈顶为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于新加入的结点 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们对它进行分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)=v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接将 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 是栈中某个不为 <span class="markdown-them-math-inline">$v$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹栈直到 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后并把 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 不在栈中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么弹栈直到栈顶的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序小于 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并把最后一个弹出的结点向 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后把 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 和 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>不难发现这样一定是对的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且设关键点数量为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则虚树内点数不超过 <span class="markdown-them-math-inline">$2k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>在一棵有 <span class="markdown-them-math-inline">$n$</span> 个点的树上建立一颗有 <span class="markdown-them-math-inline">$k$</span> 个点的虚树的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h2 id="经典例题">经典例题</h2><h3 id="[sdoi2011]-消耗战">[SDOI2011] 消耗战</h3><p>首先有一个暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_u$</span> 表示将 <span class="markdown-them-math-inline">$u$</span> 的子树内所有关键点与 <span class="markdown-them-math-inline">$u$</span> 的联系断开所需要的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>转移时枚举 <span class="markdown-them-math-inline">$u$</span> 的所有子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$v$</span> 为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么必须切断这条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$dp_u=dp_u+w_{u,v}$</span></li><li>若 <span class="markdown-them-math-inline">$v$</span> 不为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以切断这条边也可以从 <span class="markdown-them-math-inline">$dp_v$</span> 转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$dp_u=dp_u+min\{dp_v,w_{u,v}\}$</span></li></ul><p>最终答案就是 <span class="markdown-them-math-inline">$dp_1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个暴力的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(qn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>观察到 <span class="markdown-them-math-inline">$\sum k\leqslant 5e5$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以考虑对每次询问建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>建虚树之前需要记 <span class="markdown-them-math-inline">$M_u$</span> 表示从 <span class="markdown-them-math-inline">$1$</span> 到 <span class="markdown-them-math-inline">$u$</span> 的路径上最短的边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为只需要切掉最短的边权就可以让点 <span class="markdown-them-math-inline">$u$</span> 与 <span class="markdown-them-math-inline">$1$</span> 不连通<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而切上面的边是更优的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以用 <span class="markdown-them-math-inline">$M_u$</span> 直接替换转移方程中的 <span class="markdown-them-math-inline">$w_{u,v}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[heoi2014]-大工程">[HEOI2014] 大工程</h3><p>首先建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><ul><li>对于两两之间距离之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以计算每条边的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>对于最大<span class="markdown-them-math-inline">$/$</span>最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以树形 <span class="markdown-them-math-inline">$\rm DP$</span> 或点分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[sdoi2015]-寻宝游戏">[SDOI2015] 寻宝游戏</h3><p>我们发现如果将虚树建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案就是虚树上所有边权之和的两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>于是我们考虑动态维护虚树的边权之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>先把所有点的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序求出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后我们发现边权之和等于 <span class="markdown-them-math-inline">$\rm dfs$</span> 序相邻两点的距离之和加上最左边和最右边两点的距离<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们可以使用 <span class="markdown-them-math-inline">$\rm set$</span> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树剖求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 图论 </category>
+          
+          <category> 虚树 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> OI </tag>
+            
+            <tag> 图论 </tag>
+            
+            <tag> 虚树 </tag>
             
         </tags>
       
