@@ -30,9 +30,9 @@
             
             <tag> C++ </tag>
             
-            <tag> 分块 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 分块 </tag>
             
             <tag> 树分治 </tag>
             
@@ -232,9 +232,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> Python </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 期望 </tag>
             
@@ -927,9 +927,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> OI </tag>
             
             <tag> Z 算法 </tag>
             
@@ -962,9 +962,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> OI </tag>
             
             <tag> Manacher </tag>
             
@@ -997,9 +997,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> OI </tag>
             
             <tag> KMP </tag>
             
@@ -1034,9 +1034,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> OI </tag>
             
             <tag> AC 自动机 </tag>
             
@@ -1069,13 +1069,13 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 字符串 </tag>
             
             <tag> Trie </tag>
             
             <tag> 可持久化 Trie 树 </tag>
+            
+            <tag> OI </tag>
             
         </tags>
       
@@ -1106,9 +1106,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 虚树 </tag>
             
@@ -1141,9 +1141,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 链剖分 </tag>
             
@@ -1178,15 +1178,15 @@
             
             <tag> 算法 </tag>
             
+            <tag> OI </tag>
+            
+            <tag> C++ </tag>
+            
             <tag> 图论 </tag>
             
             <tag> 连通性 </tag>
             
             <tag> Tarjan </tag>
-            
-            <tag> OI </tag>
-            
-            <tag> C++ </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -1223,11 +1223,11 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
             
             <tag> C++ </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 欧拉回路 </tag>
             
@@ -1260,9 +1260,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 最短路 </tag>
             
@@ -1303,9 +1303,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -1346,9 +1346,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 差分约束 </tag>
             
@@ -1383,9 +1383,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 组合数学 </tag>
             
@@ -1420,6 +1420,8 @@
             
             <tag> 算法 </tag>
             
+            <tag> OI </tag>
+            
             <tag> 图论 </tag>
             
             <tag> 2-SAT </tag>
@@ -1429,8 +1431,6 @@
             <tag> Tarjan </tag>
             
             <tag> 缩点 </tag>
-            
-            <tag> OI </tag>
             
         </tags>
       
