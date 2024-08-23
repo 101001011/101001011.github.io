@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>Z 算法 | CCA&#39;s Blog</title>
+  <title>「ABC356F」Distance Component Size Query | CCA&#39;s Blog</title>
   <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
   <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
   <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
   <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <meta name="description" content="Z 算法学习笔记及经典例题。">
+  <meta name="description" content="ABC356F 题解">
   
   
   
@@ -51,14 +51,14 @@
 </div>
 
       <div id="content" class="outer">
-        <section id="main"><article id="post-Z 算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-[ABC356F] Distance Component Size Query" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="" class="article-date">
-  <time class="dt-published" datetime="2023-06-24T03:00:56.712Z" itemprop="datePublished">2023-06-24</time>
+  <time class="dt-published" datetime="2024-08-22T08:21:46.333Z" itemprop="datePublished">2024-08-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../../../categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="../../../../categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>►<a class="article-category-link" href="../../../../categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/Z-%E7%AE%97%E6%B3%95/">Z 算法</a>
+    <a class="article-category-link" href="../../../../categories/%E9%A2%98%E8%A7%A3/">题解</a>►<a class="article-category-link" href="../../../../categories/%E9%A2%98%E8%A7%A3/AtCoder/">AtCoder</a>►<a class="article-category-link" href="../../../../categories/%E9%A2%98%E8%A7%A3/AtCoder/ABC/">ABC</a>
   </div>
 
   </div>
@@ -69,7 +69,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Z 算法
+      「ABC356F」Distance Component Size Query
     </h1>
   
 
@@ -78,45 +78,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="算法简介">算法简介</h2>
-<p><span class="markdown-them-math-inline">$Z$</span> 算法在国内也被某些人称为 <span class="markdown-them-math-inline">$\rm ExKMP$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>虽然我不知道它跟 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法有什么关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$Z$</span> 算法用于求字符串 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$Z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其定义为 <span class="markdown-them-math-inline">$z_i=\rm LCP(S,S_{i\sim n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>这个算法的核心在于利用之前的信息来减少计算量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说我们可以从左往右依次求每个位置的 <span class="markdown-them-math-inline">$z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$[i, i + z_i - 1]$</span> 为 <span class="markdown-them-math-inline">$i$</span> 的匹配段<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时维护出右端点最靠右的匹配段 <span class="markdown-them-math-inline">$[l, r]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>那么我们知道有 <span class="markdown-them-math-inline">$S_{1 \sim r - l + 1} = S_{l \sim r}, S_{i \sim r} = S_{i - l + 1, r - l + 1}(i \leqslant r), z_i \geqslant \min(r - i + 1, z_{i - l + 1})$</span></p>
-<p>在计算 <span class="markdown-them-math-inline">$z_i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分以下三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+        <p>存在初始为空的点集 <span class="markdown-them-math-inline">$S$</span>, 进行 <span class="markdown-them-math-inline">$n$</span> 次操作, 形如:</p>
 <ul>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} &lt; r - i + 1$</span> 那么显然有 <span class="markdown-them-math-inline">$z_i = z_{i - l + 1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} \geqslant r - i + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么我们就从 <span class="markdown-them-math-inline">$r + 1$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i &gt; r$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接从 <span class="markdown-them-math-inline">$i$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
+<li><span class="markdown-them-math-inline">$1\ \ u:$</span> 若 <span class="markdown-them-math-inline">$u \in S$</span> 则令 <span class="markdown-them-math-inline">$u \notin S$</span>, 否则令 <span class="markdown-them-math-inline">$u \in S$</span>.</li>
+<li><span class="markdown-them-math-inline">$2\ \ u:$</span> 对 <span class="markdown-them-math-inline">$S$</span> 中的结点连无向边, <span class="markdown-them-math-inline">$x, y$</span> 之间有边当且仅当 <span class="markdown-them-math-inline">$|x - y| \leqslant k$</span>. 求 <span class="markdown-them-math-inline">$u$</span> 所在的连通块大小.</li>
 </ul>
-<p>不难发现复杂度来源在于 <span class="markdown-them-math-inline">$2, 3$</span> 情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但可以发现右端点最靠右的匹配段的右端点总是在这两种情况下向右移动<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而总移动量不超过 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因此复杂度是 <span class="markdown-them-math-inline">$\Theta(n)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>如果要求 <span class="markdown-them-math-inline">$z_i = \rm LCP(T, S_{i \sim n})$</span> 话<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就类似于 <span class="markdown-them-math-inline">$\rm KMP$</span> 的做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>构造一个 <span class="markdown-them-math-inline">$T \# S$</span> 的串去求 <span class="markdown-them-math-inline">$z$</span> 函数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="经典例题">经典例题</h2>
-<h3 id="[noi2014]-动物园">[NOI2014] 动物园</h3>
-<p>对于每个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>计算后缀 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 与 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$\rm LCP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑在后一个 border 的左端点 <span class="markdown-them-math-inline">$i$</span> 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令最长公共前缀的四个端点分别为 <span class="markdown-them-math-inline">$L,R,L',R'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>当 <span class="markdown-them-math-inline">$R&lt;L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R']$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>当 <span class="markdown-them-math-inline">$R\geqslant L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R]$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>区间 <span class="markdown-them-math-inline">$+1$</span> 可以使用差分实现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="[cf1051e]-vasya and big integers">[CF1051E] Vasya and Big Integers</h3>
-<p>记 <span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$a_{1\sim i}$</span> 有多少种合法的划分方案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个 <span class="markdown-them-math-inline">$\Theta(n^2)$</span> 的暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即往前枚举转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>判断转移是否合法后累加<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>观察到合法的转移点是一段连续的区间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若令 <span class="markdown-them-math-inline">$len_l$</span> 和 <span class="markdown-them-math-inline">$len_r$</span> 分别表示两限制字符串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然对于满足 <span class="markdown-them-math-inline">$len_l&lt;i-j&lt;len_r$</span> 的转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个转移都是合法的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在的问题在于判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 或 <span class="markdown-them-math-inline">$j=i-len_r$</span> 的时候转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑用 <span class="markdown-them-math-inline">$\rm ExKMP$</span> 对任意一个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},l)$</span> 和 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},r)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样就可以快速求出 <span class="markdown-them-math-inline">$s_{i-len_l+1\sim i}$</span> 与 <span class="markdown-them-math-inline">$l$</span> 的最长公共前缀 <span class="markdown-them-math-inline">$zl_{i-len_l+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并通过比较 <span class="markdown-them-math-inline">$s_{i-len_l+1+z_{i-len_l+1}}$</span> 与 <span class="markdown-them-math-inline">$l_{z_{i-len_l+1}+1}$</span> 的大小判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 时转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当 <span class="markdown-them-math-inline">$j=i-len_r$</span> 时转移是否合法也可以通过相同方式判断<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>这样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>合法转移点的区间就在 <span class="markdown-them-math-inline">$\Theta(1)$</span> 的时间内求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下的用前缀和记录一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于不能出现前导零<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以当转移点的后一位为 ‘<span class="markdown-them-math-inline">$0$</span>’ 时不能将其加入前缀和数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><span class="markdown-them-math-inline">$n \leqslant 2 \times 10^5, k, u \leqslant 10^{18}$</span>.</p>
+<hr>
+<p>对于一个固定的点集 <span class="markdown-them-math-inline">$S$</span>, 在只需要维护连通块的情况下对所有点对两两判断是否需要连边是没有必要的, 注意到 <span class="markdown-them-math-inline">$\forall a, b, c \in S(a \leqslant b \leqslant c)$</span>, 若 <span class="markdown-them-math-inline">$|a - c| \leqslant k$</span>, 则 <span class="markdown-them-math-inline">$|a - b|, |b - c| \leqslant k$</span>, 所以只对 <span class="markdown-them-math-inline">$a, b$</span> 和 <span class="markdown-them-math-inline">$b, c$</span> 连边同样可以维护 <span class="markdown-them-math-inline">$a, b, c$</span> 两两之间的连通性, 此时边数降到与 <span class="markdown-them-math-inline">$|S|$</span> 同阶.</p>
+<p>有了上面的结论, 加点是简单的, 只需要求出 <span class="markdown-them-math-inline">$u$</span> 在 <span class="markdown-them-math-inline">$S$</span> 中的前驱和后继, 判断它们与 <span class="markdown-them-math-inline">$u$</span> 是否满足连边条件即可. 连通性用并查集维护, 单次加点的时间复杂度为 <span class="markdown-them-math-inline">$\log n$</span>.</p>
+<p>而对于删点, 我们希望尽可能避免它, 于是求出每个点存在的时间段 <span class="markdown-them-math-inline">$[l, r]$</span>, 将其挂在线段树上覆盖了 <span class="markdown-them-math-inline">$[l, r]$</span> 的结点上. 遍历线段树时进入结点则加, 退出结点则减, 容易发现这样做只需要处理叶的撤销, 是简单的. 于是我们 <span class="markdown-them-math-inline">$\Theta(n\log^2 n)$</span> 求出了每个时刻询问的答案.</p>
 
       
     </div>
@@ -129,7 +100,7 @@
         </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/OI/" rel="tag">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Z-%E7%AE%97%E6%B3%95/" rel="tag">Z 算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/ABC/" rel="tag">ABC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/AtCoder/" rel="tag">AtCoder</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
 
     </footer>
   </div>
@@ -137,21 +108,12 @@
     
 <nav id="article-nav">
   
-    <a href="../yuan-gen-he-jie/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          原根和阶
-        
-      </div>
-    </a>
   
-  
-    <a href="../manacher-suan-fa/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../09/shu-ju-jie-gou-dian-zhong-dian/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">
         
-          Manacher 算法
+          数据结构典中典
         
       </div>
     </a>

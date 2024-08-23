@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>「ABC356F」Distance Component Size Query</title>
+      <link href="/2024/08/22/abc356f-distance-component-size-query/"/>
+      <url>/2024/08/22/abc356f-distance-component-size-query/</url>
+      
+        <content type="html"><![CDATA[<p>存在初始为空的点集 <span class="markdown-them-math-inline">$S$</span>, 进行 <span class="markdown-them-math-inline">$n$</span> 次操作, 形如:</p><ul><li><span class="markdown-them-math-inline">$1\ \ u:$</span> 若 <span class="markdown-them-math-inline">$u \in S$</span> 则令 <span class="markdown-them-math-inline">$u \notin S$</span>, 否则令 <span class="markdown-them-math-inline">$u \in S$</span>.</li><li><span class="markdown-them-math-inline">$2\ \ u:$</span> 对 <span class="markdown-them-math-inline">$S$</span> 中的结点连无向边, <span class="markdown-them-math-inline">$x, y$</span> 之间有边当且仅当 <span class="markdown-them-math-inline">$|x - y| \leqslant k$</span>. 求 <span class="markdown-them-math-inline">$u$</span> 所在的连通块大小.</li></ul><p><span class="markdown-them-math-inline">$n \leqslant 2 \times 10^5, k, u \leqslant 10^{18}$</span>.</p><hr><p>对于一个固定的点集 <span class="markdown-them-math-inline">$S$</span>, 在只需要维护连通块的情况下对所有点对两两判断是否需要连边是没有必要的, 注意到 <span class="markdown-them-math-inline">$\forall a, b, c \in S(a \leqslant b \leqslant c)$</span>, 若 <span class="markdown-them-math-inline">$|a - c| \leqslant k$</span>, 则 <span class="markdown-them-math-inline">$|a - b|, |b - c| \leqslant k$</span>, 所以只对 <span class="markdown-them-math-inline">$a, b$</span> 和 <span class="markdown-them-math-inline">$b, c$</span> 连边同样可以维护 <span class="markdown-them-math-inline">$a, b, c$</span> 两两之间的连通性, 此时边数降到与 <span class="markdown-them-math-inline">$|S|$</span> 同阶.</p><p>有了上面的结论, 加点是简单的, 只需要求出 <span class="markdown-them-math-inline">$u$</span> 在 <span class="markdown-them-math-inline">$S$</span> 中的前驱和后继, 判断它们与 <span class="markdown-them-math-inline">$u$</span> 是否满足连边条件即可. 连通性用并查集维护, 单次加点的时间复杂度为 <span class="markdown-them-math-inline">$\log n$</span>.</p><p>而对于删点, 我们希望尽可能避免它, 于是求出每个点存在的时间段 <span class="markdown-them-math-inline">$[l, r]$</span>, 将其挂在线段树上覆盖了 <span class="markdown-them-math-inline">$[l, r]$</span> 的结点上. 遍历线段树时进入结点则加, 退出结点则减, 容易发现这样做只需要处理叶的撤销, 是简单的. 于是我们 <span class="markdown-them-math-inline">$\Theta(n\log^2 n)$</span> 求出了每个时刻询问的答案.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+          <category> AtCoder </category>
+          
+          <category> ABC </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
+            
+            <tag> AtCoder </tag>
+            
+            <tag> ABC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构典中典</title>
       <link href="/2024/08/09/shu-ju-jie-gou-dian-zhong-dian/"/>
       <url>/2024/08/09/shu-ju-jie-gou-dian-zhong-dian/</url>
@@ -341,11 +376,11 @@
             
             <tag> 趣题 </tag>
             
-            <tag> AtCoder </tag>
-            
             <tag> Python </tag>
             
             <tag> Codeforces </tag>
+            
+            <tag> AtCoder </tag>
             
         </tags>
       
@@ -1084,6 +1119,41 @@
     
     
     <entry>
+      <title>虚树</title>
+      <link href="/2023/06/24/xu-shu/"/>
+      <url>/2023/06/24/xu-shu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="虚树">虚树</h2><p>在一些问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只关心关键点的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时我们需要维护他们之间的树形结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以想到将它们和它们之间的 <span class="markdown-them-math-inline">$\rm LCA$</span> 拉出来建一颗树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这棵树就被称作虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>有一个朴素的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是对它们两两求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对求出的 <span class="markdown-them-math-inline">$\rm LCA$</span> 再求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>中途判重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后按照祖先关系连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>经过观察可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只需要按照 <span class="markdown-them-math-inline">$\rm dfs$</span> 虚从小到大的顺序枚举每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将相邻两点求 <span class="markdown-them-math-inline">$\rm LCA$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以维护一个栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个栈中存的是当前点在虚树上的所有祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设当前栈顶为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于新加入的结点 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们对它进行分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)=v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接将 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 是栈中某个不为 <span class="markdown-them-math-inline">$v$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹栈直到 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后并把 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 不在栈中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么弹栈直到栈顶的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序小于 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并把最后一个弹出的结点向 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后把 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 和 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>不难发现这样一定是对的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且设关键点数量为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则虚树内点数不超过 <span class="markdown-them-math-inline">$2k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>在一棵有 <span class="markdown-them-math-inline">$n$</span> 个点的树上建立一颗有 <span class="markdown-them-math-inline">$k$</span> 个点的虚树的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h2 id="经典例题">经典例题</h2><h3 id="[sdoi2011]-消耗战">[SDOI2011] 消耗战</h3><p>首先有一个暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_u$</span> 表示将 <span class="markdown-them-math-inline">$u$</span> 的子树内所有关键点与 <span class="markdown-them-math-inline">$u$</span> 的联系断开所需要的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>转移时枚举 <span class="markdown-them-math-inline">$u$</span> 的所有子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$v$</span> 为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么必须切断这条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$dp_u=dp_u+w_{u,v}$</span></li><li>若 <span class="markdown-them-math-inline">$v$</span> 不为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以切断这条边也可以从 <span class="markdown-them-math-inline">$dp_v$</span> 转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$dp_u=dp_u+min\{dp_v,w_{u,v}\}$</span></li></ul><p>最终答案就是 <span class="markdown-them-math-inline">$dp_1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个暴力的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(qn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>观察到 <span class="markdown-them-math-inline">$\sum k\leqslant 5e5$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以考虑对每次询问建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>建虚树之前需要记 <span class="markdown-them-math-inline">$M_u$</span> 表示从 <span class="markdown-them-math-inline">$1$</span> 到 <span class="markdown-them-math-inline">$u$</span> 的路径上最短的边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为只需要切掉最短的边权就可以让点 <span class="markdown-them-math-inline">$u$</span> 与 <span class="markdown-them-math-inline">$1$</span> 不连通<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而切上面的边是更优的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以用 <span class="markdown-them-math-inline">$M_u$</span> 直接替换转移方程中的 <span class="markdown-them-math-inline">$w_{u,v}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[heoi2014]-大工程">[HEOI2014] 大工程</h3><p>首先建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><ul><li>对于两两之间距离之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以计算每条边的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>对于最大<span class="markdown-them-math-inline">$/$</span>最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以树形 <span class="markdown-them-math-inline">$\rm DP$</span> 或点分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[sdoi2015]-寻宝游戏">[SDOI2015] 寻宝游戏</h3><p>我们发现如果将虚树建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案就是虚树上所有边权之和的两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>于是我们考虑动态维护虚树的边权之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>先把所有点的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序求出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后我们发现边权之和等于 <span class="markdown-them-math-inline">$\rm dfs$</span> 序相邻两点的距离之和加上最左边和最右边两点的距离<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们可以使用 <span class="markdown-them-math-inline">$\rm set$</span> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树剖求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 图论 </category>
+          
+          <category> 虚树 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> OI </tag>
+            
+            <tag> 图论 </tag>
+            
+            <tag> 虚树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>长链剖分</title>
       <link href="/2023/06/24/chang-lian-pou-fen/"/>
       <url>/2023/06/24/chang-lian-pou-fen/</url>
@@ -1121,41 +1191,6 @@
     
     
     <entry>
-      <title>虚树</title>
-      <link href="/2023/06/24/xu-shu/"/>
-      <url>/2023/06/24/xu-shu/</url>
-      
-        <content type="html"><![CDATA[<h2 id="虚树">虚树</h2><p>在一些问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只关心关键点的信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时我们需要维护他们之间的树形结构<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是可以想到将它们和它们之间的 <span class="markdown-them-math-inline">$\rm LCA$</span> 拉出来建一颗树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这棵树就被称作虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>有一个朴素的想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是对它们两两求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且对求出的 <span class="markdown-them-math-inline">$\rm LCA$</span> 再求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>中途判重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后按照祖先关系连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>经过观察可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们只需要按照 <span class="markdown-them-math-inline">$\rm dfs$</span> 虚从小到大的顺序枚举每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将相邻两点求 <span class="markdown-them-math-inline">$\rm LCA$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以维护一个栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个栈中存的是当前点在虚树上的所有祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设当前栈顶为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于新加入的结点 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们对它进行分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)=v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接将 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 是栈中某个不为 <span class="markdown-them-math-inline">$v$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则弹栈直到 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后并把 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>若 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 不在栈中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么弹栈直到栈顶的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序小于 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每弹一个就向栈中比它深度多 <span class="markdown-them-math-inline">$1$</span> 的结点连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并把最后一个弹出的结点向 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后把 <span class="markdown-them-math-inline">$\rm LCA(u,v)$</span> 和 <span class="markdown-them-math-inline">$u$</span> 入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>不难发现这样一定是对的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且设关键点数量为 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则虚树内点数不超过 <span class="markdown-them-math-inline">$2k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>在一棵有 <span class="markdown-them-math-inline">$n$</span> 个点的树上建立一颗有 <span class="markdown-them-math-inline">$k$</span> 个点的虚树的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h2 id="经典例题">经典例题</h2><h3 id="[sdoi2011]-消耗战">[SDOI2011] 消耗战</h3><p>首先有一个暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$dp_u$</span> 表示将 <span class="markdown-them-math-inline">$u$</span> 的子树内所有关键点与 <span class="markdown-them-math-inline">$u$</span> 的联系断开所需要的最小代价<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>转移时枚举 <span class="markdown-them-math-inline">$u$</span> 的所有子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p><ul><li>若 <span class="markdown-them-math-inline">$v$</span> 为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么必须切断这条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$dp_u=dp_u+w_{u,v}$</span></li><li>若 <span class="markdown-them-math-inline">$v$</span> 不为关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以切断这条边也可以从 <span class="markdown-them-math-inline">$dp_v$</span> 转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$dp_u=dp_u+min\{dp_v,w_{u,v}\}$</span></li></ul><p>最终答案就是 <span class="markdown-them-math-inline">$dp_1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个暴力的时间复杂度是 <span class="markdown-them-math-inline">$\Theta(qn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>观察到 <span class="markdown-them-math-inline">$\sum k\leqslant 5e5$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以考虑对每次询问建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>建虚树之前需要记 <span class="markdown-them-math-inline">$M_u$</span> 表示从 <span class="markdown-them-math-inline">$1$</span> 到 <span class="markdown-them-math-inline">$u$</span> 的路径上最短的边权<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为只需要切掉最短的边权就可以让点 <span class="markdown-them-math-inline">$u$</span> 与 <span class="markdown-them-math-inline">$1$</span> 不连通<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而切上面的边是更优的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以用 <span class="markdown-them-math-inline">$M_u$</span> 直接替换转移方程中的 <span class="markdown-them-math-inline">$w_{u,v}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[heoi2014]-大工程">[HEOI2014] 大工程</h3><p>首先建虚树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><ul><li>对于两两之间距离之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以计算每条边的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li><li>对于最大<span class="markdown-them-math-inline">$/$</span>最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以树形 <span class="markdown-them-math-inline">$\rm DP$</span> 或点分治<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li></ul><p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sum k\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><h3 id="[sdoi2015]-寻宝游戏">[SDOI2015] 寻宝游戏</h3><p>我们发现如果将虚树建出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案就是虚树上所有边权之和的两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>于是我们考虑动态维护虚树的边权之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>先把所有点的 <span class="markdown-them-math-inline">$\rm dfs$</span> 序求出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后我们发现边权之和等于 <span class="markdown-them-math-inline">$\rm dfs$</span> 序相邻两点的距离之和加上最左边和最右边两点的距离<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们可以使用 <span class="markdown-them-math-inline">$\rm set$</span> 维护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树剖求 <span class="markdown-them-math-inline">$\rm LCA$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p><p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-          <category> 图论 </category>
-          
-          <category> 虚树 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> OI </tag>
-            
-            <tag> 图论 </tag>
-            
-            <tag> 虚树 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>缩点 &amp; 割点 &amp; 割边</title>
       <link href="/2023/06/24/suo-dian-ge-dian-ge-bian/"/>
       <url>/2023/06/24/suo-dian-ge-dian-ge-bian/</url>
@@ -1180,13 +1215,13 @@
             
             <tag> OI </tag>
             
-            <tag> C++ </tag>
-            
             <tag> 图论 </tag>
             
             <tag> 连通性 </tag>
             
             <tag> Tarjan </tag>
+            
+            <tag> C++ </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -1225,9 +1260,9 @@
             
             <tag> OI </tag>
             
-            <tag> C++ </tag>
-            
             <tag> 图论 </tag>
+            
+            <tag> C++ </tag>
             
             <tag> 欧拉回路 </tag>
             
