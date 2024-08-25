@@ -208,6 +208,100 @@ std::string s;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 </code></pre></div>
+<h2 id="d">D</h2>
+<p>这是一个交互题, 有 <span class="markdown-them-math-inline">$n$</span> 个独立的问题.</p>
+<p>每个问题形如: 有一个人在每天的 <span class="markdown-them-math-inline">$1440$</span> 分钟中恰好睡固定的 <span class="markdown-them-math-inline">$720$</span> 分钟, 你想知道他从什么时候开始睡觉. 你每次可以询问一个时刻, 并知道他在这一刻是醒着的还是睡着的. 在每个问题中最多进行 <span class="markdown-them-math-inline">$50$</span> 次询问.</p>
+<hr>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encode</span>(<span class="hljs-params">t: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">str</span>:</span>
+    t %= <span class="hljs-number">1440</span>
+    ho = t // <span class="hljs-number">60</span>
+    mi = t % <span class="hljs-number">60</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;ho:02d&#125;</span>:<span class="hljs-subst">&#123;mi:02d&#125;</span>&#x27;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ask</span>(<span class="hljs-params">idx: <span class="hljs-built_in">int</span>, t: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;at <span class="hljs-subst">&#123;encode(t)&#125;</span> check <span class="hljs-subst">&#123;idx&#125;</span>&#x27;</span>, flush=<span class="hljs-literal">True</span>)
+    res = <span class="hljs-built_in">input</span>()
+    <span class="hljs-keyword">return</span> (res == <span class="hljs-string">&#x27;awake&#x27;</span>)
+
+ans = []
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    T = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, T + <span class="hljs-number">1</span>):
+        resori = ask(idx, <span class="hljs-number">0</span>)
+        l, r = <span class="hljs-number">1</span>, <span class="hljs-number">720</span>
+        <span class="hljs-keyword">while</span> l &lt; r:
+            mid = (l + r) // <span class="hljs-number">2</span>
+            <span class="hljs-keyword">if</span> ask(idx, mid) == resori: l = mid + <span class="hljs-number">1</span>
+            <span class="hljs-keyword">else</span>: r = mid
+        <span class="hljs-keyword">if</span> resori: l += <span class="hljs-number">720</span>
+        ans.append(l)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;answer&#x27;</span>)
+    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> ans: <span class="hljs-built_in">print</span>(encode(t))
+</code></pre></div>
+<p>以上是一份错误的代码, 提交上去会有莫名其妙的 <code>RE</code>, 在此仅作记录.</p>
+<h2 id="j">J</h2>
+<p>给定 <span class="markdown-them-math-inline">$2n$</span> 个正整数, 选出其中的一些使它们的和恰好为 <span class="markdown-them-math-inline">$10^9$</span>.</p>
+<p>请注意, 数据用以下方式生成:</p>
+<ul>
+<li>生成有 <span class="markdown-them-math-inline">$n$</span> 个元素的正整数集 <span class="markdown-them-math-inline">$\mathbb{S}$</span>, 其元素和为 <span class="markdown-them-math-inline">$10^9$</span>, 且对于所有元素集服从随机分布.</li>
+<li>用相同的方式生成 <span class="markdown-them-math-inline">$\mathbb{T}$</span>, 将两个集合合并为一个可重集作为最终输入.</li>
+</ul>
+<hr>
+<p>该题的一个经典做法为, 随意将所有数分为两半, 求出其中一半能组合出的所有和存入 <code>map</code>. 然后枚举另一半能组合出的所有和 <span class="markdown-them-math-inline">$s$</span>, 在 <code>map</code> 中查询是否存在 <span class="markdown-them-math-inline">$10^9 - s$</span> 即可. 该做法又被称为 meet in the middle.</p>
+<p>容易发现, 上述做法最多处理到 <span class="markdown-them-math-inline">$n$</span> 约为 <span class="markdown-them-math-inline">$20$</span> 的情况, 于是我们不妨将所有数随机打包成至多 <span class="markdown-them-math-inline">$40$</span> 个组, 每组中的数同时选择, 在这种情况下使用 meet in the middle. 考虑该做法的正确性: 由于本题特别的数据生成方式, 这 <span class="markdown-them-math-inline">$40$</span> 个数能组合出的和差不多是在 <span class="markdown-them-math-inline">$[n, 2 \times 10^9]$</span> 内以某种中心集中的方式随机的. 注意到 <span class="markdown-them-math-inline">$2^{40} \gg 2 \times 10^9$</span>, 于是打包以后也几乎必然能找到一个解.</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+
+<span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b = <span class="hljs-number">20</span>, aim = <span class="hljs-number">1e9</span>;
+
+<span class="hljs-function">std::mt19937 <span class="hljs-title">gen</span><span class="hljs-params">(std::chrono::system_clock::now().time_since_epoch().count())</span></span>;
+
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> n;
+std::map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; exi;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    std::cin &gt;&gt; n;
+    <span class="hljs-function">std::vector <span class="hljs-title">a</span><span class="hljs-params">(n, <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) std::cin &gt;&gt; a[i];
+
+    <span class="hljs-function">std::vector <span class="hljs-title">S</span><span class="hljs-params">(b, std::vector(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>))</span>, <span class="hljs-title">T</span><span class="hljs-params">(b, std::vector(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>))</span></span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; std::<span class="hljs-built_in">min</span>(n, b &lt;&lt; <span class="hljs-number">1</span>); i++)
+        <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) T[i &gt;&gt; <span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(i), T[i &gt;&gt; <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] += a[i];
+        <span class="hljs-keyword">else</span> S[i &gt;&gt; <span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(i), S[i &gt;&gt; <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] += a[i];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = (b &lt;&lt; <span class="hljs-number">1</span>); i &lt; n; i++) &#123;
+        <span class="hljs-keyword">int</span> opt = (<span class="hljs-built_in">gen</span>() &amp; <span class="hljs-number">1</span>), pos = <span class="hljs-built_in">gen</span>() % b;
+        <span class="hljs-keyword">if</span> (opt) S[pos].<span class="hljs-built_in">push_back</span>(i), S[pos][<span class="hljs-number">0</span>] += a[i];
+        <span class="hljs-keyword">else</span> T[pos].<span class="hljs-built_in">push_back</span>(i), T[pos][<span class="hljs-number">0</span>] += a[i];
+    &#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> R = <span class="hljs-number">0</span>; R &lt; (<span class="hljs-number">1</span> &lt;&lt; b); R++) &#123;
+        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; b; i++)
+            <span class="hljs-keyword">if</span> ((R &gt;&gt; i) &amp; <span class="hljs-number">1</span>) sum += S[i][<span class="hljs-number">0</span>];
+        exi[sum] = R;
+    &#125;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> R = <span class="hljs-number">0</span>; R &lt; (<span class="hljs-number">1</span> &lt;&lt; b); R++) &#123;
+        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; b; i++)
+            <span class="hljs-keyword">if</span> ((R &gt;&gt; i) &amp; <span class="hljs-number">1</span>) sum += T[i][<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">if</span> (exi.<span class="hljs-built_in">contains</span>(aim - sum)) &#123;
+            std::vector&lt;<span class="hljs-keyword">int</span>&gt; ans;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; b; i++)
+                <span class="hljs-keyword">if</span> ((R &gt;&gt; i) &amp; <span class="hljs-number">1</span>)
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; T[i].<span class="hljs-built_in">size</span>(); j++)
+                        ans.<span class="hljs-built_in">push_back</span>(T[i][j]);
+            <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> P = exi[aim - sum];
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; b; i++)
+                <span class="hljs-keyword">if</span> ((P &gt;&gt; i) &amp; <span class="hljs-number">1</span>)
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; S[i].<span class="hljs-built_in">size</span>(); j++)
+                        ans.<span class="hljs-built_in">push_back</span>(S[i][j]);
+            std::cout &lt;&lt; ans.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x : ans) std::cout &lt;&lt; x + <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+    &#125;
+&#125;
+</code></pre></div>
 
       
     </div>
