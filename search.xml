@@ -843,207 +843,6 @@ $$</div><p>因为模数有可能小于 <span class="markdown-them-math-inline">$
       </tags>
   </entry>
   <entry>
-    <title>2022 年新一卷数学第 7 题另解</title>
-    <url>/2023/06/24/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
-    <content><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑到以下公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$e ^ {qx} = \sum _ {n} q ^ n \frac{x ^ n}{n!} \tag{7.1}
-$$</div><div class="markdown-them-math-block">$$\ln(1 + x) = \sum _ n (-1) ^ n \frac{x ^ {n + 1}}{n + 1} \tag{7. 2}
-$$</div><p>将 <span class="markdown-them-math-inline">$a$</span> 带入式 <span class="markdown-them-math-inline">$(7. 1)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-a &amp;= 0.1(1 + 0.1 + \frac{0.01}{2} + \frac{0.001}{6} + \cdots) \\
-  &amp;= 0.1 + 0.01 + \frac{0.001}{2} + \frac{0.0001}{6} + \cdots
- \end{aligned}
-$$</div><p>将 <span class="markdown-them-math-inline">$c$</span> 带入式 <span class="markdown-them-math-inline">$(7.2)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-c &amp;= \ln (1 + \frac{1}{9}) \\
-  &amp;= \frac{1}{9} - \frac{\frac{1}{9 ^ 2}}{2} + \frac{\frac{1}{9 ^ 3}}{3} - \cdots
-\end{aligned}
-$$</div><p>分解 <span class="markdown-them-math-inline">$b$</span> 是简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$b = 0.111\cdots = 0.1 + 0.01 + 0.001 + \cdots
-$$</div><p>此时 <span class="markdown-them-math-inline">$b &gt; a, c$</span> 应当是一目了然的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑对比 <span class="markdown-them-math-inline">$a, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>取 <span class="markdown-them-math-inline">$c' = \frac{1}{9} - \frac{1}{2 \times 81} + \frac{1}{3 \times 729} &gt; c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不够好算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再取 <span class="markdown-them-math-inline">$c'' = \frac{1}{9} - \frac{1}{400} + \frac{1}{2000} = \frac{1}{9} - 0.002 &gt; c'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>取 <span class="markdown-them-math-inline">$a' = 0.1 + 0.01 &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$c'' &lt; a'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$c &lt; c' &lt; c'' &lt; a' &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$c &lt; a &lt; b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>数学</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>数学</tag>
-        <tag>高考</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>24 高考新 I 卷数学 19(3)</title>
-    <url>/2024/06/08/24-xin-gao-kao-i-juan-shu-xue-19-3/</url>
-    <content><![CDATA[<p>对 <span class="markdown-them-math-inline">$m = 1, 2$</span>, 取几组合法 <span class="markdown-them-math-inline">$(i, j)$</span> 即证.</p>
-<p>对 <span class="markdown-them-math-inline">$m \geqslant 3$</span>, 设 <span class="markdown-them-math-inline">$f_m$</span> 表示 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中能取出的合法数对数量.</p>
-<p>注意到 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中任意长度为 <span class="markdown-them-math-inline">$4l + 2$</span> 的子区间对应的答案均为 <span class="markdown-them-math-inline">$f_l$</span>, 则取分界点 <span class="markdown-them-math-inline">$p_1 = 4, p_2 = 4m - 2$</span>​ 进行容斥.</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-f_m &amp;= f_m[i \not\in [1, p_1]~\textrm{or}~j \not\in [p_2 + 1, 4m + 2]] + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
-&amp;= f_m[i, j \in [p_1 + 1, 4m + 2]] + f_m[i, j \in [1, p_2]] - f_m[i, j \in [p_1 + 1, p_2]] \\&amp;~~~~+ f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
-&amp;= 2f_{m - 1} - f_{m - 2} + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]
-\end{aligned}
-$$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]$</span> 的下界.</p>
-<ul>
-<li>显然 <span class="markdown-them-math-inline">$(i, j) = (1, 4m + 2)$</span> 是合法的.</li>
-<li>对于 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span>,  当 <span class="markdown-them-math-inline">$m = 3$</span> 时其合法性在第 <span class="markdown-them-math-inline">$(2)$</span> 问中已证. 当 <span class="markdown-them-math-inline">$m &gt; 3$</span> 时, 从前后各取 <span class="markdown-them-math-inline">$2$</span> 个下标公差为 <span class="markdown-them-math-inline">$2$</span> 的子序列, 注意到只看子区间 <span class="markdown-them-math-inline">$[9, 4m - 6]$</span>, 其中 <span class="markdown-them-math-inline">$10$</span> 和 <span class="markdown-them-math-inline">$4m - 7$</span> 已经被取过了, 于是变成了等价的子问题. 故归纳可证 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span> 是合法的.</li>
-</ul>
-<p>此时有 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]] \geqslant 2$</span>, 于是 <span class="markdown-them-math-inline">$f_m \geqslant 2f_{m - 1} - f_{m - 2} + 2$</span>.</p>
-<p>取 <span class="markdown-them-math-inline">$f'_m = 2f'_{m - 1} - f'_{m - 2} + 2 \leqslant f_m, f'_1 = 3, f'_2 = 7$</span>.</p>
-<p>变换得 <span class="markdown-them-math-inline">$(f'_m - f'_{m - 1}) = (f'_{m - 1} - f'_{m - 2}) + 2$</span>, 由熟知的方法解得 <span class="markdown-them-math-inline">$f_m \geqslant f'_m = m ^ 2 + m + 1$</span>.</p>
-<p>于是 <span class="markdown-them-math-inline">$P_m = \frac{f_m}{\binom{4m + 2}{2}} \geqslant \frac{f'_m}{\binom{4m + 2}{2}} = \frac{m ^ 2 + m + 1}{8m^2 + 6m + 1} &gt; \frac{1}{8}$</span>, 原命题得证.</p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>数学</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>数学</tag>
-        <tag>高考</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AC 自动机</title>
-    <url>/2023/06/24/ac-zi-dong-ji/</url>
-    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
-<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
-<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
-$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="文本串匹配">文本串匹配</h3>
-<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
-<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
-$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<blockquote>
-<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>AC 自动机</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
-        <tag>OI</tag>
-        <tag>AC 自动机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AtCoder Beginner Contest 212</title>
-    <url>/2023/06/24/atcoder-beginner-contest-212/</url>
-    <content><![CDATA[<h2 id="e">E</h2>
-<p>考虑记 <span class="markdown-them-math-inline">$f_{i, u}$</span> 表示走 <span class="markdown-them-math-inline">$i$</span> 步到 <span class="markdown-them-math-inline">$u$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然有转移式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_{i, u} = \sum _ {(u, v) \in Edge} f_{i - 1, v}
-$$</div><p>状态数为 <span class="markdown-them-math-inline">$nk$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n ^ 2 k).$</span></p>
-<p>考虑到删除的边数很少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将转移方程改写为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_{i, u} = \sum _ {v = 1} ^ n f_{i - 1, v} - \sum _ {(u, v) \not\in Edge} f_{i - 1, v}
-$$</div><p>前一项可以算完每个 <span class="markdown-them-math-inline">$i$</span> 以后记录一下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>后一项合法转移数量之和为 <span class="markdown-them-math-inline">$m$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总时间复杂度被优化至 <span class="markdown-them-math-inline">$\Theta(nk + mk).$</span></p>
-<h2 id="f">F</h2>
-<p>看到这个题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们首先想到的肯定是倍增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>但是细想一下可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从一个点 <span class="markdown-them-math-inline">$i$</span> 开始跳 <span class="markdown-them-math-inline">$2 ^ j$</span> 步到的地方还与时间有关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是难以处理的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>我们考虑记 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号<strong>路径</strong>开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>跳 <span class="markdown-them-math-inline">$2 ^ j$</span> 步到的地方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现此时 <span class="markdown-them-math-inline">$f_{i, j}$</span> 的值是唯一的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是用 <span class="markdown-them-math-inline">$\rm set$</span> 维护出 <span class="markdown-them-math-inline">$y$</span> 号点在 <span class="markdown-them-math-inline">$x$</span> 时刻开始要走上的路径<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后不断往后跳<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到停在最后一个时间不大于 <span class="markdown-them-math-inline">$z$</span> 的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>判断一下是停在路上还是停在点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n + q \log n).$</span></p>
-<h2 id="g">G</h2>
-<p>首先考虑到当 <span class="markdown-them-math-inline">$x = 0$</span> 时有且仅有 <span class="markdown-them-math-inline">$y = 0$</span> 满足条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们不妨设 <span class="markdown-them-math-inline">$1 \leqslant x, y &lt; P$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后再给答案加上 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑 <span class="markdown-them-math-inline">$P$</span> 的一个原根 <span class="markdown-them-math-inline">$r$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x = r ^ a, y = r ^ b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现 <span class="markdown-them-math-inline">$(x, y)$</span> 与 <span class="markdown-them-math-inline">$(a, b)$</span> 一一对应<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$x ^ n \equiv y \iff r ^ {an} \equiv r ^ b \pmod P
-$$</div><p>考虑拓展欧拉定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$r ^ {an} \equiv r ^ b \pmod P \iff an \equiv b \pmod {P - 1}
-$$</div><p>于是问题被转化为求满足 <span class="markdown-them-math-inline">$an \equiv b \pmod {P - 1}$</span> 的 <span class="markdown-them-math-inline">$(a, b)$</span> 数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>根据裴蜀定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以推导出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\sum _ {a = 1} ^ {P - 1} \sum _ {b = 1} ^ {P - 1} [an \equiv b \pmod {P - 1}] = \sum _ {a = 1} ^ {P - 1} \frac{P - 1}{(P - 1, a)}
-$$</div><p>考虑对 <span class="markdown-them-math-inline">$(P - 1, a)$</span> 相等的 <span class="markdown-them-math-inline">$a$</span> 一起计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f(g)$</span> 表示满足 <span class="markdown-them-math-inline">$g = (P - 1, a)$</span> 的 <span class="markdown-them-math-inline">$a$</span> 的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$g~|~P - 1$</span> 且 <span class="markdown-them-math-inline">$f(g) = \varphi\left(\frac{P - 1}{g}\right)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑求解 <span class="markdown-them-math-inline">$\varphi(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>观察到 <span class="markdown-them-math-inline">$\varphi \times I = id$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\varphi(n) = n - \sum _ {d | n \&amp; d \not= n} \varphi(d)
-$$</div><p>进一步有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f(g) = \frac{P - 1}{g} - \sum _ {g|k \&amp; g \not=k} f(g)
-$$</div><p>从大到小枚举 <span class="markdown-them-math-inline">$g$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举其倍数转移一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{P} + d ^ 2(P - 1))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="h">H</h2>
-<p>考虑记 <span class="markdown-them-math-inline">$w + 1$</span> 为第一个大于所有 <span class="markdown-them-math-inline">$a_i$</span> 的 <span class="markdown-them-math-inline">$2$</span> 的幂<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$S$</span> 为 <span class="markdown-them-math-inline">$a$</span> 序列中数构成的集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>造一个集合幂级数 <span class="markdown-them-math-inline">$F(x) = \sum _ {i = 0} ^ w [i \in S]x ^ i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现答案即为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\sum _ {i = 1} ^ n \left(k ^ i - [x ^ 0] F^i(x) \right)
-$$</div><p>利用 <span class="markdown-them-math-inline">$\rm FWT$</span> 的线性性推一推式子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-&amp;~~~~~\sum _ {i = 1} ^ n \left(k ^ i - [x ^ 0] F^i(x) \right) \\
-&amp;=\sum _ {i = 1} ^ n \left( k ^ i - [x ^ 0] \textrm{IFWT}(\textrm{FWT}\cdot F^i (x)) \right) \\
-&amp;=\sum _ {i = 1} ^ n k ^ i - [x ^ 0] \textrm{IFWT}\left( \sum _ {i = 1} ^ n \textrm{FWT} \cdot F^i(x)\right)
-\end{aligned}
-$$</div><p><span class="markdown-them-math-inline">$\rm FWT$</span> 后 <span class="markdown-them-math-inline">$F$</span> 的幂表示对每一项系数做点乘<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>设 <span class="markdown-them-math-inline">$G(x) = \textrm{FWT} \cdot F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用一下等比数列求和公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则有答案为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\sum _ {i = 1} ^ n k ^ i - [x ^ 0] \textrm{IFWT}\left[ \sum _ {i = 0} ^ w \left( \frac{g_i ^ {n + 1} - g_i}{g_i - 1} \right)x ^ i \right]
-$$</div><p>计算上式所需时间复杂度为 <span class="markdown-them-math-inline">$\Theta((n + w) \log (n + w)).$</span></p>
-<p><a href="https://atcoder.jp/contests/abc212/submissions?f.Task=&amp;f.LanguageName=C%2B%2B&amp;f.Status=AC&amp;f.User=WA_on_test_233">Code Link</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-        <category>ABC</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>题解</tag>
-        <tag>AtCoder</tag>
-        <tag>ABC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AtCoder Beginner Contest 213</title>
-    <url>/2023/06/24/atcoder-beginner-contest-213/</url>
-    <content><![CDATA[<h2 id="e">E</h2>
-<p>考虑使用 <span class="markdown-them-math-inline">$\rm bfs$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>观察到每一步的代价都是 <span class="markdown-them-math-inline">$0$</span> 或 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是建立双端队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>每次迭代取队头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果走了代价为 <span class="markdown-them-math-inline">$0$</span> 的边就将出点加入队首<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则加入队尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑其正确性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为走代价为 <span class="markdown-them-math-inline">$0$</span> 的边不会增加当前点的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以维护住当前取出的点一定是答案最小点的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nm)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种模型还可拓展到代价为 <span class="markdown-them-math-inline">$0 \sim k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只需要对每种贡献维护一个队列即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现仍然满足单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nk)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="g">G</h2>
-<p>考虑使用状压 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>设 <span class="markdown-them-math-inline">$f_S$</span> 表示仅考虑 <span class="markdown-them-math-inline">$S$</span> 的导出子图<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令它与 <span class="markdown-them-math-inline">$1$</span> 连通的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$cnt_S$</span> 表示 <span class="markdown-them-math-inline">$S$</span> 导出子图中的边数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$ans_k = \sum _ {1, k \in S} f_S \times 2 ^ {cnt_{U-S}}
-$$</div><p>考虑容斥求解 <span class="markdown-them-math-inline">$f_S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_S = 2 ^ {cnt_S} - \sum _ {1 \in T, T \subsetneq S} f_T \times 2 ^ {cnt_{S - T}}
-$$</div><p>求解两部分的时间复杂度分别为 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span> 和 <span class="markdown-them-math-inline">$\Theta(3 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>后半部分可以使用 <span class="markdown-them-math-inline">$\rm FWT$</span> 优化或卷积做到 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="h">H</h2>
-<p>考虑 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示到 <span class="markdown-them-math-inline">$i$</span> 为止经过长度为 <span class="markdown-them-math-inline">$j$</span> 的路径的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$E_{u, v, w}$</span> 表示从 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 长度为 <span class="markdown-them-math-inline">$w$</span> 的路径数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然有转移方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_{i, j} = \sum _ {k = 1} ^ n \sum _ {l = 1} ^ T f_{k, j - l} \times E_{k, i, l}
-$$</div><p>考虑用 <span class="markdown-them-math-inline">$\rm GF$</span> 拟合这个过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F_i(x) = \sum \limits_{j} f_{i, j} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$G_{i, j}(x) = \sum \limits_ {k \geqslant 1} E_{i, j, k} x ^ k.$</span> 有方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F_i(x) = \sum _ {j = 1} ^ n F_j(x) \times G_{j, i}(x)
-$$</div><p>使用分治多项式乘法即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n ^ 2 T \log ^ 2 T)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><a href="https://atcoder.jp/contests/abc213/submissions?f.Task=&amp;f.LanguageName=C%2B%2B&amp;f.Status=AC&amp;f.User=WA_on_test_233">Code Link</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-        <category>ABC</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>题解</tag>
-        <tag>AtCoder</tag>
-        <tag>ABC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2024 年 2~3 月趣题记录</title>
     <url>/2024/04/09/2024-nian-2-3-yue-qu-ti-ji-lu/</url>
     <content><![CDATA[<h1 id="[$\rm-cf1929d$](https://codeforcescom/contest/1929/problem/d) $\rm (^*1974)$"><a href="https://codeforces.com/contest/1929/problem/D"><span class="markdown-them-math-inline">$\rm CF1929D$</span></a> <span class="markdown-them-math-inline">$\rm (^*1974)$</span></h1>
@@ -1889,9 +1688,210 @@ ans = <span class="hljs-number">0</span>
         <tag>C++</tag>
         <tag>题解</tag>
         <tag>趣题</tag>
-        <tag>AtCoder</tag>
         <tag>Python</tag>
         <tag>Codeforces</tag>
+        <tag>AtCoder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2022 年新一卷数学第 7 题另解</title>
+    <url>/2023/06/24/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
+    <content><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑到以下公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$e ^ {qx} = \sum _ {n} q ^ n \frac{x ^ n}{n!} \tag{7.1}
+$$</div><div class="markdown-them-math-block">$$\ln(1 + x) = \sum _ n (-1) ^ n \frac{x ^ {n + 1}}{n + 1} \tag{7. 2}
+$$</div><p>将 <span class="markdown-them-math-inline">$a$</span> 带入式 <span class="markdown-them-math-inline">$(7. 1)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+a &amp;= 0.1(1 + 0.1 + \frac{0.01}{2} + \frac{0.001}{6} + \cdots) \\
+  &amp;= 0.1 + 0.01 + \frac{0.001}{2} + \frac{0.0001}{6} + \cdots
+ \end{aligned}
+$$</div><p>将 <span class="markdown-them-math-inline">$c$</span> 带入式 <span class="markdown-them-math-inline">$(7.2)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+c &amp;= \ln (1 + \frac{1}{9}) \\
+  &amp;= \frac{1}{9} - \frac{\frac{1}{9 ^ 2}}{2} + \frac{\frac{1}{9 ^ 3}}{3} - \cdots
+\end{aligned}
+$$</div><p>分解 <span class="markdown-them-math-inline">$b$</span> 是简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$b = 0.111\cdots = 0.1 + 0.01 + 0.001 + \cdots
+$$</div><p>此时 <span class="markdown-them-math-inline">$b &gt; a, c$</span> 应当是一目了然的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑对比 <span class="markdown-them-math-inline">$a, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>取 <span class="markdown-them-math-inline">$c' = \frac{1}{9} - \frac{1}{2 \times 81} + \frac{1}{3 \times 729} &gt; c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不够好算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再取 <span class="markdown-them-math-inline">$c'' = \frac{1}{9} - \frac{1}{400} + \frac{1}{2000} = \frac{1}{9} - 0.002 &gt; c'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>取 <span class="markdown-them-math-inline">$a' = 0.1 + 0.01 &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$c'' &lt; a'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$c &lt; c' &lt; c'' &lt; a' &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$c &lt; a &lt; b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>数学</tag>
+        <tag>高考</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>24 高考新 I 卷数学 19(3)</title>
+    <url>/2024/06/08/24-xin-gao-kao-i-juan-shu-xue-19-3/</url>
+    <content><![CDATA[<p>对 <span class="markdown-them-math-inline">$m = 1, 2$</span>, 取几组合法 <span class="markdown-them-math-inline">$(i, j)$</span> 即证.</p>
+<p>对 <span class="markdown-them-math-inline">$m \geqslant 3$</span>, 设 <span class="markdown-them-math-inline">$f_m$</span> 表示 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中能取出的合法数对数量.</p>
+<p>注意到 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中任意长度为 <span class="markdown-them-math-inline">$4l + 2$</span> 的子区间对应的答案均为 <span class="markdown-them-math-inline">$f_l$</span>, 则取分界点 <span class="markdown-them-math-inline">$p_1 = 4, p_2 = 4m - 2$</span>​ 进行容斥.</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+f_m &amp;= f_m[i \not\in [1, p_1]~\textrm{or}~j \not\in [p_2 + 1, 4m + 2]] + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
+&amp;= f_m[i, j \in [p_1 + 1, 4m + 2]] + f_m[i, j \in [1, p_2]] - f_m[i, j \in [p_1 + 1, p_2]] \\&amp;~~~~+ f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
+&amp;= 2f_{m - 1} - f_{m - 2} + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]
+\end{aligned}
+$$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]$</span> 的下界.</p>
+<ul>
+<li>显然 <span class="markdown-them-math-inline">$(i, j) = (1, 4m + 2)$</span> 是合法的.</li>
+<li>对于 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span>,  当 <span class="markdown-them-math-inline">$m = 3$</span> 时其合法性在第 <span class="markdown-them-math-inline">$(2)$</span> 问中已证. 当 <span class="markdown-them-math-inline">$m &gt; 3$</span> 时, 从前后各取 <span class="markdown-them-math-inline">$2$</span> 个下标公差为 <span class="markdown-them-math-inline">$2$</span> 的子序列, 注意到只看子区间 <span class="markdown-them-math-inline">$[9, 4m - 6]$</span>, 其中 <span class="markdown-them-math-inline">$10$</span> 和 <span class="markdown-them-math-inline">$4m - 7$</span> 已经被取过了, 于是变成了等价的子问题. 故归纳可证 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span> 是合法的.</li>
+</ul>
+<p>此时有 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]] \geqslant 2$</span>, 于是 <span class="markdown-them-math-inline">$f_m \geqslant 2f_{m - 1} - f_{m - 2} + 2$</span>.</p>
+<p>取 <span class="markdown-them-math-inline">$f'_m = 2f'_{m - 1} - f'_{m - 2} + 2 \leqslant f_m, f'_1 = 3, f'_2 = 7$</span>.</p>
+<p>变换得 <span class="markdown-them-math-inline">$(f'_m - f'_{m - 1}) = (f'_{m - 1} - f'_{m - 2}) + 2$</span>, 由熟知的方法解得 <span class="markdown-them-math-inline">$f_m \geqslant f'_m = m ^ 2 + m + 1$</span>.</p>
+<p>于是 <span class="markdown-them-math-inline">$P_m = \frac{f_m}{\binom{4m + 2}{2}} \geqslant \frac{f'_m}{\binom{4m + 2}{2}} = \frac{m ^ 2 + m + 1}{8m^2 + 6m + 1} &gt; \frac{1}{8}$</span>, 原命题得证.</p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>数学</tag>
+        <tag>高考</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AtCoder Beginner Contest 212</title>
+    <url>/2023/06/24/atcoder-beginner-contest-212/</url>
+    <content><![CDATA[<h2 id="e">E</h2>
+<p>考虑记 <span class="markdown-them-math-inline">$f_{i, u}$</span> 表示走 <span class="markdown-them-math-inline">$i$</span> 步到 <span class="markdown-them-math-inline">$u$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然有转移式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i, u} = \sum _ {(u, v) \in Edge} f_{i - 1, v}
+$$</div><p>状态数为 <span class="markdown-them-math-inline">$nk$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n ^ 2 k).$</span></p>
+<p>考虑到删除的边数很少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将转移方程改写为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i, u} = \sum _ {v = 1} ^ n f_{i - 1, v} - \sum _ {(u, v) \not\in Edge} f_{i - 1, v}
+$$</div><p>前一项可以算完每个 <span class="markdown-them-math-inline">$i$</span> 以后记录一下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>后一项合法转移数量之和为 <span class="markdown-them-math-inline">$m$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总时间复杂度被优化至 <span class="markdown-them-math-inline">$\Theta(nk + mk).$</span></p>
+<h2 id="f">F</h2>
+<p>看到这个题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们首先想到的肯定是倍增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>但是细想一下可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从一个点 <span class="markdown-them-math-inline">$i$</span> 开始跳 <span class="markdown-them-math-inline">$2 ^ j$</span> 步到的地方还与时间有关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是难以处理的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们考虑记 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号<strong>路径</strong>开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>跳 <span class="markdown-them-math-inline">$2 ^ j$</span> 步到的地方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现此时 <span class="markdown-them-math-inline">$f_{i, j}$</span> 的值是唯一的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是用 <span class="markdown-them-math-inline">$\rm set$</span> 维护出 <span class="markdown-them-math-inline">$y$</span> 号点在 <span class="markdown-them-math-inline">$x$</span> 时刻开始要走上的路径<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后不断往后跳<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到停在最后一个时间不大于 <span class="markdown-them-math-inline">$z$</span> 的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>判断一下是停在路上还是停在点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n + q \log n).$</span></p>
+<h2 id="g">G</h2>
+<p>首先考虑到当 <span class="markdown-them-math-inline">$x = 0$</span> 时有且仅有 <span class="markdown-them-math-inline">$y = 0$</span> 满足条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们不妨设 <span class="markdown-them-math-inline">$1 \leqslant x, y &lt; P$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后再给答案加上 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑 <span class="markdown-them-math-inline">$P$</span> 的一个原根 <span class="markdown-them-math-inline">$r$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x = r ^ a, y = r ^ b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现 <span class="markdown-them-math-inline">$(x, y)$</span> 与 <span class="markdown-them-math-inline">$(a, b)$</span> 一一对应<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$x ^ n \equiv y \iff r ^ {an} \equiv r ^ b \pmod P
+$$</div><p>考虑拓展欧拉定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$r ^ {an} \equiv r ^ b \pmod P \iff an \equiv b \pmod {P - 1}
+$$</div><p>于是问题被转化为求满足 <span class="markdown-them-math-inline">$an \equiv b \pmod {P - 1}$</span> 的 <span class="markdown-them-math-inline">$(a, b)$</span> 数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>根据裴蜀定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以推导出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\sum _ {a = 1} ^ {P - 1} \sum _ {b = 1} ^ {P - 1} [an \equiv b \pmod {P - 1}] = \sum _ {a = 1} ^ {P - 1} \frac{P - 1}{(P - 1, a)}
+$$</div><p>考虑对 <span class="markdown-them-math-inline">$(P - 1, a)$</span> 相等的 <span class="markdown-them-math-inline">$a$</span> 一起计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f(g)$</span> 表示满足 <span class="markdown-them-math-inline">$g = (P - 1, a)$</span> 的 <span class="markdown-them-math-inline">$a$</span> 的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$g~|~P - 1$</span> 且 <span class="markdown-them-math-inline">$f(g) = \varphi\left(\frac{P - 1}{g}\right)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑求解 <span class="markdown-them-math-inline">$\varphi(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>观察到 <span class="markdown-them-math-inline">$\varphi \times I = id$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\varphi(n) = n - \sum _ {d | n \&amp; d \not= n} \varphi(d)
+$$</div><p>进一步有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f(g) = \frac{P - 1}{g} - \sum _ {g|k \&amp; g \not=k} f(g)
+$$</div><p>从大到小枚举 <span class="markdown-them-math-inline">$g$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举其倍数转移一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\sqrt{P} + d ^ 2(P - 1))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="h">H</h2>
+<p>考虑记 <span class="markdown-them-math-inline">$w + 1$</span> 为第一个大于所有 <span class="markdown-them-math-inline">$a_i$</span> 的 <span class="markdown-them-math-inline">$2$</span> 的幂<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$S$</span> 为 <span class="markdown-them-math-inline">$a$</span> 序列中数构成的集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>造一个集合幂级数 <span class="markdown-them-math-inline">$F(x) = \sum _ {i = 0} ^ w [i \in S]x ^ i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现答案即为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\sum _ {i = 1} ^ n \left(k ^ i - [x ^ 0] F^i(x) \right)
+$$</div><p>利用 <span class="markdown-them-math-inline">$\rm FWT$</span> 的线性性推一推式子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+&amp;~~~~~\sum _ {i = 1} ^ n \left(k ^ i - [x ^ 0] F^i(x) \right) \\
+&amp;=\sum _ {i = 1} ^ n \left( k ^ i - [x ^ 0] \textrm{IFWT}(\textrm{FWT}\cdot F^i (x)) \right) \\
+&amp;=\sum _ {i = 1} ^ n k ^ i - [x ^ 0] \textrm{IFWT}\left( \sum _ {i = 1} ^ n \textrm{FWT} \cdot F^i(x)\right)
+\end{aligned}
+$$</div><p><span class="markdown-them-math-inline">$\rm FWT$</span> 后 <span class="markdown-them-math-inline">$F$</span> 的幂表示对每一项系数做点乘<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$G(x) = \textrm{FWT} \cdot F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用一下等比数列求和公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则有答案为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\sum _ {i = 1} ^ n k ^ i - [x ^ 0] \textrm{IFWT}\left[ \sum _ {i = 0} ^ w \left( \frac{g_i ^ {n + 1} - g_i}{g_i - 1} \right)x ^ i \right]
+$$</div><p>计算上式所需时间复杂度为 <span class="markdown-them-math-inline">$\Theta((n + w) \log (n + w)).$</span></p>
+<p><a href="https://atcoder.jp/contests/abc212/submissions?f.Task=&amp;f.LanguageName=C%2B%2B&amp;f.Status=AC&amp;f.User=WA_on_test_233">Code Link</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+        <category>ABC</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
+        <tag>ABC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AC 自动机</title>
+    <url>/2023/06/24/ac-zi-dong-ji/</url>
+    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
+<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
+<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
+$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="文本串匹配">文本串匹配</h3>
+<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
+<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
+$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<blockquote>
+<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>AC 自动机</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>AC 自动机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AtCoder Beginner Contest 213</title>
+    <url>/2023/06/24/atcoder-beginner-contest-213/</url>
+    <content><![CDATA[<h2 id="e">E</h2>
+<p>考虑使用 <span class="markdown-them-math-inline">$\rm bfs$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>观察到每一步的代价都是 <span class="markdown-them-math-inline">$0$</span> 或 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是建立双端队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>每次迭代取队头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果走了代价为 <span class="markdown-them-math-inline">$0$</span> 的边就将出点加入队首<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则加入队尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑其正确性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为走代价为 <span class="markdown-them-math-inline">$0$</span> 的边不会增加当前点的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以维护住当前取出的点一定是答案最小点的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nm)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种模型还可拓展到代价为 <span class="markdown-them-math-inline">$0 \sim k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只需要对每种贡献维护一个队列即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现仍然满足单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(nk)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="g">G</h2>
+<p>考虑使用状压 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$f_S$</span> 表示仅考虑 <span class="markdown-them-math-inline">$S$</span> 的导出子图<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令它与 <span class="markdown-them-math-inline">$1$</span> 连通的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$cnt_S$</span> 表示 <span class="markdown-them-math-inline">$S$</span> 导出子图中的边数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ans_k = \sum _ {1, k \in S} f_S \times 2 ^ {cnt_{U-S}}
+$$</div><p>考虑容斥求解 <span class="markdown-them-math-inline">$f_S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_S = 2 ^ {cnt_S} - \sum _ {1 \in T, T \subsetneq S} f_T \times 2 ^ {cnt_{S - T}}
+$$</div><p>求解两部分的时间复杂度分别为 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span> 和 <span class="markdown-them-math-inline">$\Theta(3 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>后半部分可以使用 <span class="markdown-them-math-inline">$\rm FWT$</span> 优化或卷积做到 <span class="markdown-them-math-inline">$\Theta(n ^ 2 2 ^ n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="h">H</h2>
+<p>考虑 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_{i, j}$</span> 表示到 <span class="markdown-them-math-inline">$i$</span> 为止经过长度为 <span class="markdown-them-math-inline">$j$</span> 的路径的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$E_{u, v, w}$</span> 表示从 <span class="markdown-them-math-inline">$u$</span> 到 <span class="markdown-them-math-inline">$v$</span> 长度为 <span class="markdown-them-math-inline">$w$</span> 的路径数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然有转移方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i, j} = \sum _ {k = 1} ^ n \sum _ {l = 1} ^ T f_{k, j - l} \times E_{k, i, l}
+$$</div><p>考虑用 <span class="markdown-them-math-inline">$\rm GF$</span> 拟合这个过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F_i(x) = \sum \limits_{j} f_{i, j} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$G_{i, j}(x) = \sum \limits_ {k \geqslant 1} E_{i, j, k} x ^ k.$</span> 有方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F_i(x) = \sum _ {j = 1} ^ n F_j(x) \times G_{j, i}(x)
+$$</div><p>使用分治多项式乘法即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n ^ 2 T \log ^ 2 T)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><a href="https://atcoder.jp/contests/abc213/submissions?f.Task=&amp;f.LanguageName=C%2B%2B&amp;f.Status=AC&amp;f.User=WA_on_test_233">Code Link</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+        <category>ABC</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
+        <tag>ABC</tag>
       </tags>
   </entry>
   <entry>
@@ -1970,6 +1970,43 @@ $$</div><p>其中 <span class="markdown-them-math-inline">$(n - i)!$</span> 是�
         <tag>题解</tag>
         <tag>AtCoder</tag>
         <tag>ABC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>From Decoding to Meta-Generation：Inference-time Algorithms for Large Language Models</title>
+    <url>/2024/12/05/from-decoding-to-meta-generation-inference-time-algorithms-for-large-language-models/</url>
+    <content><![CDATA[<h2 id="生成的目标">生成的目标</h2>
+<p>记某个生成的结果集为 <span class="markdown-them-math-inline">$S$</span>, 用户会对其打分为 <span class="markdown-them-math-inline">$A(S) \in \mathbb{R}$</span>, 将其归一化处理后可以得到一个概率分布, 记作 <span class="markdown-them-math-inline">$q_*$</span>, 显然有 <span class="markdown-them-math-inline">$q_*(S) \propto A(S)$</span>. 设 <span class="markdown-them-math-inline">$\mathrm{d} (p, q) \in \mathbb{R}$</span> 是某评价两分布接近程度的函数, <span class="markdown-them-math-inline">$g$</span> 是生成器采样得到结果的分布, 我们不妨假定用户希望最小化 <span class="markdown-them-math-inline">$\mathrm{d} (q_*, g)$</span>. 但往往 <span class="markdown-them-math-inline">$q_*$</span> 是几乎不可知的, 于是我们接下来考虑如何在不知道 <span class="markdown-them-math-inline">$q_*$</span> 的情况下最小化 <span class="markdown-them-math-inline">$\mathrm{d} (q_*, g)$</span>.</p>
+<p>直觉上, 对于一个训练好的语言模型, 我们认为它只需要针对一个输入, 从模型的输出分布中选择一个即可, 但事实并非如此. 一般生成使用的都是<strong>自回归模型</strong>, 每次根据上下文生成一个 token, 并将该 token 加入上下文中, 如此反复. 以下是几种生成的方式:</p>
+<ul>
+<li>
+<p><strong>最大化</strong>: 考虑每次生成一个结果 <span class="markdown-them-math-inline">$S$</span>, 使 <span class="markdown-them-math-inline">$v(S)$</span> 最大化, 其中 <span class="markdown-them-math-inline">$v$</span> 是某个近似估计当前输出与 <span class="markdown-them-math-inline">$q_*$</span> 拟合程度的函数.</p>
+</li>
+<li>
+<p><strong>采样</strong>: 每次从一个分布 <span class="markdown-them-math-inline">$p_θ(\cdot | y_{:i−1})$</span> 中采样, 然后将其附加到上下文中.</p>
+</li>
+<li>
+<p><strong>从指定的目标分布中采样</strong>: 采样到某个结果的概率正比于其与分布 <span class="markdown-them-math-inline">$q_*$</span> 的拟合程度.</p>
+</li>
+</ul>
+<h2 id="生成算法">生成算法</h2>
+<h3 id="map-decoding algorithm">MAP decoding Algorithm</h3>
+<p>最简单的 MAP 算法就是贪心地选择使当前 <span class="markdown-them-math-inline">$p_\theta(y|x)$</span> 最大的 <span class="markdown-them-math-inline">$y$</span>, 但显然其不一定取到整个序列的最优解.</p>
+<p>对 MAP 算法的一个优化是, 考虑保留排名前 <span class="markdown-them-math-inline">$k$</span> 的结果分别加入上下文中用于下次迭代.</p>
+<p>当然, MAP 算法有一个缺陷, 在实践中发现其倾向于产生较短的结果, 对于此, 可以通过将序列的对数概率除以其长度缓解, 但并不足以完全解决. 同时, 由于贪心算法本身的特性, 序列的生成也可能陷入循环.</p>
+<p>尽管 MAP 算法有许多缺点, 其在翻译等输入输出问题上表现得仍然很好, 原因可能是其结构无意中符合了人的思维模式. 另一方面, MAP 算法会极大地限制输出的多样性, 而保留排名前 <span class="markdown-them-math-inline">$k$</span> 的结果又会导致极大的计算资源开销, 所以我们需要更高效从模型中进行采样的算法.</p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>AI inference</category>
+        <category>综述</category>
+      </categories>
+      <tags>
+        <tag>科研</tag>
+        <tag>AI</tag>
+        <tag>AI inference</tag>
+        <tag>综述</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -3327,8 +3364,8 @@ draw.show()
         <category>概率与期望</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>Python</tag>
+        <tag>数学</tag>
         <tag>期望</tag>
         <tag>37% 法则</tag>
       </tags>
@@ -3593,6 +3630,27 @@ $$</div><p>每次加入一个 <span class="markdown-them-math-inline">$\sqrt{n}$
       </tags>
   </entry>
   <entry>
+    <title>复杂度分析</title>
+    <url>/2023/06/24/fu-za-du-fen-xi/</url>
+    <content><![CDATA[<h2 id="主定理">主定理</h2>
+<p>主定理 <span class="markdown-them-math-inline">$\rm (Master~Theorem)$</span> 被用来求解一类递归算法的时间复杂度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设有递推式形如:</p>
+<div class="markdown-them-math-block">$$T(n) = aT\left(\frac{n}{b}\right) + f(n)
+$$</div><p>上式的含义是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存在一个规模为 <span class="markdown-them-math-inline">$n$</span> 的问题可以被划分成 <span class="markdown-them-math-inline">$a$</span> 个规模为 <span class="markdown-them-math-inline">$\frac{n}{b}$</span> 的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且将它们合并的运算复杂度为 <span class="markdown-them-math-inline">$f(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>那么根据主定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$T(n)= \begin{cases}
+\Theta\left(n^{\log _{b} a}\right) &amp; f(n)=O\left(n^{\log _{b} a-\epsilon}\right) \\ \Theta(f(n)) &amp; f(n)=\Omega\left(n^{\log _{b} a+\epsilon}\right) \\ \Theta\left(n^{\log _{b} a} \log ^{k+1} n\right) &amp; f(n)=\Theta\left(n^{\log _{b} a} \log ^{k} n\right), k \geq 0
+\end{cases}
+$$</div>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>复杂度</tag>
+        <tag>主定理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>反悔贪心</title>
     <url>/2023/06/24/fan-hui-tan-xin/</url>
     <content><![CDATA[<h2 id="算法简介">算法简介</h2>
@@ -3631,27 +3689,6 @@ $$</div><p>每次加入一个 <span class="markdown-them-math-inline">$\sqrt{n}$
         <tag>OI</tag>
         <tag>贪心</tag>
         <tag>反悔贪心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>复杂度分析</title>
-    <url>/2023/06/24/fu-za-du-fen-xi/</url>
-    <content><![CDATA[<h2 id="主定理">主定理</h2>
-<p>主定理 <span class="markdown-them-math-inline">$\rm (Master~Theorem)$</span> 被用来求解一类递归算法的时间复杂度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设有递推式形如:</p>
-<div class="markdown-them-math-block">$$T(n) = aT\left(\frac{n}{b}\right) + f(n)
-$$</div><p>上式的含义是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存在一个规模为 <span class="markdown-them-math-inline">$n$</span> 的问题可以被划分成 <span class="markdown-them-math-inline">$a$</span> 个规模为 <span class="markdown-them-math-inline">$\frac{n}{b}$</span> 的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且将它们合并的运算复杂度为 <span class="markdown-them-math-inline">$f(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>那么根据主定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$T(n)= \begin{cases}
-\Theta\left(n^{\log _{b} a}\right) &amp; f(n)=O\left(n^{\log _{b} a-\epsilon}\right) \\ \Theta(f(n)) &amp; f(n)=\Omega\left(n^{\log _{b} a+\epsilon}\right) \\ \Theta\left(n^{\log _{b} a} \log ^{k+1} n\right) &amp; f(n)=\Theta\left(n^{\log _{b} a} \log ^{k} n\right), k \geq 0
-\end{cases}
-$$</div>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>复杂度</tag>
-        <tag>主定理</tag>
       </tags>
   </entry>
   <entry>
@@ -3709,6 +3746,74 @@ $$</div>]]></content>
         <tag>图论</tag>
         <tag>差分约束</tag>
         <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见函数图像</title>
+    <url>/2023/06/24/chang-jian-han-shu-tu-xiang/</url>
+    <content><![CDATA[<p>注意需要从定义域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>趋势等方面分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= xe ^ x$"><span class="markdown-them-math-inline">$y = xe ^ x$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/Ofx8qU.png" width="bottom" height="300" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = e ^ x(x + 1)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 恒大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x + 1$</span> 在 <span class="markdown-them-math-inline">$x$</span> 小于 <span class="markdown-them-math-inline">$-1$</span> 时小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$x$</span> 不小于 <span class="markdown-them-math-inline">$-1$</span> 时不小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是我们可以初步以 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 作为分界点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继续分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>当 <span class="markdown-them-math-inline">$x &lt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 变小得越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且导数为负<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以函数从 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 开始向左以 <span class="markdown-them-math-inline">$x$</span> 轴为渐近线递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>当 <span class="markdown-them-math-inline">$x &gt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 增长得很快<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$x + 1$</span> 完全不是一个量级的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像主要由 <span class="markdown-them-math-inline">$e ^ x$</span> 产生影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>画出的图像与指数函数类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微陡一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>另外一个需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>函数过点 <span class="markdown-them-math-inline">$(0, 0)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= \frac{e ^ x}{x}$"><span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/Ohp5sx.png" width="bottom" height="400" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}\backslash\{0\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{e ^ x(x - 1)}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 0, 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$x &lt; 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在靠左边的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响非常大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是往左的函数图像与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> <span class="markdown-them-math-inline">$e ^ x$</span> 的影响逐渐变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像类似于指数函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微缓一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<h2 id="$y-= \frac{x}{e ^ x}$"><span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhPeaT.png" width="bottom" height="330" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{1 - x}{e ^ x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>分析过程与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>所以图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处不做赘述<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= x \ln x$"><span class="markdown-them-math-inline">$y = x \ln x$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhiQk8.png" width="bottom" height="330" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = x \ln x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \ln x + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现从 <span class="markdown-them-math-inline">$x = 0$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$y'$</span> 从 <span class="markdown-them-math-inline">$- \infty$</span> 开始快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\frac{1}{e}$</span> 处取到 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后继续缓慢增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是 <span class="markdown-them-math-inline">$y$</span> 一开始快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(\frac{1}{e}, -\frac{1}{e})$</span> 处取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后加速上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>加速度略大于 <span class="markdown-them-math-inline">$y = x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>远小于 <span class="markdown-them-math-inline">$y = x ^ 2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= \frac{\ln x}{x}$"><span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhAa7t.png" width="bottom" height="350" align="bottom" />
+<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' =\frac{1 - \ln x}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>往左 <span class="markdown-them-math-inline">$1 - \ln x$</span> 快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x ^ 2$</span> 快速缩小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y'$</span> 总体快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始向左以 <span class="markdown-them-math-inline">$y$</span> 轴为渐近线快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &gt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$y'$</span> 的值不大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始缓慢上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 作为最高点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &lt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$1 - \ln x$</span> 的下降速度远不如 <span class="markdown-them-math-inline">$x ^ 2$</span> 的上升速度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y' &lt; 0$</span> 且以 <span class="markdown-them-math-inline">$0$</span> 为渐近线不断变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 开始减速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<h2 id="$y-= \frac{x}{\ln x}$"><span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhVqFx.png" width="bottom" height="400" align="bottom" />
+<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+ \backslash\{1\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{\ln x - 1}{\ln ^ 2 x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to - \infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to \frac{1}{-\infty}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to -\infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于在 <span class="markdown-them-math-inline">$x$</span> 仅比 <span class="markdown-them-math-inline">$1$</span> 大一点点的时候 <span class="markdown-them-math-inline">$\ln x$</span> 非常接近 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, +\infty)$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>一个虚拟的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>开始以非常快的速度下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后逐渐变得平缓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(e, e)$</span> 取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 以缓慢的速度从 <span class="markdown-them-math-inline">$0$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 以比 <span class="markdown-them-math-inline">$\ln x$</span> 快一些<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但仍然十分缓慢的速度从 <span class="markdown-them-math-inline">$1$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于其结构上与 <span class="markdown-them-math-inline">$\frac{1}{\ln x}$</span> 十分类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以它以非常缓慢的速度减小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 不断上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但上升速度越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>分析</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>分析</tag>
+        <tag>函数</tag>
+        <tag>初等数学</tag>
       </tags>
   </entry>
   <entry>
@@ -4898,71 +5003,23 @@ $$</div><p>直接按式子求就可以了<span class="bd-box"><h-char class="bd 
       </tags>
   </entry>
   <entry>
-    <title>常见函数图像</title>
-    <url>/2023/06/24/chang-jian-han-shu-tu-xiang/</url>
-    <content><![CDATA[<p>注意需要从定义域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>趋势等方面分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= xe ^ x$"><span class="markdown-them-math-inline">$y = xe ^ x$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/Ofx8qU.png" width="bottom" height="300" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = e ^ x(x + 1)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 恒大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x + 1$</span> 在 <span class="markdown-them-math-inline">$x$</span> 小于 <span class="markdown-them-math-inline">$-1$</span> 时小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$x$</span> 不小于 <span class="markdown-them-math-inline">$-1$</span> 时不小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是我们可以初步以 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 作为分界点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继续分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>当 <span class="markdown-them-math-inline">$x &lt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 变小得越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且导数为负<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以函数从 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 开始向左以 <span class="markdown-them-math-inline">$x$</span> 轴为渐近线递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>当 <span class="markdown-them-math-inline">$x &gt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 增长得很快<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$x + 1$</span> 完全不是一个量级的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像主要由 <span class="markdown-them-math-inline">$e ^ x$</span> 产生影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>画出的图像与指数函数类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微陡一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>另外一个需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>函数过点 <span class="markdown-them-math-inline">$(0, 0)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= \frac{e ^ x}{x}$"><span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/Ohp5sx.png" width="bottom" height="400" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}\backslash\{0\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{e ^ x(x - 1)}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 0, 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$x &lt; 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在靠左边的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响非常大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是往左的函数图像与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> <span class="markdown-them-math-inline">$e ^ x$</span> 的影响逐渐变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像类似于指数函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微缓一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<h2 id="$y-= \frac{x}{e ^ x}$"><span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhPeaT.png" width="bottom" height="330" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{1 - x}{e ^ x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>分析过程与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>所以图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处不做赘述<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= x \ln x$"><span class="markdown-them-math-inline">$y = x \ln x$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhiQk8.png" width="bottom" height="330" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = x \ln x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \ln x + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>可以发现从 <span class="markdown-them-math-inline">$x = 0$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$y'$</span> 从 <span class="markdown-them-math-inline">$- \infty$</span> 开始快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\frac{1}{e}$</span> 处取到 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后继续缓慢增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是 <span class="markdown-them-math-inline">$y$</span> 一开始快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(\frac{1}{e}, -\frac{1}{e})$</span> 处取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后加速上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>加速度略大于 <span class="markdown-them-math-inline">$y = x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>远小于 <span class="markdown-them-math-inline">$y = x ^ 2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= \frac{\ln x}{x}$"><span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhAa7t.png" width="bottom" height="350" align="bottom" />
-<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' =\frac{1 - \ln x}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>往左 <span class="markdown-them-math-inline">$1 - \ln x$</span> 快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x ^ 2$</span> 快速缩小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y'$</span> 总体快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始向左以 <span class="markdown-them-math-inline">$y$</span> 轴为渐近线快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &gt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$y'$</span> 的值不大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始缓慢上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 作为最高点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &lt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$1 - \ln x$</span> 的下降速度远不如 <span class="markdown-them-math-inline">$x ^ 2$</span> 的上升速度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y' &lt; 0$</span> 且以 <span class="markdown-them-math-inline">$0$</span> 为渐近线不断变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 开始减速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<h2 id="$y-= \frac{x}{\ln x}$"><span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhVqFx.png" width="bottom" height="400" align="bottom" />
-<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+ \backslash\{1\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{\ln x - 1}{\ln ^ 2 x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to - \infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to \frac{1}{-\infty}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to -\infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于在 <span class="markdown-them-math-inline">$x$</span> 仅比 <span class="markdown-them-math-inline">$1$</span> 大一点点的时候 <span class="markdown-them-math-inline">$\ln x$</span> 非常接近 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, +\infty)$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>一个虚拟的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>开始以非常快的速度下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后逐渐变得平缓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(e, e)$</span> 取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 以缓慢的速度从 <span class="markdown-them-math-inline">$0$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 以比 <span class="markdown-them-math-inline">$\ln x$</span> 快一些<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但仍然十分缓慢的速度从 <span class="markdown-them-math-inline">$1$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于其结构上与 <span class="markdown-them-math-inline">$\frac{1}{\ln x}$</span> 十分类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以它以非常缓慢的速度减小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 不断上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但上升速度越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-]]></content>
+    <title>数据结构典中典</title>
+    <url>/2024/08/09/shu-ju-jie-gou-dian-zhong-dian/</url>
+    <content><![CDATA[ <embed src="./main.pdf" width = "100%" height="1000" type="application/pdf">]]></content>
       <categories>
-        <category>数学</category>
-        <category>分析</category>
+        <category>算法</category>
+        <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数学</tag>
-        <tag>分析</tag>
-        <tag>函数</tag>
-        <tag>初等数学</tag>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>数据结构</tag>
+        <tag>C++</tag>
+        <tag>线段树</tag>
+        <tag>分块</tag>
+        <tag>树分治</tag>
+        <tag>LCA</tag>
+        <tag>RMQ</tag>
       </tags>
   </entry>
   <entry>
@@ -5081,87 +5138,6 @@ $$</div><p>直接按式子求就可以了<span class="bd-box"><h-char class="bd 
       </tags>
   </entry>
   <entry>
-    <title>数据结构典中典</title>
-    <url>/2024/08/09/shu-ju-jie-gou-dian-zhong-dian/</url>
-    <content><![CDATA[ <embed src="./main.pdf" width = "100%" height="1000" type="application/pdf">]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>数据结构</tag>
-        <tag>C++</tag>
-        <tag>分块</tag>
-        <tag>线段树</tag>
-        <tag>树分治</tag>
-        <tag>LCA</tag>
-        <tag>RMQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>整除性校验的本质</title>
-    <url>/2024/04/09/zheng-chu-xing-jian-yan-de-ben-zhi/</url>
-    <content><![CDATA[<p>从小学开始我们就知道, 一个数能被 <span class="markdown-them-math-inline">$3$</span> 整除当且仅当其各位数字之和能被 <span class="markdown-them-math-inline">$3$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$4$</span> 整除, 当且仅当其最后 <span class="markdown-them-math-inline">$2$</span> 位数能被 <span class="markdown-them-math-inline">$4$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$11$</span> 整除, 当且仅当其奇数位减去偶数位数字之和能被 <span class="markdown-them-math-inline">$11$</span> 整除(个位数记为第 <span class="markdown-them-math-inline">$1$</span> 位).</p>
-<p>长大一点后, 我们可以用数学语言来刻画这个规律 :</p>
-<div class="markdown-them-math-block">$$\begin{cases}
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 + a_2 + \cdots + a_t \pmod 3 \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_2a_2} \pmod 4 \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 - a_2 + a_3 - \cdots + (-1)^{t - 1} a_t \pmod {11} \\
-\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_3a_2a_1} - \overline{a_6a_5a_4} + \cdots + (-1)^{\frac{t}{3} - 1} \overline{a_ta_{t - 1}a_{t - 2}} \pmod 7
-\end{cases}
-$$</div><p>容易发现, 其分为 <span class="markdown-them-math-inline">$3$</span> 类 :</p>
-<ul>
-<li>第一类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 的末 <span class="markdown-them-math-inline">$k$</span> 位在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-<li>第二类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-<li>第三类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段正负交替求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
-</ul>
-<p>现在我们来探寻 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下可以使用哪种同余化简方式(或不满足三类中任意一种).</p>
-<ol>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv 0 \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_2a_1} \pmod n$</span>, 可以使用第一类化简方式.</li>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv \overline{a_ta_{t - 1}\cdots a_{k + 1}} \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} + \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第二类化简方式.</li>
-<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv -1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1} 00\cdots 0} \equiv (-1) ^ p\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1}}$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} - \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第三类化简方式.</li>
-</ol>
-<p>于是想找到 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下的化简方式, 只需要找到最小的 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0~\textrm{or}~1~\textrm{or}- 1$</span> 即对应第 <span class="markdown-them-math-inline">$1/2/3$</span> 类化简方式. 若直到 <span class="markdown-them-math-inline">$k$</span> 等于 <span class="markdown-them-math-inline">$b$</span> 的幂在模 <span class="markdown-them-math-inline">$n$</span> 意义下的循环节长度仍未找到满足条件的 <span class="markdown-them-math-inline">$k$</span>, 则 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下不能使用这 <span class="markdown-them-math-inline">$3$</span> 种方式化简.</p>
-<p>一种找最小 <span class="markdown-them-math-inline">$k$</span> 的代码实现如下 :</p>
-<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
-
-<span class="hljs-keyword">int</span> T, b, n;
-unordered_map &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">bool</span>&gt; vis;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T); <span class="hljs-keyword">while</span> (T--) &#123;
-        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;b, &amp;n), b %= n;
-        <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>, k = <span class="hljs-number">1</span>, tmp = b;
-        <span class="hljs-keyword">while</span> (b != <span class="hljs-number">0</span> &amp;&amp; b != <span class="hljs-number">1</span> &amp;&amp; b != n - <span class="hljs-number">1</span> &amp;&amp; !vis[b]) &#123;
-            vis[b] = <span class="hljs-literal">true</span>;
-            b = <span class="hljs-number">1ll</span> * b * tmp % n, k++;
-        &#125;
-        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) a = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">1</span>) a = <span class="hljs-number">2</span>;
-        <span class="hljs-keyword">if</span> (b == n - <span class="hljs-number">1</span>) a = <span class="hljs-number">3</span>;
-        a ? <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;kind = %d, k = %d\n&quot;</span>, a, k) : <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;0&quot;</span>);
-        vis.<span class="hljs-built_in">clear</span>();
-    &#125;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-</code></pre></div>
-]]></content>
-      <categories>
-        <category>数学</category>
-        <category>数论</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>数学</tag>
-        <tag>新的思考</tag>
-        <tag>数论</tag>
-        <tag>整除性检验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>最小生成树</title>
     <url>/2023/06/24/zui-xiao-sheng-cheng-shu/</url>
     <content><![CDATA[<h2 id="kruskal">Kruskal</h2>
@@ -5225,6 +5201,67 @@ unordered_map &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keywo
         <tag>Kruskal 重构树</tag>
         <tag>Prim</tag>
         <tag>Boruvka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>整除性校验的本质</title>
+    <url>/2024/04/09/zheng-chu-xing-jian-yan-de-ben-zhi/</url>
+    <content><![CDATA[<p>从小学开始我们就知道, 一个数能被 <span class="markdown-them-math-inline">$3$</span> 整除当且仅当其各位数字之和能被 <span class="markdown-them-math-inline">$3$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$4$</span> 整除, 当且仅当其最后 <span class="markdown-them-math-inline">$2$</span> 位数能被 <span class="markdown-them-math-inline">$4$</span> 整除. 一个数能被 <span class="markdown-them-math-inline">$11$</span> 整除, 当且仅当其奇数位减去偶数位数字之和能被 <span class="markdown-them-math-inline">$11$</span> 整除(个位数记为第 <span class="markdown-them-math-inline">$1$</span> 位).</p>
+<p>长大一点后, 我们可以用数学语言来刻画这个规律 :</p>
+<div class="markdown-them-math-block">$$\begin{cases}
+\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 + a_2 + \cdots + a_t \pmod 3 \\
+\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_2a_2} \pmod 4 \\
+\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv a_1 - a_2 + a_3 - \cdots + (-1)^{t - 1} a_t \pmod {11} \\
+\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_3a_2a_1} - \overline{a_6a_5a_4} + \cdots + (-1)^{\frac{t}{3} - 1} \overline{a_ta_{t - 1}a_{t - 2}} \pmod 7
+\end{cases}
+$$</div><p>容易发现, 其分为 <span class="markdown-them-math-inline">$3$</span> 类 :</p>
+<ul>
+<li>第一类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 的末 <span class="markdown-them-math-inline">$k$</span> 位在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
+<li>第二类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
+<li>第三类: <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$x$</span> 每 <span class="markdown-them-math-inline">$k$</span> 位一段正负交替求和得到的数在模 <span class="markdown-them-math-inline">$n$</span> 意义下同余.</li>
+</ul>
+<p>现在我们来探寻 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下可以使用哪种同余化简方式(或不满足三类中任意一种).</p>
+<ol>
+<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv 0 \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_2a_1} \pmod n$</span>, 可以使用第一类化简方式.</li>
+<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_{k + 1}00 \cdots 0} \equiv \overline{a_ta_{t - 1}\cdots a_{k + 1}} \pmod n$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} + \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第二类化简方式.</li>
+<li>若存在 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv -1 \pmod n$</span>, 那么 <span class="markdown-them-math-inline">$\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1} 00\cdots 0} \equiv (-1) ^ p\overline{a_{pk}a_{pk - 1}\cdots a_{(p - 1)k + 1}}$</span>, 则 <span class="markdown-them-math-inline">$\overline{a_ta_{t - 1}\cdots a_2a_1} \equiv \overline{a_ka_{k - 1}\cdots a_1} - \overline{a_{2k}a_{2k - 1}\cdots a_{k + 1}} + \cdots \pmod n$</span>, 可以使用第三类化简方式.</li>
+</ol>
+<p>于是想找到 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下的化简方式, 只需要找到最小的 <span class="markdown-them-math-inline">$k$</span> 满足 <span class="markdown-them-math-inline">$b ^ k \equiv 0~\textrm{or}~1~\textrm{or}- 1$</span> 即对应第 <span class="markdown-them-math-inline">$1/2/3$</span> 类化简方式. 若直到 <span class="markdown-them-math-inline">$k$</span> 等于 <span class="markdown-them-math-inline">$b$</span> 的幂在模 <span class="markdown-them-math-inline">$n$</span> 意义下的循环节长度仍未找到满足条件的 <span class="markdown-them-math-inline">$k$</span>, 则 <span class="markdown-them-math-inline">$b$</span> 进制数在模 <span class="markdown-them-math-inline">$n$</span> 意义下不能使用这 <span class="markdown-them-math-inline">$3$</span> 种方式化简.</p>
+<p>一种找最小 <span class="markdown-them-math-inline">$k$</span> 的代码实现如下 :</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">int</span> T, b, n;
+unordered_map &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">bool</span>&gt; vis;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T); <span class="hljs-keyword">while</span> (T--) &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;b, &amp;n), b %= n;
+        <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>, k = <span class="hljs-number">1</span>, tmp = b;
+        <span class="hljs-keyword">while</span> (b != <span class="hljs-number">0</span> &amp;&amp; b != <span class="hljs-number">1</span> &amp;&amp; b != n - <span class="hljs-number">1</span> &amp;&amp; !vis[b]) &#123;
+            vis[b] = <span class="hljs-literal">true</span>;
+            b = <span class="hljs-number">1ll</span> * b * tmp % n, k++;
+        &#125;
+        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) a = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">1</span>) a = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">if</span> (b == n - <span class="hljs-number">1</span>) a = <span class="hljs-number">3</span>;
+        a ? <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;kind = %d, k = %d\n&quot;</span>, a, k) : <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;0&quot;</span>);
+        vis.<span class="hljs-built_in">clear</span>();
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>数学</tag>
+        <tag>新的思考</tag>
+        <tag>数论</tag>
+        <tag>整除性检验</tag>
       </tags>
   </entry>
   <entry>
@@ -5486,6 +5523,152 @@ std::vector&lt;<span class="hljs-keyword">int</span>&gt; w, v, siz;
       </tags>
   </entry>
   <entry>
+    <title>生成函数强化训练</title>
+    <url>/2023/06/24/sheng-cheng-han-shu-qiang-hua-xun-lian/</url>
+    <content><![CDATA[<h1 id="[$\rm-[集训队作业2013]城市规划$](https://wwwluogu.com.cn/problem/p4841)"><a href="https://www.luogu.com.cn/problem/P4841"><span class="markdown-them-math-inline">$\rm [集训队作业2013]城市规划$</span></a></h1>
+<p>考虑 <span class="markdown-them-math-inline">$\rm EGF$</span> 的组合意义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现若设任意图方案数的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>连通图的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然任意图计数可以被看做先将 <span class="markdown-them-math-inline">$n$</span> 个点分进若干个非空子集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后做连通图计数的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么根据之前的结论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \exp G(x) \iff G(x) = \ln F(x)
+$$</div><p>显然有 <span class="markdown-them-math-inline">$F(x) = \sum _ n 2 ^ {\binom{n}{2}} x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需直接对其求 <span class="markdown-them-math-inline">$\ln$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/xmqf5fsg9w/)"><a href="https://paste.ubuntu.com/p/xmQf5fsg9w/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
+<h1 id="[$\rm-[cf438e]the~child~and~binary~tree$](http://codeforcescom/problemset/problem/438/e)"><a href="http://codeforces.com/problemset/problem/438/E"><span class="markdown-them-math-inline">$\rm [CF438E]The~Child~and~Binary~Tree$</span></a></h1>
+<p>首先可以考虑一个 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_S$</span> 表示点权之和为 <span class="markdown-them-math-inline">$S$</span> 的二叉树数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>迭代时可以考虑枚举左子树的权值和 <span class="markdown-them-math-inline">$S_l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右子树的权值和 <span class="markdown-them-math-inline">$S_r$</span> 和根节点的权值 <span class="markdown-them-math-inline">$w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="markdown-them-math-inline">$f_{S_l + S_r + w} = \sum _{S_l} \sum _{S_r} \sum _{w \in C} f_{S_l} f_{S_r}.$</span></p>
+<p>容易发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用三个多项式的卷积来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F(x) = \sum _ n f_n x ^ n, G(x) = \sum _ n [n \in C] x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = F ^ 2 G + 1
+$$</div><p>最后的 <span class="markdown-them-math-inline">$+1$</span> 是为了补齐常数项<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$f_0$</span> 为 <span class="markdown-them-math-inline">$1.$</span></p>
+<p>解方程可以得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = \frac{1 \pm \sqrt{1 - 4G}}{2G}
+$$</div><p>由于有两个解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然不可能都成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑 <span class="markdown-them-math-inline">$x \to 0$</span> 时的特殊情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>当 <span class="markdown-them-math-inline">$x \to 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x) \to 1,G(x) \to 0.$</span></p>
+<div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 + \sqrt{1 - 4G}}{2G} = +\infty \not= \lim _ {x \to 0} F
+$$</div><div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 - \sqrt{1 - 4G}}{2G} = 1 = \lim _ {x \to 0} F
+$$</div><p>于是选取 <span class="markdown-them-math-inline">$F= \frac{1 - \sqrt{1 - 4G}}{2G}$</span> 作为方程的解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>到这一步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$G(x)$</span> 的常数项为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$G(x)$</span> 不可以求逆<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑对解做变换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里选取分子有理化 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F = \frac{\left(1 - \sqrt{1 - 4G}\right)\left(1 + \sqrt{1 - 4G}\right)}{2G\left(1 + \sqrt{1 - 4G}\right)} = \frac{2}{1 + \sqrt{1 - 4G}}
+$$</div><p>可以发现分母的常数项必定不为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是做多项式开方和多项式求逆即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/yxyyhwmfh9/)"><a href="https://paste.ubuntu.com/p/YxyyhWmFh9/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
+<h1 id="[$\rm-[国家集训队]整数的~lqp~拆分$](https://wwwluogu.com.cn/problem/p4451)"><a href="https://www.luogu.com.cn/problem/P4451"><span class="markdown-them-math-inline">$\rm [国家集训队]整数的~lqp~拆分$</span></a></h1>
+<p>设 <span class="markdown-them-math-inline">$\{f_n\},\{g_n\}$</span> 分别为斐波那契数列和答案序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 和 <span class="markdown-them-math-inline">$G(x)$</span> 分别为它们的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>显然有斐波那契数列的生成函数 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \frac{x}{1 - x - x ^ 2}
+$$</div><p>而对于 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现如果 <span class="markdown-them-math-inline">$g_i$</span> 已经被求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么给所有的拆分加上一个数 <span class="markdown-them-math-inline">$n - i$</span> 即可得到 <span class="markdown-them-math-inline">$g_n$</span> 的所有拆分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 对 <span class="markdown-them-math-inline">$g_n$</span> 的贡献为 <span class="markdown-them-math-inline">$g_i \times f_{n - i}.$</span> 于是有 <span class="markdown-them-math-inline">$g_n$</span> 的递推式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ {n- 1} g_i \times f_{n - i}
+$$</div><p>将 <span class="markdown-them-math-inline">$\{g_n\}$</span> 带入 <span class="markdown-them-math-inline">$G(x)$</span> 可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \sum _ n x ^ n \sum _ {i = 0} ^ {n - 1} g_i f_{n - i}
+$$</div><p>可以发现等式右边实际上是卷积的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G = GF
+$$</div><p>但是我们发现这样的话 <span class="markdown-them-math-inline">$G(x) = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原因是 <span class="markdown-them-math-inline">$g_0 = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们强制 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G = GF + 1
+$$</div><div class="markdown-them-math-block">$$G(x) = \frac{1}{1 - F(x)} = 1 + \frac{x}{1 - 2x - x ^ 2}
+$$</div><p>可以发现现在求出的 <span class="markdown-them-math-inline">$G(x)$</span> 比实际值多了 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为我们将 <span class="markdown-them-math-inline">$g_0 = 0$</span> 强制变成了 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>修正后有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \frac{x}{1 - 2x - x ^ 2} = \frac{\frac{\sqrt{2}}{4}}{1 - (1 + \sqrt{2})x} + \frac{-\frac{\sqrt{2}}{4}}{1 - (1 - \sqrt{2})x}
+$$</div><div class="markdown-them-math-block">$$[x ^ n]G(x) = \frac{\sqrt{2}}{4}(1 + \sqrt{2}) ^ n - \frac{\sqrt{2}}{4}(1 - \sqrt{2}) ^ n
+$$</div><p>最后求出 <span class="markdown-them-math-inline">$\sqrt{2}$</span> 在模 <span class="markdown-them-math-inline">$10 ^ 9 + 7$</span> 意义下的二次剩余<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且用拓展欧拉定理即可计算出答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\log n).$</span></p>
+<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/4dcfymf5th/)"><a href="https://paste.ubuntu.com/p/4DCfYMF5tH/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
+<h1 id="[$\rm-[haoi2018]染色$](https://wwwluogu.com.cn/problem/p4491)"><a href="https://www.luogu.com.cn/problem/P4491"><span class="markdown-them-math-inline">$\rm [HAOI2018]染色$</span></a></h1>
+<p>首先考虑二项式反演 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>设 <span class="markdown-them-math-inline">$f_i$</span> 表示恰好有 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示钦点 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_k = \dbinom{m}{k} \times \frac{n ^ {\underline{kS}}}{(S!) ^ k} \times (m - k) ^ {n - kS}
+$$</div><div class="markdown-them-math-block">$$g_k = \sum_{i = k} ^ m \dbinom{i}{k} f_i \iff f_k = \sum _ {i = k} ^ m (-1) ^ {i - k} \dbinom{i}{k} g_i
+$$</div><div class="markdown-them-math-block">$$Ans = \sum _ {i = 0} ^ m w_if_i
+$$</div><p>于是我们考虑如何对于每个 <span class="markdown-them-math-inline">$i \in [0, m]$</span> 求出 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里有个技巧 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+    f_k &amp;= \sum _ {i = k} ^ m (-1) ^ {i - k} \frac{i!}{k!(i - k)!} g_i\\
+    &amp;= k! \sum _ {i = k} ^ m i! g_i \times \frac{(-1) ^ {i - k}}{(i - k)!}
+\end{aligned}
+$$</div><p>容易发现上式可以用差值卷积计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h1 id="[$\rm-付公主的背包$](https://wwwluogu.com.cn/problem/p4389)"><a href="https://www.luogu.com.cn/problem/P4389"><span class="markdown-them-math-inline">$\rm 付公主的背包$</span></a></h1>
+<p>容易发现若设每种大小的物品的数量为 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\prod _ i \left (\sum _ j x ^ {ji}\right) ^ {f _ i} = \prod _ i \left(\frac{1}{1 - x ^ i}\right) ^ {f _ i}
+$$</div><p>可以直接使用欧拉变换的求解方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h1 id="[$无标号无根树计数$](https://wwwluogu.com.cn/problem/p5900)"><a href="https://www.luogu.com.cn/problem/P5900"><span class="markdown-them-math-inline">$无标号无根树计数$</span></a></h1>
+<p>考虑设 <span class="markdown-them-math-inline">$f_n$</span> 表示大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 为数列 <span class="markdown-them-math-inline">$f$</span> 的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果将一颗大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的根去除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么剩下的子树是一个个相同的子问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只要子树大小的和为 <span class="markdown-them-math-inline">$n - 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再加上根结点就可以唯一确定地拼出一颗无标号有根树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>于是有生成函数方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = x \cdot \varepsilon \circ F(x)
+$$</div><p>求解这个生成函数方程有两种方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>第一种是直接化简<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分治多项式乘法求解 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = x \prod _ i (1 - x ^ i) ^ {-f_i}
+$$</div><p>考虑对两边取 <span class="markdown-them-math-inline">$\ln$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将连乘转连加 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\ln F(x) = \ln x - \sum _ i f_i \ln (1 - x ^ i)
+$$</div><p>对数不好处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑求导 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\frac{F'(x)}{F(x)} = \frac{1}{x} + \sum _ i if_i \times \frac{x ^ {i - 1}}{1 - x ^ i}
+$$</div><p>将两边同时乘以 <span class="markdown-them-math-inline">$xF(x)$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x) \sum _ i if_i \frac{x ^ i}{1 - x ^ i}
+$$</div><p>考虑将右半部分还原成 <span class="markdown-them-math-inline">$F(x)$</span> 表示 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x)\left(\sum _ {i \geqslant 1} x ^ i F'(x ^ i)\right)
+$$</div><p>设 <span class="markdown-them-math-inline">$G(x) = \sum _ k x ^ k F'(x ^ k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>简单推一推 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$G(x) = \sum _ k x ^ k \sum _ {i\geqslant 1} if _ i \left(x ^ {k}\right) ^ {i - 1} = \sum _ k \sum _ i i f _ i x ^ {ik} = \sum _ n x ^ n \sum _ {d | n} d f _ d
+$$</div><p>故 <span class="markdown-them-math-inline">$g_n = \sum _ {d | n} df_d,g_1 = f_1 = 1.$</span></p>
+<p>因此 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_n = \frac{1}{n - 1} \sum _ {k = 1} ^ {n - 1} f _ k g _ {n - k}
+$$</div><p><span class="markdown-them-math-inline">$f$</span> 使用分治多项式乘法求解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 暴力求解即可做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n).$</span></p>
+<p>另一种方法是使用牛顿迭代 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>显然我们要求解方程 <span class="markdown-them-math-inline">$G \circ F(x) = F(x) - x \cdot \varepsilon \circ F(x) = 0$</span>.</p>
+<p>假设当前已经求出了方程在模 <span class="markdown-them-math-inline">$x ^ n$</span> 意义下的解 <span class="markdown-them-math-inline">$F_0(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设方程在模 <span class="markdown-them-math-inline">$x ^ {2n}$</span> 意义下的解为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>众所周知有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{G \circ F_0(x)}{G' \circ F_0(x)}
+$$</div><p>我们知道<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\varepsilon \circ F(x)$</span> 可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F'(x)$</span> 可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求下式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{F_0(x)  - x \cdot \varepsilon \circ F_0(x)}{[F_0(x)  - x \cdot \varepsilon \circ F_0(x)]'}
+$$</div><p>用上式迭代即可算出 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<p>现在我们已经求出了无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑将无标号无根树的方案数容斥出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑钦点无标号无根树的根是它的重心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需要去掉根不是重心的无标号有根树的方案数可以了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>如果重心唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定存在一颗子树的大小大于 <span class="markdown-them-math-inline">$\left\lfloor\frac{n}{2}\right\rfloor$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑枚举它的大小 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现这颗子树的方案数和将它切除后树的方案数都是无标号有根树计数问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其答案我们已经算出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数需要减去 <span class="markdown-them-math-inline">$\sum _ {i = \left\lfloor\frac{n}{2}\right\rfloor + 1} ^{n - 1} f_i \times f_{n - i}.$</span></p>
+<p>如果重心不唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一棵树还会在两个重心上分别被计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种方案只会在 <span class="markdown-them-math-inline">$n$</span> 为偶数的情况下出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>考虑到这两个重心一定相连<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将它们之间的连边断开后形成的两个子树的方案数是独立的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当两颗子树完全相同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分别以它的两个重心为根时形成的有根树是同构的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以我们还是只会将它计算一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故算重的方案中不包括两颗子树相同的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数还需要减去 <span class="markdown-them-math-inline">$\binom{f_{\frac{n}{2}}}{2}.$</span></p>
+<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题得到解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span> 或 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
+<h1 id="[$\rm-[ceoi2004]sweets$](https://wwwluogu.com.cn/problem/p6078)"><a href="https://www.luogu.com.cn/problem/P6078"><span class="markdown-them-math-inline">$\rm [CEOI2004]Sweets$</span></a></h1>
+<p>考虑构造 <span class="markdown-them-math-inline">$F_i(x) = \sum _ {j = 0} ^ {m _ i} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现题目要求的就是 <span class="markdown-them-math-inline">$\prod _ {i = 1} ^ n F_i(x)$</span> 的系数前缀和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是再构造 <span class="markdown-them-math-inline">$F_0(x) = \sum _ i x ^ i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将它和原本的 <span class="markdown-them-math-inline">$n$</span> 个幂级数卷在一起<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在考虑求 <span class="markdown-them-math-inline">$F(x) = \prod _ {i = 0} ^ n F_i(x)$</span> 的第 <span class="markdown-them-math-inline">$L$</span> 项系数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>容易发现有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$F(x) = \frac{(1 - x ^ {m_1 + 1})(1 - x ^ {m_2 + 1})\cdots(1 - x ^ {m_n + 1})}{(1 - x) ^ {n + 1}}
+$$</div><p>观察到 <span class="markdown-them-math-inline">$n$</span> 很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑暴力将分子拆开<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是分式变成了 <span class="markdown-them-math-inline">$2 ^ n$</span> 个形如 <span class="markdown-them-math-inline">$\frac{x ^ k}{(1 - x) ^ {n + 1}}$</span> 的部分之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>容易发现 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$[x ^ L]\frac{x ^ k}{(1 - x) ^ {n + 1}} = \dbinom{n + L - k}{n}
+$$</div><p>于是只需要求 <span class="markdown-them-math-inline">$2 ^ {n + 1}$</span> 次形如 <span class="markdown-them-math-inline">$\binom{t}{n}$</span> 的组合数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>到这里我们又发现模数 <span class="markdown-them-math-inline">$p$</span> 不是质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑将式子变形 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\dbinom{t}{n}~\bmod~p = \frac{t^{\underline{n}}}{n!}~\bmod~p = \frac{t ^ {\underline{n}}~\bmod~n!\cdot p}{n!}~\bmod~p
+$$</div><p>于是这样就可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求解组合数了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(2^n n).$</span></p>
+<h1 id="[$\rm-[51nod1728]不动点$](https://www51nod.com/challenge/problem.html#problemid=1728)"><a href="https://www.51nod.com/Challenge/Problem.html#problemId=1728"><span class="markdown-them-math-inline">$\rm [51nod1728]不动点$</span></a></h1>
+<p>简化题意 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>求有多少个从 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 到 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 的映射 <span class="markdown-them-math-inline">$f$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>满足 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\underbrace{f \circ f \circ \cdots \circ f}_{k}=\underbrace{f \circ f \circ \cdots \circ f}_{k-1}
+$$</div><p>保证 <span class="markdown-them-math-inline">$nk \leqslant 2 \times 10 ^ 6,1\leqslant k \leqslant 3.$</span></p>
+<p>可以发现这题本质上就是在求深度不超过 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>环大小为 <span class="markdown-them-math-inline">$1$</span> 的基环内向树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进一步发现其等价于树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑设树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树数量的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$\hat{F}_k(x).$</span> 计算考虑递推<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>深度不超过 <span class="markdown-them-math-inline">$k$</span> 的树可以看作若干棵深度不超过 <span class="markdown-them-math-inline">$k - 1$</span> 的树全部接在一个点上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\hat{F}_k(x) = x\cdot \exp \hat{F}_{k - 1}(x)
+$$</div><p>考虑到需要求的是森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是答案的指数型生成函数为 <span class="markdown-them-math-inline">$\exp \hat{F}_k(x).$</span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(kn\log n).$</span></p>
+<h1 id="[$\rm-[cf891e]lust$](https://codeforcescom/contest/891/problem/e)"><a href="https://codeforces.com/contest/891/problem/E"><span class="markdown-them-math-inline">$\rm [CF891E]Lust$</span></a></h1>
+<p>考虑一次对 <span class="markdown-them-math-inline">$x$</span> 的操作造成的影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>他会使 <span class="markdown-them-math-inline">$a_x$</span> 减少 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>答案增加 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\prod _ i a_i$</span> 减少 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i.$</span></p>
+<p>于是我们可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一次操作对答案的贡献等于 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>进一步的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终答案等于 <span class="markdown-them-math-inline">$k$</span> 次操作进行完后 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>假设第 <span class="markdown-them-math-inline">$a_i$</span> 被操作了 <span class="markdown-them-math-inline">$b_i$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案为 <span class="markdown-them-math-inline">$\prod _ i a_i - \prod _ i (a_i - b_i).$</span></p>
+<p>考虑计算所有情况下 <span class="markdown-them-math-inline">$\prod _ i (a_i - b_i)$</span> 的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后再将答案除以 <span class="markdown-them-math-inline">$n ^ k.$</span></p>
+<p>假设有两个集合 <span class="markdown-them-math-inline">$S,T,S \cap T = \varnothing$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$h_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S \cup T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ n \dbinom{n}{i} f_i \times g_{n - i}
+$$</div><p>因为 <span class="markdown-them-math-inline">$f_i$</span> 和 <span class="markdown-them-math-inline">$g_{n - i}$</span> 联合起来的贡献是它们的乘积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且由于操作有序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以将 <span class="markdown-them-math-inline">$n$</span> 次操作分配到它们还导致要乘上 <span class="markdown-them-math-inline">$\binom{n}{i}$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>很明显<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用 <span class="markdown-them-math-inline">$\rm EGF$</span> 来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$\hat{F}_i(x) = \sum _ j (a_i - j) \frac{x ^ j}{j!}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+    \hat{F}(x) &amp;= \prod _ i F_i(x)\\
+    &amp;= \prod _ i \left( \sum _ j (a_i - j) \frac{x ^ j}{j!} \right)\\
+    &amp;= \prod _ i \left( a_i \sum _ j \frac{x ^ j}{j!} - \sum _ {j} \frac{x ^ {j + 1}}{j!} \right)\\
+    &amp;= \prod _ i (a_i - x)e ^ x\\
+    &amp;= e ^ {nx} \prod _ i (a_i - x)
+\end{aligned}
+$$</div><p><span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 直接分治乘可以做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$e ^ {nx}$</span> 的系数可以直接求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于 <span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 的最高次数为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以直接枚举计算即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log ^2 n).$</span></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>OI</tag>
+        <tag>题解</tag>
+        <tag>组合数学</tag>
+        <tag>NTT</tag>
+        <tag>生成函数</tag>
+        <tag>图计数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>生成函数</title>
     <url>/2023/06/24/sheng-cheng-han-shu/</url>
     <content><![CDATA[<h2 id="普通生成函数">普通生成函数</h2>
@@ -5681,152 +5864,6 @@ $$</div><p>这恰好对应了 <span class="markdown-them-math-inline">$\hat{F}(x
         <tag>卡特兰数</tag>
         <tag>欧拉变换</tag>
         <tag>部分分式定理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>生成函数强化训练</title>
-    <url>/2023/06/24/sheng-cheng-han-shu-qiang-hua-xun-lian/</url>
-    <content><![CDATA[<h1 id="[$\rm-[集训队作业2013]城市规划$](https://wwwluogu.com.cn/problem/p4841)"><a href="https://www.luogu.com.cn/problem/P4841"><span class="markdown-them-math-inline">$\rm [集训队作业2013]城市规划$</span></a></h1>
-<p>考虑 <span class="markdown-them-math-inline">$\rm EGF$</span> 的组合意义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现若设任意图方案数的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>连通图的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然任意图计数可以被看做先将 <span class="markdown-them-math-inline">$n$</span> 个点分进若干个非空子集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后做连通图计数的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么根据之前的结论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = \exp G(x) \iff G(x) = \ln F(x)
-$$</div><p>显然有 <span class="markdown-them-math-inline">$F(x) = \sum _ n 2 ^ {\binom{n}{2}} x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需直接对其求 <span class="markdown-them-math-inline">$\ln$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/xmqf5fsg9w/)"><a href="https://paste.ubuntu.com/p/xmQf5fsg9w/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
-<h1 id="[$\rm-[cf438e]the~child~and~binary~tree$](http://codeforcescom/problemset/problem/438/e)"><a href="http://codeforces.com/problemset/problem/438/E"><span class="markdown-them-math-inline">$\rm [CF438E]The~Child~and~Binary~Tree$</span></a></h1>
-<p>首先可以考虑一个 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$f_S$</span> 表示点权之和为 <span class="markdown-them-math-inline">$S$</span> 的二叉树数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>迭代时可以考虑枚举左子树的权值和 <span class="markdown-them-math-inline">$S_l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右子树的权值和 <span class="markdown-them-math-inline">$S_r$</span> 和根节点的权值 <span class="markdown-them-math-inline">$w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="markdown-them-math-inline">$f_{S_l + S_r + w} = \sum _{S_l} \sum _{S_r} \sum _{w \in C} f_{S_l} f_{S_r}.$</span></p>
-<p>容易发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用三个多项式的卷积来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$F(x) = \sum _ n f_n x ^ n, G(x) = \sum _ n [n \in C] x ^ n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F = F ^ 2 G + 1
-$$</div><p>最后的 <span class="markdown-them-math-inline">$+1$</span> 是为了补齐常数项<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$f_0$</span> 为 <span class="markdown-them-math-inline">$1.$</span></p>
-<p>解方程可以得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F = \frac{1 \pm \sqrt{1 - 4G}}{2G}
-$$</div><p>由于有两个解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然不可能都成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑 <span class="markdown-them-math-inline">$x \to 0$</span> 时的特殊情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>当 <span class="markdown-them-math-inline">$x \to 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x) \to 1,G(x) \to 0.$</span></p>
-<div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 + \sqrt{1 - 4G}}{2G} = +\infty \not= \lim _ {x \to 0} F
-$$</div><div class="markdown-them-math-block">$$\lim _ {x \to 0} \frac{1 - \sqrt{1 - 4G}}{2G} = 1 = \lim _ {x \to 0} F
-$$</div><p>于是选取 <span class="markdown-them-math-inline">$F= \frac{1 - \sqrt{1 - 4G}}{2G}$</span> 作为方程的解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>到这一步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为 <span class="markdown-them-math-inline">$G(x)$</span> 的常数项为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$G(x)$</span> 不可以求逆<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑对解做变换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里选取分子有理化 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F = \frac{\left(1 - \sqrt{1 - 4G}\right)\left(1 + \sqrt{1 - 4G}\right)}{2G\left(1 + \sqrt{1 - 4G}\right)} = \frac{2}{1 + \sqrt{1 - 4G}}
-$$</div><p>可以发现分母的常数项必定不为 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是做多项式开方和多项式求逆即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/yxyyhwmfh9/)"><a href="https://paste.ubuntu.com/p/YxyyhWmFh9/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
-<h1 id="[$\rm-[国家集训队]整数的~lqp~拆分$](https://wwwluogu.com.cn/problem/p4451)"><a href="https://www.luogu.com.cn/problem/P4451"><span class="markdown-them-math-inline">$\rm [国家集训队]整数的~lqp~拆分$</span></a></h1>
-<p>设 <span class="markdown-them-math-inline">$\{f_n\},\{g_n\}$</span> 分别为斐波那契数列和答案序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 和 <span class="markdown-them-math-inline">$G(x)$</span> 分别为它们的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>显然有斐波那契数列的生成函数 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = \frac{x}{1 - x - x ^ 2}
-$$</div><p>而对于 <span class="markdown-them-math-inline">$G(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现如果 <span class="markdown-them-math-inline">$g_i$</span> 已经被求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么给所有的拆分加上一个数 <span class="markdown-them-math-inline">$n - i$</span> 即可得到 <span class="markdown-them-math-inline">$g_n$</span> 的所有拆分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 对 <span class="markdown-them-math-inline">$g_n$</span> 的贡献为 <span class="markdown-them-math-inline">$g_i \times f_{n - i}.$</span> 于是有 <span class="markdown-them-math-inline">$g_n$</span> 的递推式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ {n- 1} g_i \times f_{n - i}
-$$</div><p>将 <span class="markdown-them-math-inline">$\{g_n\}$</span> 带入 <span class="markdown-them-math-inline">$G(x)$</span> 可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$G(x) = \sum _ n x ^ n \sum _ {i = 0} ^ {n - 1} g_i f_{n - i}
-$$</div><p>可以发现等式右边实际上是卷积的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$G = GF
-$$</div><p>但是我们发现这样的话 <span class="markdown-them-math-inline">$G(x) = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原因是 <span class="markdown-them-math-inline">$g_0 = 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们强制 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$G = GF + 1
-$$</div><div class="markdown-them-math-block">$$G(x) = \frac{1}{1 - F(x)} = 1 + \frac{x}{1 - 2x - x ^ 2}
-$$</div><p>可以发现现在求出的 <span class="markdown-them-math-inline">$G(x)$</span> 比实际值多了 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为我们将 <span class="markdown-them-math-inline">$g_0 = 0$</span> 强制变成了 <span class="markdown-them-math-inline">$g_0 = 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>修正后有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$G(x) = \frac{x}{1 - 2x - x ^ 2} = \frac{\frac{\sqrt{2}}{4}}{1 - (1 + \sqrt{2})x} + \frac{-\frac{\sqrt{2}}{4}}{1 - (1 - \sqrt{2})x}
-$$</div><div class="markdown-them-math-block">$$[x ^ n]G(x) = \frac{\sqrt{2}}{4}(1 + \sqrt{2}) ^ n - \frac{\sqrt{2}}{4}(1 - \sqrt{2}) ^ n
-$$</div><p>最后求出 <span class="markdown-them-math-inline">$\sqrt{2}$</span> 在模 <span class="markdown-them-math-inline">$10 ^ 9 + 7$</span> 意义下的二次剩余<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且用拓展欧拉定理即可计算出答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\log n).$</span></p>
-<h2 id="[$\rm-code~link$](https://pasteubuntu.com/p/4dcfymf5th/)"><a href="https://paste.ubuntu.com/p/4DCfYMF5tH/"><span class="markdown-them-math-inline">$\rm Code~Link$</span></a></h2>
-<h1 id="[$\rm-[haoi2018]染色$](https://wwwluogu.com.cn/problem/p4491)"><a href="https://www.luogu.com.cn/problem/P4491"><span class="markdown-them-math-inline">$\rm [HAOI2018]染色$</span></a></h1>
-<p>首先考虑二项式反演 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>设 <span class="markdown-them-math-inline">$f_i$</span> 表示恰好有 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示钦点 <span class="markdown-them-math-inline">$i$</span> 个数的数量为 <span class="markdown-them-math-inline">$S$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$g_k = \dbinom{m}{k} \times \frac{n ^ {\underline{kS}}}{(S!) ^ k} \times (m - k) ^ {n - kS}
-$$</div><div class="markdown-them-math-block">$$g_k = \sum_{i = k} ^ m \dbinom{i}{k} f_i \iff f_k = \sum _ {i = k} ^ m (-1) ^ {i - k} \dbinom{i}{k} g_i
-$$</div><div class="markdown-them-math-block">$$Ans = \sum _ {i = 0} ^ m w_if_i
-$$</div><p>于是我们考虑如何对于每个 <span class="markdown-them-math-inline">$i \in [0, m]$</span> 求出 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里有个技巧 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-    f_k &amp;= \sum _ {i = k} ^ m (-1) ^ {i - k} \frac{i!}{k!(i - k)!} g_i\\
-    &amp;= k! \sum _ {i = k} ^ m i! g_i \times \frac{(-1) ^ {i - k}}{(i - k)!}
-\end{aligned}
-$$</div><p>容易发现上式可以用差值卷积计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<h1 id="[$\rm-付公主的背包$](https://wwwluogu.com.cn/problem/p4389)"><a href="https://www.luogu.com.cn/problem/P4389"><span class="markdown-them-math-inline">$\rm 付公主的背包$</span></a></h1>
-<p>容易发现若设每种大小的物品的数量为 <span class="markdown-them-math-inline">$f_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\prod _ i \left (\sum _ j x ^ {ji}\right) ^ {f _ i} = \prod _ i \left(\frac{1}{1 - x ^ i}\right) ^ {f _ i}
-$$</div><p>可以直接使用欧拉变换的求解方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<h1 id="[$无标号无根树计数$](https://wwwluogu.com.cn/problem/p5900)"><a href="https://www.luogu.com.cn/problem/P5900"><span class="markdown-them-math-inline">$无标号无根树计数$</span></a></h1>
-<p>考虑设 <span class="markdown-them-math-inline">$f_n$</span> 表示大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F(x)$</span> 为数列 <span class="markdown-them-math-inline">$f$</span> 的生成函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果将一颗大小为 <span class="markdown-them-math-inline">$n$</span> 的无标号有根树的根去除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么剩下的子树是一个个相同的子问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只要子树大小的和为 <span class="markdown-them-math-inline">$n - 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再加上根结点就可以唯一确定地拼出一颗无标号有根树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>于是有生成函数方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = x \cdot \varepsilon \circ F(x)
-$$</div><p>求解这个生成函数方程有两种方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>第一种是直接化简<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分治多项式乘法求解 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = x \prod _ i (1 - x ^ i) ^ {-f_i}
-$$</div><p>考虑对两边取 <span class="markdown-them-math-inline">$\ln$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将连乘转连加 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\ln F(x) = \ln x - \sum _ i f_i \ln (1 - x ^ i)
-$$</div><p>对数不好处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑求导 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\frac{F'(x)}{F(x)} = \frac{1}{x} + \sum _ i if_i \times \frac{x ^ {i - 1}}{1 - x ^ i}
-$$</div><p>将两边同时乘以 <span class="markdown-them-math-inline">$xF(x)$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x) \sum _ i if_i \frac{x ^ i}{1 - x ^ i}
-$$</div><p>考虑将右半部分还原成 <span class="markdown-them-math-inline">$F(x)$</span> 表示 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$xF'(x) = F(x) + F(x)\left(\sum _ {i \geqslant 1} x ^ i F'(x ^ i)\right)
-$$</div><p>设 <span class="markdown-them-math-inline">$G(x) = \sum _ k x ^ k F'(x ^ k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>简单推一推 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$G(x) = \sum _ k x ^ k \sum _ {i\geqslant 1} if _ i \left(x ^ {k}\right) ^ {i - 1} = \sum _ k \sum _ i i f _ i x ^ {ik} = \sum _ n x ^ n \sum _ {d | n} d f _ d
-$$</div><p>故 <span class="markdown-them-math-inline">$g_n = \sum _ {d | n} df_d,g_1 = f_1 = 1.$</span></p>
-<p>因此 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_n = \frac{1}{n - 1} \sum _ {k = 1} ^ {n - 1} f _ k g _ {n - k}
-$$</div><p><span class="markdown-them-math-inline">$f$</span> 使用分治多项式乘法求解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 暴力求解即可做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n).$</span></p>
-<p>另一种方法是使用牛顿迭代 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>显然我们要求解方程 <span class="markdown-them-math-inline">$G \circ F(x) = F(x) - x \cdot \varepsilon \circ F(x) = 0$</span>.</p>
-<p>假设当前已经求出了方程在模 <span class="markdown-them-math-inline">$x ^ n$</span> 意义下的解 <span class="markdown-them-math-inline">$F_0(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设方程在模 <span class="markdown-them-math-inline">$x ^ {2n}$</span> 意义下的解为 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>众所周知有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{G \circ F_0(x)}{G' \circ F_0(x)}
-$$</div><p>我们知道<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\varepsilon \circ F(x)$</span> 可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$F'(x)$</span> 可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以在 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span> 的时间复杂度内求下式 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = F_0(x) - \frac{F_0(x)  - x \cdot \varepsilon \circ F_0(x)}{[F_0(x)  - x \cdot \varepsilon \circ F_0(x)]'}
-$$</div><p>用上式迭代即可算出 <span class="markdown-them-math-inline">$F(x)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<p>现在我们已经求出了无标号有根树的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑将无标号无根树的方案数容斥出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑钦点无标号无根树的根是它的重心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是只需要去掉根不是重心的无标号有根树的方案数可以了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分类讨论 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>如果重心唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定存在一颗子树的大小大于 <span class="markdown-them-math-inline">$\left\lfloor\frac{n}{2}\right\rfloor$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑枚举它的大小 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现这颗子树的方案数和将它切除后树的方案数都是无标号有根树计数问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其答案我们已经算出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数需要减去 <span class="markdown-them-math-inline">$\sum _ {i = \left\lfloor\frac{n}{2}\right\rfloor + 1} ^{n - 1} f_i \times f_{n - i}.$</span></p>
-<p>如果重心不唯一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一棵树还会在两个重心上分别被计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种方案只会在 <span class="markdown-them-math-inline">$n$</span> 为偶数的情况下出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>考虑到这两个重心一定相连<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将它们之间的连边断开后形成的两个子树的方案数是独立的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当两颗子树完全相同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分别以它的两个重心为根时形成的有根树是同构的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以我们还是只会将它计算一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故算重的方案中不包括两颗子树相同的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是总方案数还需要减去 <span class="markdown-them-math-inline">$\binom{f_{\frac{n}{2}}}{2}.$</span></p>
-<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题得到解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span> 或 <span class="markdown-them-math-inline">$\Theta(n \log n).$</span></p>
-<h1 id="[$\rm-[ceoi2004]sweets$](https://wwwluogu.com.cn/problem/p6078)"><a href="https://www.luogu.com.cn/problem/P6078"><span class="markdown-them-math-inline">$\rm [CEOI2004]Sweets$</span></a></h1>
-<p>考虑构造 <span class="markdown-them-math-inline">$F_i(x) = \sum _ {j = 0} ^ {m _ i} x ^ j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现题目要求的就是 <span class="markdown-them-math-inline">$\prod _ {i = 1} ^ n F_i(x)$</span> 的系数前缀和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是再构造 <span class="markdown-them-math-inline">$F_0(x) = \sum _ i x ^ i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将它和原本的 <span class="markdown-them-math-inline">$n$</span> 个幂级数卷在一起<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在考虑求 <span class="markdown-them-math-inline">$F(x) = \prod _ {i = 0} ^ n F_i(x)$</span> 的第 <span class="markdown-them-math-inline">$L$</span> 项系数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>容易发现有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$F(x) = \frac{(1 - x ^ {m_1 + 1})(1 - x ^ {m_2 + 1})\cdots(1 - x ^ {m_n + 1})}{(1 - x) ^ {n + 1}}
-$$</div><p>观察到 <span class="markdown-them-math-inline">$n$</span> 很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑暴力将分子拆开<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是分式变成了 <span class="markdown-them-math-inline">$2 ^ n$</span> 个形如 <span class="markdown-them-math-inline">$\frac{x ^ k}{(1 - x) ^ {n + 1}}$</span> 的部分之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>容易发现 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$[x ^ L]\frac{x ^ k}{(1 - x) ^ {n + 1}} = \dbinom{n + L - k}{n}
-$$</div><p>于是只需要求 <span class="markdown-them-math-inline">$2 ^ {n + 1}$</span> 次形如 <span class="markdown-them-math-inline">$\binom{t}{n}$</span> 的组合数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>到这里我们又发现模数 <span class="markdown-them-math-inline">$p$</span> 不是质数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑将式子变形 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\dbinom{t}{n}~\bmod~p = \frac{t^{\underline{n}}}{n!}~\bmod~p = \frac{t ^ {\underline{n}}~\bmod~n!\cdot p}{n!}~\bmod~p
-$$</div><p>于是这样就可以 <span class="markdown-them-math-inline">$\Theta(n)$</span> 求解组合数了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(2^n n).$</span></p>
-<h1 id="[$\rm-[51nod1728]不动点$](https://www51nod.com/challenge/problem.html#problemid=1728)"><a href="https://www.51nod.com/Challenge/Problem.html#problemId=1728"><span class="markdown-them-math-inline">$\rm [51nod1728]不动点$</span></a></h1>
-<p>简化题意 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>求有多少个从 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 到 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 的映射 <span class="markdown-them-math-inline">$f$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>满足 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\underbrace{f \circ f \circ \cdots \circ f}_{k}=\underbrace{f \circ f \circ \cdots \circ f}_{k-1}
-$$</div><p>保证 <span class="markdown-them-math-inline">$nk \leqslant 2 \times 10 ^ 6,1\leqslant k \leqslant 3.$</span></p>
-<p>可以发现这题本质上就是在求深度不超过 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>环大小为 <span class="markdown-them-math-inline">$1$</span> 的基环内向树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进一步发现其等价于树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑设树高不超过 <span class="markdown-them-math-inline">$k$</span> 的有标号有根树数量的 <span class="markdown-them-math-inline">$\rm EGF$</span> 为 <span class="markdown-them-math-inline">$\hat{F}_k(x).$</span> 计算考虑递推<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>深度不超过 <span class="markdown-them-math-inline">$k$</span> 的树可以看作若干棵深度不超过 <span class="markdown-them-math-inline">$k - 1$</span> 的树全部接在一个点上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\hat{F}_k(x) = x\cdot \exp \hat{F}_{k - 1}(x)
-$$</div><p>考虑到需要求的是森林的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是答案的指数型生成函数为 <span class="markdown-them-math-inline">$\exp \hat{F}_k(x).$</span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(kn\log n).$</span></p>
-<h1 id="[$\rm-[cf891e]lust$](https://codeforcescom/contest/891/problem/e)"><a href="https://codeforces.com/contest/891/problem/E"><span class="markdown-them-math-inline">$\rm [CF891E]Lust$</span></a></h1>
-<p>考虑一次对 <span class="markdown-them-math-inline">$x$</span> 的操作造成的影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>他会使 <span class="markdown-them-math-inline">$a_x$</span> 减少 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>答案增加 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\prod _ i a_i$</span> 减少 <span class="markdown-them-math-inline">$\prod _ {i \not= x} a_i.$</span></p>
-<p>于是我们可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一次操作对答案的贡献等于 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>进一步的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终答案等于 <span class="markdown-them-math-inline">$k$</span> 次操作进行完后 <span class="markdown-them-math-inline">$\prod _ i a_i$</span> 的变化量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>假设第 <span class="markdown-them-math-inline">$a_i$</span> 被操作了 <span class="markdown-them-math-inline">$b_i$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案为 <span class="markdown-them-math-inline">$\prod _ i a_i - \prod _ i (a_i - b_i).$</span></p>
-<p>考虑计算所有情况下 <span class="markdown-them-math-inline">$\prod _ i (a_i - b_i)$</span> 的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后再将答案除以 <span class="markdown-them-math-inline">$n ^ k.$</span></p>
-<p>假设有两个集合 <span class="markdown-them-math-inline">$S,T,S \cap T = \varnothing$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$h_i$</span> 表示 <span class="markdown-them-math-inline">$\sum b_k = i,k\in S \cup T$</span> 对答案的贡献<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么显然有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$g_n = \sum _ {i = 0} ^ n \dbinom{n}{i} f_i \times g_{n - i}
-$$</div><p>因为 <span class="markdown-them-math-inline">$f_i$</span> 和 <span class="markdown-them-math-inline">$g_{n - i}$</span> 联合起来的贡献是它们的乘积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且由于操作有序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以将 <span class="markdown-them-math-inline">$n$</span> 次操作分配到它们还导致要乘上 <span class="markdown-them-math-inline">$\binom{n}{i}$</span> 的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>很明显<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个式子可以用 <span class="markdown-them-math-inline">$\rm EGF$</span> 来拟合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$\hat{F}_i(x) = \sum _ j (a_i - j) \frac{x ^ j}{j!}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么答案的生成函数为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-    \hat{F}(x) &amp;= \prod _ i F_i(x)\\
-    &amp;= \prod _ i \left( \sum _ j (a_i - j) \frac{x ^ j}{j!} \right)\\
-    &amp;= \prod _ i \left( a_i \sum _ j \frac{x ^ j}{j!} - \sum _ {j} \frac{x ^ {j + 1}}{j!} \right)\\
-    &amp;= \prod _ i (a_i - x)e ^ x\\
-    &amp;= e ^ {nx} \prod _ i (a_i - x)
-\end{aligned}
-$$</div><p><span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 直接分治乘可以做到 <span class="markdown-them-math-inline">$\Theta(n \log ^ 2 n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$e ^ {nx}$</span> 的系数可以直接求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于 <span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 的最高次数为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以直接枚举计算即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log ^2 n).$</span></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>OI</tag>
-        <tag>题解</tag>
-        <tag>组合数学</tag>
-        <tag>NTT</tag>
-        <tag>生成函数</tag>
-        <tag>图计数</tag>
       </tags>
   </entry>
   <entry>
