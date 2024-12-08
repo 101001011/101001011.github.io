@@ -120,8 +120,9 @@ $$</div><p>以下是基于 <span class="markdown-them-math-inline">$c(y)$</span>
 $$</div><p>其中 <span class="markdown-them-math-inline">$\beta$</span> 是一个超参数, 越大则给分类器分配更高的权重.</p>
 <p><strong>提示器</strong>: 设 <span class="markdown-them-math-inline">$c(y) = [y \in Y_x^*]$</span>, 它确保生成的结果包含 <span class="markdown-them-math-inline">$Y_x^*$</span> 中的某个期望关键字, 例如 <span class="markdown-them-math-inline">$Y_x^*$</span> 是推理问题中的正确解决方案集合. 目标从以下分布中采样</p>
 <div class="markdown-them-math-block">$$q_∗ \propto p_θ(y|x)[y \in Y_x^*]
-$$</div><p><strong>奖励</strong>:</p>
-
+$$</div><p><strong>奖励</strong>: 一个重要的情况是, 当 <span class="markdown-them-math-inline">$c(y)$</span> 被奖励函数 <span class="markdown-them-math-inline">$r(x, y) \to \mathbb{R}$</span> 控制时, 目标从以下分布中采样</p>
+<div class="markdown-them-math-block">$$q_∗ \propto p_θ(y|x) \exp\left(\frac{1}{\beta} r(x, y)\right)
+$$</div>
       
     </div>
     <footer class="article-footer">
