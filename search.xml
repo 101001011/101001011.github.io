@@ -1,91 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>(带权)并查集</title>
-    <url>/2023/06/24/dai-quan-bing-cha-ji/</url>
-    <content><![CDATA[<h2 id="用途">用途</h2>
-<p>并查集可以用来维护一类具有传递性的关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护形如将 <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$y$</span> 所在集合合并和询问 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 是否在同一个集合的操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="实现">实现</h2>
-<h3 id="查询祖先节点">查询祖先节点</h3>
-<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩和按秩合并等优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>路径压缩一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
-    <span class="hljs-keyword">return</span> fa[x];
-&#125;
-</code></pre></div>
-<p>按秩合并则取点数小的连向点数大的即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>而对于带边权的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们需要在路径压缩的时候考虑加上其父亲的权值以维护其到根的差值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩优化的带权并查集一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
-        <span class="hljs-keyword">int</span> mark = fa[x];
-        fa[x] = <span class="hljs-built_in">Find</span>(fa[x]), val[x] += val[mark];
-    &#125;
-    <span class="hljs-keyword">return</span> fa[x];
-&#125;
-</code></pre></div>
-<p>由于路径压缩后 <span class="markdown-them-math-inline">$x$</span> 的父亲就是根节点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以需要记录其父亲到根的总权值并加到它的边权上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要查询某个点 <span class="markdown-them-math-inline">$x$</span> 到根的权值和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于一次路径压缩以后 <span class="markdown-them-math-inline">$x$</span> 的父亲会变成根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而此时的 <span class="markdown-them-math-inline">$val_x$</span> 就是路径和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以先调用一次 <code>Find(x)</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$val_x$</span> 即为答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="合并两个结点所在集合">合并两个结点所在集合</h3>
-<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个集合合并直接将其中一个根节点接到另一个根节点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>而对于带权并查集而言<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们必须求出需要连接的两个根节点之间连边的权值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个权值是可以直接确定的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设现在要给 <span class="markdown-them-math-inline">$x\to y$</span> 连一条长度为 <span class="markdown-them-math-inline">$w$</span> 的边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x$</span> 的祖先为 <span class="markdown-them-math-inline">$Rx$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$val_{Rx}=val_y+w-val_x.$</span> 另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 已经在同一个集合中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$val_{Rx}+val_x-val_y\not = w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则这条连边不合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> w)</span> </span>&#123;
-    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
-    <span class="hljs-keyword">if</span> (Rx != Ry) fa[Rx] = Ry, val[Rx] = val[y] + w - val[x];
-    <span class="hljs-keyword">return</span> val[Rx] + val[x] - val[y] == w;
-&#125;
-</code></pre></div>
-<h2 id="code">Code</h2>
-<p>带路径压缩和按秩合并优化的普通并查集 :</p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
-    <span class="hljs-keyword">return</span> fa[x];
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
-    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
-    <span class="hljs-keyword">if</span> (x != y) &#123;
-        <span class="hljs-keyword">if</span> (pnum[Rx] &lt; pnum[Ry])
-            fa[Rx] = Ry, pnum[Ry] += pnum[Rx];
-        <span class="hljs-keyword">else</span> fa[Ry] = Rx, pnum[Rx] += pnum[Ry];
-    &#125;
-    <span class="hljs-keyword">return</span> Rx != Ry;
-&#125;
-</code></pre></div>
-<p>带路径压缩和按秩合并优化的带权并查集 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
-        <span class="hljs-keyword">int</span> mark = fa[x];
-        fa[x] = <span class="hljs-built_in">Find</span>(fa[x]), val[x] += val[mark];
-    &#125;
-    <span class="hljs-keyword">return</span> fa[x];
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> w)</span> </span>&#123;
-    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
-    <span class="hljs-keyword">if</span> (Rx == Ry) <span class="hljs-keyword">return</span> (val[x] - val[y] == w);
-    <span class="hljs-keyword">if</span> (pnum[Rx] &lt; pnum[Ry])
-        fa[Rx] = Ry, pnum[Ry] += pnum[Rx], val[Rx] = val[y] + w - val[x];
-    <span class="hljs-keyword">else</span> fa[Ry] = Rx, pnum[Rx] += pnum[Ry], val[Ry] = val[x] - w - val[y];
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-&#125;
-</code></pre></div>
-<p>不带任何优化的并查集复杂度是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>带路径压缩的并查集时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>期望复杂度 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>再加上按秩合并可以做到严格 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-        <category>并查集</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>并查集</tag>
-        <tag>OI</tag>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>(可持久化) Trie 树</title>
     <url>/2023/06/24/ke-chi-jiu-hua-trie-shu/</url>
     <content><![CDATA[<h2 id="字典树">字典树</h2>
@@ -178,10 +93,167 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>OI</tag>
         <tag>字符串</tag>
         <tag>Trie</tag>
         <tag>可持久化 Trie 树</tag>
+        <tag>OI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2-SAT 问题</title>
+    <url>/2023/06/24/2-sat-wen-ti/</url>
+    <content><![CDATA[<h2 id="求解-2-sat 问题">求解 2-SAT 问题</h2>
+<p><span class="markdown-them-math-inline">$2-\rm Sat$</span> 问题是求解某个 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>方程组中的每个方程被描述为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$x_i$</span> 为真<span class="markdown-them-math-inline">$/$</span>假 或 <span class="markdown-them-math-inline">$x_j$</span> 为真<span class="markdown-them-math-inline">$/$</span>假<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们可以对每个 <span class="markdown-them-math-inline">$x_i$</span> 和 <span class="markdown-them-math-inline">$\lnot x_i$</span> 分别建点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x_i$</span> 为假看作 <span class="markdown-them-math-inline">$\lnot x_i$</span> 为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样方程就仅有一种类型了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即若 <span class="markdown-them-math-inline">$p$</span> 为真则 <span class="markdown-them-math-inline">$q$</span> 为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建一些边 <span class="markdown-them-math-inline">$u\to v$</span> 表示当 <span class="markdown-them-math-inline">$u$</span> 为真的时候 <span class="markdown-them-math-inline">$v$</span> 一定为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比如有方程 <span class="markdown-them-math-inline">$p$</span> 为真或 <span class="markdown-them-math-inline">$q$</span> 为真时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建两条边 <span class="markdown-them-math-inline">$p\to \lnot q$</span> 和 <span class="markdown-them-math-inline">$q\to \lnot {p}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>建完图后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然同一个强连通分量中的点取值必然相同<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么如果 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在同一个强连通分量里则该 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组无解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存在 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在同一个强连通分量中为该 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组无解的充要条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对于其它的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每对 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 中有且仅有一个为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们令拓扑序大的那个为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>可以分情况证明其最优性 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>若 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在 <span class="markdown-them-math-inline">$\rm DAG$</span> 的同一条链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么拓扑序大的必然为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则两个都为真与题意相悖<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>若 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在不同链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么两个点的取值其实无所谓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但一定要跟拓扑序相关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>因为每条链上拓扑序的大小关系时严格的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用拓扑序规定某个点取值是否为真可以使为真的点在同一条链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>尽可能降低对其他点的影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>为了保证跟上一种情况的统一性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>仍选择令拓扑序大的点为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现 <span class="markdown-them-math-inline">$\rm Tarjan$</span> 缩点所求出的 <span class="markdown-them-math-inline">$\rm SCC$</span> 强连通分量数组的值负相关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以理解为拓扑序更小的点更后入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也更先出栈编号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>故最后对比 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 的 <span class="markdown-them-math-inline">$\rm SCC$</span> 值即可判断它们谁为真谁为假<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="[lg6378]-riddle">[LG6378] Riddle</h3>
+<p>对树上每个点建立一个 <span class="markdown-them-math-inline">$\rm bool$</span> 变量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取值为 <span class="markdown-them-math-inline">$1$</span> 表示这个点选<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>使用 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 的通用做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建立为每个点的状态建立两个点 <span class="markdown-them-math-inline">$u$</span> 和 <span class="markdown-them-math-inline">$\lnot u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分别对每个限制考虑 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>每条边至少有一个关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则对于一条边 <span class="markdown-them-math-inline">$u-v$</span> 若 <span class="markdown-them-math-inline">$\lnot u$</span> 则 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$\lnot v$</span> 则 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故连接 <span class="markdown-them-math-inline">$\lnot u\to v$</span> 和 <span class="markdown-them-math-inline">$\lnot v\to u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>每个部分最多有一个关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则如果 <span class="markdown-them-math-inline">$u$</span> 被选了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么同一个块中所有点都不能选<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>连接 <span class="markdown-them-math-inline">$u\to \lnot v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 但是我们发现这样连边是 <span class="markdown-them-math-inline">$\Theta(n^2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以前缀和优化连边即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>建好图以后直接跑 <span class="markdown-them-math-inline">$\rm 2-Sat$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[poi2011]-kon-conspiracy">[POI2011] KON-Conspiracy</h3>
+<p>首先转化题意<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这道题要求的是将一张无向图划分成一个团和一个独立集的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>首先找出一种合法的方案是很容易的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是一个裸的 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑找出一种方案后统计方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>首先有如下性质 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<ul>
+<li>一个团中不可能取出一个以上的点加入独立集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为两点之间必有连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>一个独立集中不可能取出一个以上的点加入团<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为两点之间必无连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+</blockquote>
+<p>所以可以直接分别枚举团和独立集中的每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>交换它们即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n^2)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[北京省选集训-2019] 完美塔防">[北京省选集训 2019] 完美塔防</h3>
+<p>首先预处理哪些炮台会互相打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若存在<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则输出 <code>IMPOSSIBLE</code>.</p>
+<p>然后发现有如下结论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>每个空地最多可以被两个炮台打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+因为每个空地最多在纵横两个方向上被打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若还存在一个<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则必定会打到其中一个炮台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>于是对每个炮台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它的纵横情况设为 <span class="markdown-them-math-inline">$0/1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个空地会加入一个形如 <span class="markdown-them-math-inline">$a~or~b$</span> 的条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这就变成了经典的 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(Tn^3)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[hnoi2010]-平面图判定">[HNOI2010] 平面图判定</h3>
+<p>首先有平面图中的欧拉定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设一张无向连通图点数为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>边数为 <span class="markdown-them-math-inline">$e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>面数为 <span class="markdown-them-math-inline">$f$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$v-e+f=2
+$$</div><p>考虑通过对 <span class="markdown-them-math-inline">$e$</span> 进行归纳证明该式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>当 <span class="markdown-them-math-inline">$e=0$</span> 时显然成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>若当 <span class="markdown-them-math-inline">$e'=e-1$</span> 时该式成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们要证 <span class="markdown-them-math-inline">$v-e+f=1$</span> 成立只需证添加一条边会使得面数恰好增加 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 而对于这个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若这条边加在某个面的中间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么其必将这个面分成两半<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若这条边加在图形外面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么会围出一块新的区域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也会使面数恰好增加 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>故该式成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们进一步探究平面图的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>定义面的度数为与其相邻的面的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然对于每条边都会有恰好两个面与其相邻<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故所有面的度数之和为 <span class="markdown-them-math-inline">$2e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 又因为每个面至少三条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以度数不小于 <span class="markdown-them-math-inline">$3$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进而有 <span class="markdown-them-math-inline">$3f$</span> 不大于所有面的度数之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$3f\leqslant 2e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将其带入平面图中的欧拉定理可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$e\leqslant 3v-6
+$$</div><p>于是不满足该式的无向连通图均不为平面图<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进而可以将 <span class="markdown-them-math-inline">$m$</span> 限制到与 <span class="markdown-them-math-inline">$n$</span> 同数量级<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我们发现题目给定了哈密顿回路<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑以这个环作为中心考虑问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>我么发现对于任意一条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它要么从环内连接<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要么从环外连接<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且如果有两条边 <span class="markdown-them-math-inline">$u-v$</span> 和 <span class="markdown-them-math-inline">$u'-v'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且满足 <span class="markdown-them-math-inline">$u&lt;u'&lt;v&lt;v'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么它们不能连在同一面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>于是可以通过这种关系构建 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 模型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(Tn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+        <category>2-SAT</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>图论</tag>
+        <tag>2-SAT</tag>
+        <tag>连通性</tag>
+        <tag>Tarjan</tag>
+        <tag>缩点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>(带权)并查集</title>
+    <url>/2023/06/24/dai-quan-bing-cha-ji/</url>
+    <content><![CDATA[<h2 id="用途">用途</h2>
+<p>并查集可以用来维护一类具有传递性的关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护形如将 <span class="markdown-them-math-inline">$x$</span> 与 <span class="markdown-them-math-inline">$y$</span> 所在集合合并和询问 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 是否在同一个集合的操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="实现">实现</h2>
+<h3 id="查询祖先节点">查询祖先节点</h3>
+<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩和按秩合并等优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>路径压缩一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
+    <span class="hljs-keyword">return</span> fa[x];
+&#125;
+</code></pre></div>
+<p>按秩合并则取点数小的连向点数大的即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>而对于带边权的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们需要在路径压缩的时候考虑加上其父亲的权值以维护其到根的差值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有路径压缩优化的带权并查集一般实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
+        <span class="hljs-keyword">int</span> mark = fa[x];
+        fa[x] = <span class="hljs-built_in">Find</span>(fa[x]), val[x] += val[mark];
+    &#125;
+    <span class="hljs-keyword">return</span> fa[x];
+&#125;
+</code></pre></div>
+<p>由于路径压缩后 <span class="markdown-them-math-inline">$x$</span> 的父亲就是根节点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以需要记录其父亲到根的总权值并加到它的边权上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要查询某个点 <span class="markdown-them-math-inline">$x$</span> 到根的权值和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于一次路径压缩以后 <span class="markdown-them-math-inline">$x$</span> 的父亲会变成根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而此时的 <span class="markdown-them-math-inline">$val_x$</span> 就是路径和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以先调用一次 <code>Find(x)</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$val_x$</span> 即为答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="合并两个结点所在集合">合并两个结点所在集合</h3>
+<p>对于普通并查集来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个集合合并直接将其中一个根节点接到另一个根节点上即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>而对于带权并查集而言<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们必须求出需要连接的两个根节点之间连边的权值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个权值是可以直接确定的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设现在要给 <span class="markdown-them-math-inline">$x\to y$</span> 连一条长度为 <span class="markdown-them-math-inline">$w$</span> 的边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设 <span class="markdown-them-math-inline">$x$</span> 的祖先为 <span class="markdown-them-math-inline">$Rx$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$val_{Rx}=val_y+w-val_x.$</span> 另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 已经在同一个集合中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$val_{Rx}+val_x-val_y\not = w$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则这条连边不合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>实现如下 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> w)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
+    <span class="hljs-keyword">if</span> (Rx != Ry) fa[Rx] = Ry, val[Rx] = val[y] + w - val[x];
+    <span class="hljs-keyword">return</span> val[Rx] + val[x] - val[y] == w;
+&#125;
+</code></pre></div>
+<h2 id="code">Code</h2>
+<p>带路径压缩和按秩合并优化的普通并查集 :</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (x != fa[x]) fa[x] = <span class="hljs-built_in">Find</span>(fa[x]);
+    <span class="hljs-keyword">return</span> fa[x];
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
+    <span class="hljs-keyword">if</span> (x != y) &#123;
+        <span class="hljs-keyword">if</span> (pnum[Rx] &lt; pnum[Ry])
+            fa[Rx] = Ry, pnum[Ry] += pnum[Rx];
+        <span class="hljs-keyword">else</span> fa[Ry] = Rx, pnum[Rx] += pnum[Ry];
+    &#125;
+    <span class="hljs-keyword">return</span> Rx != Ry;
+&#125;
+</code></pre></div>
+<p>带路径压缩和按秩合并优化的带权并查集 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (x != fa[x]) &#123;
+        <span class="hljs-keyword">int</span> mark = fa[x];
+        fa[x] = <span class="hljs-built_in">Find</span>(fa[x]), val[x] += val[mark];
+    &#125;
+    <span class="hljs-keyword">return</span> fa[x];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Merge</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> w)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> Rx = <span class="hljs-built_in">Find</span>(x), Ry = <span class="hljs-built_in">Find</span>(y);
+    <span class="hljs-keyword">if</span> (Rx == Ry) <span class="hljs-keyword">return</span> (val[x] - val[y] == w);
+    <span class="hljs-keyword">if</span> (pnum[Rx] &lt; pnum[Ry])
+        fa[Rx] = Ry, pnum[Ry] += pnum[Rx], val[Rx] = val[y] + w - val[x];
+    <span class="hljs-keyword">else</span> fa[Ry] = Rx, pnum[Rx] += pnum[Ry], val[Ry] = val[x] - w - val[y];
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+&#125;
+</code></pre></div>
+<p>不带任何优化的并查集复杂度是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>带路径压缩的并查集时间复杂度 <span class="markdown-them-math-inline">$\Theta(n \log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>期望复杂度 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>再加上按秩合并可以做到严格 <span class="markdown-them-math-inline">$\Theta(n \alpha(n))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+        <category>并查集</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -771,78 +843,6 @@ $$</div><p>因为模数有可能小于 <span class="markdown-them-math-inline">$
       </tags>
   </entry>
   <entry>
-    <title>2-SAT 问题</title>
-    <url>/2023/06/24/2-sat-wen-ti/</url>
-    <content><![CDATA[<h2 id="求解-2-sat 问题">求解 2-SAT 问题</h2>
-<p><span class="markdown-them-math-inline">$2-\rm Sat$</span> 问题是求解某个 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>方程组中的每个方程被描述为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$x_i$</span> 为真<span class="markdown-them-math-inline">$/$</span>假 或 <span class="markdown-them-math-inline">$x_j$</span> 为真<span class="markdown-them-math-inline">$/$</span>假<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>我们可以对每个 <span class="markdown-them-math-inline">$x_i$</span> 和 <span class="markdown-them-math-inline">$\lnot x_i$</span> 分别建点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x_i$</span> 为假看作 <span class="markdown-them-math-inline">$\lnot x_i$</span> 为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样方程就仅有一种类型了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即若 <span class="markdown-them-math-inline">$p$</span> 为真则 <span class="markdown-them-math-inline">$q$</span> 为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建一些边 <span class="markdown-them-math-inline">$u\to v$</span> 表示当 <span class="markdown-them-math-inline">$u$</span> 为真的时候 <span class="markdown-them-math-inline">$v$</span> 一定为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比如有方程 <span class="markdown-them-math-inline">$p$</span> 为真或 <span class="markdown-them-math-inline">$q$</span> 为真时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建两条边 <span class="markdown-them-math-inline">$p\to \lnot q$</span> 和 <span class="markdown-them-math-inline">$q\to \lnot {p}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>建完图后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然同一个强连通分量中的点取值必然相同<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么如果 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在同一个强连通分量里则该 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组无解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存在 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在同一个强连通分量中为该 <span class="markdown-them-math-inline">$\rm bool$</span> 方程组无解的充要条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>对于其它的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每对 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 中有且仅有一个为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们令拓扑序大的那个为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>可以分情况证明其最优性 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>若 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在 <span class="markdown-them-math-inline">$\rm DAG$</span> 的同一条链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么拓扑序大的必然为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则两个都为真与题意相悖<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>若 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 在不同链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么两个点的取值其实无所谓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但一定要跟拓扑序相关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>因为每条链上拓扑序的大小关系时严格的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用拓扑序规定某个点取值是否为真可以使为真的点在同一条链上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>尽可能降低对其他点的影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>为了保证跟上一种情况的统一性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>仍选择令拓扑序大的点为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<p>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现 <span class="markdown-them-math-inline">$\rm Tarjan$</span> 缩点所求出的 <span class="markdown-them-math-inline">$\rm SCC$</span> 强连通分量数组的值负相关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以理解为拓扑序更小的点更后入栈<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也更先出栈编号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>故最后对比 <span class="markdown-them-math-inline">$a$</span> 和 <span class="markdown-them-math-inline">$\lnot a$</span> 的 <span class="markdown-them-math-inline">$\rm SCC$</span> 值即可判断它们谁为真谁为假<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="经典例题">经典例题</h2>
-<h3 id="[lg6378]-riddle">[LG6378] Riddle</h3>
-<p>对树上每个点建立一个 <span class="markdown-them-math-inline">$\rm bool$</span> 变量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取值为 <span class="markdown-them-math-inline">$1$</span> 表示这个点选<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>使用 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 的通用做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>建立为每个点的状态建立两个点 <span class="markdown-them-math-inline">$u$</span> 和 <span class="markdown-them-math-inline">$\lnot u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分别对每个限制考虑 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>每条边至少有一个关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则对于一条边 <span class="markdown-them-math-inline">$u-v$</span> 若 <span class="markdown-them-math-inline">$\lnot u$</span> 则 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$\lnot v$</span> 则 <span class="markdown-them-math-inline">$u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故连接 <span class="markdown-them-math-inline">$\lnot u\to v$</span> 和 <span class="markdown-them-math-inline">$\lnot v\to u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>每个部分最多有一个关键点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则如果 <span class="markdown-them-math-inline">$u$</span> 被选了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么同一个块中所有点都不能选<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>连接 <span class="markdown-them-math-inline">$u\to \lnot v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 但是我们发现这样连边是 <span class="markdown-them-math-inline">$\Theta(n^2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以前缀和优化连边即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<p>建好图以后直接跑 <span class="markdown-them-math-inline">$\rm 2-Sat$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="[poi2011]-kon-conspiracy">[POI2011] KON-Conspiracy</h3>
-<p>首先转化题意<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这道题要求的是将一张无向图划分成一个团和一个独立集的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>首先找出一种合法的方案是很容易的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是一个裸的 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑找出一种方案后统计方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>首先有如下性质 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<ul>
-<li>一个团中不可能取出一个以上的点加入独立集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为两点之间必有连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>一个独立集中不可能取出一个以上的点加入团<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为两点之间必无连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-</blockquote>
-<p>所以可以直接分别枚举团和独立集中的每个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>交换它们即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\rm \Theta(n^2)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="[北京省选集训-2019] 完美塔防">[北京省选集训 2019] 完美塔防</h3>
-<p>首先预处理哪些炮台会互相打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若存在<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则输出 <code>IMPOSSIBLE</code>.</p>
-<p>然后发现有如下结论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>每个空地最多可以被两个炮台打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-因为每个空地最多在纵横两个方向上被打到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若还存在一个<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则必定会打到其中一个炮台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>于是对每个炮台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它的纵横情况设为 <span class="markdown-them-math-inline">$0/1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每个空地会加入一个形如 <span class="markdown-them-math-inline">$a~or~b$</span> 的条件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这就变成了经典的 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(Tn^3)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="[hnoi2010]-平面图判定">[HNOI2010] 平面图判定</h3>
-<p>首先有平面图中的欧拉定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设一张无向连通图点数为 <span class="markdown-them-math-inline">$v$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>边数为 <span class="markdown-them-math-inline">$e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>面数为 <span class="markdown-them-math-inline">$f$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$v-e+f=2
-$$</div><p>考虑通过对 <span class="markdown-them-math-inline">$e$</span> 进行归纳证明该式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>当 <span class="markdown-them-math-inline">$e=0$</span> 时显然成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>若当 <span class="markdown-them-math-inline">$e'=e-1$</span> 时该式成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们要证 <span class="markdown-them-math-inline">$v-e+f=1$</span> 成立只需证添加一条边会使得面数恰好增加 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 而对于这个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以分类讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若这条边加在某个面的中间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么其必将这个面分成两半<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若这条边加在图形外面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么会围出一块新的区域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也会使面数恰好增加 <span class="markdown-them-math-inline">$1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>故该式成立<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>我们进一步探究平面图的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>定义面的度数为与其相邻的面的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然对于每条边都会有恰好两个面与其相邻<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故所有面的度数之和为 <span class="markdown-them-math-inline">$2e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 又因为每个面至少三条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以度数不小于 <span class="markdown-them-math-inline">$3$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进而有 <span class="markdown-them-math-inline">$3f$</span> 不大于所有面的度数之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故有 <span class="markdown-them-math-inline">$3f\leqslant 2e$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将其带入平面图中的欧拉定理可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$e\leqslant 3v-6
-$$</div><p>于是不满足该式的无向连通图均不为平面图<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进而可以将 <span class="markdown-them-math-inline">$m$</span> 限制到与 <span class="markdown-them-math-inline">$n$</span> 同数量级<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>我们发现题目给定了哈密顿回路<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑以这个环作为中心考虑问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>我么发现对于任意一条边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它要么从环内连接<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要么从环外连接<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且如果有两条边 <span class="markdown-them-math-inline">$u-v$</span> 和 <span class="markdown-them-math-inline">$u'-v'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且满足 <span class="markdown-them-math-inline">$u&lt;u'&lt;v&lt;v'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么它们不能连在同一面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>于是可以通过这种关系构建 <span class="markdown-them-math-inline">$\rm 2-Sat$</span> 模型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(Tn)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-        <category>2-SAT</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>图论</tag>
-        <tag>2-SAT</tag>
-        <tag>连通性</tag>
-        <tag>Tarjan</tag>
-        <tag>缩点</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2022 年新一卷数学第 7 题另解</title>
     <url>/2023/06/24/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
     <content><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
@@ -905,46 +905,6 @@ $$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]
         <tag>题解</tag>
         <tag>数学</tag>
         <tag>高考</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AC 自动机</title>
-    <url>/2023/06/24/ac-zi-dong-ji/</url>
-    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
-<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
-<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
-$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="文本串匹配">文本串匹配</h3>
-<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
-<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
-$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<blockquote>
-<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>AC 自动机</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>字符串</tag>
-        <tag>AC 自动机</tag>
       </tags>
   </entry>
   <entry>
@@ -1799,6 +1759,46 @@ ans = <span class="hljs-number">0</span>
       </tags>
   </entry>
   <entry>
+    <title>AC 自动机</title>
+    <url>/2023/06/24/ac-zi-dong-ji/</url>
+    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
+<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
+<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
+$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="文本串匹配">文本串匹配</h3>
+<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
+<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
+$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<blockquote>
+<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>AC 自动机</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>AC 自动机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder Beginner Contest 212</title>
     <url>/2023/06/24/atcoder-beginner-contest-212/</url>
     <content><![CDATA[<h2 id="e">E</h2>
@@ -2202,6 +2202,286 @@ $$</div><p>其中 <span class="markdown-them-math-inline">$f_1$</span> 生成故
       </tags>
   </entry>
   <entry>
+    <title>KMP 算法 &amp; KMP 自动机</title>
+    <url>/2023/06/24/kmp-suan-fa-kmp-zi-dong-ji/</url>
+    <content><![CDATA[<h2 id="border-& $\pi$ 函数">Border &amp; <span class="markdown-them-math-inline">$\pi$</span> 函数</h2>
+<h3 id="一些定义">一些定义</h3>
+<ul>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的真前/后缀为非自身的前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的 border为 <span class="markdown-them-math-inline">$S$</span> 的公共真前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的最长 border 为 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于 <span class="markdown-them-math-inline">$S$</span> 的每个前缀 <span class="markdown-them-math-inline">$S_{1 \sim i}$</span> 令 <span class="markdown-them-math-inline">$\pi_i$</span> 为其最长 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\pi$</span> 函数就是所谓的前缀函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<h3 id="$\pi$-函数的性质"><span class="markdown-them-math-inline">$\pi$</span> 函数的性质</h3>
+<ul>
+<li><span class="markdown-them-math-inline">$\forall i,\pi_{i+1}\leqslant \pi_i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的所有 border 可以由 <span class="markdown-them-math-inline">$\pi_{|S|}$</span> 开始不断跳 <span class="markdown-them-math-inline">$\pi$</span> 由长度从大到小遍历<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>只需证明 <span class="markdown-them-math-inline">$S_{1 \sim \pi_{\pi_n}}$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的次长 border 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>由 <span class="markdown-them-math-inline">$\pi$</span> 的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>相邻前缀函数满足 <span class="markdown-them-math-inline">$\pi_{i + 1} = \max\limits_{T ~ is ~ the ~ border ~ of ~ S_{1 \sim i}, S_{i + 1} = S_{|T| + 1}} |T| + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>使用反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h3 id="$\pi$-函数的线性求法"><span class="markdown-them-math-inline">$\pi$</span> 函数的线性求法</h3>
+<p>有了上述几条性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以得到一个求解 <span class="markdown-them-math-inline">$\pi$</span> 函数的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code>pi[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = pi[i - <span class="hljs-number">1</span>]; j &gt;= <span class="hljs-number">0</span>; j = pi[j])
+        <span class="hljs-keyword">if</span> (s[j + <span class="hljs-number">1</span>] == s[i]) &#123; pi[i] = j + <span class="hljs-number">1</span>; <span class="hljs-keyword">break</span>; &#125;
+</code></pre></div>
+<p>直观感受上这个做法是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但实际上它是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度证明如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>不难发现复杂度来源在于跳 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面我们将证明跳 <span class="markdown-them-math-inline">$\pi$</span> 的总次数是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>注意 <span class="markdown-them-math-inline">$\pi_i$</span> 的位置变化情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现 <span class="markdown-them-math-inline">$\pi_i$</span> 只会每次 <span class="markdown-them-math-inline">$+1$</span> 或往前跳若干次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但往前跳的的总距离不能超过当前 <span class="markdown-them-math-inline">$+1$</span> 的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故总路程也是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h3 id="$\pi$-函数的基本应用"><span class="markdown-them-math-inline">$\pi$</span> 函数的基本应用</h3>
+<h4 id="字符串匹配">字符串匹配</h4>
+<p>求解模式串 <span class="markdown-them-math-inline">$T$</span> 在匹配串 <span class="markdown-them-math-inline">$S$</span> 中的出现位置的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>构造一个新的字符串 <span class="markdown-them-math-inline">$T\circ S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中 <span class="markdown-them-math-inline">$\circ\not\in S\cup T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它仅作为一个分隔符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>对这个新的字符串求其 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现由于分隔符的出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\forall i, \pi_i \leqslant |T|$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是找到 <span class="markdown-them-math-inline">$\pi_i = |T|$</span> 的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$i - |T| + 1 \sim i$</span> 就是一个匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>以上即为 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h4 id="统计每个前缀的出现次数">统计每个前缀的出现次数</h4>
+<p>考虑到如果某个前缀在之后的位置里出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定是某个前缀的 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们考虑在每个数的最大 border 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其为更小 border 的重复次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且更小的 border 一定可以通过跳 <span class="markdown-them-math-inline">$\pi$</span> 遍历到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样只需要从后往前扫一遍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ans[i] = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) ans[pi[i]] += ans[i];
+</code></pre></div>
+<p>至于这个问题的加强版<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>统计 <span class="markdown-them-math-inline">$S$</span> 中的每个前缀在 <span class="markdown-them-math-inline">$T$</span> 中的出现次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以构造 <span class="markdown-them-math-inline">$S\#T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>赋初值的时候只需要将 <span class="markdown-them-math-inline">$T$</span> 中的位置初始化为 <span class="markdown-them-math-inline">$1$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h4 id="统计本质不同子串的数目">统计本质不同子串的数目</h4>
+<p>考虑迭代计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题转化成<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>在当前字符串的末尾加入一个新的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以这个字符结尾的后缀中有多少个是前面没有出现过的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>如果一个子串 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\forall j\geqslant i,S_{j\sim n}$</span> 都在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<blockquote>
+<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>于是就只需求出加入新字符后的串的反串中的 <span class="markdown-them-math-inline">$\max\pi$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个字符的贡献就是 <span class="markdown-them-math-inline">$|S|+1-\max\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="字符串周期相关性质">字符串周期相关性质</h2>
+<p>称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的一个周期且仅当 <span class="markdown-them-math-inline">$\forall i\leqslant |S|-k, S_i = S_{i + k}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特别地若 <span class="markdown-them-math-inline">$k \nmid S$</span> 则称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的弱周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>若字符串 <span class="markdown-them-math-inline">$S$</span> 存在一个 border <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当且仅当 <span class="markdown-them-math-inline">$S$</span> 存在一个长度为 <span class="markdown-them-math-inline">$|S| - |T|$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性递归论证即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的最短<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期长度为 <span class="markdown-them-math-inline">$n - \pi_n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>由 <span class="markdown-them-math-inline">$\pi$</span> 函数的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>若长度不小于 <span class="markdown-them-math-inline">$p + q$</span> 的字符串 <span class="markdown-them-math-inline">$S$</span> 存在长度分别为 <span class="markdown-them-math-inline">$p, q$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>下面首先证明 <span class="markdown-them-math-inline">$p - q(p &gt; q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ol>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i \leqslant q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i + p} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i \leqslant q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i &gt; q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i - q} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i &gt; q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ol>
+<p>证明 <span class="markdown-them-math-inline">$p - q$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>根据更相减损术的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终可以迭代至 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>所有强周期的长度均为最短强周期长度的倍数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>若存在一个强周期 <span class="markdown-them-math-inline">$x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$n-\pi_n\nmid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\gcd(n-\pi_n,x)&lt;n-\pi_n$</span> 也为一个强周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$n-\pi_n$</span> 是最小强周期矛盾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<ul>
+<li>字符串 <span class="markdown-them-math-inline">$S$</span> 存在周期当且仅当 <span class="markdown-them-math-inline">$n - \pi_n$</span> 为一个周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<blockquote>
+<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若存在强周期 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又因为 <span class="markdown-them-math-inline">$n-\pi_n\mid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$n-\pi_n\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性得证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<h2 id="kmp-自动机">KMP 自动机</h2>
+<p>在求 <span class="markdown-them-math-inline">$\pi$</span> 函数的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现这个做法是支持在线插入一个字符在末尾并计算函数值的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>并且在做 <span class="markdown-them-math-inline">$\rm KMP$</span> 的过程中我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在匹配串每一位求 <span class="markdown-them-math-inline">$\pi$</span> 函数时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并不关心之前匹配串的字符是什么<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只关心之前的 <span class="markdown-them-math-inline">$\pi$</span> 函数值和当前位的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这意味着可以对一个模式串建立一个自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>结点 <span class="markdown-them-math-inline">$i$</span>  表示当前节点的 <span class="markdown-them-math-inline">$\pi$</span> 值为 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>新加入一个节点的出边 <span class="markdown-them-math-inline">$c$</span> 指向跳 <span class="markdown-them-math-inline">$\pi$</span> 时第一个能够匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>暴力建这个自动机的复杂度为 <span class="markdown-them-math-inline">$\Theta(n^2|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为出边需要遍历 <span class="markdown-them-math-inline">$\Sigma$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以不存在求 <span class="markdown-them-math-inline">$\pi$</span> 函数时指针单方向移动的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>但是实际上之前已经计算了从所有节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以任意一个字符为出边会到哪个节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故可以直接调用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体规则为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,c}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符 <span class="markdown-them-math-inline">$c$</span> 会到达的节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果当前到达了节点 <span class="markdown-them-math-inline">$i$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符为 <span class="markdown-them-math-inline">$c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则如果 <span class="markdown-them-math-inline">$c=s_{i+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么当前节点指向 <span class="markdown-them-math-inline">$i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则指向 <span class="markdown-them-math-inline">$f_{\pi_i,c}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>同 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法一样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机也可以用来实现若干文本串和模式串的匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串从节点 <span class="markdown-them-math-inline">$0$</span> 开始走<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次走到 <span class="markdown-them-math-inline">$|S|$</span> 都完成了一次匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若模式串长度为 <span class="markdown-them-math-inline">$m$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串长度为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数量为 <span class="markdown-them-math-inline">$t$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则时间复杂度为 <span class="markdown-them-math-inline">$\Theta(m+tn|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机在完成普通字符串匹配时表现并不优秀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但它可以求解一些特殊的字符串匹配问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>定义 <span class="markdown-them-math-inline">$g_1=&quot;a&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_2=&quot;aba&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_3=&quot;abacaba&quot;\cdots \forall i,g_i=g_{i-1}+(char)i+g_{i-1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 给定另一字符串 <span class="markdown-them-math-inline">$S$</span> 和整数 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$S$</span> 在 <span class="markdown-them-math-inline">$g_k$</span> 中的匹配次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>保证 <span class="markdown-them-math-inline">$|S|\times k\leqslant 10^6$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>显然题目是要求从 <span class="markdown-them-math-inline">$0$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_k$</span> 进行匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数是多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>首先对 <span class="markdown-them-math-inline">$S$</span> 建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_j$</span> 进行匹配后经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$k_{i,S}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>匹配完字符串 <span class="markdown-them-math-inline">$S=g_i+(char)i$</span> 后停下来的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,j}=f_{i,j-1}+[k_{i,g_{j-1}+(char)(j-1)}=|S|]+f_{k_{i,g_{j-1}+(char)(j-1)},j-1}
+$$</div><p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S|\times k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于单次添加结点的复杂度是严格 <span class="markdown-them-math-inline">$\Theta(|\Sigma|)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以对 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机进行可持久化处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://codeforces.com/problemset/problem/808/G">[CF808G] Anthem of Berland</a></p>
+<p>考虑对模式串建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示对字符串匹配到第 <span class="markdown-them-math-inline">$i$</span> 位时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>跳到自动机的 <span class="markdown-them-math-inline">$j$</span> 号点匹配的次数最大值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_{i,to}=\begin{cases}\max\{f_{i-1,j}+[to=m]\}(s_i\not =~'?')\\\max\limits_{k=0}^{25}\{f_{i-1,j}+[to=m]\}(s_i=~'?')\end{cases}
+$$</div><p>由于 <span class="markdown-them-math-inline">$\rm DP$</span> 空间开不下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要使用滚动数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S||T||\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>KMP</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>KMP</tag>
+        <tag>KMP 自动机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Manacher 算法</title>
+    <url>/2023/06/24/manacher-suan-fa/</url>
+    <content><![CDATA[<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>于是我们记 <span class="markdown-them-math-inline">$d_i$</span> 表示以 <span class="markdown-them-math-inline">$i$</span> 为中心的最大回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而 <span class="markdown-them-math-inline">$\rm Manacher$</span> 算法的用处就是在线性复杂度下求出这个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体过程跟 <span class="markdown-them-math-inline">$Z$</span> 算法类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$L,R$</span> 表示在之前的回文子串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右端点最靠右的子串的左右端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移分三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i&gt;R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=i-1,R=i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}&lt;R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i=d_{L+R-i}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}\geqslant R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=2i-R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>由于 <span class="markdown-them-math-inline">$R$</span> 只会往右移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且每次暴力更新必定右移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面这种方法只处理了回文子串长度为奇数的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而偶数的情况只需要分开考虑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性稍微改变一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但还有一种更加巧妙的方式可以规避分奇偶讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑给所有字符之间加入一个不可能出现的相同字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如字符串 <span class="markdown-them-math-inline">$abaca$</span> 变成 <span class="markdown-them-math-inline">$\#a\#b\#a\#c\#a\#$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样在奇数位上统计的就是字串长度为偶数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在偶数位上统计的就是字串长度为奇数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样统计出来的半径 <span class="markdown-them-math-inline">$d$</span> 就是以当前点为中心的最长回文子串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>Manacher</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>Manacher</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Project Euler Problem 918</title>
+    <url>/2025/01/09/project-euler-problem-918/</url>
+    <content><![CDATA[<p>定义数列 <span class="markdown-them-math-inline">$\{a_n\}$</span> 满足 <span class="markdown-them-math-inline">$a_1 = 1$</span>, 对于 <span class="markdown-them-math-inline">$n \geqslant 1$</span> 有:</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+a_{2n} &amp;= 2a_n \\
+a_{2n + 1} &amp;= a_n - 3a_{n + 1}
+\end{aligned}
+$$</div><p>定义 <span class="markdown-them-math-inline">$S_n = \sum\limits_{i = 1}^n a_i$</span>, 求 <span class="markdown-them-math-inline">$S_k(k = 10^{12})$</span>.</p>
+<hr>
+<div class="markdown-them-math-block">$$\begin{aligned}
+S_{2n} &amp;= (a_1 + a_3 + \cdots + a_{2n - 1}) + (a_2 + a_4 + \cdots + a_{2n}) \\
+&amp;= [a_1 + (a_1 - 3a_2) + \cdots + (a_{n - 1} - 3a_n)] + (2a_1 + 2a_2 + \cdots + 2a_n) \\ 
+&amp;= 4a_1 + (-2a_1 - 2a_2 - \cdots - 2a_{n - 1} - 3a_n) + (2a_1 + 2a_2 + \cdots + 2a_n) \\
+&amp;= 4 - a_n
+\end{aligned}
+$$</div><p>故要求 <span class="markdown-them-math-inline">$S_{2n}$</span> 只需递归求 <span class="markdown-them-math-inline">$a_n$</span> 即可.</p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> i64 = <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>;
+<span class="hljs-keyword">constexpr</span> i64 n = <span class="hljs-number">1e12</span>;
+
+<span class="hljs-function">i64 <span class="hljs-title">a</span><span class="hljs-params">(i64 i)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">a</span>(i &gt;&gt; <span class="hljs-number">1</span>) - <span class="hljs-number">3</span> * <span class="hljs-built_in">a</span>(i + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">a</span>(i &gt;&gt; <span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">1</span>;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    std::cout &lt;&lt; <span class="hljs-number">4</span> - <span class="hljs-built_in">a</span>(n &gt;&gt; <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
+<p>Answer <span class="markdown-them-math-inline">$= -6999033352333308$</span></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>Project Euler</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>题解</tag>
+        <tag>Project Euler</tag>
+        <tag>数列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prufer 序列</title>
+    <url>/2023/06/24/prufer-xu-lie/</url>
+    <content><![CDATA[<h2 id="prufer-序列的定义">Prufer 序列的定义</h2>
+<p><span class="markdown-them-math-inline">$\rm Prufer$</span> 序列可以将一颗结点数为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树用一个长度为 <span class="markdown-them-math-inline">$n-2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>值域为 <span class="markdown-them-math-inline">$[1,n]$</span> 的数列唯一表示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即有标号无根树和 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列呈双射关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有标号无根树的构建方式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>选择一个编号最小的叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>将这个叶子节点所连接的点的编号加入 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>重复以上步骤 <span class="markdown-them-math-inline">$n-2$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到树上只剩下 <span class="markdown-them-math-inline">$2$</span> 个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>这是某一颗点数为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列的构造过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p><img src="https://oiwiki.org/graph/images/prufer1.png" alt="Prufer"></p>
+<h2 id="快速求解-prufer 序列">快速求解 Prufer 序列</h2>
+<p>由其过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个使用堆优化的 <span class="markdown-them-math-inline">$\Theta(n\log n)$</span> 做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列其实可以线性构造<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>记录所有点的度数和一个指针 <span class="markdown-them-math-inline">$p$</span> 指向编号最小的叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进行以下操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>将 <span class="markdown-them-math-inline">$p$</span> 指向的结点删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>检查是否出现了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>如果产生了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记其编号为 <span class="markdown-them-math-inline">$x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 若 <span class="markdown-them-math-inline">$x&gt;p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则不做任何操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并检查删除 <span class="markdown-them-math-inline">$x$</span> 以后是否出现了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>重复这一步操作直到没有产生新的叶结点或新产生的结点编号大于 <span class="markdown-them-math-inline">$p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>让 <span class="markdown-them-math-inline">$p$</span> 自增直到遇见下一个叶结点为止<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>重复以上操作直到结点数为 <span class="markdown-them-math-inline">$2$</span> 可以得到这棵树的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在算法流程中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每条边只在其连接的外层结点被删除时被遍历过一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$p$</span> 单调递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树中的节点数单调递减<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以每个点也只被遍历过一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="快速还原-prufer 序列">快速还原 Prufer 序列</h2>
+<p>显然还是有一个堆优化的 <span class="markdown-them-math-inline">$\Theta(n\log n)$</span> 做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>从前到后枚举 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中的每一个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护不在序列中的结点编号的最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然不在序列中的是叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且其最小值为最后一个加入的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将其与当前枚举的序列中的数连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>连边后若序列中已没有枚举的这个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么将其踢出序列作为新的叶子结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑以与之前构造 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列相同的方法构造线性做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>记一个指针 <span class="markdown-them-math-inline">$p$</span> 指向不在序列中的最小结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果将其连向序列中枚举的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并将枚举的位置删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>序列中没有这个结点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么如果被删除的结点比 <span class="markdown-them-math-inline">$p$</span> 小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接将其与现在序列中枚举的数连边后将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>重复操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果这个结点的值大于 <span class="markdown-them-math-inline">$p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么不用管它<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在后面它一定会被枚举到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种算法的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="prufer-序列的应用">Prufer 序列的应用</h2>
+<h3 id="cayley-公式">Cayley 公式</h3>
+<blockquote>
+<p>完全图 <span class="markdown-them-math-inline">$K_n$</span> 有 <span class="markdown-them-math-inline">$n^{n-2}$</span> 颗生成树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>证明方法很多<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中最简单的应该是利用 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑到任何一个长度为 <span class="markdown-them-math-inline">$n-2$</span> 的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列唯一对应一颗大小为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑计算长度为 <span class="markdown-them-math-inline">$n-2$</span> 的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又因为其值域为 <span class="markdown-them-math-inline">$[1,n]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故总方案数为 <span class="markdown-them-math-inline">$n^{n-2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="限定度数的有标号无根树计数">限定度数的有标号无根树计数</h3>
+<p>求有 <span class="markdown-them-math-inline">$n$</span> 个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且第 <span class="markdown-them-math-inline">$i$</span> 个结点的度数为 <span class="markdown-them-math-inline">$d_i$</span> 的有标号无根树的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑到一个点的度数为其在 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中出现次数 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是对于一个度数为 <span class="markdown-them-math-inline">$d_i$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其在 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中的出现次数应为 <span class="markdown-them-math-inline">$d_i-1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故存在这样的有标号无根树当且仅当 <span class="markdown-them-math-inline">$\sum_{i=1}^n d_i-1=n-2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且这样的树的数量为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\dbinom{n-2}{d_1-1,d_2-1,\cdots ,d_n-1}=\frac{(n-2)!}{(d_1-1)!(d_2-1)!\cdots (d_n-1)!}
+$$</div>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+        <category>Prufer 序列</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>图论</tag>
+        <tag>组合数学</tag>
+        <tag>Prufer 序列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The 2024 ICPC North America Championship</title>
     <url>/2024/06/17/the-2024-icpc-north-america-championship/</url>
     <content><![CDATA[<p>Solution of “The 2024 ICPC North America Championship”, and it also be kown as “<a href="https://contest.ucup.ac/contest/1695">The 3rd Universal Cup. Stage 0: Trial Contest</a>”.</p>
@@ -2514,61 +2794,6 @@ std::vector&lt;std::pair&lt;<span class="hljs-keyword">int</span>, <span class="
       </tags>
   </entry>
   <entry>
-    <title>Prufer 序列</title>
-    <url>/2023/06/24/prufer-xu-lie/</url>
-    <content><![CDATA[<h2 id="prufer-序列的定义">Prufer 序列的定义</h2>
-<p><span class="markdown-them-math-inline">$\rm Prufer$</span> 序列可以将一颗结点数为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树用一个长度为 <span class="markdown-them-math-inline">$n-2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>值域为 <span class="markdown-them-math-inline">$[1,n]$</span> 的数列唯一表示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即有标号无根树和 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列呈双射关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有标号无根树的构建方式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>选择一个编号最小的叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>将这个叶子节点所连接的点的编号加入 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>重复以上步骤 <span class="markdown-them-math-inline">$n-2$</span> 次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到树上只剩下 <span class="markdown-them-math-inline">$2$</span> 个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<p>这是某一颗点数为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列的构造过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p><img src="https://oiwiki.org/graph/images/prufer1.png" alt="Prufer"></p>
-<h2 id="快速求解-prufer 序列">快速求解 Prufer 序列</h2>
-<p>由其过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个使用堆优化的 <span class="markdown-them-math-inline">$\Theta(n\log n)$</span> 做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列其实可以线性构造<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>记录所有点的度数和一个指针 <span class="markdown-them-math-inline">$p$</span> 指向编号最小的叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进行以下操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>将 <span class="markdown-them-math-inline">$p$</span> 指向的结点删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>检查是否出现了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>如果产生了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记其编号为 <span class="markdown-them-math-inline">$x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 若 <span class="markdown-them-math-inline">$x&gt;p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则不做任何操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并检查删除 <span class="markdown-them-math-inline">$x$</span> 以后是否出现了新的叶结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>重复这一步操作直到没有产生新的叶结点或新产生的结点编号大于 <span class="markdown-them-math-inline">$p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>让 <span class="markdown-them-math-inline">$p$</span> 自增直到遇见下一个叶结点为止<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>重复以上操作直到结点数为 <span class="markdown-them-math-inline">$2$</span> 可以得到这棵树的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<p>可以发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在算法流程中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每条边只在其连接的外层结点被删除时被遍历过一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$p$</span> 单调递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树中的节点数单调递减<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以每个点也只被遍历过一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="快速还原-prufer 序列">快速还原 Prufer 序列</h2>
-<p>显然还是有一个堆优化的 <span class="markdown-them-math-inline">$\Theta(n\log n)$</span> 做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>从前到后枚举 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中的每一个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>维护不在序列中的结点编号的最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>显然不在序列中的是叶子节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且其最小值为最后一个加入的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是将其与当前枚举的序列中的数连边<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>连边后若序列中已没有枚举的这个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么将其踢出序列作为新的叶子结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑以与之前构造 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列相同的方法构造线性做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>记一个指针 <span class="markdown-them-math-inline">$p$</span> 指向不在序列中的最小结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果将其连向序列中枚举的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并将枚举的位置删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>序列中没有这个结点了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么如果被删除的结点比 <span class="markdown-them-math-inline">$p$</span> 小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接将其与现在序列中枚举的数连边后将其删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>重复操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果这个结点的值大于 <span class="markdown-them-math-inline">$p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么不用管它<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在后面它一定会被枚举到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这种算法的时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="prufer-序列的应用">Prufer 序列的应用</h2>
-<h3 id="cayley-公式">Cayley 公式</h3>
-<blockquote>
-<p>完全图 <span class="markdown-them-math-inline">$K_n$</span> 有 <span class="markdown-them-math-inline">$n^{n-2}$</span> 颗生成树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>证明方法很多<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中最简单的应该是利用 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑到任何一个长度为 <span class="markdown-them-math-inline">$n-2$</span> 的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列唯一对应一颗大小为 <span class="markdown-them-math-inline">$n$</span> 的有标号无根树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑计算长度为 <span class="markdown-them-math-inline">$n-2$</span> 的 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又因为其值域为 <span class="markdown-them-math-inline">$[1,n]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故总方案数为 <span class="markdown-them-math-inline">$n^{n-2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="限定度数的有标号无根树计数">限定度数的有标号无根树计数</h3>
-<p>求有 <span class="markdown-them-math-inline">$n$</span> 个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且第 <span class="markdown-them-math-inline">$i$</span> 个结点的度数为 <span class="markdown-them-math-inline">$d_i$</span> 的有标号无根树的数量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑到一个点的度数为其在 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中出现次数 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是对于一个度数为 <span class="markdown-them-math-inline">$d_i$</span> 的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其在 <span class="markdown-them-math-inline">$\rm Prufer$</span> 序列中的出现次数应为 <span class="markdown-them-math-inline">$d_i-1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故存在这样的有标号无根树当且仅当 <span class="markdown-them-math-inline">$\sum_{i=1}^n d_i-1=n-2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且这样的树的数量为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\dbinom{n-2}{d_1-1,d_2-1,\cdots ,d_n-1}=\frac{(n-2)!}{(d_1-1)!(d_2-1)!\cdots (d_n-1)!}
-$$</div>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-        <category>Prufer 序列</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>组合数学</tag>
-        <tag>图论</tag>
-        <tag>Prufer 序列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The 2024 ICPC St. Petersburg</title>
     <url>/2024/06/18/the-2024-icpc-st.petersburg/</url>
     <content><![CDATA[<p>Solution of “The 2024 ICPC St. Petersburg”, and it also be kown as “<a href="https://contest.ucup.ac/contest/1696">The 3rd Universal Cup. Stage 1: St. Petersburg</a>”.</p>
@@ -2856,8 +3081,8 @@ std::map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">un
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>OI</tag>
         <tag>字符串</tag>
+        <tag>OI</tag>
         <tag>Z 算法</tag>
       </tags>
   </entry>
@@ -2885,148 +3110,6 @@ std::map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">un
         <tag>题解</tag>
         <tag>AtCoder</tag>
         <tag>ABC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KMP 算法 &amp; KMP 自动机</title>
-    <url>/2023/06/24/kmp-suan-fa-kmp-zi-dong-ji/</url>
-    <content><![CDATA[<h2 id="border-& $\pi$ 函数">Border &amp; <span class="markdown-them-math-inline">$\pi$</span> 函数</h2>
-<h3 id="一些定义">一些定义</h3>
-<ul>
-<li>
-<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的真前/后缀为非自身的前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的 border为 <span class="markdown-them-math-inline">$S$</span> 的公共真前/后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>字符串 <span class="markdown-them-math-inline">$S$</span> 的最长 border 为 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于 <span class="markdown-them-math-inline">$S$</span> 的每个前缀 <span class="markdown-them-math-inline">$S_{1 \sim i}$</span> 令 <span class="markdown-them-math-inline">$\pi_i$</span> 为其最长 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\pi$</span> 函数就是所谓的前缀函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<h3 id="$\pi$-函数的性质"><span class="markdown-them-math-inline">$\pi$</span> 函数的性质</h3>
-<ul>
-<li><span class="markdown-them-math-inline">$\forall i,\pi_{i+1}\leqslant \pi_i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的所有 border 可以由 <span class="markdown-them-math-inline">$\pi_{|S|}$</span> 开始不断跳 <span class="markdown-them-math-inline">$\pi$</span> 由长度从大到小遍历<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>只需证明 <span class="markdown-them-math-inline">$S_{1 \sim \pi_{\pi_n}}$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的次长 border 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>由 <span class="markdown-them-math-inline">$\pi$</span> 的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>相邻前缀函数满足 <span class="markdown-them-math-inline">$\pi_{i + 1} = \max\limits_{T ~ is ~ the ~ border ~ of ~ S_{1 \sim i}, S_{i + 1} = S_{|T| + 1}} |T| + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>使用反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<h3 id="$\pi$-函数的线性求法"><span class="markdown-them-math-inline">$\pi$</span> 函数的线性求法</h3>
-<p>有了上述几条性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以得到一个求解 <span class="markdown-them-math-inline">$\pi$</span> 函数的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code>pi[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = pi[i - <span class="hljs-number">1</span>]; j &gt;= <span class="hljs-number">0</span>; j = pi[j])
-        <span class="hljs-keyword">if</span> (s[j + <span class="hljs-number">1</span>] == s[i]) &#123; pi[i] = j + <span class="hljs-number">1</span>; <span class="hljs-keyword">break</span>; &#125;
-</code></pre></div>
-<p>直观感受上这个做法是 <span class="markdown-them-math-inline">$\Theta(n ^ 2)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但实际上它是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度证明如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>不难发现复杂度来源在于跳 <span class="markdown-them-math-inline">$\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面我们将证明跳 <span class="markdown-them-math-inline">$\pi$</span> 的总次数是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>注意 <span class="markdown-them-math-inline">$\pi_i$</span> 的位置变化情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现 <span class="markdown-them-math-inline">$\pi_i$</span> 只会每次 <span class="markdown-them-math-inline">$+1$</span> 或往前跳若干次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但往前跳的的总距离不能超过当前 <span class="markdown-them-math-inline">$+1$</span> 的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故总路程也是线性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<h3 id="$\pi$-函数的基本应用"><span class="markdown-them-math-inline">$\pi$</span> 函数的基本应用</h3>
-<h4 id="字符串匹配">字符串匹配</h4>
-<p>求解模式串 <span class="markdown-them-math-inline">$T$</span> 在匹配串 <span class="markdown-them-math-inline">$S$</span> 中的出现位置的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>构造一个新的字符串 <span class="markdown-them-math-inline">$T\circ S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中 <span class="markdown-them-math-inline">$\circ\not\in S\cup T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它仅作为一个分隔符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>对这个新的字符串求其 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不难发现由于分隔符的出现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\forall i, \pi_i \leqslant |T|$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是找到 <span class="markdown-them-math-inline">$\pi_i = |T|$</span> 的位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$i - |T| + 1 \sim i$</span> 就是一个匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>以上即为 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h4 id="统计每个前缀的出现次数">统计每个前缀的出现次数</h4>
-<p>考虑到如果某个前缀在之后的位置里出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一定是某个前缀的 border<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是我们考虑在每个数的最大 border 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其为更小 border 的重复次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且更小的 border 一定可以通过跳 <span class="markdown-them-math-inline">$\pi$</span> 遍历到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样只需要从后往前扫一遍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ans[i] = <span class="hljs-number">1</span>;
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) ans[pi[i]] += ans[i];
-</code></pre></div>
-<p>至于这个问题的加强版<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>统计 <span class="markdown-them-math-inline">$S$</span> 中的每个前缀在 <span class="markdown-them-math-inline">$T$</span> 中的出现次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以构造 <span class="markdown-them-math-inline">$S\#T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>赋初值的时候只需要将 <span class="markdown-them-math-inline">$T$</span> 中的位置初始化为 <span class="markdown-them-math-inline">$1$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h4 id="统计本质不同子串的数目">统计本质不同子串的数目</h4>
-<p>考虑迭代计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>问题转化成<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>在当前字符串的末尾加入一个新的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以这个字符结尾的后缀中有多少个是前面没有出现过的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>如果一个子串 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\forall j\geqslant i,S_{j\sim n}$</span> 都在前面出现过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<blockquote>
-<p>由反证法易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>于是就只需求出加入新字符后的串的反串中的 <span class="markdown-them-math-inline">$\max\pi$</span> 即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而这个字符的贡献就是 <span class="markdown-them-math-inline">$|S|+1-\max\pi$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n^2)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="字符串周期相关性质">字符串周期相关性质</h2>
-<p>称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的一个周期且仅当 <span class="markdown-them-math-inline">$\forall i\leqslant |S|-k, S_i = S_{i + k}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特别地若 <span class="markdown-them-math-inline">$k \nmid S$</span> 则称 <span class="markdown-them-math-inline">$k$</span> 为 <span class="markdown-them-math-inline">$S$</span> 的弱周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>若字符串 <span class="markdown-them-math-inline">$S$</span> 存在一个 border <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当且仅当 <span class="markdown-them-math-inline">$S$</span> 存在一个长度为 <span class="markdown-them-math-inline">$|S| - |T|$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性递归论证即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>字符串 <span class="markdown-them-math-inline">$S$</span> 的最短<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期长度为 <span class="markdown-them-math-inline">$n - \pi_n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>由 <span class="markdown-them-math-inline">$\pi$</span> 函数的定义易知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>若长度不小于 <span class="markdown-them-math-inline">$p + q$</span> 的字符串 <span class="markdown-them-math-inline">$S$</span> 存在长度分别为 <span class="markdown-them-math-inline">$p, q$</span> 的<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>下面首先证明 <span class="markdown-them-math-inline">$p - q(p &gt; q)$</span> 也是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ol>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i \leqslant q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i + p} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i \leqslant q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i &gt; q$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$S_i = S_{i - q} = S_{i + p - q}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可知 <span class="markdown-them-math-inline">$\forall i &gt; q, p - q$</span> 是其一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ol>
-<p>证明 <span class="markdown-them-math-inline">$p - q$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>根据更相减损术的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终可以迭代至 <span class="markdown-them-math-inline">$\gcd(p, q)$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的一个<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>弱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>所有强周期的长度均为最短强周期长度的倍数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>若存在一个强周期 <span class="markdown-them-math-inline">$x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$n-\pi_n\nmid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$\gcd(n-\pi_n,x)&lt;n-\pi_n$</span> 也为一个强周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$n-\pi_n$</span> 是最小强周期矛盾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<ul>
-<li>字符串 <span class="markdown-them-math-inline">$S$</span> 存在周期当且仅当 <span class="markdown-them-math-inline">$n - \pi_n$</span> 为一个周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<blockquote>
-<p>必要性显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若存在强周期 <span class="markdown-them-math-inline">$x\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又因为 <span class="markdown-them-math-inline">$n-\pi_n\mid x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$n-\pi_n\mid n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>充分性得证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<h2 id="kmp-自动机">KMP 自动机</h2>
-<p>在求 <span class="markdown-them-math-inline">$\pi$</span> 函数的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现这个做法是支持在线插入一个字符在末尾并计算函数值的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>并且在做 <span class="markdown-them-math-inline">$\rm KMP$</span> 的过程中我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在匹配串每一位求 <span class="markdown-them-math-inline">$\pi$</span> 函数时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并不关心之前匹配串的字符是什么<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只关心之前的 <span class="markdown-them-math-inline">$\pi$</span> 函数值和当前位的字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>这意味着可以对一个模式串建立一个自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>结点 <span class="markdown-them-math-inline">$i$</span>  表示当前节点的 <span class="markdown-them-math-inline">$\pi$</span> 值为 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>新加入一个节点的出边 <span class="markdown-them-math-inline">$c$</span> 指向跳 <span class="markdown-them-math-inline">$\pi$</span> 时第一个能够匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>暴力建这个自动机的复杂度为 <span class="markdown-them-math-inline">$\Theta(n^2|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为出边需要遍历 <span class="markdown-them-math-inline">$\Sigma$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以不存在求 <span class="markdown-them-math-inline">$\pi$</span> 函数时指针单方向移动的性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>但是实际上之前已经计算了从所有节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以任意一个字符为出边会到哪个节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故可以直接调用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>具体规则为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,c}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符 <span class="markdown-them-math-inline">$c$</span> 会到达的节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果当前到达了节点 <span class="markdown-them-math-inline">$i$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符为 <span class="markdown-them-math-inline">$c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则如果 <span class="markdown-them-math-inline">$c=s_{i+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么当前节点指向 <span class="markdown-them-math-inline">$i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>否则指向 <span class="markdown-them-math-inline">$f_{\pi_i,c}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>同 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法一样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机也可以用来实现若干文本串和模式串的匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串从节点 <span class="markdown-them-math-inline">$0$</span> 开始走<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每次走到 <span class="markdown-them-math-inline">$|S|$</span> 都完成了一次匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>若模式串长度为 <span class="markdown-them-math-inline">$m$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串长度为 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数量为 <span class="markdown-them-math-inline">$t$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则时间复杂度为 <span class="markdown-them-math-inline">$\Theta(m+tn|\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>另一方面<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\rm KMP$</span> 自动机在完成普通字符串匹配时表现并不优秀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但它可以求解一些特殊的字符串匹配问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>定义 <span class="markdown-them-math-inline">$g_1=&quot;a&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_2=&quot;aba&quot;$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$g_3=&quot;abacaba&quot;\cdots \forall i,g_i=g_{i-1}+(char)i+g_{i-1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 给定另一字符串 <span class="markdown-them-math-inline">$S$</span> 和整数 <span class="markdown-them-math-inline">$k$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$S$</span> 在 <span class="markdown-them-math-inline">$g_k$</span> 中的匹配次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>保证 <span class="markdown-them-math-inline">$|S|\times k\leqslant 10^6$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>显然题目是要求从 <span class="markdown-them-math-inline">$0$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_k$</span> 进行匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数是多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>首先对 <span class="markdown-them-math-inline">$S$</span> 建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始对 <span class="markdown-them-math-inline">$g_j$</span> 进行匹配后经过 <span class="markdown-them-math-inline">$|S|$</span> 号节点的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$k_{i,S}$</span> 表示从 <span class="markdown-them-math-inline">$i$</span> 号节点开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>匹配完字符串 <span class="markdown-them-math-inline">$S=g_i+(char)i$</span> 后停下来的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么有 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_{i,j}=f_{i,j-1}+[k_{i,g_{j-1}+(char)(j-1)}=|S|]+f_{k_{i,g_{j-1}+(char)(j-1)},j-1}
-$$</div><p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S|\times k)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>另外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于单次添加结点的复杂度是严格 <span class="markdown-them-math-inline">$\Theta(|\Sigma|)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以对 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机进行可持久化处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n|\Sigma|\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://codeforces.com/problemset/problem/808/G">[CF808G] Anthem of Berland</a></p>
-<p>考虑对模式串建立 <span class="markdown-them-math-inline">$\rm KMP$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令 <span class="markdown-them-math-inline">$f_{i,j}$</span> 表示对字符串匹配到第 <span class="markdown-them-math-inline">$i$</span> 位时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>跳到自动机的 <span class="markdown-them-math-inline">$j$</span> 号点匹配的次数最大值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有转移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_{i,to}=\begin{cases}\max\{f_{i-1,j}+[to=m]\}(s_i\not =~'?')\\\max\limits_{k=0}^{25}\{f_{i-1,j}+[to=m]\}(s_i=~'?')\end{cases}
-$$</div><p>由于 <span class="markdown-them-math-inline">$\rm DP$</span> 空间开不下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要使用滚动数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>时间复杂度 <span class="markdown-them-math-inline">$\Theta(|S||T||\Sigma|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>KMP</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>字符串</tag>
-        <tag>KMP</tag>
-        <tag>KMP 自动机</tag>
       </tags>
   </entry>
   <entry>
@@ -3306,43 +3389,6 @@ pair &lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</
         <tag>C++</tag>
         <tag>题解</tag>
         <tag>省队选拔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Manacher 算法</title>
-    <url>/2023/06/24/manacher-suan-fa/</url>
-    <content><![CDATA[<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>于是我们记 <span class="markdown-them-math-inline">$d_i$</span> 表示以 <span class="markdown-them-math-inline">$i$</span> 为中心的最大回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而 <span class="markdown-them-math-inline">$\rm Manacher$</span> 算法的用处就是在线性复杂度下求出这个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体过程跟 <span class="markdown-them-math-inline">$Z$</span> 算法类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$L,R$</span> 表示在之前的回文子串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右端点最靠右的子串的左右端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移分三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i&gt;R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=i-1,R=i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}&lt;R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i=d_{L+R-i}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}\geqslant R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=2i-R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>由于 <span class="markdown-them-math-inline">$R$</span> 只会往右移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且每次暴力更新必定右移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面这种方法只处理了回文子串长度为奇数的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而偶数的情况只需要分开考虑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性稍微改变一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但还有一种更加巧妙的方式可以规避分奇偶讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑给所有字符之间加入一个不可能出现的相同字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如字符串 <span class="markdown-them-math-inline">$abaca$</span> 变成 <span class="markdown-them-math-inline">$\#a\#b\#a\#c\#a\#$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样在奇数位上统计的就是字串长度为偶数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在偶数位上统计的就是字串长度为奇数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样统计出来的半径 <span class="markdown-them-math-inline">$d$</span> 就是以当前点为中心的最长回文子串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>Manacher</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>字符串</tag>
-        <tag>Manacher</tag>
       </tags>
   </entry>
   <entry>
@@ -3778,33 +3824,6 @@ $$</div><p>对于任意 <span class="markdown-them-math-inline">$a\leqslant b\le
       </tags>
   </entry>
   <entry>
-    <title>原根和阶</title>
-    <url>/2023/06/24/yuan-gen-he-jie/</url>
-    <content><![CDATA[<h2 id="阶的定义及求法">阶的定义及求法</h2>
-<p>称使得 <span class="markdown-them-math-inline">$a^t\equiv 1\pmod p$</span> 成立的最小正整数 <span class="markdown-them-math-inline">$t_{min}$</span> 为 <span class="markdown-them-math-inline">$a$</span> 对模数 <span class="markdown-them-math-inline">$p$</span> 的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记为 <span class="markdown-them-math-inline">$\delta_p(a)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$\delta_p(a)~|~n\Longleftrightarrow a^n\equiv 1\pmod p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>又有 <span class="markdown-them-math-inline">$a^{\varphi(p)}\equiv 1\pmod p\Longrightarrow \delta_p(a)~|~\varphi(p)$</span> 可得一个 <span class="markdown-them-math-inline">$\Theta(\sqrt{p}+\log^2p)$</span> 求阶的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<p>首先将 <span class="markdown-them-math-inline">$\varphi(p)$</span> 分解成 <span class="markdown-them-math-inline">$\varphi(p)=k_1^{q_1}\times k_2^{q_2}\times \cdots \times k_r^{q_r}$</span> 的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$\delta_p(a)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后试着用每一个质因子去除 <span class="markdown-them-math-inline">$\delta_p(a)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果除了之后 <span class="markdown-them-math-inline">$a^{\frac{\delta_p(a)}{k_i}}\equiv 1\pmod p$</span> 那么 <span class="markdown-them-math-inline">$\frac{\delta_p(a)}{k_i}$</span> 就作为新的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到不能再除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$\delta_p(a)$</span> 就为 <span class="markdown-them-math-inline">$a$</span> 在模 <span class="markdown-them-math-inline">$p$</span> 意义下真正的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="原根的定义及求法">原根的定义及求法</h2>
-<p>原根 <span class="markdown-them-math-inline">$g$</span> 是使得 <span class="markdown-them-math-inline">$g^{1\sim p-1}$</span> 在模 <span class="markdown-them-math-inline">$p$</span> 意义下的值与 <span class="markdown-them-math-inline">$[1,p-1]$</span> 形成一一对应关系的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 为 <span class="markdown-them-math-inline">$p$</span> 的原根当且仅当 <span class="markdown-them-math-inline">$\delta_p(g)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是可以导出一个计算 <span class="markdown-them-math-inline">$g_{min}$</span> 的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从小到大枚举 <span class="markdown-them-math-inline">$g$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$\delta_p(g)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$g$</span> 为 <span class="markdown-them-math-inline">$p$</span> 的最小原根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$g_{min}&lt;p^{\frac{1}{4}}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>所以以上算法时间复杂度为 <span class="markdown-them-math-inline">$\Theta(\sqrt{p}+p^{\frac{1}{4}}\omega(p))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>数论</tag>
-        <tag>原根</tag>
-        <tag>阶</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>十二类基本组合问题</title>
     <url>/2023/06/24/shi-er-lei-ji-ben-zu-he-wen-ti/</url>
     <content><![CDATA[<p>小球入盒问题是所有组合问题的基础<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它计算的是形如 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span><span class="markdown-them-math-inline">$n$</span> 个球放进 <span class="markdown-them-math-inline">$m$</span> 个盒子的方案数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 的一类问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在这类问题中一般存在三种限制 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
@@ -3890,6 +3909,33 @@ $$</div><p>每次加入一个 <span class="markdown-them-math-inline">$\sqrt{n}$
       <tags>
         <tag>组合数学</tag>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原根和阶</title>
+    <url>/2023/06/24/yuan-gen-he-jie/</url>
+    <content><![CDATA[<h2 id="阶的定义及求法">阶的定义及求法</h2>
+<p>称使得 <span class="markdown-them-math-inline">$a^t\equiv 1\pmod p$</span> 成立的最小正整数 <span class="markdown-them-math-inline">$t_{min}$</span> 为 <span class="markdown-them-math-inline">$a$</span> 对模数 <span class="markdown-them-math-inline">$p$</span> 的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记为 <span class="markdown-them-math-inline">$\delta_p(a)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$\delta_p(a)~|~n\Longleftrightarrow a^n\equiv 1\pmod p$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>又有 <span class="markdown-them-math-inline">$a^{\varphi(p)}\equiv 1\pmod p\Longrightarrow \delta_p(a)~|~\varphi(p)$</span> 可得一个 <span class="markdown-them-math-inline">$\Theta(\sqrt{p}+\log^2p)$</span> 求阶的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p>首先将 <span class="markdown-them-math-inline">$\varphi(p)$</span> 分解成 <span class="markdown-them-math-inline">$\varphi(p)=k_1^{q_1}\times k_2^{q_2}\times \cdots \times k_r^{q_r}$</span> 的形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$\delta_p(a)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后试着用每一个质因子去除 <span class="markdown-them-math-inline">$\delta_p(a)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果除了之后 <span class="markdown-them-math-inline">$a^{\frac{\delta_p(a)}{k_i}}\equiv 1\pmod p$</span> 那么 <span class="markdown-them-math-inline">$\frac{\delta_p(a)}{k_i}$</span> 就作为新的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直到不能再除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此时的 <span class="markdown-them-math-inline">$\delta_p(a)$</span> 就为 <span class="markdown-them-math-inline">$a$</span> 在模 <span class="markdown-them-math-inline">$p$</span> 意义下真正的阶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="原根的定义及求法">原根的定义及求法</h2>
+<p>原根 <span class="markdown-them-math-inline">$g$</span> 是使得 <span class="markdown-them-math-inline">$g^{1\sim p-1}$</span> 在模 <span class="markdown-them-math-inline">$p$</span> 意义下的值与 <span class="markdown-them-math-inline">$[1,p-1]$</span> 形成一一对应关系的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$g$</span> 为 <span class="markdown-them-math-inline">$p$</span> 的原根当且仅当 <span class="markdown-them-math-inline">$\delta_p(g)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是可以导出一个计算 <span class="markdown-them-math-inline">$g_{min}$</span> 的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从小到大枚举 <span class="markdown-them-math-inline">$g$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 <span class="markdown-them-math-inline">$\delta_p(g)=\varphi(p)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则 <span class="markdown-them-math-inline">$g$</span> 为 <span class="markdown-them-math-inline">$p$</span> 的最小原根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>有如下定理 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><span class="markdown-them-math-inline">$g_{min}&lt;p^{\frac{1}{4}}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>所以以上算法时间复杂度为 <span class="markdown-them-math-inline">$\Theta(\sqrt{p}+p^{\frac{1}{4}}\omega(p))$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>数论</tag>
+        <tag>原根</tag>
+        <tag>阶</tag>
       </tags>
   </entry>
   <entry>
@@ -5399,8 +5445,8 @@ $$</div><p>直接按式子求就可以了<span class="bd-box"><h-char class="bd 
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>OI</tag>
+        <tag>数据结构</tag>
         <tag>分块</tag>
       </tags>
   </entry>
@@ -5414,8 +5460,8 @@ $$</div><p>直接按式子求就可以了<span class="bd-box"><h-char class="bd 
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数据结构</tag>
         <tag>OI</tag>
+        <tag>数据结构</tag>
         <tag>C++</tag>
         <tag>分块</tag>
         <tag>线段树</tag>
@@ -5804,8 +5850,8 @@ std::vector&lt;<span class="hljs-keyword">int</span>&gt; w, v, siz;
       <tags>
         <tag>算法</tag>
         <tag>OI</tag>
-        <tag>C++</tag>
         <tag>图论</tag>
+        <tag>C++</tag>
         <tag>欧拉回路</tag>
       </tags>
   </entry>
@@ -6789,8 +6835,8 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
         <category>题解</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>OI</tag>
+        <tag>数据结构</tag>
         <tag>题解</tag>
         <tag>线段树</tag>
       </tags>
@@ -6871,10 +6917,10 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
       <tags>
         <tag>算法</tag>
         <tag>OI</tag>
-        <tag>C++</tag>
         <tag>图论</tag>
         <tag>连通性</tag>
         <tag>Tarjan</tag>
+        <tag>C++</tag>
         <tag>强连通分量</tag>
         <tag>点双连通分量</tag>
         <tag>边双连通分量</tag>
@@ -6927,29 +6973,6 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
         <tag>OI</tag>
         <tag>图论</tag>
         <tag>虚树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>评论(2)</title>
-    <url>/2024/04/30/ping-lun-2/</url>
-    <content><![CDATA[<p>​</p>
-<span id="more"></span>
-<p>最近发生了一件事:“某体育生在跑步考试快结束时摔断了腿, 但仍艰难地爬过了终点.” 我看到各路媒体铺天盖地的评价: <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>这才是真正的体育精神.<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 当第 4 次看到持此观点的评论时, 我意识到: 这个社会的价值观病了.</p>
-<p>此病之表征为, 这个社会变得特别善于歌颂苦难, 其中的逻辑并不难以理解: 努力到成功的过程往往过长, 人们需要一个足够有冲击力的标志来刻画这个过程. 出于中国人骨子里的谦逊, 这个标志不能是捧起奖杯那刻的欣喜若狂, 只能是遍体鳞伤时的绝望与无助.</p>
-<p>但, 这真的对吗? 我以为, 苦难从来都不应当作为成长的一部分. 苦难就是苦难, 哪怕我因此获益良多, 那也是因为我在苦难面前保持了一颗学徒的心, 我的收获不来自于苦难. 若有一位良师引导, 我能学到的恐怕远胜于此.</p>
-<p>我可以忍受苦难, 但并不代表我热爱苦难. 诚然, 走向终点的路上会遇到很多挫折, 但他不应当被提取出来, 作为我所热爱之事物的标志被反复歌颂. 这其中的逻辑是: 我能为了自己的理想忍受一定程度的苦难, 但如果没有这些苦难, 我会更快达到理想的终点. 所以这些苦难应当被定义为坏的, 而非值得歌颂的. 上天为我降下苦难, 从来都不是因为祂想历练我, 而是因为祂恐惧一番风顺的我.</p>
-<p>若是认为别人经历苦难又被广为宣传, 而我能从中获益, 该观点则更是荒谬. 我不需要看到别人比我更累, 我也不会因此而感到开心, 我会难过: 我所追寻的理想, 很难说其中没有崇高的一小部分, 是希望这个世界变得更好.</p>
-<p>所以,<br>
-如果我们累了,<br>
-那就应该去休息.</p>
-]]></content>
-      <categories>
-        <category>文章</category>
-        <category>评论</category>
-      </categories>
-      <tags>
-        <tag>文章</tag>
-        <tag>评论</tag>
       </tags>
   </entry>
   <entry>
@@ -7026,6 +7049,29 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
 <p><span class="markdown-them-math-inline">$\quad$</span>除了初赛之外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考试中的每道题形如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给定一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> 给出两个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求它们的和 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>你需要在规定时间内编写一个程序用来解决它<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>考完之后选手编写的程序会被上交<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>统一进行评测<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p><span class="markdown-them-math-inline">$\quad$</span>评测时评测机会给出一些输入文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>待测程序读取后会按照选手所编写的程式对其进行一定处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后给出输出文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果待测程序在规定时间内给出了输出文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>评测机会将它与标准答案进行对比<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果完全相同<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>也有一些非传统评测规则并非如此<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处略过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>则选手获得该测试点的分数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>比如说在之前那个问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>评测机若给出输入文本 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> <span class="markdown-them-math-inline">$2~3$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一个正确的程序应该输出 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> <span class="markdown-them-math-inline">$5$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且可以获得这个测试点的分数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p><span class="markdown-them-math-inline">$\quad$</span>在 <span class="markdown-them-math-inline">$\rm OI$</span> 赛制中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每道题目的分数均为 <span class="markdown-them-math-inline">$100$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后每道题的得分之和就是一场考试的总分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>当然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每道题的分数并不是非零即 <span class="markdown-them-math-inline">$100$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>大多数题目会给出若干子任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果选手无法解决完整的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以选择一些弱化问题来解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并获得相应的部分分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>文章</category>
+        <category>评论</category>
+      </categories>
+      <tags>
+        <tag>文章</tag>
+        <tag>评论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>评论(2)</title>
+    <url>/2024/04/30/ping-lun-2/</url>
+    <content><![CDATA[<p>​</p>
+<span id="more"></span>
+<p>最近发生了一件事:“某体育生在跑步考试快结束时摔断了腿, 但仍艰难地爬过了终点.” 我看到各路媒体铺天盖地的评价: <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>这才是真正的体育精神.<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 当第 4 次看到持此观点的评论时, 我意识到: 这个社会的价值观病了.</p>
+<p>此病之表征为, 这个社会变得特别善于歌颂苦难, 其中的逻辑并不难以理解: 努力到成功的过程往往过长, 人们需要一个足够有冲击力的标志来刻画这个过程. 出于中国人骨子里的谦逊, 这个标志不能是捧起奖杯那刻的欣喜若狂, 只能是遍体鳞伤时的绝望与无助.</p>
+<p>但, 这真的对吗? 我以为, 苦难从来都不应当作为成长的一部分. 苦难就是苦难, 哪怕我因此获益良多, 那也是因为我在苦难面前保持了一颗学徒的心, 我的收获不来自于苦难. 若有一位良师引导, 我能学到的恐怕远胜于此.</p>
+<p>我可以忍受苦难, 但并不代表我热爱苦难. 诚然, 走向终点的路上会遇到很多挫折, 但他不应当被提取出来, 作为我所热爱之事物的标志被反复歌颂. 这其中的逻辑是: 我能为了自己的理想忍受一定程度的苦难, 但如果没有这些苦难, 我会更快达到理想的终点. 所以这些苦难应当被定义为坏的, 而非值得歌颂的. 上天为我降下苦难, 从来都不是因为祂想历练我, 而是因为祂恐惧一番风顺的我.</p>
+<p>若是认为别人经历苦难又被广为宣传, 而我能从中获益, 该观点则更是荒谬. 我不需要看到别人比我更累, 我也不会因此而感到开心, 我会难过: 我所追寻的理想, 很难说其中没有崇高的一小部分, 是希望这个世界变得更好.</p>
+<p>所以,<br>
+如果我们累了,<br>
+那就应该去休息.</p>
 ]]></content>
       <categories>
         <category>文章</category>
