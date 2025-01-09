@@ -80,38 +80,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>定义数列 <span class="markdown-them-math-inline">$\{a_n\}$</span> 满足 <span class="markdown-them-math-inline">$a_1 = 1$</span>, 对于 <span class="markdown-them-math-inline">$n \geqslant 1$</span> 有:</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-a_{2n} &amp;= 2a_n \\
-a_{2n + 1} &amp;= a_n - 3a_{n + 1}
-\end{aligned}
-$$</div><p>定义 <span class="markdown-them-math-inline">$S_n = \sum\limits_{i = 1}^n a_i$</span>, 求 <span class="markdown-them-math-inline">$S_k(k = 10^{12})$</span>.</p>
-<hr>
-<div class="markdown-them-math-block">$$\begin{aligned}
-S_{2n} &amp;= (a_1 + a_3 + \cdots + a_{2n - 1}) + (a_2 + a_4 + \cdots + a_{2n}) \\
-&amp;= [a_1 + (a_1 - 3a_2) + \cdots + (a_{n - 1} - 3a_n)] + (2a_1 + 2a_2 + \cdots + 2a_n) \\ 
-&amp;= 4a_1 + (-2a_1 - 2a_2 - \cdots - 2a_{n - 1} - 3a_n) + (2a_1 + 2a_2 + \cdots + 2a_n) \\
-&amp;= 4 - a_n
-\end{aligned}
-$$</div><p>故要求 <span class="markdown-them-math-inline">$S_{2n}$</span> 只需递归求 <span class="markdown-them-math-inline">$a_n$</span> 即可.</p>
-<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
-
-<span class="hljs-keyword">using</span> i64 = <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>;
-<span class="hljs-keyword">constexpr</span> i64 n = <span class="hljs-number">1e12</span>;
-
-<span class="hljs-function">i64 <span class="hljs-title">a</span><span class="hljs-params">(i64 i)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">a</span>(i &gt;&gt; <span class="hljs-number">1</span>) - <span class="hljs-number">3</span> * <span class="hljs-built_in">a</span>(i + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">a</span>(i &gt;&gt; <span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">1</span>;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    std::cout &lt;&lt; <span class="hljs-number">4</span> - <span class="hljs-built_in">a</span>(n &gt;&gt; <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-</code></pre></div>
-<p>Answer <span class="markdown-them-math-inline">$= -6999033352333308$</span></p>
-
+        The solution of PE918.
+        
+          <p class="article-more-link">
+            <a href="2025/01/09/project-euler-problem-918/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
