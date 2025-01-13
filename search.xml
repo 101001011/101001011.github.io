@@ -257,40 +257,6 @@ $$</div><p>于是不满足该式的无向连通图均不为平面图<span class=
       </tags>
   </entry>
   <entry>
-    <title>2022 年新一卷数学第 7 题另解</title>
-    <url>/2023/06/24/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
-    <content><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑到以下公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$e ^ {qx} = \sum _ {n} q ^ n \frac{x ^ n}{n!} \tag{7.1}
-$$</div><div class="markdown-them-math-block">$$\ln(1 + x) = \sum _ n (-1) ^ n \frac{x ^ {n + 1}}{n + 1} \tag{7. 2}
-$$</div><p>将 <span class="markdown-them-math-inline">$a$</span> 带入式 <span class="markdown-them-math-inline">$(7. 1)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-a &amp;= 0.1(1 + 0.1 + \frac{0.01}{2} + \frac{0.001}{6} + \cdots) \\
-  &amp;= 0.1 + 0.01 + \frac{0.001}{2} + \frac{0.0001}{6} + \cdots
- \end{aligned}
-$$</div><p>将 <span class="markdown-them-math-inline">$c$</span> 带入式 <span class="markdown-them-math-inline">$(7.2)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-c &amp;= \ln (1 + \frac{1}{9}) \\
-  &amp;= \frac{1}{9} - \frac{\frac{1}{9 ^ 2}}{2} + \frac{\frac{1}{9 ^ 3}}{3} - \cdots
-\end{aligned}
-$$</div><p>分解 <span class="markdown-them-math-inline">$b$</span> 是简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$b = 0.111\cdots = 0.1 + 0.01 + 0.001 + \cdots
-$$</div><p>此时 <span class="markdown-them-math-inline">$b &gt; a, c$</span> 应当是一目了然的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑对比 <span class="markdown-them-math-inline">$a, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>取 <span class="markdown-them-math-inline">$c' = \frac{1}{9} - \frac{1}{2 \times 81} + \frac{1}{3 \times 729} &gt; c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不够好算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再取 <span class="markdown-them-math-inline">$c'' = \frac{1}{9} - \frac{1}{400} + \frac{1}{2000} = \frac{1}{9} - 0.002 &gt; c'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>取 <span class="markdown-them-math-inline">$a' = 0.1 + 0.01 &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$c'' &lt; a'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$c &lt; c' &lt; c'' &lt; a' &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$c &lt; a &lt; b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>数学</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>数学</tag>
-        <tag>高考</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2021 年计数题康复训练</title>
     <url>/2023/06/24/2021-nian-ji-shu-ti-kang-fu-xun-lian/</url>
     <content><![CDATA[<h2 id="技巧收集">技巧收集</h2>
@@ -877,25 +843,28 @@ $$</div><p>因为模数有可能小于 <span class="markdown-them-math-inline">$
       </tags>
   </entry>
   <entry>
-    <title>24 高考新 I 卷数学 19(3)</title>
-    <url>/2024/06/08/24-xin-gao-kao-i-juan-shu-xue-19-3/</url>
-    <content><![CDATA[<p>对 <span class="markdown-them-math-inline">$m = 1, 2$</span>, 取几组合法 <span class="markdown-them-math-inline">$(i, j)$</span> 即证.</p>
-<p>对 <span class="markdown-them-math-inline">$m \geqslant 3$</span>, 设 <span class="markdown-them-math-inline">$f_m$</span> 表示 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中能取出的合法数对数量.</p>
-<p>注意到 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中任意长度为 <span class="markdown-them-math-inline">$4l + 2$</span> 的子区间对应的答案均为 <span class="markdown-them-math-inline">$f_l$</span>, 则取分界点 <span class="markdown-them-math-inline">$p_1 = 4, p_2 = 4m - 2$</span>​ 进行容斥.</p>
+    <title>2022 年新一卷数学第 7 题另解</title>
+    <url>/2023/06/24/2022-nian-gao-kao-quan-guo-i-juan-shu-xue-ke-mu-di-qi-ti-de-yi-chong-fei-chang-gui-jie-fa/</url>
+    <content><![CDATA[<p>设 <span class="markdown-them-math-inline">$a = 0.1 e ^ {0.1}, b = \frac{1}{9}, c = -\ln 0.9$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>试比较 <span class="markdown-them-math-inline">$a, b, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑到以下公式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$e ^ {qx} = \sum _ {n} q ^ n \frac{x ^ n}{n!} \tag{7.1}
+$$</div><div class="markdown-them-math-block">$$\ln(1 + x) = \sum _ n (-1) ^ n \frac{x ^ {n + 1}}{n + 1} \tag{7. 2}
+$$</div><p>将 <span class="markdown-them-math-inline">$a$</span> 带入式 <span class="markdown-them-math-inline">$(7. 1)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <div class="markdown-them-math-block">$$\begin{aligned}
-f_m &amp;= f_m[i \not\in [1, p_1]~\textrm{or}~j \not\in [p_2 + 1, 4m + 2]] + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
-&amp;= f_m[i, j \in [p_1 + 1, 4m + 2]] + f_m[i, j \in [1, p_2]] - f_m[i, j \in [p_1 + 1, p_2]] \\&amp;~~~~+ f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
-&amp;= 2f_{m - 1} - f_{m - 2} + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]
+a &amp;= 0.1(1 + 0.1 + \frac{0.01}{2} + \frac{0.001}{6} + \cdots) \\
+  &amp;= 0.1 + 0.01 + \frac{0.001}{2} + \frac{0.0001}{6} + \cdots
+ \end{aligned}
+$$</div><p>将 <span class="markdown-them-math-inline">$c$</span> 带入式 <span class="markdown-them-math-inline">$(7.2)$</span> 可得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+c &amp;= \ln (1 + \frac{1}{9}) \\
+  &amp;= \frac{1}{9} - \frac{\frac{1}{9 ^ 2}}{2} + \frac{\frac{1}{9 ^ 3}}{3} - \cdots
 \end{aligned}
-$$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]$</span> 的下界.</p>
-<ul>
-<li>显然 <span class="markdown-them-math-inline">$(i, j) = (1, 4m + 2)$</span> 是合法的.</li>
-<li>对于 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span>,  当 <span class="markdown-them-math-inline">$m = 3$</span> 时其合法性在第 <span class="markdown-them-math-inline">$(2)$</span> 问中已证. 当 <span class="markdown-them-math-inline">$m &gt; 3$</span> 时, 从前后各取 <span class="markdown-them-math-inline">$2$</span> 个下标公差为 <span class="markdown-them-math-inline">$2$</span> 的子序列, 注意到只看子区间 <span class="markdown-them-math-inline">$[9, 4m - 6]$</span>, 其中 <span class="markdown-them-math-inline">$10$</span> 和 <span class="markdown-them-math-inline">$4m - 7$</span> 已经被取过了, 于是变成了等价的子问题. 故归纳可证 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span> 是合法的.</li>
-</ul>
-<p>此时有 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]] \geqslant 2$</span>, 于是 <span class="markdown-them-math-inline">$f_m \geqslant 2f_{m - 1} - f_{m - 2} + 2$</span>.</p>
-<p>取 <span class="markdown-them-math-inline">$f'_m = 2f'_{m - 1} - f'_{m - 2} + 2 \leqslant f_m, f'_1 = 3, f'_2 = 7$</span>.</p>
-<p>变换得 <span class="markdown-them-math-inline">$(f'_m - f'_{m - 1}) = (f'_{m - 1} - f'_{m - 2}) + 2$</span>, 由熟知的方法解得 <span class="markdown-them-math-inline">$f_m \geqslant f'_m = m ^ 2 + m + 1$</span>.</p>
-<p>于是 <span class="markdown-them-math-inline">$P_m = \frac{f_m}{\binom{4m + 2}{2}} \geqslant \frac{f'_m}{\binom{4m + 2}{2}} = \frac{m ^ 2 + m + 1}{8m^2 + 6m + 1} &gt; \frac{1}{8}$</span>, 原命题得证.</p>
+$$</div><p>分解 <span class="markdown-them-math-inline">$b$</span> 是简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$b = 0.111\cdots = 0.1 + 0.01 + 0.001 + \cdots
+$$</div><p>此时 <span class="markdown-them-math-inline">$b &gt; a, c$</span> 应当是一目了然的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑对比 <span class="markdown-them-math-inline">$a, c$</span> 的大小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>取 <span class="markdown-them-math-inline">$c' = \frac{1}{9} - \frac{1}{2 \times 81} + \frac{1}{3 \times 729} &gt; c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不够好算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再取 <span class="markdown-them-math-inline">$c'' = \frac{1}{9} - \frac{1}{400} + \frac{1}{2000} = \frac{1}{9} - 0.002 &gt; c'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>取 <span class="markdown-them-math-inline">$a' = 0.1 + 0.01 &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$c'' &lt; a'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$c &lt; c' &lt; c'' &lt; a' &lt; a$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>综上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有 <span class="markdown-them-math-inline">$c &lt; a &lt; b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -905,46 +874,6 @@ $$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]
         <tag>题解</tag>
         <tag>数学</tag>
         <tag>高考</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AC 自动机</title>
-    <url>/2023/06/24/ac-zi-dong-ji/</url>
-    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
-<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
-<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
-$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="文本串匹配">文本串匹配</h3>
-<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
-<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
-$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<blockquote>
-<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>AC 自动机</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
-        <tag>OI</tag>
-        <tag>AC 自动机</tag>
       </tags>
   </entry>
   <entry>
@@ -1799,6 +1728,77 @@ ans = <span class="hljs-number">0</span>
       </tags>
   </entry>
   <entry>
+    <title>24 高考新 I 卷数学 19(3)</title>
+    <url>/2024/06/08/24-xin-gao-kao-i-juan-shu-xue-19-3/</url>
+    <content><![CDATA[<p>对 <span class="markdown-them-math-inline">$m = 1, 2$</span>, 取几组合法 <span class="markdown-them-math-inline">$(i, j)$</span> 即证.</p>
+<p>对 <span class="markdown-them-math-inline">$m \geqslant 3$</span>, 设 <span class="markdown-them-math-inline">$f_m$</span> 表示 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中能取出的合法数对数量.</p>
+<p>注意到 <span class="markdown-them-math-inline">$a_{1 \sim 4m + 2}$</span> 中任意长度为 <span class="markdown-them-math-inline">$4l + 2$</span> 的子区间对应的答案均为 <span class="markdown-them-math-inline">$f_l$</span>, 则取分界点 <span class="markdown-them-math-inline">$p_1 = 4, p_2 = 4m - 2$</span>​ 进行容斥.</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+f_m &amp;= f_m[i \not\in [1, p_1]~\textrm{or}~j \not\in [p_2 + 1, 4m + 2]] + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
+&amp;= f_m[i, j \in [p_1 + 1, 4m + 2]] + f_m[i, j \in [1, p_2]] - f_m[i, j \in [p_1 + 1, p_2]] \\&amp;~~~~+ f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]\\
+&amp;= 2f_{m - 1} - f_{m - 2} + f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]
+\end{aligned}
+$$</div><p>考虑求 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]]$</span> 的下界.</p>
+<ul>
+<li>显然 <span class="markdown-them-math-inline">$(i, j) = (1, 4m + 2)$</span> 是合法的.</li>
+<li>对于 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span>,  当 <span class="markdown-them-math-inline">$m = 3$</span> 时其合法性在第 <span class="markdown-them-math-inline">$(2)$</span> 问中已证. 当 <span class="markdown-them-math-inline">$m &gt; 3$</span> 时, 从前后各取 <span class="markdown-them-math-inline">$2$</span> 个下标公差为 <span class="markdown-them-math-inline">$2$</span> 的子序列, 注意到只看子区间 <span class="markdown-them-math-inline">$[9, 4m - 6]$</span>, 其中 <span class="markdown-them-math-inline">$10$</span> 和 <span class="markdown-them-math-inline">$4m - 7$</span> 已经被取过了, 于是变成了等价的子问题. 故归纳可证 <span class="markdown-them-math-inline">$(i, j) = (2, 4m + 1)$</span> 是合法的.</li>
+</ul>
+<p>此时有 <span class="markdown-them-math-inline">$f_m[i \in [1, p_1]~\textrm{and}~j \in [p_2 + 1, 4m + 2]] \geqslant 2$</span>, 于是 <span class="markdown-them-math-inline">$f_m \geqslant 2f_{m - 1} - f_{m - 2} + 2$</span>.</p>
+<p>取 <span class="markdown-them-math-inline">$f'_m = 2f'_{m - 1} - f'_{m - 2} + 2 \leqslant f_m, f'_1 = 3, f'_2 = 7$</span>.</p>
+<p>变换得 <span class="markdown-them-math-inline">$(f'_m - f'_{m - 1}) = (f'_{m - 1} - f'_{m - 2}) + 2$</span>, 由熟知的方法解得 <span class="markdown-them-math-inline">$f_m \geqslant f'_m = m ^ 2 + m + 1$</span>.</p>
+<p>于是 <span class="markdown-them-math-inline">$P_m = \frac{f_m}{\binom{4m + 2}{2}} \geqslant \frac{f'_m}{\binom{4m + 2}{2}} = \frac{m ^ 2 + m + 1}{8m^2 + 6m + 1} &gt; \frac{1}{8}$</span>, 原命题得证.</p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>数学</tag>
+        <tag>高考</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AC 自动机</title>
+    <url>/2023/06/24/ac-zi-dong-ji/</url>
+    <content><![CDATA[<h3 id="失配指针">失配指针</h3>
+<p>定义 fail 为广义的 <span class="markdown-them-math-inline">$\pi$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即对于 <span class="markdown-them-math-inline">$n$</span> 个字符串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$fail_{i,j}=\max\limits_{k=1}^n \pi(S_k\#S_{i,1\sim j})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>上面那个是一种定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但事实上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>fail 是具有指向性的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它指向的是所有模式串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前缀与当前字符串某个前缀的后缀匹配可以产生最大匹配的那个串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它与当前串匹配的最后一个结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="构建-ac 自动机">构建 AC 自动机</h3>
+<p>首先对所有模式串建立 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然 Trie 树上的每一个结点都对应某个模式串的某个前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后将每个 fail 都指向匹配的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显而易见<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的 fail 都指向一个祖先节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个性质后面要用到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后构建转移边 Auto<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>Auto 指向跳 fail 过程中存在字符 <span class="markdown-them-math-inline">$c$</span> 的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体来说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以以 <span class="markdown-them-math-inline">$\rm BFS$</span> 序遍历 Trie 树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在遍历的同时更新答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\begin{cases}fail_u=Auto_{fail_{fa_u},c}\\Auto_{u,c}=Auto_{fail_u,c}\end{cases}
+$$</div><p>建 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="文本串匹配">文本串匹配</h3>
+<p>遍历文本串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接按照转移边走即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要统计每个模式串出现的次数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就将所有经过的点权值 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再在 fail 树上差分即可计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令模式串为 <span class="markdown-them-math-inline">$S$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文本串为 <span class="markdown-them-math-inline">$T$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度为 <span class="markdown-them-math-inline">$\Theta(|\Sigma||S|+|T|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>例题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><a href="https://www.luogu.com.cn/problem/P2292">[HNOI2004]L语言</a></p>
+<p>首先有一个显然的 <span class="markdown-them-math-inline">$\Theta(|s|\sum|t|)$</span> 暴力<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>枚举文本串的转移点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然其不能超过最大串长<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移式为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$f_i=\bigvee_{j=i-|s|}^{i-1}\{f_j\wedge[t_{j+1\sim i}\in s]\}
+$$</div><p>这个式子的核心在于<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当它存在一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个后缀是某个模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且删去这个后缀以后的文本串仍合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是考虑建立 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将文本串放在自动机上跑的时候记 <span class="markdown-them-math-inline">$f_i$</span> 表示当前前缀是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<blockquote>
+<p>存在如下 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>如果 <span class="markdown-them-math-inline">$v$</span> 可以从 <span class="markdown-them-math-inline">$u$</span> 开始由跳 fail 得到<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即 fail 树上 <span class="markdown-them-math-inline">$v$</span> 是 <span class="markdown-them-math-inline">$u$</span> 的祖先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么 <span class="markdown-them-math-inline">$v$</span> 代表的字符串是 <span class="markdown-them-math-inline">$u$</span> 代表的字符串的一个后缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>所以从 <span class="markdown-them-math-inline">$u$</span> 开始遍历跳 fail 经过的结点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它代表的字符串长度为 <span class="markdown-them-math-inline">$l$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且为某个模式串的结尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则将 <span class="markdown-them-math-inline">$g_{u,l}$</span> 记为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 由于 <span class="markdown-them-math-inline">$|s|\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以只有当 <span class="markdown-them-math-inline">$l\leqslant 10$</span> 的时候 <span class="markdown-them-math-inline">$g_{u,l}$</span> 可能为 true<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故直接状压成 <span class="markdown-them-math-inline">$g_u$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其二进制下第 <span class="markdown-them-math-inline">$l$</span> 位表示之前 <span class="markdown-them-math-inline">$g_{u,l}$</span> 的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>最后直接将文本串放在 <span class="markdown-them-math-inline">$\rm AC$</span> 自动机上跑即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$now_i$</span> 表示文本串中当前点前 <span class="markdown-them-math-inline">$i$</span> 位的 <span class="markdown-them-math-inline">$f$</span> 值为多少<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>易知 <span class="markdown-them-math-inline">$i\leqslant 10$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故也可以状压成一个数 <span class="markdown-them-math-inline">$now$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 易知 <span class="markdown-them-math-inline">$f_i=true$</span> 当且仅当 <span class="markdown-them-math-inline">$[now~or~g_u]=true$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(|\Sigma|n|s|^2+m|t|)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>AC 自动机</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>AC 自动机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder Beginner Contest 212</title>
     <url>/2023/06/24/atcoder-beginner-contest-212/</url>
     <content><![CDATA[<h2 id="e">E</h2>
@@ -2202,6 +2202,43 @@ $$</div><p>其中 <span class="markdown-them-math-inline">$f_1$</span> 生成故
       </tags>
   </entry>
   <entry>
+    <title>Manacher 算法</title>
+    <url>/2023/06/24/manacher-suan-fa/</url>
+    <content><![CDATA[<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>于是我们记 <span class="markdown-them-math-inline">$d_i$</span> 表示以 <span class="markdown-them-math-inline">$i$</span> 为中心的最大回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而 <span class="markdown-them-math-inline">$\rm Manacher$</span> 算法的用处就是在线性复杂度下求出这个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体过程跟 <span class="markdown-them-math-inline">$Z$</span> 算法类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$L,R$</span> 表示在之前的回文子串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右端点最靠右的子串的左右端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移分三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i&gt;R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=i-1,R=i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}&lt;R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i=d_{L+R-i}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}\geqslant R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=2i-R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>由于 <span class="markdown-them-math-inline">$R$</span> 只会往右移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且每次暴力更新必定右移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面这种方法只处理了回文子串长度为奇数的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而偶数的情况只需要分开考虑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性稍微改变一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但还有一种更加巧妙的方式可以规避分奇偶讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑给所有字符之间加入一个不可能出现的相同字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如字符串 <span class="markdown-them-math-inline">$abaca$</span> 变成 <span class="markdown-them-math-inline">$\#a\#b\#a\#c\#a\#$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样在奇数位上统计的就是字串长度为偶数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在偶数位上统计的就是字串长度为奇数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样统计出来的半径 <span class="markdown-them-math-inline">$d$</span> 就是以当前点为中心的最长回文子串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>Manacher</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>Manacher</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>KMP 算法 &amp; KMP 自动机</title>
     <url>/2023/06/24/kmp-suan-fa-kmp-zi-dong-ji/</url>
     <content><![CDATA[<h2 id="border-& $\pi$ 函数">Border &amp; <span class="markdown-them-math-inline">$\pi$</span> 函数</h2>
@@ -2341,43 +2378,6 @@ $$</div><p>由于 <span class="markdown-them-math-inline">$\rm DP$</span> 空间
         <tag>OI</tag>
         <tag>KMP</tag>
         <tag>KMP 自动机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Manacher 算法</title>
-    <url>/2023/06/24/manacher-suan-fa/</url>
-    <content><![CDATA[<p><span class="markdown-them-math-inline">$\rm Manacher$</span> 是用于求解一个字符串中所有回文子串的算法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>回文子串的数量级是 <span class="markdown-them-math-inline">$n^2$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要考虑如何将所有回文子串快速地表达出来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现如下性质<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>如果存在一个以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径为 <span class="markdown-them-math-inline">$d$</span> 的回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那所有以 <span class="markdown-them-math-inline">$p$</span> 为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>半径小于 <span class="markdown-them-math-inline">$d$</span> 的子串都是回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>证明显然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>于是我们记 <span class="markdown-them-math-inline">$d_i$</span> 表示以 <span class="markdown-them-math-inline">$i$</span> 为中心的最大回文子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而 <span class="markdown-them-math-inline">$\rm Manacher$</span> 算法的用处就是在线性复杂度下求出这个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体过程跟 <span class="markdown-them-math-inline">$Z$</span> 算法类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>记 <span class="markdown-them-math-inline">$L,R$</span> 表示在之前的回文子串中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右端点最靠右的子串的左右端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>转移分三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i&gt;R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=i-1,R=i+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}&lt;R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$d_i=d_{L+R-i}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i\leqslant R~\&amp;~d_{L+R-i}\geqslant R-i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$L=2i-R$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>暴力更新<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>由于 <span class="markdown-them-math-inline">$R$</span> 只会往右移<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且每次暴力更新必定右移一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以时间复杂度为 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>但是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面这种方法只处理了回文子串长度为奇数的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而偶数的情况只需要分开考虑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性稍微改变一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但还有一种更加巧妙的方式可以规避分奇偶讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑给所有字符之间加入一个不可能出现的相同字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如字符串 <span class="markdown-them-math-inline">$abaca$</span> 变成 <span class="markdown-them-math-inline">$\#a\#b\#a\#c\#a\#$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样在奇数位上统计的就是字串长度为偶数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在偶数位上统计的就是字串长度为奇数的答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样统计出来的半径 <span class="markdown-them-math-inline">$d$</span> 就是以当前点为中心的最长回文子串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>Manacher</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
-        <tag>OI</tag>
-        <tag>Manacher</tag>
       </tags>
   </entry>
   <entry>
@@ -2794,61 +2794,6 @@ std::vector&lt;std::pair&lt;<span class="hljs-keyword">int</span>, <span class="
       </tags>
   </entry>
   <entry>
-    <title>Z 算法</title>
-    <url>/2023/06/24/z-suan-fa/</url>
-    <content><![CDATA[<h2 id="算法简介">算法简介</h2>
-<p><span class="markdown-them-math-inline">$Z$</span> 算法在国内也被某些人称为 <span class="markdown-them-math-inline">$\rm ExKMP$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>虽然我不知道它跟 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法有什么关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p><span class="markdown-them-math-inline">$Z$</span> 算法用于求字符串 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$Z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其定义为 <span class="markdown-them-math-inline">$z_i=\rm LCP(S,S_{i\sim n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>这个算法的核心在于利用之前的信息来减少计算量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>具体来说我们可以从左往右依次求每个位置的 <span class="markdown-them-math-inline">$z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$[i, i + z_i - 1]$</span> 为 <span class="markdown-them-math-inline">$i$</span> 的匹配段<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时维护出右端点最靠右的匹配段 <span class="markdown-them-math-inline">$[l, r]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>那么我们知道有 <span class="markdown-them-math-inline">$S_{1 \sim r - l + 1} = S_{l \sim r}, S_{i \sim r} = S_{i - l + 1, r - l + 1}(i \leqslant r), z_i \geqslant \min(r - i + 1, z_{i - l + 1})$</span></p>
-<p>在计算 <span class="markdown-them-math-inline">$z_i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分以下三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} &lt; r - i + 1$</span> 那么显然有 <span class="markdown-them-math-inline">$z_i = z_{i - l + 1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} \geqslant r - i + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么我们就从 <span class="markdown-them-math-inline">$r + 1$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>若 <span class="markdown-them-math-inline">$i &gt; r$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接从 <span class="markdown-them-math-inline">$i$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>不难发现复杂度来源在于 <span class="markdown-them-math-inline">$2, 3$</span> 情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但可以发现右端点最靠右的匹配段的右端点总是在这两种情况下向右移动<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而总移动量不超过 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因此复杂度是 <span class="markdown-them-math-inline">$\Theta(n)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>如果要求 <span class="markdown-them-math-inline">$z_i = \rm LCP(T, S_{i \sim n})$</span> 话<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就类似于 <span class="markdown-them-math-inline">$\rm KMP$</span> 的做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>构造一个 <span class="markdown-them-math-inline">$T \# S$</span> 的串去求 <span class="markdown-them-math-inline">$z$</span> 函数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="经典例题">经典例题</h2>
-<h3 id="[noi2014]-动物园">[NOI2014] 动物园</h3>
-<p>对于每个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>计算后缀 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 与 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$\rm LCP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑在后一个 border 的左端点 <span class="markdown-them-math-inline">$i$</span> 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>令最长公共前缀的四个端点分别为 <span class="markdown-them-math-inline">$L,R,L',R'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>当 <span class="markdown-them-math-inline">$R&lt;L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R']$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>当 <span class="markdown-them-math-inline">$R\geqslant L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R]$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>区间 <span class="markdown-them-math-inline">$+1$</span> 可以使用差分实现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="[cf1051e]-vasya and big integers">[CF1051E] Vasya and Big Integers</h3>
-<p>记 <span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$a_{1\sim i}$</span> 有多少种合法的划分方案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个 <span class="markdown-them-math-inline">$\Theta(n^2)$</span> 的暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即往前枚举转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>判断转移是否合法后累加<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>观察到合法的转移点是一段连续的区间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若令 <span class="markdown-them-math-inline">$len_l$</span> 和 <span class="markdown-them-math-inline">$len_r$</span> 分别表示两限制字符串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然对于满足 <span class="markdown-them-math-inline">$len_l&lt;i-j&lt;len_r$</span> 的转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个转移都是合法的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在的问题在于判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 或 <span class="markdown-them-math-inline">$j=i-len_r$</span> 的时候转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>考虑用 <span class="markdown-them-math-inline">$\rm ExKMP$</span> 对任意一个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},l)$</span> 和 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},r)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样就可以快速求出 <span class="markdown-them-math-inline">$s_{i-len_l+1\sim i}$</span> 与 <span class="markdown-them-math-inline">$l$</span> 的最长公共前缀 <span class="markdown-them-math-inline">$zl_{i-len_l+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并通过比较 <span class="markdown-them-math-inline">$s_{i-len_l+1+z_{i-len_l+1}}$</span> 与 <span class="markdown-them-math-inline">$l_{z_{i-len_l+1}+1}$</span> 的大小判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 时转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当 <span class="markdown-them-math-inline">$j=i-len_r$</span> 时转移是否合法也可以通过相同方式判断<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>这样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>合法转移点的区间就在 <span class="markdown-them-math-inline">$\Theta(1)$</span> 的时间内求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下的用前缀和记录一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于不能出现前导零<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以当转移点的后一位为 ‘<span class="markdown-them-math-inline">$0$</span>’ 时不能将其加入前缀和数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>字符串</category>
-        <category>Z 算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
-        <tag>OI</tag>
-        <tag>Z 算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The 2024 ICPC St. Petersburg</title>
     <url>/2024/06/18/the-2024-icpc-st.petersburg/</url>
     <content><![CDATA[<p>Solution of “The 2024 ICPC St. Petersburg”, and it also be kown as “<a href="https://contest.ucup.ac/contest/1696">The 3rd Universal Cup. Stage 1: St. Petersburg</a>”.</p>
@@ -3084,6 +3029,61 @@ std::map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">un
         <tag>Python</tag>
         <tag>Ucup</tag>
         <tag>XCPC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Z 算法</title>
+    <url>/2023/06/24/z-suan-fa/</url>
+    <content><![CDATA[<h2 id="算法简介">算法简介</h2>
+<p><span class="markdown-them-math-inline">$Z$</span> 算法在国内也被某些人称为 <span class="markdown-them-math-inline">$\rm ExKMP$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>虽然我不知道它跟 <span class="markdown-them-math-inline">$\rm KMP$</span> 算法有什么关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><span class="markdown-them-math-inline">$Z$</span> 算法用于求字符串 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$Z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其定义为 <span class="markdown-them-math-inline">$z_i=\rm LCP(S,S_{i\sim n})$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这个算法的核心在于利用之前的信息来减少计算量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>具体来说我们可以从左往右依次求每个位置的 <span class="markdown-them-math-inline">$z$</span> 函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>令 <span class="markdown-them-math-inline">$[i, i + z_i - 1]$</span> 为 <span class="markdown-them-math-inline">$i$</span> 的匹配段<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时维护出右端点最靠右的匹配段 <span class="markdown-them-math-inline">$[l, r]$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>那么我们知道有 <span class="markdown-them-math-inline">$S_{1 \sim r - l + 1} = S_{l \sim r}, S_{i \sim r} = S_{i - l + 1, r - l + 1}(i \leqslant r), z_i \geqslant \min(r - i + 1, z_{i - l + 1})$</span></p>
+<p>在计算 <span class="markdown-them-math-inline">$z_i$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分以下三种情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} &lt; r - i + 1$</span> 那么显然有 <span class="markdown-them-math-inline">$z_i = z_{i - l + 1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i \leqslant r, z_{i - l + 1} \geqslant r - i + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么我们就从 <span class="markdown-them-math-inline">$r + 1$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$i &gt; r$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么直接从 <span class="markdown-them-math-inline">$i$</span> 开始暴力匹配前缀<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>不难发现复杂度来源在于 <span class="markdown-them-math-inline">$2, 3$</span> 情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但可以发现右端点最靠右的匹配段的右端点总是在这两种情况下向右移动<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而总移动量不超过 <span class="markdown-them-math-inline">$n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因此复杂度是 <span class="markdown-them-math-inline">$\Theta(n)$</span> 的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>如果要求 <span class="markdown-them-math-inline">$z_i = \rm LCP(T, S_{i \sim n})$</span> 话<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就类似于 <span class="markdown-them-math-inline">$\rm KMP$</span> 的做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>构造一个 <span class="markdown-them-math-inline">$T \# S$</span> 的串去求 <span class="markdown-them-math-inline">$z$</span> 函数即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="[noi2014]-动物园">[NOI2014] 动物园</h3>
+<p>对于每个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>计算后缀 <span class="markdown-them-math-inline">$S_{i\sim n}$</span> 与 <span class="markdown-them-math-inline">$S$</span> 的 <span class="markdown-them-math-inline">$\rm LCP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考虑在后一个 border 的左端点 <span class="markdown-them-math-inline">$i$</span> 处统计答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>令最长公共前缀的四个端点分别为 <span class="markdown-them-math-inline">$L,R,L',R'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分两种情况讨论<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>当 <span class="markdown-them-math-inline">$R&lt;L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R']$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>当 <span class="markdown-them-math-inline">$R\geqslant L'$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>区间 <span class="markdown-them-math-inline">$[L',R]$</span> 答案 <span class="markdown-them-math-inline">$+1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>区间 <span class="markdown-them-math-inline">$+1$</span> 可以使用差分实现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h3 id="[cf1051e]-vasya and big integers">[CF1051E] Vasya and Big Integers</h3>
+<p>记 <span class="markdown-them-math-inline">$f_i$</span> 表示 <span class="markdown-them-math-inline">$a_{1\sim i}$</span> 有多少种合法的划分方案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然有一个 <span class="markdown-them-math-inline">$\Theta(n^2)$</span> 的暴力 <span class="markdown-them-math-inline">$\rm DP$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即往前枚举转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>判断转移是否合法后累加<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>观察到合法的转移点是一段连续的区间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若令 <span class="markdown-them-math-inline">$len_l$</span> 和 <span class="markdown-them-math-inline">$len_r$</span> 分别表示两限制字符串的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>显然对于满足 <span class="markdown-them-math-inline">$len_l&lt;i-j&lt;len_r$</span> 的转移点 <span class="markdown-them-math-inline">$j$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这个转移都是合法的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>现在的问题在于判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 或 <span class="markdown-them-math-inline">$j=i-len_r$</span> 的时候转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>考虑用 <span class="markdown-them-math-inline">$\rm ExKMP$</span> 对任意一个 <span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},l)$</span> 和 <span class="markdown-them-math-inline">$\rm LCP(s_{i\sim n},r)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样就可以快速求出 <span class="markdown-them-math-inline">$s_{i-len_l+1\sim i}$</span> 与 <span class="markdown-them-math-inline">$l$</span> 的最长公共前缀 <span class="markdown-them-math-inline">$zl_{i-len_l+1}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并通过比较 <span class="markdown-them-math-inline">$s_{i-len_l+1+z_{i-len_l+1}}$</span> 与 <span class="markdown-them-math-inline">$l_{z_{i-len_l+1}+1}$</span> 的大小判断当 <span class="markdown-them-math-inline">$j=i-len_l$</span> 时转移是否合法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当 <span class="markdown-them-math-inline">$j=i-len_r$</span> 时转移是否合法也可以通过相同方式判断<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>合法转移点的区间就在 <span class="markdown-them-math-inline">$\Theta(1)$</span> 的时间内求出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下的用前缀和记录一下即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于不能出现前导零<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以当转移点的后一位为 ‘<span class="markdown-them-math-inline">$0$</span>’ 时不能将其加入前缀和数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>总时间复杂度 <span class="markdown-them-math-inline">$\Theta(n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>Z 算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>OI</tag>
+        <tag>Z 算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3539,6 +3539,39 @@ $$</div>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>三种曲线方程刻画方式的相互转换</title>
+    <url>/2025/01/13/san-chong-qu-xian-fang-cheng-ke-hua-fang-shi-de-xiang-hu-zhuan-huan/</url>
+    <content><![CDATA[<p><strong>直角坐标方程</strong>形如 <span class="markdown-them-math-inline">$y = f(x)$</span> 或 <span class="markdown-them-math-inline">$f(x, y) = 0$</span>, <strong>参数方程</strong>形如 <span class="markdown-them-math-inline">$\begin{cases} x = f(t) \\ y = g(t) \end{cases}$</span>, <strong>极坐标方程</strong>形如 <span class="markdown-them-math-inline">$\ell = \rho(\theta)$</span>.</p>
+<h3 id="直角坐标方程转参数方程">直角坐标方程转参数方程</h3>
+<div class="markdown-them-math-block">$$y = f(x) \Longrightarrow \begin{cases} x = t \\ y = f(t) \end{cases}
+$$</div><h3 id="参数方程转直角坐标方程">参数方程转直角坐标方程</h3>
+<ul>
+<li>代入法: 直接从 <span class="markdown-them-math-inline">$x = f(t)$</span> 解出 <span class="markdown-them-math-inline">$t = f^{-1}(x)$</span>, 然后将其带入 <span class="markdown-them-math-inline">$y = g(t)$</span> 解得 <span class="markdown-them-math-inline">$x$</span> 和 <span class="markdown-them-math-inline">$y$</span> 关系.</li>
+<li>三角法: 如果方程涉及三角函数, 则可以利用三角恒等式解出直角坐标方程.</li>
+</ul>
+<div class="markdown-them-math-block">$$\begin{cases} x = r\cos t \\ y = r \sin t \end{cases} \Longrightarrow x^2 + y^2 = r^2(\sin^2 t + \cos ^ 2 t) = r^2
+$$</div><h3 id="极坐标方程转参数方程">极坐标方程转参数方程</h3>
+<div class="markdown-them-math-block">$$\ell = \rho(\theta) \Longrightarrow \begin{cases} y = \rho(t) \sin t \\ x = \rho(t) \cos t \end{cases}
+$$</div><h3 id="参数方程转极坐标方程">参数方程转极坐标方程</h3>
+<p>注意到在极坐标系中, 点的表示为</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+\ell = \sqrt{x^2 + y^2}, \theta = \arctan \frac{y}{x}
+\end{aligned}
+$$</div><p>于是将参数方程带入即可得出 <span class="markdown-them-math-inline">$\ell, \theta$</span> 与 <span class="markdown-them-math-inline">$t$</span> 的关系, 设 <span class="markdown-them-math-inline">$\ell = p(t), \theta = \arctan q(t)$</span>, 则</p>
+<div class="markdown-them-math-block">$$\ell = p \circ q^{-1}(\tan \theta)
+$$</div>]]></content>
+      <categories>
+        <category>数学</category>
+        <category>分析</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>分析</tag>
+        <tag>方程</tag>
+        <tag>坐标系</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SMBU24-25 学年《中国近代史纲要》期末考试</title>
     <url>/2025/01/04/zhong-guo-jin-dai-shi-gang-yao/</url>
     <content><![CDATA[<blockquote>
@@ -3907,8 +3940,8 @@ $$</div><p>每次加入一个 <span class="markdown-them-math-inline">$\sqrt{n}$
         <category>组合数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -4055,6 +4088,74 @@ $$</div>]]></content>
         <tag>图论</tag>
         <tag>差分约束</tag>
         <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见函数图像</title>
+    <url>/2023/06/24/chang-jian-han-shu-tu-xiang/</url>
+    <content><![CDATA[<p>注意需要从定义域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>趋势等方面分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= xe ^ x$"><span class="markdown-them-math-inline">$y = xe ^ x$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/Ofx8qU.png" width="bottom" height="300" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = e ^ x(x + 1)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 恒大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x + 1$</span> 在 <span class="markdown-them-math-inline">$x$</span> 小于 <span class="markdown-them-math-inline">$-1$</span> 时小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$x$</span> 不小于 <span class="markdown-them-math-inline">$-1$</span> 时不小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是我们可以初步以 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 作为分界点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继续分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>
+<p>当 <span class="markdown-them-math-inline">$x &lt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 变小得越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且导数为负<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以函数从 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 开始向左以 <span class="markdown-them-math-inline">$x$</span> 轴为渐近线递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+<li>
+<p>当 <span class="markdown-them-math-inline">$x &gt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 增长得很快<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$x + 1$</span> 完全不是一个量级的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像主要由 <span class="markdown-them-math-inline">$e ^ x$</span> 产生影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>画出的图像与指数函数类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微陡一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</li>
+</ul>
+<p>另外一个需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>函数过点 <span class="markdown-them-math-inline">$(0, 0)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= \frac{e ^ x}{x}$"><span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/Ohp5sx.png" width="bottom" height="400" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}\backslash\{0\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{e ^ x(x - 1)}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 0, 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$x &lt; 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在靠左边的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响非常大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是往左的函数图像与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> <span class="markdown-them-math-inline">$e ^ x$</span> 的影响逐渐变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像类似于指数函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微缓一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<h2 id="$y-= \frac{x}{e ^ x}$"><span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhPeaT.png" width="bottom" height="330" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{1 - x}{e ^ x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>分析过程与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>所以图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处不做赘述<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= x \ln x$"><span class="markdown-them-math-inline">$y = x \ln x$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhiQk8.png" width="bottom" height="330" align="bottom" />
+<p>首先容易知道 <span class="markdown-them-math-inline">$y = x \ln x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \ln x + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>可以发现从 <span class="markdown-them-math-inline">$x = 0$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$y'$</span> 从 <span class="markdown-them-math-inline">$- \infty$</span> 开始快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\frac{1}{e}$</span> 处取到 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后继续缓慢增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>于是 <span class="markdown-them-math-inline">$y$</span> 一开始快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(\frac{1}{e}, -\frac{1}{e})$</span> 处取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后加速上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>加速度略大于 <span class="markdown-them-math-inline">$y = x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>远小于 <span class="markdown-them-math-inline">$y = x ^ 2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<h2 id="$y-= \frac{\ln x}{x}$"><span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhAa7t.png" width="bottom" height="350" align="bottom" />
+<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' =\frac{1 - \ln x}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>往左 <span class="markdown-them-math-inline">$1 - \ln x$</span> 快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x ^ 2$</span> 快速缩小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y'$</span> 总体快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始向左以 <span class="markdown-them-math-inline">$y$</span> 轴为渐近线快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &gt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$y'$</span> 的值不大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始缓慢上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 作为最高点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &lt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$1 - \ln x$</span> 的下降速度远不如 <span class="markdown-them-math-inline">$x ^ 2$</span> 的上升速度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y' &lt; 0$</span> 且以 <span class="markdown-them-math-inline">$0$</span> 为渐近线不断变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 开始减速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<h2 id="$y-= \frac{x}{\ln x}$"><span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span></h2>
+<img src = "https://s1.ax1x.com/2022/05/16/OhVqFx.png" width="bottom" height="400" align="bottom" />
+<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+ \backslash\{1\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{\ln x - 1}{\ln ^ 2 x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to - \infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to \frac{1}{-\infty}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to -\infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于在 <span class="markdown-them-math-inline">$x$</span> 仅比 <span class="markdown-them-math-inline">$1$</span> 大一点点的时候 <span class="markdown-them-math-inline">$\ln x$</span> 非常接近 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, +\infty)$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>一个虚拟的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>开始以非常快的速度下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后逐渐变得平缓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(e, e)$</span> 取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 以缓慢的速度从 <span class="markdown-them-math-inline">$0$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 以比 <span class="markdown-them-math-inline">$\ln x$</span> 快一些<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但仍然十分缓慢的速度从 <span class="markdown-them-math-inline">$1$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于其结构上与 <span class="markdown-them-math-inline">$\frac{1}{\ln x}$</span> 十分类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以它以非常缓慢的速度减小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 不断上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但上升速度越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>分析</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>分析</tag>
+        <tag>函数</tag>
+        <tag>初等数学</tag>
       </tags>
   </entry>
   <entry>
@@ -5244,74 +5345,6 @@ $$</div><p>直接按式子求就可以了<span class="bd-box"><h-char class="bd 
       </tags>
   </entry>
   <entry>
-    <title>常见函数图像</title>
-    <url>/2023/06/24/chang-jian-han-shu-tu-xiang/</url>
-    <content><![CDATA[<p>注意需要从定义域<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>奇偶性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>趋势等方面分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= xe ^ x$"><span class="markdown-them-math-inline">$y = xe ^ x$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/Ofx8qU.png" width="bottom" height="300" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = e ^ x(x + 1)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 恒大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x + 1$</span> 在 <span class="markdown-them-math-inline">$x$</span> 小于 <span class="markdown-them-math-inline">$-1$</span> 时小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$x$</span> 不小于 <span class="markdown-them-math-inline">$-1$</span> 时不小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是我们可以初步以 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 作为分界点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继续分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>
-<p>当 <span class="markdown-them-math-inline">$x &lt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 变小得越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且导数为负<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以函数从 <span class="markdown-them-math-inline">$(1, -\frac{1}{e})$</span> 开始向左以 <span class="markdown-them-math-inline">$x$</span> 轴为渐近线递增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-<li>
-<p>当 <span class="markdown-them-math-inline">$x &gt; -1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以发现 <span class="markdown-them-math-inline">$e ^ x$</span> 增长得很快<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>与 <span class="markdown-them-math-inline">$x + 1$</span> 完全不是一个量级的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像主要由 <span class="markdown-them-math-inline">$e ^ x$</span> 产生影响<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>画出的图像与指数函数类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微陡一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</li>
-</ul>
-<p>另外一个需要注意的是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>函数过点 <span class="markdown-them-math-inline">$(0, 0)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= \frac{e ^ x}{x}$"><span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/Ohp5sx.png" width="bottom" height="400" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{e ^ x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}\backslash\{0\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{e ^ x(x - 1)}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 0, 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$x &lt; 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在靠左边的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响非常大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是往左的函数图像与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>但是在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在接近 <span class="markdown-them-math-inline">$x = 0$</span> 的地方 <span class="markdown-them-math-inline">$e ^ x$</span> 的影响较小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>剩下部分的结构与 <span class="markdown-them-math-inline">$\frac{1}{x}$</span> 类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> <span class="markdown-them-math-inline">$e ^ x$</span> 的影响逐渐变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是函数图像类似于指数函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要稍微缓一点点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<h2 id="$y-= \frac{x}{e ^ x}$"><span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhPeaT.png" width="bottom" height="330" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{e ^ x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后考虑对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{1 - x}{e ^ x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>分析过程与 <span class="markdown-them-math-inline">$y = xe ^ x$</span> 类似<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>所以图像也是类似的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处不做赘述<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= x \ln x$"><span class="markdown-them-math-inline">$y = x \ln x$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhiQk8.png" width="bottom" height="330" align="bottom" />
-<p>首先容易知道 <span class="markdown-them-math-inline">$y = x \ln x$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \ln x + 1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>可以发现从 <span class="markdown-them-math-inline">$x = 0$</span> 开始<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$y'$</span> 从 <span class="markdown-them-math-inline">$- \infty$</span> 开始快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$\frac{1}{e}$</span> 处取到 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后继续缓慢增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>于是 <span class="markdown-them-math-inline">$y$</span> 一开始快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(\frac{1}{e}, -\frac{1}{e})$</span> 处取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后加速上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>加速度略大于 <span class="markdown-them-math-inline">$y = x$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>远小于 <span class="markdown-them-math-inline">$y = x ^ 2$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="$y-= \frac{\ln x}{x}$"><span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhAa7t.png" width="bottom" height="350" align="bottom" />
-<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{\ln x}{x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' =\frac{1 - \ln x}{x ^ 2}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>往左 <span class="markdown-them-math-inline">$1 - \ln x$</span> 快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$x ^ 2$</span> 快速缩小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y'$</span> 总体快速增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始向左以 <span class="markdown-them-math-inline">$y$</span> 轴为渐近线快速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &gt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$y'$</span> 的值不大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, 0)$</span> 开始缓慢上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 作为最高点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$1 - \ln x &lt; 0, x ^ 2 &gt; 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且 <span class="markdown-them-math-inline">$1 - \ln x$</span> 的下降速度远不如 <span class="markdown-them-math-inline">$x ^ 2$</span> 的上升速度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y' &lt; 0$</span> 且以 <span class="markdown-them-math-inline">$0$</span> 为渐近线不断变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(e, \frac{1}{e})$</span> 开始减速下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-<h2 id="$y-= \frac{x}{\ln x}$"><span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span></h2>
-<img src = "https://s1.ax1x.com/2022/05/16/OhVqFx.png" width="bottom" height="400" align="bottom" />
-<p>容易知道 <span class="markdown-them-math-inline">$y = \frac{x}{\ln x}$</span> 的定义域为 <span class="markdown-them-math-inline">$\mathbb{R}^+ \backslash\{1\}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>然后对其求导<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到 <span class="markdown-them-math-inline">$y' = \frac{\ln x - 1}{\ln ^ 2 x}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>容易发现需要以 <span class="markdown-them-math-inline">$x = 1, e$</span> 作为分界点进行分析<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<ul>
-<li>当 <span class="markdown-them-math-inline">$0 &lt; x &lt; 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 0$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to - \infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to \frac{1}{-\infty}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>在靠近 <span class="markdown-them-math-inline">$x = 1$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x \to 0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$\frac{\ln x - 1}{\ln ^ 2 x} \to -\infty$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是 <span class="markdown-them-math-inline">$y$</span> 下降幅度很大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$1 &lt; x &lt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 始终小于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 始终大于 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于在 <span class="markdown-them-math-inline">$x$</span> 仅比 <span class="markdown-them-math-inline">$1$</span> 大一点点的时候 <span class="markdown-them-math-inline">$\ln x$</span> 非常接近 <span class="markdown-them-math-inline">$0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以 <span class="markdown-them-math-inline">$y$</span> 从 <span class="markdown-them-math-inline">$(1, +\infty)$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>一个虚拟的点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>开始以非常快的速度下降<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后逐渐变得平缓<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 <span class="markdown-them-math-inline">$(e, e)$</span> 取到最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>当 <span class="markdown-them-math-inline">$x &gt; e$</span> 时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln x - 1$</span> 以缓慢的速度从 <span class="markdown-them-math-inline">$0$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\ln ^ 2 x$</span> 以比 <span class="markdown-them-math-inline">$\ln x$</span> 快一些<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但仍然十分缓慢的速度从 <span class="markdown-them-math-inline">$1$</span> 开始变大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于其结构上与 <span class="markdown-them-math-inline">$\frac{1}{\ln x}$</span> 十分类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以它以非常缓慢的速度减小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>体现在图像上即为 <span class="markdown-them-math-inline">$y$</span> 不断上升<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但上升速度越来越慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>数学</category>
-        <category>分析</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-        <tag>分析</tag>
-        <tag>函数</tag>
-        <tag>初等数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>散文(1)</title>
     <url>/2024/12/14/san-wen-1/</url>
     <content><![CDATA[<p>​</p>
@@ -6200,70 +6233,6 @@ $$</div><p><span class="markdown-them-math-inline">$\prod _ i (a_i - x)$</span> 
       </tags>
   </entry>
   <entry>
-    <title>线性同余方程</title>
-    <url>/2023/06/24/xian-xing-tong-yu-fang-cheng/</url>
-    <content><![CDATA[<p>考虑如何求解以下方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$ax\equiv 1\pmod b
-$$</div><p>显然可以转化为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$ax+by=1
-$$</div><p>有裴蜀定理 :</p>
-<blockquote>
-<p>对于不定方程 <span class="markdown-them-math-inline">$ax+by=c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其有解当且仅当 <span class="markdown-them-math-inline">$\gcd(a,b)|c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-</blockquote>
-<p>可以发现上述方程有解当且仅当 <span class="markdown-them-math-inline">$\gcd(a,b)=1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故可以转化为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$ax+by=\gcd(a,b)
-$$</div><p>观察到当 <span class="markdown-them-math-inline">$b=0$</span> 时方程有特解 <span class="markdown-them-math-inline">$x=1,y=0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑如何递归求解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>因为上式中有辗转相除的影子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是尝试构造 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$bx'+(a~mod~b)y'=\gcd(b,a~mod~b)
-$$</div><p>有 <span class="markdown-them-math-inline">$a~mod~b=a-\lfloor\frac{a}{b}\rfloor b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>化简可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$ay'+b\left(x'-\lfloor\frac{a}{b}\rfloor y'\right)=\gcd(b,a~mod~b)=
-\gcd(a,b)
-$$</div><p>于是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果求出了方程 <span class="markdown-them-math-inline">$bx'+(a~mod~b)y'=\gcd(b,a~mod~b)$</span> 的解 <span class="markdown-them-math-inline">$x'$</span> 和 <span class="markdown-them-math-inline">$y'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么方程 <span class="markdown-them-math-inline">$ax+by=\gcd(a,b)$</span> 的解为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="markdown-them-math-block">$$x=y',y=x'-\lfloor\frac{a}{b}\rfloor y'
-$$</div><p>于是这样就可以在辗转相除的过程中递归求解了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
-
-<span class="hljs-keyword">int</span> a, b, x, y;	
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Exgcd</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;
-	<span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) &#123;
-		x = <span class="hljs-number">1</span> , y = <span class="hljs-number">0</span>;
-		<span class="hljs-keyword">return</span>;
-	&#125;
-	<span class="hljs-built_in">Exgcd</span>(b, a % b);
-	<span class="hljs-keyword">int</span> tmp = x;
-	x = y, y = tmp - a / b * y;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
-
-	cin &gt;&gt; a &gt;&gt; b;
-	
-	<span class="hljs-built_in">Exgcd</span>(a, b);
-	
-	cout &lt;&lt; (x + b) % b &lt;&lt; endl;
-
-	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;
-</code></pre></div>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数论</category>
-        <category>类欧几里得算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>OI</tag>
-        <tag>C++</tag>
-        <tag>数论</tag>
-        <tag>线性同余方程</tag>
-        <tag>裴蜀定理</tag>
-        <tag>类欧几里得算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>简单的代数反演</title>
     <url>/2023/06/24/jian-dan-de-dai-shu-fan-yan/</url>
     <content><![CDATA[<h2 id="二项式反演">二项式反演</h2>
@@ -6699,6 +6668,70 @@ $$</div>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>线性同余方程</title>
+    <url>/2023/06/24/xian-xing-tong-yu-fang-cheng/</url>
+    <content><![CDATA[<p>考虑如何求解以下方程 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ax\equiv 1\pmod b
+$$</div><p>显然可以转化为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ax+by=1
+$$</div><p>有裴蜀定理 :</p>
+<blockquote>
+<p>对于不定方程 <span class="markdown-them-math-inline">$ax+by=c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其有解当且仅当 <span class="markdown-them-math-inline">$\gcd(a,b)|c$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+</blockquote>
+<p>可以发现上述方程有解当且仅当 <span class="markdown-them-math-inline">$\gcd(a,b)=1$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>故可以转化为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ax+by=\gcd(a,b)
+$$</div><p>观察到当 <span class="markdown-them-math-inline">$b=0$</span> 时方程有特解 <span class="markdown-them-math-inline">$x=1,y=0$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是考虑如何递归求解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>因为上式中有辗转相除的影子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>于是尝试构造 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$bx'+(a~mod~b)y'=\gcd(b,a~mod~b)
+$$</div><p>有 <span class="markdown-them-math-inline">$a~mod~b=a-\lfloor\frac{a}{b}\rfloor b$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>化简可得 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$ay'+b\left(x'-\lfloor\frac{a}{b}\rfloor y'\right)=\gcd(b,a~mod~b)=
+\gcd(a,b)
+$$</div><p>于是我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果求出了方程 <span class="markdown-them-math-inline">$bx'+(a~mod~b)y'=\gcd(b,a~mod~b)$</span> 的解 <span class="markdown-them-math-inline">$x'$</span> 和 <span class="markdown-them-math-inline">$y'$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么方程 <span class="markdown-them-math-inline">$ax+by=\gcd(a,b)$</span> 的解为 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$x=y',y=x'-\lfloor\frac{a}{b}\rfloor y'
+$$</div><p>于是这样就可以在辗转相除的过程中递归求解了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="markdown-them-math-inline">$\Theta(\log n)$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">int</span> a, b, x, y;	
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Exgcd</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;
+	<span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) &#123;
+		x = <span class="hljs-number">1</span> , y = <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">return</span>;
+	&#125;
+	<span class="hljs-built_in">Exgcd</span>(b, a % b);
+	<span class="hljs-keyword">int</span> tmp = x;
+	x = y, y = tmp - a / b * y;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;
+
+	cin &gt;&gt; a &gt;&gt; b;
+	
+	<span class="hljs-built_in">Exgcd</span>(a, b);
+	
+	cout &lt;&lt; (x + b) % b &lt;&lt; endl;
+
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre></div>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数论</category>
+        <category>类欧几里得算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>OI</tag>
+        <tag>C++</tag>
+        <tag>数论</tag>
+        <tag>线性同余方程</tag>
+        <tag>裴蜀定理</tag>
+        <tag>类欧几里得算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线性筛</title>
     <url>/2023/06/24/xian-xing-shai/</url>
     <content><![CDATA[<h2 id="筛素数">筛素数</h2>
@@ -6976,29 +7009,6 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
       </tags>
   </entry>
   <entry>
-    <title>评论(2)</title>
-    <url>/2024/04/30/ping-lun-2/</url>
-    <content><![CDATA[<p>​</p>
-<span id="more"></span>
-<p>最近发生了一件事:“某体育生在跑步考试快结束时摔断了腿, 但仍艰难地爬过了终点.” 我看到各路媒体铺天盖地的评价: <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>这才是真正的体育精神.<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 当第 4 次看到持此观点的评论时, 我意识到: 这个社会的价值观病了.</p>
-<p>此病之表征为, 这个社会变得特别善于歌颂苦难, 其中的逻辑并不难以理解: 努力到成功的过程往往过长, 人们需要一个足够有冲击力的标志来刻画这个过程. 出于中国人骨子里的谦逊, 这个标志不能是捧起奖杯那刻的欣喜若狂, 只能是遍体鳞伤时的绝望与无助.</p>
-<p>但, 这真的对吗? 我以为, 苦难从来都不应当作为成长的一部分. 苦难就是苦难, 哪怕我因此获益良多, 那也是因为我在苦难面前保持了一颗学徒的心, 我的收获不来自于苦难. 若有一位良师引导, 我能学到的恐怕远胜于此.</p>
-<p>我可以忍受苦难, 但并不代表我热爱苦难. 诚然, 走向终点的路上会遇到很多挫折, 但他不应当被提取出来, 作为我所热爱之事物的标志被反复歌颂. 这其中的逻辑是: 我能为了自己的理想忍受一定程度的苦难, 但如果没有这些苦难, 我会更快达到理想的终点. 所以这些苦难应当被定义为坏的, 而非值得歌颂的. 上天为我降下苦难, 从来都不是因为祂想历练我, 而是因为祂恐惧一番风顺的我.</p>
-<p>若是认为别人经历苦难又被广为宣传, 而我能从中获益, 该观点则更是荒谬. 我不需要看到别人比我更累, 我也不会因此而感到开心, 我会难过: 我所追寻的理想, 很难说其中没有崇高的一小部分, 是希望这个世界变得更好.</p>
-<p>所以,<br>
-如果我们累了,<br>
-那就应该去休息.</p>
-]]></content>
-      <categories>
-        <category>文章</category>
-        <category>评论</category>
-      </categories>
-      <tags>
-        <tag>文章</tag>
-        <tag>评论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一封面向社会，关于对近日来 CCF 不当行为之抗议的公开信</title>
     <url>/2023/06/24/ping-lun-1/</url>
     <content><![CDATA[<p>​</p>
@@ -7072,6 +7082,29 @@ $$</div><p>于是用与筛欧拉函数相似的方法<span class="bd-box"><h-cha
 <p><span class="markdown-them-math-inline">$\quad$</span>除了初赛之外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>考试中的每道题形如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给定一个问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> 给出两个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求它们的和 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>你需要在规定时间内编写一个程序用来解决它<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>考完之后选手编写的程序会被上交<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>统一进行评测<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p><span class="markdown-them-math-inline">$\quad$</span>评测时评测机会给出一些输入文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>待测程序读取后会按照选手所编写的程式对其进行一定处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后给出输出文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>如果待测程序在规定时间内给出了输出文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>评测机会将它与标准答案进行对比<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果完全相同<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>也有一些非传统评测规则并非如此<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>此处略过<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>则选手获得该测试点的分数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>比如说在之前那个问题中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>评测机若给出输入文本 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> <span class="markdown-them-math-inline">$2~3$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么一个正确的程序应该输出 <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span> <span class="markdown-them-math-inline">$5$</span> <span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且可以获得这个测试点的分数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p><span class="markdown-them-math-inline">$\quad$</span>在 <span class="markdown-them-math-inline">$\rm OI$</span> 赛制中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每道题目的分数均为 <span class="markdown-them-math-inline">$100$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后每道题的得分之和就是一场考试的总分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>当然<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>每道题的分数并不是非零即 <span class="markdown-them-math-inline">$100$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>大多数题目会给出若干子任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果选手无法解决完整的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以选择一些弱化问题来解决<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并获得相应的部分分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+]]></content>
+      <categories>
+        <category>文章</category>
+        <category>评论</category>
+      </categories>
+      <tags>
+        <tag>文章</tag>
+        <tag>评论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>评论(2)</title>
+    <url>/2024/04/30/ping-lun-2/</url>
+    <content><![CDATA[<p>​</p>
+<span id="more"></span>
+<p>最近发生了一件事:“某体育生在跑步考试快结束时摔断了腿, 但仍艰难地爬过了终点.” 我看到各路媒体铺天盖地的评价: <span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>这才是真正的体育精神.<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 当第 4 次看到持此观点的评论时, 我意识到: 这个社会的价值观病了.</p>
+<p>此病之表征为, 这个社会变得特别善于歌颂苦难, 其中的逻辑并不难以理解: 努力到成功的过程往往过长, 人们需要一个足够有冲击力的标志来刻画这个过程. 出于中国人骨子里的谦逊, 这个标志不能是捧起奖杯那刻的欣喜若狂, 只能是遍体鳞伤时的绝望与无助.</p>
+<p>但, 这真的对吗? 我以为, 苦难从来都不应当作为成长的一部分. 苦难就是苦难, 哪怕我因此获益良多, 那也是因为我在苦难面前保持了一颗学徒的心, 我的收获不来自于苦难. 若有一位良师引导, 我能学到的恐怕远胜于此.</p>
+<p>我可以忍受苦难, 但并不代表我热爱苦难. 诚然, 走向终点的路上会遇到很多挫折, 但他不应当被提取出来, 作为我所热爱之事物的标志被反复歌颂. 这其中的逻辑是: 我能为了自己的理想忍受一定程度的苦难, 但如果没有这些苦难, 我会更快达到理想的终点. 所以这些苦难应当被定义为坏的, 而非值得歌颂的. 上天为我降下苦难, 从来都不是因为祂想历练我, 而是因为祂恐惧一番风顺的我.</p>
+<p>若是认为别人经历苦难又被广为宣传, 而我能从中获益, 该观点则更是荒谬. 我不需要看到别人比我更累, 我也不会因此而感到开心, 我会难过: 我所追寻的理想, 很难说其中没有崇高的一小部分, 是希望这个世界变得更好.</p>
+<p>所以,<br>
+如果我们累了,<br>
+那就应该去休息.</p>
 ]]></content>
       <categories>
         <category>文章</category>
