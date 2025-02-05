@@ -8,7 +8,7 @@
       <link href="/2025/01/14/wei-fen-fang-cheng/"/>
       <url>/2025/01/14/wei-fen-fang-cheng/</url>
       
-        <content type="html"><![CDATA[ <embed src="./main.pdf" width = "100%" height="1000" type="application/pdf">]]></content>
+        <content type="html"><![CDATA[<h2 id="i-可分离变量的微分方程">I. 可分离变量的微分方程</h2><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{\mathrm{d} x} = p(x)q(y)$$</div><p>直接分离变量得</p><div class="markdown-them-math-block">$$p(x) \mathrm{d} x = \frac{1}{q(y)} \mathrm{d} y$$</div><p>对两边积分即有</p><div class="markdown-them-math-block">$$\int p(x) \mathrm{d} x = \int \frac{1}{q(y)} \mathrm{d} y$$</div><h3 id="齐次微分方程">齐次微分方程</h3><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{\mathrm{d} x} = \varphi \left(\frac{y}{x}\right)$$</div><p>设 <span class="markdown-them-math-inline">$u = \dfrac{y}{x}$</span>, 则有</p><div class="markdown-them-math-block">$$\frac{\mathrm{d} (u x)}{\mathrm{d} x} = \varphi(u)$$</div><p>整理得</p><div class="markdown-them-math-block">$$\int \frac{\mathrm{d} u}{\varphi (u) - u} = \int \frac{\mathrm{d} x}{x}$$</div><p>最后将 <span class="markdown-them-math-inline">$u = \dfrac{y}{x}$</span> 回代即得原方程的解.</p><p>需要注意的是, 求解方程的过程中可能会丢失一些解, 需要考虑一些边界情况.</p><h2 id="ii-一阶线性微分方程">II. 一阶线性微分方程</h2><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{\mathrm{d} x} + p(x) y = q(x) \tag{2.1}$$</div><h3 id="齐次方程的通解">齐次方程的通解</h3><blockquote><p>当 <span class="markdown-them-math-inline">$q(x) \equiv 0$</span> 时, 该方程称为一阶齐次线性微分方程, 可求其通解.</p></blockquote><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{\mathrm{d} x} + p(x) y = 0$$</div><p>考虑直接分离变量</p><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{y} = -p(x) \mathrm{d} x$$</div><p>两边积分并整理得</p><div class="markdown-them-math-block">$$y = C \exp\left(-\int p(x) \mathrm{d} x\right)$$</div><h3 id="非齐次方程的特解">非齐次方程的特解</h3><blockquote><p>当 <span class="markdown-them-math-inline">$q(x) \not\equiv 0$</span> 时, 该方程称为一阶非齐次线性微分方程, 可先求其对应齐次方程的通解, 再求非齐次方程的一个特解, 两者相加即得该非齐次方程的通解.</p></blockquote><p>对式 (2.1) 两边同时除以 <span class="markdown-them-math-inline">$y$</span>, 并整理得</p><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{y} = -p(x) \mathrm{d} x + \frac{q(x)}{y} \mathrm{d} x$$</div><p>两边积分并化简得</p><div class="markdown-them-math-block">$$y = C \exp\left(-\int p(x) \mathrm{d} x + \int \frac{q(x)}{y} \mathrm{d} x \right)$$</div><p>设 <span class="markdown-them-math-inline">$c(x) = C \exp\left(\displaystyle \int \frac{q(x)}{y} \mathrm{d} x \right)$</span>, 将其带入即有</p><div class="markdown-them-math-block">$$y = c(x) \exp(-\int p(x) \mathrm{d} x) \tag{2.2}$$</div><p>将上式带入式 (2.1) 得</p><div class="markdown-them-math-block">$$c'(x) \exp(-\int p(x) \mathrm{d} x) - c(x) \exp(-\int p(x) \mathrm{d} x) p(x) + p(x) c(x) \exp(-\int p(x) \mathrm{d} x) = q(x)$$</div><p>注意到中间两项是可以消去的, 于是</p><div class="markdown-them-math-block">$$c'(x) = q(x) \exp(\int p(x) \mathrm{d} x)$$</div><p>两边积分得</p><div class="markdown-them-math-block">$$c(x) = \int q(x) \exp(\int p(x) \mathrm{d} x) + C$$</div><p>将 <span class="markdown-them-math-inline">$c(x)$</span> 的表达式带入式 (2.2) 即得方程 (2.1) 的一个特解(消去 <span class="markdown-them-math-inline">$C$</span> 是因为常数项已经在通解中刻画了)</p><div class="markdown-them-math-block">$$y^* = \exp(-\int p(x) \mathrm{d} x) \int q(x) \exp(\int p(x) \mathrm{d} x)$$</div><p>结合齐次方程的通解, 则方程 (2.1) 的通解为</p><div class="markdown-them-math-block">$$y = C \exp\left(-\int p(x) \mathrm{d} x\right) + \exp(-\int p(x) \mathrm{d} x) \int q(x) \exp(\int p(x) \mathrm{d} x)$$</div><h3 id="伯努利方程">伯努利方程</h3><div class="markdown-them-math-block">$$\frac{\mathrm{d} y}{\mathrm{d} x} + p(x) y = q(x) y^n$$</div><p>两边同时除以 <span class="markdown-them-math-inline">$y^n$</span> 即得</p><div class="markdown-them-math-block">$$y^{-n}\frac{\mathrm{d} y}{\mathrm{d} x} + p(x) y^{1-n} = q(x)$$</div><p>设 <span class="markdown-them-math-inline">$Y = y^{1-n}, P(x) = (1-n)p(x), Q(x) = (1-n)q(x)$</span>, 将两边同乘 <span class="markdown-them-math-inline">$(1-n)$</span> 即得</p><div class="markdown-them-math-block">$$\frac{\mathrm{d} Y}{\mathrm{d} x} + P(x) Y = Q(x)$$</div><p>容易套用<span class="bd-box"><h-char class="bd bd-end"><h-inner>「</h-inner></h-char></span>一阶线性微分方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>」</h-inner></h-char></span>的解法.</p><h2 id="iii-可降阶的高阶微分方程">III. 可降阶的高阶微分方程</h2><h3 id="变量分离">变量分离</h3><div class="markdown-them-math-block">$$y^{(n)} = f(x)$$</div><p>两边同时做 <span class="markdown-them-math-inline">$n$</span> 次积分即可, 最后结果形如</p><div class="markdown-them-math-block">$$y = \int \left(\int \cdots \left(\int f(x) \mathrm{d} x\right) \cdots \mathrm{d} x \right)\mathrm{d} x + C_1 x^{n - 1} + C_2 x_{n - 2} + \cdots + C_n$$</div><h3 id="无显式原函数">无显式原函数</h3><div class="markdown-them-math-block">$$y'' = f(x, y')$$</div><p>设 <span class="markdown-them-math-inline">$y' = g(x)$</span>, 则原式化为一阶微分方程</p><div class="markdown-them-math-block">$$g'(x) = f(x, g(x))$$</div><p>解得</p><div class="markdown-them-math-block">$$g(x) = \varphi(x, C_1)$$</div><p>积分即得</p><div class="markdown-them-math-block">$$y = \int g(x) \mathrm{d} x + C = \int \varphi(x, C_1) \mathrm{d} x + C_2$$</div><h3 id="无显式自变量">无显式自变量</h3><div class="markdown-them-math-block">$$y'' = f(y, y')$$</div><p>设 <span class="markdown-them-math-inline">$y' = p(y)$</span>, 则</p><div class="markdown-them-math-block">$$y'' = \frac{\mathrm{d} p}{\mathrm{d} x} = \frac{\mathrm{d} p}{\mathrm{d} y} \frac{\mathrm{d} y}{\mathrm{d} x} = p(y) \frac{\mathrm{d} p}{\mathrm{d} y}$$</div><p>回代得</p><div class="markdown-them-math-block">$$\frac{\mathrm{d} p}{\mathrm{d} y} = \frac{f(y, p(y))}{p(y)}$$</div><p>设其通解为 <span class="markdown-them-math-inline">$p(y) = \varphi(y, C_1)$</span>, 则分离变量后积分可得</p><div class="markdown-them-math-block">$$\int \frac{\mathrm{d} y}{\varphi(y, C_1)} = x + C_2$$</div><h2 id="iv-常系数线性微分方程">IV. 常系数线性微分方程</h2><p>研究<span class="bd-box"><h-char class="bd bd-end"><h-inner>「</h-inner></h-char></span>常系数线性微分方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>」</h-inner></h-char></span>一般以二阶微分方程为主, 形如</p><div class="markdown-them-math-block">$$y'' + py' + qy = f(x)$$</div><h3 id="二阶常系数齐次线性微分方程">二阶常系数齐次线性微分方程</h3><p>对于方程</p><div class="markdown-them-math-block">$$y'' + py' + qy = 0$$</div><p>注意到 <span class="markdown-them-math-inline">$\mathrm{e}^{rx}$</span> 与其导数只差常数因子, 于是设 <span class="markdown-them-math-inline">$y = \mathrm{e}^{rx}$</span> 即得</p><div class="markdown-them-math-block">$$(r^2 + pr + q)\mathrm{e}^{rx} = 0$$</div><p>称 <span class="markdown-them-math-inline">$r^2 + pr + q = 0$</span> 为原方程的<span class="bd-box"><h-char class="bd bd-end"><h-inner>「</h-inner></h-char></span>特征方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>」</h-inner></h-char></span>, 求出来的根称为<span class="bd-box"><h-char class="bd bd-end"><h-inner>「</h-inner></h-char></span>特征根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>」</h-inner></h-char></span>.</p><p>注意到方程的通解可以用两个线性无关的特解的线性组合刻画(此处不加以证明), 于是考虑根据特征根构造两个特解.</p><ul><li>当特征方程 <span class="markdown-them-math-inline">$\Delta &gt; 0$</span> 时, 存在两相异实根 <span class="markdown-them-math-inline">$r_1, r_2$</span>, 则该微分方程的通解为</li></ul><div class="markdown-them-math-block">$$y = C_1\mathrm{e}^{r_1 x} + C_2 \mathrm{e}^{r_2x}$$</div><ul><li>当特征方程 <span class="markdown-them-math-inline">$\Delta = 0$</span> 时, 存在两相同实根 <span class="markdown-them-math-inline">$r_1 = r_2$</span>, 则该微分方程有一个特解 <span class="markdown-them-math-inline">$y_1 = \mathrm{e}^{r_1 x}$</span>.</li></ul><p>设另一特解 <span class="markdown-them-math-inline">$y_2 = y_1 u(x) = \mathrm{e}^{r_1 x}u(x)$</span>, 将其带入方程得</p><div class="markdown-them-math-block">$$\mathrm{e}^{r_1x}\left( (u''(x) + 2r_1 u'(x) + {r_1}^2 u(x)) + p(u'(x) + r_1 u(x)) + qu(x) \right) = 0$$</div><p>化简得</p><div class="markdown-them-math-block">$$u''(x) + (2r_1 + p)u'(x) + ({r_1}^2 + pr_1 + q) u(x) = 0$$</div><p>由于 <span class="markdown-them-math-inline">$r_1 = -\dfrac{p}{2}$</span> 且其为方程 <span class="markdown-them-math-inline">${r_1}^2 + pr_1 + q = 0$</span> 的根, 于是解得</p><div class="markdown-them-math-block">$$u''(x) = 0$$</div><p>取 <span class="markdown-them-math-inline">$u(x) = x$</span> 即得特解 <span class="markdown-them-math-inline">$y_2 = x \mathrm{e}^{r_1 x}$</span>, 结合特解 <span class="markdown-them-math-inline">$y_1$</span> 即有原方程通解</p><div class="markdown-them-math-block">$$y = \left( C_1 + C_2 x \right) \mathrm{e}^{r_1 x}$$</div><ul><li>当特征方程 <span class="markdown-them-math-inline">$\Delta &lt; 0$</span> 时, 存在一对共轭复根 <span class="markdown-them-math-inline">$r_1 = \alpha + i\beta, r_2 = \alpha - i \beta$</span>.</li></ul><p>此时原方程有两个解</p><div class="markdown-them-math-block">$$y = \exp \left( (\alpha \pm i\beta) x \right)$$</div><p>运用欧拉公式 <span class="markdown-them-math-inline">$\mathrm{e}^{i \theta} = \cos\theta + i\sin \theta$</span> 得到</p><div class="markdown-them-math-block">$$y = \mathrm{e}^{\alpha x} \left( \cos \beta x \pm i \sin \beta x \right)$$</div><p>通过线性组合构造两个线性无关的解</p><div class="markdown-them-math-block">$$\begin{aligned}y_1 &amp;= \frac{1}{2} \sum y = \mathrm{e}^{\alpha x} \cos \beta x \\y_2 &amp;= \frac{1}{2i} \Delta y = \mathrm{e}^{\alpha x} \sin \beta x\end{aligned}$$</div><p>于是原方程的通解为</p><div class="markdown-them-math-block">$$y = \mathrm{e}^{\alpha x} \left( C_1 \cos \beta x + C_2 \sin \beta x \right)$$</div><p>以上结论均可推广到高阶情形.</p><h3 id="二阶常系数非齐次线性微分方程">二阶常系数非齐次线性微分方程</h3><p>对形如下式的微分方程</p><div class="markdown-them-math-block">$$y'' + py' + qy = \mathrm{e}^{\lambda x} f(x)$$</div><p>根据前面的经验, 我们只需要求出该方程的一个特解.</p><p>设特解 <span class="markdown-them-math-inline">$y^* = \mathrm{e}^{\lambda x} g(x)$</span>, 则有</p><div class="markdown-them-math-block">$$\begin{aligned}{y^*}' &amp;= \mathrm{e}^{\lambda x} (\lambda g(x) + g'(x)) \\{y^*}'' &amp;= \mathrm{e}^{\lambda x} (\lambda^2 g(x) + 2\lambda g'(x) + g''(x))\end{aligned}$$</div><p>带入原方程并化简得</p><div class="markdown-them-math-block">$$g''(x) + (2\lambda + p) g'(x) + (\lambda^2 + p\lambda + q) g(x) = f(x) \tag{4.1}$$</div><p>注意到当 <span class="markdown-them-math-inline">$\lambda$</span> 分别为特征方程的 <span class="markdown-them-math-inline">$k = 0, 1, 2$</span> 重根的时候, <span class="markdown-them-math-inline">$g(x)$</span> 和 <span class="markdown-them-math-inline">$g'(x)$</span> 对应项会依次变为 <span class="markdown-them-math-inline">$0$</span>. 这意味着当 <span class="markdown-them-math-inline">$k$</span> 取 <span class="markdown-them-math-inline">$0, 1, 2$</span> 时, <span class="markdown-them-math-inline">$g(x), g'(x)$</span> 和 <span class="markdown-them-math-inline">$g''(x)$</span> 需要分别为与 <span class="markdown-them-math-inline">$f(x)$</span> 同次数的多项式, 于是不妨设 <span class="markdown-them-math-inline">$r(x)$</span> 为与 <span class="markdown-them-math-inline">$f(x)$</span> 同次数的待定系数多项式, 特解即为</p><div class="markdown-them-math-block">$$y^* = g(x)\mathrm{e}^{\lambda x} = x^k r(x)\mathrm{e} ^{\lambda x}$$</div><p>将其带入式 (4.1) 中即可算出 <span class="markdown-them-math-inline">$r(x)$</span> 的各系数, 进而得到方程的一个特解.</p><p>对形如下式的微分方程</p><div class="markdown-them-math-block">$$y'' + py' + qy = \mathrm{e}^{\lambda x} \left( f(x) \cos \omega x + g(x) \sin \omega x \right)$$</div><p>应用欧拉公式将等式右侧化为</p><div class="markdown-them-math-block">$$\begin{aligned}h(x) &amp;= \mathrm{e}^{\lambda x} \left( f(x) \cos \omega x + g(x) \sin \omega x \right) \\&amp;= \mathrm{e}^{\lambda x} \left( f(x) \frac{\mathrm{e}^{\omega x i} + \mathrm{e}^{-\omega x i}}{2} + g(x) \frac{\mathrm{e}^{\omega x i} - \mathrm{e}^{-\omega x i}}{2i} \right) \\&amp;= \left( \frac{f(x)}{2} + \frac{g(x)}{2i} \right) \mathrm{e}^{(\lambda + \omega i) x} + \left( \frac{f(x)}{2} - \frac{g(x)}{2i} \right) \mathrm{e}^{(\lambda - \omega i) x} \\&amp;= h_1(x) \mathrm{e}^{(\lambda + \omega i) x} + h_2(x) \mathrm{e}^{(\lambda - \omega i) x}\end{aligned}$$</div><p>其中 <span class="markdown-them-math-inline">$h_1(x)$</span> 和 <span class="markdown-them-math-inline">$h_2(x)$</span> 为从 <span class="markdown-them-math-inline">$f(x)$</span> 和 <span class="markdown-them-math-inline">$g(x)$</span> 线性组合得到的函数, 且对应项系数共轭.</p><p>设 <span class="markdown-them-math-inline">$\lambda  + \omega i$</span> 是特征方程的 <span class="markdown-them-math-inline">$k$</span> 重根(<span class="markdown-them-math-inline">$k = 0, 1$</span>), 则方程</p><div class="markdown-them-math-block">$$y'' + py' + qy = h_1(x) \mathrm{e}^{(\lambda + \omega i) x}$$</div><p>有特解</p><div class="markdown-them-math-block">$${y_1}^* = x^k r(x) \mathrm{e}^{(\lambda + \omega i) x} \tag{4.2}$$</div><p>设 <span class="markdown-them-math-inline">$m$</span> 为 <span class="markdown-them-math-inline">$f(x), g(x)$</span> 中次数较大者的次数, <span class="markdown-them-math-inline">$r(x)$</span> 是待定系数的 <span class="markdown-them-math-inline">$m$</span> 次多项式. 对式 (4.2) 两边取共轭即得</p><div class="markdown-them-math-block">$$({y_1}^*)'' + p({y_1}^*)' + q({y_1}^*) \equiv h_1(x) \mathrm{e}^{(\lambda + \omega i) x} = h_2(x) \mathrm{e}^{(\lambda - \omega i) x}$$</div><p>因此 <span class="markdown-them-math-inline">${y_2}^* = ({y_1}^*)$</span> 为以下方程的特解</p><div class="markdown-them-math-block">$$y'' + py' + qy = h_2(x) \mathrm{e}^{(\lambda - \omega i) x}$$</div><p>于是原方程的特解可以用两部分的特解之和来刻画, 即</p><div class="markdown-them-math-block">$$\begin{aligned}y^* &amp;= {y_1}^* + {y_2}^* \\&amp;= x^k \mathrm{e}^{\lambda x} \left( r(x) \mathrm{e}^{i\omega x} + (r(x))\mathrm{e}^{-i\omega x}  \right) \\&amp;= x^k \mathrm{e}^{\lambda x} \left( r_1(x) \cos \omega x + r_2(x) \sin \omega x \right)\end{aligned}$$</div><p>从上述推到中我们可以发现 <span class="markdown-them-math-inline">$y^*$</span> 实则是个实函数, 于是 <span class="markdown-them-math-inline">$r_1$</span> 和 <span class="markdown-them-math-inline">$r_2$</span> 也均为 <span class="markdown-them-math-inline">$m$</span> 次实多项式.</p><p>综上, 对于微分方程</p><div class="markdown-them-math-block">$$y'' + py' + qy = \mathrm{e}^{\lambda x} \left( f(x) \cos \omega x + g(x) \sin \omega x \right)$$</div><p>可以设特解为</p><div class="markdown-them-math-block">$$y^* = x^k \mathrm{e}^{\lambda x} \left( r_1(x) \cos \omega x + r_2(x) \sin \omega x \right)$$</div><p>然后代入原方程解出待定系数. 该结论也可推广到高阶形式.</p>]]></content>
       
       
       <categories>
@@ -90,9 +90,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> Project Euler </tag>
             
@@ -336,9 +336,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> AtCoder </tag>
             
@@ -371,9 +371,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> OI </tag>
             
             <tag> C++ </tag>
             
@@ -484,9 +484,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> Python </tag>
             
@@ -519,9 +519,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> Python </tag>
             
@@ -647,9 +647,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 新的思考 </tag>
             
@@ -717,9 +717,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 趣题 </tag>
             
@@ -934,9 +934,9 @@
             
             <tag> OI </tag>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 省队选拔 </tag>
             
@@ -965,9 +965,9 @@
             
             <tag> OI </tag>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 省队选拔 </tag>
             
@@ -996,9 +996,9 @@
             
             <tag> OI </tag>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 省队选拔 </tag>
             
@@ -1085,11 +1085,11 @@
       
         <tags>
             
+            <tag> 数据结构 </tag>
+            
             <tag> OI </tag>
             
             <tag> 题解 </tag>
-            
-            <tag> 数据结构 </tag>
             
             <tag> 线段树 </tag>
             
@@ -1122,9 +1122,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> OI </tag>
             
             <tag> 分块 </tag>
             
@@ -1157,11 +1157,11 @@
             
             <tag> 算法 </tag>
             
-            <tag> OI </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 并查集 </tag>
+            
+            <tag> OI </tag>
             
             <tag> C++ </tag>
             
@@ -1362,9 +1362,9 @@
             
             <tag> C++ </tag>
             
-            <tag> 复杂度 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 复杂度 </tag>
             
             <tag> 杜教筛 </tag>
             
@@ -1516,9 +1516,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> Z 算法 </tag>
             
@@ -1551,9 +1551,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> Manacher </tag>
             
@@ -1586,9 +1586,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> KMP </tag>
             
@@ -1623,9 +1623,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> OI </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> AC 自动机 </tag>
             
@@ -1658,13 +1658,13 @@
             
             <tag> 算法 </tag>
             
+            <tag> OI </tag>
+            
             <tag> 字符串 </tag>
             
             <tag> Trie </tag>
             
             <tag> 可持久化 Trie 树 </tag>
-            
-            <tag> OI </tag>
             
         </tags>
       
@@ -1769,13 +1769,13 @@
             
             <tag> OI </tag>
             
+            <tag> C++ </tag>
+            
             <tag> 图论 </tag>
             
             <tag> 连通性 </tag>
             
             <tag> Tarjan </tag>
-            
-            <tag> C++ </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -1814,9 +1814,9 @@
             
             <tag> OI </tag>
             
-            <tag> 图论 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> 欧拉回路 </tag>
             
@@ -2180,9 +2180,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> AtCoder </tag>
             
@@ -2215,9 +2215,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> AtCoder </tag>
             
@@ -2250,9 +2250,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> AtCoder </tag>
             
@@ -2285,9 +2285,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> AtCoder </tag>
             
@@ -2351,9 +2351,9 @@
             
             <tag> OI </tag>
             
-            <tag> 题解 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 趣题 </tag>
             
