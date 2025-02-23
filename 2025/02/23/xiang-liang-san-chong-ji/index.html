@@ -80,8 +80,38 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>new</p>
-
+        <p>存在<strong>向量三重积</strong>公式</p>
+<div class="markdown-them-math-block">$$\mathbf{a} \times (\mathbf{b} \times \mathbf{c}) = (\mathbf{a} \cdot \mathbf{c})\mathbf{b}  - (\mathbf{a} \cdot \mathbf{b})\mathbf{c}
+$$</div><hr>
+<p>设向量为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\mathbf{a} = (a_1, a_2, a_3), \quad \mathbf{b} = (b_1, b_2, b_3), \quad \mathbf{c} = (c_1, c_2, c_3).
+$$</div><div class="markdown-them-math-block">$$\mathbf{b} \times \mathbf{c} = \begin{pmatrix}
+   b_2 c_3 - b_3 c_2 \\
+   b_3 c_1 - b_1 c_3 \\
+   b_1 c_2 - b_2 c_1
+   \end{pmatrix}
+$$</div><div class="markdown-them-math-block">$$\mathbf{a} \times (\mathbf{b} \times \mathbf{c}) = \begin{pmatrix}
+   a_2 (b_1 c_2 - b_2 c_1) - a_3 (b_3 c_1 - b_1 c_3) \\
+   a_3 (b_2 c_3 - b_3 c_2) - a_1 (b_1 c_2 - b_2 c_1) \\
+   a_1 (b_3 c_1 - b_1 c_3) - a_2 (b_2 c_3 - b_3 c_2)
+   \end{pmatrix}
+$$</div><p>展开并整理各分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>第一分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></li>
+</ul>
+<div class="markdown-them-math-block">$$a_2 b_1 c_2 - a_2 b_2 c_1 - a_3 b_3 c_1 + a_3 b_1 c_3 = b_1 (a_2 c_2 + a_3 c_3) - c_1 (a_2 b_2 + a_3 b_3)
+$$</div><ul>
+<li>第二分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></li>
+</ul>
+<div class="markdown-them-math-block">$$a_3 b_2 c_3 - a_3 b_3 c_2 - a_1 b_1 c_2 + a_1 b_2 c_1 = b_2 (a_3 c_3 + a_1 c_1) - c_2 (a_3 b_3 + a_1 b_1)
+$$</div><ul>
+<li>第三分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></li>
+</ul>
+<div class="markdown-them-math-block">$$a_1 b_3 c_1 - a_1 b_1 c_3 - a_2 b_2 c_3 + a_2 b_3 c_2 = b_3 (a_1 c_1 + a_2 c_2) - c_3 (a_1 b_1 + a_2 b_2)
+$$</div><p>观察到每个分量中缺少 <span class="markdown-them-math-inline">$a_1 b_1 c_1$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>第一分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span><span class="markdown-them-math-inline">$a_2 b_2 c_2$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>第二分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span><span class="markdown-them-math-inline">$a_3 b_3 c_3$</span><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>第三分量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
+<p>添加这些项后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>表达式可统一写为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<div class="markdown-them-math-block">$$\mathbf{b} (\mathbf{a} \cdot \mathbf{c}) - \mathbf{c} (\mathbf{a} \cdot \mathbf{b})
+$$</div>
       
     </div>
     <footer class="article-footer">
